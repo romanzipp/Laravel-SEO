@@ -4,6 +4,9 @@ namespace romanzipp\Seo\Structs\Presets;
 
 use romanzipp\Seo\Structs\Meta;
 
+/**
+ * @see https://github.com/joshbuchea/HEAD#twitter-card
+ */
 class Twitter extends Meta
 {
     public function name(string $value): self
