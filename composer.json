@@ -1,0 +1,33 @@
+{
+    "name": "romanzipp/laravel-seo",
+    "description": "Laravel SEO package",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "romanzipp",
+            "email": "ich@ich.wtf",
+            "homepage": "https://ich.wtf"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "romanzipp\\Seo\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "romanzipp\\Seo\\Providers\\SeoServiceProvider"
+            ],
+            "aliases": {
+                "Seo": "romanzipp\\Seo\\Facades\\Seo"
+            }
+        }
+    }
+}
