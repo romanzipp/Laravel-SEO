@@ -13,6 +13,22 @@ abstract class Struct
     abstract protected function tag(): string;
 
     /**
+     * Can the website <head> contain more
+     * than one element of this type.
+     * 
+     * @var boolean
+     */
+    protected $unique = true;
+
+    /**
+     * Attribute names which should be unique across
+     * all existing elements combined with the struct tag.
+     *
+     * @var array
+     */
+    protected $uniqueAttributes = [];
+
+    /**
      * Attributes
      *
      * @var array

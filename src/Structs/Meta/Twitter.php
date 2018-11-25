@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Seo\Structs;
+namespace romanzipp\Seo\Structs\Meta;
 
 use romanzipp\Seo\Structs\Meta;
 
@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Meta;
  */
 class Twitter extends Meta
 {
+    protected $uniqueAttributes = ['name'];
+
     public function name(string $value): self
     {
         $this->addAttribute('name', 'twitter:' . $value);
