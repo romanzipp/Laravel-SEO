@@ -29,6 +29,36 @@ class Struct
     }
 
     /**
+     * Get struct tag.
+     *
+     * @return string
+     */
+    public function getTag(): string
+    {
+        return $this->tag();
+    }
+
+    /**
+     * Get struct attributes.
+     *
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Get struct content.
+     *
+     * @return mixed|null
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
      * Fluid content setter.
      *
      * @param  mixed  $content
