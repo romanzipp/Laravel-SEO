@@ -31,8 +31,10 @@ trait CollisionTrait
      */
     public function getDuplicateStruct(Struct $struct): array
     {
-        if ($struct->unique == false) {
+        if ($struct->isUnique() == false) {
             return [null, null];
         }
+
+        return [null, null];
     }
 }

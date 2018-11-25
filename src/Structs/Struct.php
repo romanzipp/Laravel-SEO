@@ -15,7 +15,7 @@ abstract class Struct
     /**
      * Can the website <head> contain more
      * than one element of this type.
-     * 
+     *
      * @var boolean
      */
     protected $unique = true;
@@ -126,6 +126,26 @@ abstract class Struct
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Is struct unique.
+     *
+     * @return boolean
+     */
+    public function isUnique(): bool
+    {
+        return $this->unique;
+    }
+
+    /**
+     * Get struct unique attributes for collision detection.
+     *
+     * @return array
+     */
+    public function getUniqueAttributes(): array
+    {
+        return $this->uniqueAttributes;
     }
 
     /**
