@@ -88,3 +88,61 @@ seo()->og('site_name', 'romanzipp');
 ```php
 seo()->render();
 ```
+
+## Extended Usage
+
+### Manipulation
+
+The package allows you to define certain manipulations for either **element body** or **element attributes**.
+
+For example, you want to append a site name to every `<title>` tag:
+
+```php
+use romanzipp\Seo\Structs\Title;
+
+// Manipulate the body of all Title structs
+
+seo()->manipulateBody(Title::class, function ($body) {
+    return ($body ? $body . ' | ' : '') . 'Site-Name';
+});
+
+// Add seo Title struct
+
+seo()->add(Title::make()->body('Home'));  // Home | Site-Name
+
+// Or use the title() shortcut
+
+seo()->title('Home');  // Home | Site-Name
+seo()->title(null);    // Site-Name
+```
+
+```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
+// Manipulate OpenGraph structs with the attribute "property" and value "og:title"
+
+seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], function ($attributes) {
+
+    // $attributes is an associative array with all
+    // struct/element attributes
+
+    if ( ! empty($attributes['content'])) {
+        $attributes['content'] .= ' | ';
+    }
+
+    $attributes['content'] .= 'Site-Name';
+
+    return $attributes;
+});
+
+// Add seo OpenGraph struct
+
+$seo->add(
+    OpenGraph::make()->property('title')->content('Home')
+);
+
+// Or use the og() shortcut
+
+$seo->og('title', 'Home');
+$seo->og('title', null);
+```
