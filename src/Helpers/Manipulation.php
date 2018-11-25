@@ -24,7 +24,7 @@ class Manipulation
     protected $context;
 
     /**
-     * Traget class
+     * Target class
      *
      * @var int
      */
@@ -36,6 +36,20 @@ class Manipulation
      * @var callable
      */
     protected $callback;
+
+    /**
+     * Attribute
+     *
+     * @var string
+     */
+    protected $attribute;
+
+    /**
+     * Attribute value
+     *
+     * @var string
+     */
+    protected $attributeValue;
 
     /*
      *--------------------------------------------------------------------------
@@ -54,6 +68,16 @@ class Manipulation
     }
 
     /**
+     * Get class.
+     *
+     * @return string
+     */
+    public function getClass(): string
+    {
+        return $this->class;
+    }
+
+    /**
      * Get callback.
      *
      * @return callable
@@ -61,6 +85,26 @@ class Manipulation
     public function getCallback(): callable
     {
         return $this->callback;
+    }
+
+    /**
+     * Get attribute.
+     *
+     * @return string
+     */
+    public function getAttribute(): string
+    {
+        return $this->attribute;
+    }
+
+    /**
+     * Get attribute.
+     *
+     * @return string
+     */
+    public function getAttributeValue(): string
+    {
+        return $this->attributeValue;
     }
 
     /*
@@ -102,6 +146,19 @@ class Manipulation
     }
 
     /**
+     * Set Attribute & Value.
+     *
+     * @param  string $attribute
+     * @param  string $attributeValue
+     * @return void
+     */
+    public function setSearchAttribute(string $attribute, string $attributeValue): void
+    {
+        $this->attribute = $attribute;
+        $this->attributeValue = $attributeValue;
+    }
+
+    /**
      * Set manipulation execution status.
      *
      * @param boolean $status
@@ -109,22 +166,5 @@ class Manipulation
     public function setExecuted(bool $status = true): void
     {
         $this->executed = $status;
-    }
-
-    /*
-     *--------------------------------------------------------------------------
-     * Methods
-     *--------------------------------------------------------------------------
-     */
-
-    /**
-     * Compare struct agains target class.
-     *
-     * @param  Struct    $struct
-     * @return boolean
-     */
-    public function matches(Struct $struct): bool
-    {
-        return get_class($struct) == $this->class;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace romanzipp\Seo\Structs;
 
-use romanzipp\Seo\Helpers\ManipulableValue;
+use romanzipp\Seo\Helpers\AttributeValue;
 use romanzipp\Seo\Helpers\Manipulation;
 use romanzipp\Seo\Structs\Traits\ManipulationsTrait;
 
@@ -22,7 +22,7 @@ abstract class Struct
     /**
      * Struct body
      *
-     * @var null|ManipulableValue
+     * @var null|AttributeValue
      */
     protected $body = null;
 
@@ -72,6 +72,23 @@ abstract class Struct
     public function getAttributes(): array
     {
         return $this->attributes;
+    }
+
+    /**
+     * Get computed attributes. Converts AttributeValue
+     * objects to string values.
+     *
+     * @return array
+     */
+    public function getComputedAttributes(): array
+    {
+        $attributes = $this->attributes;
+
+        array_walk($attributes, function (&$v, $k) {
+            $v = (string) $v;
+        });
+
+        return $attributes;
     }
 
     /**
@@ -150,7 +167,7 @@ abstract class Struct
      */
     protected function setBody($body): void
     {
-        $this->body = new ManipulableValue($body, $this, Manipulation::BODY);
+        $this->body = new AttributeValue($body, $this, Manipulation::BODY);
     }
 
     /**
@@ -161,8 +178,10 @@ abstract class Struct
      */
     protected function addAttribute(string $key, $value): void
     {
-        $this->attributes[$key] = (object) [
-            'value' => new ManipulableValue($value, $this, Manipulation::ATTRIBUTE),
-        ];
+        $this->attributes[$key] = new AttributeValue($value, $this, Manipulation::ATTRIBUTE);
+
+        //$this->attributes[$key] = (object) [
+        //    'value' => new AttributeValue($value, $this, Manipulation::ATTRIBUTE),
+        //];
     }
 }

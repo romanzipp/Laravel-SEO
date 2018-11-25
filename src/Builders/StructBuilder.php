@@ -30,9 +30,7 @@ class StructBuilder
     {
         foreach (seo()->getManipulations() as $manipulation) {
 
-            if ( ! $manipulation->matches($struct)) {
-                continue;
-            }
+            // Apply manipulations to struct.
 
             $struct->applyManipulation($manipulation);
         }
@@ -95,11 +93,10 @@ class StructBuilder
     {
         $attributes = [];
 
-        foreach ($this->struct->getAttributes() as $key => $data) {
+        foreach ($this->struct->getComputedAttributes() as $attribute => $attributeValue) {
 
-            $attribute = $key;
+            if ($value = e($attributeValue)) {
 
-            if ($value = e($data->value)) {
                 $attribute .= '="' . $value . '"';
             }
 

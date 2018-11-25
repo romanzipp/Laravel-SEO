@@ -34,22 +34,63 @@ trait ManipulationsTrait
      */
     public function applyManipulation(Manipulation $manipulation): void
     {
-        $this->manipulations[] = $manipulation;
+        if (get_class($this) != $manipulation->getClass()) {
+            return;
+        }
 
-        $this->guessManipulationTargets($manipulation);
-    }
+        $callback = $manipulation->getCallback();
 
-    private function guessManipulationTargets(Manipulation $manipulation): void
-    {
         if ($manipulation->getContext() == Manipulation::BODY) {
 
-            $body = $this->getBody();
-
-            if ( ! $body) {
+            if ( ! $body = $this->getBody()) {
                 return;
             }
 
-            $body->executeManipulation($manipulation);
+            $value = $callback($body->value());
+
+            $this->body->setValue($value);
+
+            return;
+        }
+
+        // Context is Manipulation::ATTRIBUTE
+        // At this point, we want to look for matching
+        // attributes in the given manipulation.
+
+        foreach ($this->getAttributes() as $attribute => $attributeValue) {
+
+            if ($attribute != $manipulation->getAttribute()) {
+
+                // We are not looking for this attribute in
+                // our current manipulation.
+
+                continue;
+            }
+
+            if ( ! $attributeValue) {
+
+                // The current attribute matches, but we have
+                // not received a valid value.
+
+                return;
+            }
+
+            // At this point, the $attributeValue is an instance
+            // of AttributeValue.
+
+            if ($attributeValue->value() != $manipulation->getAttributeValue()) {
+
+                // The current attribute matches, but the attribute value
+                // is not what we expect.
+
+                return;
+            }
+
+            $this->attributes = $callback(
+                $this->getComputedAttributes()
+            );
+
+            return;
         }
     }
 }
