@@ -36,7 +36,7 @@ $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvi
 
 ### Instantiation
 
-```
+```php
 use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Services\SeoService;
 
