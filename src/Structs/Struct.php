@@ -3,11 +3,12 @@
 namespace romanzipp\Seo\Structs;
 
 use romanzipp\Seo\Helpers\ManipulableValue;
-use romanzipp\Seo\Structs\Traits\ManipulatorTrait;
+use romanzipp\Seo\Helpers\Manipulation;
+use romanzipp\Seo\Structs\Traits\ManipulationsTrait;
 
 abstract class Struct
 {
-    use ManipulatorTrait;
+    use ManipulationsTrait;
 
     abstract protected function tag(): string;
 
@@ -149,7 +150,7 @@ abstract class Struct
      */
     protected function setBody($body): void
     {
-        $this->body = new ManipulableValue($body, $this, ManipulableValue::BODY);
+        $this->body = new ManipulableValue($body, $this, Manipulation::BODY);
     }
 
     /**
@@ -161,7 +162,7 @@ abstract class Struct
     protected function addAttribute(string $key, $value): void
     {
         $this->attributes[$key] = (object) [
-            'value' => new ManipulableValue($value, $this, ManipulableValue::ATTRIBUTE),
+            'value' => new ManipulableValue($value, $this, Manipulation::ATTRIBUTE),
         ];
     }
 }

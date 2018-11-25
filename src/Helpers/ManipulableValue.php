@@ -2,31 +2,77 @@
 
 namespace romanzipp\Seo\Helpers;
 
+use romanzipp\Seo\Helpers\Manipulation;
+
 class ManipulableValue
 {
-    const ATTRIBUTE = 0;
-    const BODY = 1;
+    /**
+     * Original calue
+     *
+     * @var mixed
+     */
+    protected $originalValue;
 
-    protected $class;
-
-    protected $context;
-
+    /**
+     * Value
+     *
+     * @var mixed
+     */
     protected $value;
 
-    public function __construct($value, $object, int $context)
+    /**
+     * Object
+     *
+     * @var object
+     */
+    protected $object;
+
+    /**
+     * Context
+     *
+     * @var int
+     */
+    protected $context;
+
+    /**
+     * Constructor.
+     *
+     * @param mixed  $value
+     * @param object $object
+     * @param int    $context
+     */
+    public function __construct($value, object $object, int $context)
     {
-        $this->value = $value;
+        $this->originalValue = $value;
+
         $this->object = $object;
+
         $this->context = $context;
     }
 
+    /**
+     * Get string value.
+     *
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->value;
     }
 
+    public function executeManipulation(Manipulation $manipulation)
+    {
+        $callback = $manipulation->getCallback();
+
+        $this->value = $callback($this->originalValue);
+    }
+
     public function value()
     {
-        return $this->value;
+        if ($this->value) {
+            return $this->value;
+        }
+
+        return $this->originalValue;
     }
 }
