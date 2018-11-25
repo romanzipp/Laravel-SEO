@@ -31,3 +31,24 @@ Copy configuration to config folder:
 ```
 $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvider"
 ```
+
+## Usage
+
+### Instantiation
+
+```
+use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Services\SeoService;
+
+class IndexController
+{
+    public function index(Request $request, SeoService $seo)
+    {
+        $seo = seo();
+
+        $seo = app(SeoService::class);
+
+        $seo = Seo::make();
+    }
+}
+```
