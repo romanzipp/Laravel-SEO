@@ -50,11 +50,13 @@ class StructBuilder
             $element .= ' ' . $attributes . ' ';
         }
 
-        if ($content = $this->struct->getContent() || ! $this->struct->isVoidElement()) {
+        $content = $this->struct->getContent();
+
+        if ($content || ! $this->struct->isVoidElement()) {
 
             $element .= '>';
-            $element .= $content;
-            $element .= '</' . $this->tag . '>';
+            $element .= $content ?? '';
+            $element .= '</' . $this->struct->getTag() . '>';
 
         } else {
 
