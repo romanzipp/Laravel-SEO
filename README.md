@@ -114,18 +114,22 @@ For example, you want to append a site name to every `<title>` tag:
 
 ```php
 use romanzipp\Seo\Structs\Title;
+```
 
-// Manipulate the body of all Title structs
+Manipulate the body of all Title structs
 
+```php
 seo()->manipulateBody(Title::class, function ($body) {
     return ($body ? $body . ' | ' : '') . 'Site-Name';
 });
+```
 
-// Add seo Title struct
+Add seo Title struct
 
-seo()->add(Title::make()->body('Home'));  // Home | Site-Name
-
-// Or use the title() shortcut
+```php
+seo()->add(
+    Title::make()->body('Home')
+);
 
 seo()->title('Home');  // Home | Site-Name
 seo()->title(null);    // Site-Name
@@ -133,9 +137,11 @@ seo()->title(null);    // Site-Name
 
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
+```
 
-// Manipulate OpenGraph structs with the attribute "property" and value "og:title"
+Manipulate OpenGraph structs with the attribute "property" and value "og:title"
 
+```php
 seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], function ($attributes) {
 
     // $attributes is an associative array with all
@@ -149,17 +155,17 @@ seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], functi
 
     return $attributes;
 });
+```
 
-// Add seo OpenGraph struct
+Add seo OpenGraph struct
 
+```php
 $seo->add(
     OpenGraph::make()->property('title')->content('Home')
 );
 
-// Or use the og() shortcut
-
-$seo->og('title', 'Home');
-$seo->og('title', null);
+$seo->og('title', 'Home');  // Home | Site-Name
+$seo->og('title', null);    // Site-Name
 ```
 
 ## Reference
