@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Seo\Structs\Presets;
+namespace romanzipp\Seo\Structs;
 
 use romanzipp\Seo\Structs\Meta;
 
