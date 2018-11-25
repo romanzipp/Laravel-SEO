@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Seo\Tests;
+namespace romanzipp\Seo\Test;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use romanzipp\Seo\Facades\Seo;

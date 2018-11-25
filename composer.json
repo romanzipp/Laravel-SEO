@@ -10,16 +10,13 @@
             "homepage": "https://ich.wtf"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.0",
-        "laravel/framework": "^5.3"
+        "laravel/framework": "~5.5.0|~5.6.0|~5.7.0"
     },
     "require-dev": {
-        "mockery/mockery": "~1.0",
-        "phpspec/phpspec": "~4.0",
-        "phpunit/phpunit": "~6.0",
-        "orchestra/testbench": "~3.0"
+        "phpunit/phpunit": "^6.2|^7.0",
+        "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0"
     },
     "autoload": {
         "files": [
@@ -31,7 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "romanzipp\\Seo\\Tests\\": "tests/"
+            "romanzipp\\Seo\\Test\\": "tests"
         }
     },
     "extra": {
@@ -43,5 +40,8 @@
                 "Seo": "romanzipp\\Seo\\Facades\\Seo"
             }
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
