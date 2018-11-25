@@ -167,32 +167,32 @@ $seo->og('title', null);
 ### Available structs
 
 ```php
-romanzipp\Seo\Structs\Title::class
+romanzipp\Seo\Structs\Title::make();
 ```
 
 ```php
-romanzipp\Seo\Structs\Script::class
+romanzipp\Seo\Structs\Script::make();
 ```
 
 ```php
-romanzipp\Seo\Structs\Noscript::class
+romanzipp\Seo\Structs\Noscript::make();
 ```
 
 ```php
-romanzipp\Seo\Structs\Meta::class
-romanzipp\Seo\Structs\Meta\AppLink::class
-romanzipp\Seo\Structs\Meta\Charset::class
-romanzipp\Seo\Structs\Meta\OpenGraph::class
-romanzipp\Seo\Structs\Meta\Twitter::class
-romanzipp\Seo\Structs\Meta\Viewport::class
+romanzipp\Seo\Structs\Meta::make();
+romanzipp\Seo\Structs\Meta\AppLink::make()->property(string $value)->content(string $value);
+romanzipp\Seo\Structs\Meta\Charset::make()->charset(string $charset);
+romanzipp\Seo\Structs\Meta\OpenGraph::make()->property(string $value)->content(string $value = null);
+romanzipp\Seo\Structs\Meta\Twitter::make()->name(string $value)->content(string $value);
+romanzipp\Seo\Structs\Meta\Viewport::make()->content(string $content);
 ```
 
 ```php
-romanzipp\Seo\Structs\Link::class
+romanzipp\Seo\Structs\Link::make();
 ```
 
 ```php
-romanzipp\Seo\Structs\Base::class
+romanzipp\Seo\Structs\Base::make();
 ```
 
 ### Available shortcuts
