@@ -32,6 +32,17 @@ class StructBuilder
     }
 
     /**
+     * Instantly build struct.
+     *
+     * @param  Struct       $struct
+     * @return HtmlString
+     */
+    public static function build(Struct $struct): HtmlString
+    {
+        return (new self($struct))->render();
+    }
+
+    /**
      * Render element.
      *
      * @return HtmlString
