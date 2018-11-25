@@ -7,7 +7,7 @@ use romanzipp\Seo\Structs\Struct;
 /**
  * @see https://github.com/joshbuchea/HEAD#elements
  */
-class Script extends Struct
+class Noscript extends Struct
 {
     protected $unique = false;
 
