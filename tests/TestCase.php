@@ -11,7 +11,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            romanzipp\Seo\Providers\SeoServiceProvider::class,
+            SeoServiceProvider::class,
         ];
     }
 
