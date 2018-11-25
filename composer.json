@@ -16,6 +16,9 @@
         "laravel/framework": "^5.3"
     },
     "autoload": {
+        "files": [
+            "functions/seo.php"
+        ],
         "psr-4": {
             "romanzipp\\Seo\\": "src"
         }
