@@ -2,8 +2,13 @@
 
 namespace romanzipp\Seo\Structs;
 
+use romanzipp\Seo\Helpers\ManipulableValue;
+use romanzipp\Seo\Structs\Traits\ManipulatorTrait;
+
 abstract class Struct
 {
+    use ManipulatorTrait;
+
     abstract protected function tag(): string;
 
     /**
@@ -16,7 +21,7 @@ abstract class Struct
     /**
      * Struct body
      *
-     * @var null|mixed
+     * @var null|ManipulableValue
      */
     protected $body = null;
 
@@ -35,7 +40,7 @@ abstract class Struct
      */
     public static function make(): self
     {
-        return (new static);
+        return new static;
     }
 
     /**
@@ -82,7 +87,7 @@ abstract class Struct
      * Fluid body setter.
      *
      * @param  mixed   $body
-     * @param  boolean $escape    Escape body
+     * @param  boolean $escape Escape body
      * @return self
      */
     public function body($body, bool $escape = false): self
@@ -144,7 +149,7 @@ abstract class Struct
      */
     protected function setBody($body): void
     {
-        $this->body = $body;
+        $this->body = new ManipulableValue($body, $this, ManipulableValue::BODY);
     }
 
     /**
@@ -156,7 +161,7 @@ abstract class Struct
     protected function addAttribute(string $key, $value): void
     {
         $this->attributes[$key] = (object) [
-            'value' => $value,
+            'value' => new ManipulableValue($value, $this, ManipulableValue::ATTRIBUTE),
         ];
     }
 }
