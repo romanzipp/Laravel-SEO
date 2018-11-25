@@ -92,6 +92,17 @@ abstract class Struct
     }
 
     /**
+     * Get computed single attribute.
+     *
+     * @param  string  $attribute
+     * @return mixed
+     */
+    public function getComputedAttribute(string $attribute)
+    {
+        return $this->getComputedAttributes()[$attribute] ?? null;
+    }
+
+    /**
      * Get struct body.
      *
      * @return mixed|null
