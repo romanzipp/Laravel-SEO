@@ -10,4 +10,11 @@ class Charset extends Meta
     {
         $struct->attr('charset', 'utf-8');
     }
+
+    public function charset(string $charset): self
+    {
+        $this->addAttribute('charset', $charset);
+
+        return $this;
+    }
 }
