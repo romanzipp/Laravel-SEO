@@ -112,11 +112,7 @@ The package allows you to define certain manipulations for either **element body
 
 For example, you want to append a site name to every `<title>` tag:
 
-```php
-use romanzipp\Seo\Structs\Title;
-```
-
-Manipulate the body of all Title structs
+Manipulate the body of all Title structs:
 
 ```php
 seo()->manipulateBody(Title::class, function ($body) {
@@ -124,7 +120,7 @@ seo()->manipulateBody(Title::class, function ($body) {
 });
 ```
 
-Add seo Title struct
+Add seo Title struct:
 
 ```php
 seo()->add(
@@ -135,11 +131,9 @@ seo()->title('Home');  // Home | Site-Name
 seo()->title(null);    // Site-Name
 ```
 
-```php
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-```
+----
 
-Manipulate OpenGraph structs with the attribute "property" and value "og:title"
+Manipulate OpenGraph structs with the attribute "property" and value "og:title":
 
 ```php
 seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], function ($attributes) {
@@ -157,7 +151,7 @@ seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], functi
 });
 ```
 
-Add seo OpenGraph struct
+Add seo OpenGraph struct:
 
 ```php
 $seo->add(
