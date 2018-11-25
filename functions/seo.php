@@ -4,7 +4,12 @@ use romanzipp\Seo\Services\SeoService;
 
 if ( ! function_exists('seo')) {
 
-    function seo()
+    /**
+     * Create SeoService instance.
+     *
+     * @return SeoService
+     */
+    function seo(): SeoService
     {
         return app(SeoService::class);
     }
