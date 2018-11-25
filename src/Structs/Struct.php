@@ -61,8 +61,8 @@ class Struct
     /**
      * Fluid content setter.
      *
-     * @param  mixed  $content
-     * @param  bool   $escape    Escape content
+     * @param  mixed   $content
+     * @param  boolean $escape    Escape content
      * @return self
      */
     public function content($content, bool $escape = false): self
@@ -88,6 +88,33 @@ class Struct
         $this->addAttribute($key, $value);
 
         return $this;
+    }
+
+    /**
+     * Determines if struct is void element.
+     *
+     * @see  https://www.w3.org/TR/html/syntax.html#void-element
+     *
+     * @return boolean
+     */
+    public function isVoidElement(): bool
+    {
+        return in_array($this->getTag(), [
+            'area',
+            'base',
+            'br',
+            'col',
+            'embed',
+            'hr',
+            'img',
+            'input',
+            'link',
+            'meta',
+            'param',
+            'source',
+            'track',
+            'wbr',
+        ]);
     }
 
     /**
