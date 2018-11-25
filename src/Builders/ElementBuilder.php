@@ -7,6 +7,13 @@ use Illuminate\Support\HtmlString;
 class ElementBuilder
 {
     /**
+     * Indent elements
+     *
+     * @var null|string
+     */
+    public static $indent = null;
+
+    /**
      * Element tag
      *
      * @var string
@@ -94,6 +101,10 @@ class ElementBuilder
     public function render(): HtmlString
     {
         $element = '';
+
+        if ($indent = self::$indent) {
+            $element .= $indent;
+        }
 
         $element .= '<' . $this->tag;
 
