@@ -21,17 +21,21 @@ abstract class Struct
     protected $body = null;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        return static::defaults($this);
+    }
+
+    /**
      * Create struct instance.
      *
      * @return self
      */
     public static function make(): self
     {
-        $struct = new static;
-
-        static::defaults($struct);
-
-        return $struct;
+        return (new static);
     }
 
     /**
