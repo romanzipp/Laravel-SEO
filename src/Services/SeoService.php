@@ -18,6 +18,13 @@ class SeoService
     protected $config;
 
     /**
+     * Applied structs.
+     *
+     * @var array
+     */
+    protected $structs = [];
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -43,5 +50,15 @@ class SeoService
     public function getConfig(): array
     {
         return $this->config;
+    }
+
+    /**
+     * Get structs.
+     *
+     * @return array
+     */
+    public function getStructs(): array
+    {
+        return $this->structs;
     }
 }
