@@ -61,12 +61,12 @@ class StructBuilder
             $element .= ' ' . $attributes . ' ';
         }
 
-        $content = $this->struct->getContent();
+        $body = $this->struct->getBody();
 
-        if ($content || ! $this->struct->isVoidElement()) {
+        if ($body || ! $this->struct->isVoidElement()) {
 
             $element .= '>';
-            $element .= $content ?? '';
+            $element .= $body ?? '';
             $element .= '</' . $this->struct->getTag() . '>';
 
         } else {

@@ -14,11 +14,11 @@ abstract class Struct
     protected $attributes = [];
 
     /**
-     * Struct content
+     * Struct body
      *
      * @var null|mixed
      */
-    protected $content = null;
+    protected $body = null;
 
     /**
      * Create struct instance.
@@ -65,29 +65,29 @@ abstract class Struct
     }
 
     /**
-     * Get struct content.
+     * Get struct body.
      *
      * @return mixed|null
      */
-    public function getContent()
+    public function getBody()
     {
-        return $this->content;
+        return $this->body;
     }
 
     /**
-     * Fluid content setter.
+     * Fluid body setter.
      *
-     * @param  mixed   $content
-     * @param  boolean $escape    Escape content
+     * @param  mixed   $body
+     * @param  boolean $escape    Escape body
      * @return self
      */
-    public function content($content, bool $escape = false): self
+    public function body($body, bool $escape = false): self
     {
         if ($escape) {
-            $content = e($content);
+            $body = e($body);
         }
 
-        $this->setContent($content);
+        $this->setBody($body);
 
         return $this;
     }
@@ -134,13 +134,13 @@ abstract class Struct
     }
 
     /**
-     * Set content.
+     * Set body.
      *
-     * @param mixed $content
+     * @param mixed $body
      */
-    protected function setContent($content): void
+    protected function setBody($body): void
     {
-        $this->content = $content;
+        $this->body = $body;
     }
 
     /**
