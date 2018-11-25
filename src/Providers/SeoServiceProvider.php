@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use romanzipp\Seo\Service\SeoService;
 
 class SeoServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,19 @@ class SeoServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             dirname(__DIR__) . '/../config/seo.php', 'seo'
         );
+
+        $this->app->singleton(SeoService::class, function () {
+            return new SeoService;
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [SeoService::class];
     }
 }
