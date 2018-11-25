@@ -3,7 +3,7 @@
 namespace romanzipp\Seo\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use romanzipp\Seo\Service\SeoService;
+use romanzipp\Seo\Services\SeoService;
 
 class SeoServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace romanzipp\Seo\Service;
+namespace romanzipp\Seo\Services;
 
-use romanzipp\Seo\Service\Traits\RenderTrait;
-use romanzipp\Seo\Service\Traits\SetterTrait;
+use romanzipp\Seo\Services\Traits\RenderTrait;
+use romanzipp\Seo\Services\Traits\SetterTrait;
 
 class SeoService
 {
@@ -23,6 +23,16 @@ class SeoService
     public function __construct()
     {
         $this->config = config('seo');
+    }
+
+    /**
+     * Create service instance
+     *
+     * @return self
+     */
+    public static function make(): self
+    {
+        return app(self::class);
     }
 
     /**

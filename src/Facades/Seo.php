@@ -3,7 +3,7 @@
 namespace romanzipp\Seo\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use romanzipp\Seo\Service\SeoService;
+use romanzipp\Seo\Services\SeoService;
 
 class Seo extends Facade
 {
