@@ -5,6 +5,7 @@ namespace romanzipp\Seo\Services\Traits;
 use romanzipp\Seo\Structs\Presets\OpenGraph;
 use romanzipp\Seo\Structs\Presets\Twitter;
 use romanzipp\Seo\Structs\Struct;
+use romanzipp\Seo\Structs\Title;
 
 trait SetterTrait
 {
@@ -20,6 +21,19 @@ trait SetterTrait
         $this->structs[] = $struct;
 
         return $this;
+    }
+
+    /**
+     * Add title.
+     *
+     * @param  string $title
+     * @return self
+     */
+    public function title(string $title): self
+    {
+        return $this->add(
+            Title::make()->body($title)
+        );
     }
 
     /**
