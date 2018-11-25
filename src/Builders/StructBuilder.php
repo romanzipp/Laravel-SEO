@@ -22,13 +22,6 @@ class StructBuilder
     private $struct;
 
     /**
-     * Escape struct content
-     *
-     * @var boolean
-     */
-    private $escapeContent = true;
-
-    /**
      * Constructor
      *
      * @param string $struct
@@ -39,7 +32,8 @@ class StructBuilder
     }
 
     /**
-     * Render element
+     * Render element.
+     *
      * @return HtmlString
      */
     public function render(): HtmlString
@@ -57,10 +51,6 @@ class StructBuilder
         }
 
         if ($content = $this->struct->getContent()) {
-
-            if ($this->escapeContent) {
-                $content = e($content);
-            }
 
             $element .= '>';
             $element .= $content;

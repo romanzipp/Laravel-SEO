@@ -62,10 +62,15 @@ class Struct
      * Fluid content setter.
      *
      * @param  mixed  $content
+     * @param  bool   $escape    Escape content
      * @return self
      */
-    public function content($content): self
+    public function content($content, bool $escape = false): self
     {
+        if ($escape) {
+            $content = e($content);
+        }
+
         $this->setContent($content);
 
         return $this;
