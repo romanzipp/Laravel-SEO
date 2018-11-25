@@ -84,8 +84,8 @@ abstract class Struct
     {
         $attributes = $this->attributes;
 
-        array_walk($attributes, function (&$v, $k) {
-            $v = (string) $v;
+        array_walk($attributes, function (&$value, $attribute) {
+            $value = (string) $value;
         });
 
         return $attributes;
