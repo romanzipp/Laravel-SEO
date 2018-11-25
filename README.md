@@ -57,29 +57,44 @@ class IndexController
 
 ```php
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Structs\Presets\Charset;
-use romanzipp\Seo\Structs\Presets\Twitter;
-use romanzipp\Seo\Structs\Presets\OpenGraph;
+use romanzipp\Seo\Structs\Meta\Charset;
+use romanzipp\Seo\Structs\Meta\Twitter;
+use romanzipp\Seo\Structs\Meta\OpenGraph;
 
 // <title>romanzipp</title>
 
-seo()->add(Title::make()->body('romanzipp'));
+seo()->add(
+    Title::make()->body('romanzipp')
+);
+
 seo()->title('romanzipp');
 
 // <meta charset="utf-8" />
 
-seo()->add(Charset::make());
-seo()->add(Charset::make()->charset('utf-8'));
+seo()->add(
+    Charset::make()
+);
+
+seo()->add(
+    Charset::make()->charset('utf-8')
+);
+
 seo()->add(new Charset);
 
 // <meta name="twitter:card" content="summary" />
 
 seo()->twitter('card', 'summary');
-seo()->add(Twitter::make()->name('card')->content('summary'));
+
+seo()->add(
+    Twitter::make()->name('card')->content('summary')
+);
 
 // <meta property="og:site_name" content="romanzipp" />
 
-seo()->add(OpenGraph::make()->property('site_name')->content('romanzipp'));
+seo()->add(
+    OpenGraph::make()->property('site_name')->content('romanzipp')
+);
+
 seo()->og('site_name', 'romanzipp');
 ```
 
@@ -145,4 +160,45 @@ $seo->add(
 
 $seo->og('title', 'Home');
 $seo->og('title', null);
+```
+
+## Reference
+
+### Available structs
+
+```php
+romanzipp\Seo\Structs\Title::class
+```
+
+```php
+romanzipp\Seo\Structs\Script::class
+```
+
+```php
+romanzipp\Seo\Structs\Noscript::class
+```
+
+```php
+romanzipp\Seo\Structs\Meta::class
+romanzipp\Seo\Structs\Meta\AppLink::class
+romanzipp\Seo\Structs\Meta\Charset::class
+romanzipp\Seo\Structs\Meta\OpenGraph::class
+romanzipp\Seo\Structs\Meta\Twitter::class
+romanzipp\Seo\Structs\Meta\Viewport::class
+```
+
+```php
+romanzipp\Seo\Structs\Link::class
+```
+
+```php
+romanzipp\Seo\Structs\Base::class
+```
+
+### Available shortcuts
+
+```php
+seo()->title(string $title = null): self
+seo()->twitter(string $name, $content = null): self
+seo()->og(string $property, $content = null): self
 ```
