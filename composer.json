@@ -15,12 +15,23 @@
         "php": ">=7.0",
         "laravel/framework": "^5.3"
     },
+    "require-dev": {
+        "mockery/mockery": "~1.0",
+        "phpspec/phpspec": "~4.0",
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "~3.0"
+    },
     "autoload": {
         "files": [
             "functions/seo.php"
         ],
         "psr-4": {
             "romanzipp\\Seo\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "romanzipp\\Seo\\Tests\\": "tests/"
         }
     },
     "extra": {
