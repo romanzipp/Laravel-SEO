@@ -4,7 +4,7 @@ namespace romanzipp\Seo\Helpers;
 
 use romanzipp\Seo\Helpers\Manipulation;
 
-class ManipulableValue
+class AttributeValue
 {
     /**
      * Original calue
@@ -57,16 +57,37 @@ class ManipulableValue
      */
     public function __toString()
     {
-        return (string) $this->value;
+        return (string) $this->value();
     }
 
-    public function executeManipulation(Manipulation $manipulation)
+    /**
+     * A manipulation is being applied to the current value.
+     *
+     * @param  Manipulation $manipulation
+     * @return void
+     */
+    public function executeManipulation(Manipulation $manipulation): void
     {
         $callback = $manipulation->getCallback();
 
-        $this->value = $callback($this->originalValue);
+        $this->value = $callback($this->object);
     }
 
+    /**
+     * Set value.
+     *
+     * @param mixed $value
+     */
+    public function setValue($value): void
+    {
+        $this->value = $value;
+    }
+
+    /**
+     * Get computed value.
+     *
+     * @return mixed
+     */
     public function value()
     {
         if ($this->value) {
