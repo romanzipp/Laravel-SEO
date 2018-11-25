@@ -18,7 +18,7 @@ class OpenGraph extends Meta
         return $this;
     }
 
-    public function content(string $value): self
+    public function content(string $value = null): self
     {
         $this->addAttribute('content', $value);
 

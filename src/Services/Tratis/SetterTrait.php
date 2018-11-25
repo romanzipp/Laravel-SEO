@@ -28,10 +28,10 @@ trait SetterTrait
     /**
      * Add title.
      *
-     * @param  string $title
+     * @param  string|null $title
      * @return self
      */
-    public function title(string $title): self
+    public function title(string $title = null): self
     {
         return $this->add(
             Title::make()->body($title)
