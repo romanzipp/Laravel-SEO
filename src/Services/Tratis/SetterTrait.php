@@ -2,8 +2,8 @@
 
 namespace romanzipp\Seo\Services\Traits;
 
-use romanzipp\Seo\Structs\Presets\OpenGraph;
-use romanzipp\Seo\Structs\Presets\Twitter;
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+use romanzipp\Seo\Structs\Meta\Twitter;
 use romanzipp\Seo\Structs\Struct;
 use romanzipp\Seo\Structs\Title;
 
@@ -18,6 +18,8 @@ trait SetterTrait
      */
     public function add(Struct $struct): self
     {
+        $this->removeDuplicateStruct($struct);
+
         $this->structs[] = $struct;
 
         return $this;

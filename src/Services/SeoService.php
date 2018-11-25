@@ -2,6 +2,7 @@
 
 namespace romanzipp\Seo\Services;
 
+use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\ManipulatorTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SetterTrait;
@@ -11,6 +12,7 @@ class SeoService
     use RenderTrait;
     use SetterTrait;
     use ManipulatorTrait;
+    use CollisionTrait;
 
     /**
      * Config
