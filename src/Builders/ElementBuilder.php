@@ -19,6 +19,20 @@ class ElementBuilder
     private $attributes = [];
 
     /**
+     * Element content
+     *
+     * @var null|mixed
+     */
+    private $content = null;
+
+    /**
+     * Escape content
+     *
+     * @var boolean
+     */
+    private $escapeContent = true;
+
+    /**
      * Constructor
      *
      * @param string $tag Element tag
@@ -26,6 +40,20 @@ class ElementBuilder
     public function __construct(string $tag = 'meta')
     {
         $this->tag = $tag;
+    }
+
+    /**
+     * Set element content.
+     *
+     * @param mixed   $content
+     * @param boolean $escape
+     */
+    public function setContent($content, bool $escape = true): self
+    {
+        $this->content = $content;
+        $this->escapeContent = $escape;
+
+        return $this;
     }
 
     /**
@@ -55,5 +83,28 @@ class ElementBuilder
         ];
 
         return $this;
+    }
+
+    /**
+     * Render element attributes to string.
+     *
+     * @return string
+     */
+    private function renderAttributes(): string
+    {
+        $attributes = [];
+
+        foreach ($this->attributes as $key => $data) {
+
+            $value = $data->value;
+
+            if ($data->escape) {
+                $value = e($value);
+            }
+
+            $attributes[] = $key . '="' . $value . '"';
+        }
+
+        return implode(' ', $attributes);
     }
 }
