@@ -2,12 +2,11 @@
 
 namespace romanzipp\Seo\Structs;
 
-use romanzipp\Seo\Structs\Contracts\StructContract;
 use romanzipp\Seo\Structs\Struct;
 
-class Meta extends Struct implements StructContract
+class Meta extends Struct
 {
-    public function tag(): string
+    protected function tag(): string
     {
         return 'meta';
     }

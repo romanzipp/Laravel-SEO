@@ -2,8 +2,10 @@
 
 namespace romanzipp\Seo\Structs;
 
-class Struct
+abstract class Struct
 {
+    abstract protected function tag(): string;
+
     /**
      * Attributes
      *
@@ -25,7 +27,21 @@ class Struct
      */
     public static function make(): self
     {
-        return new static;
+        $struct = new static;
+
+        static::defaults($struct);
+
+        return $struct;
+    }
+
+    /**
+     * Modify struct after creation.
+     *
+     * @param self $struct
+     */
+    public static function defaults(self $struct)
+    {
+        //
     }
 
     /**
