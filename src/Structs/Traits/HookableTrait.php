@@ -20,6 +20,16 @@ trait HookableTrait
     }
 
     /**
+     * Remove all hooks.
+     *
+     * @return void
+     */
+    public static function clearHooks(): void
+    {
+        self::$hooks = [];
+    }
+
+    /**
      * Trigger all possible hooks by given target.
      * This is getting called if struct values are changed.
      *
