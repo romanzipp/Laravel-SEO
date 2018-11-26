@@ -48,6 +48,11 @@ trait HookableTrait
 
             $callback = $hook->getCallback();
 
+            // We can pass body or multiple attributes to the user callback without
+            // worring about data pre-formating.
+            // In case of single-attribute manipulation we only need to pass the
+            // attribute value to the callback.
+
             $callbackData = $hook->translateCallbackData($data);
 
             $data = $callback($callbackData);
