@@ -110,7 +110,7 @@ trait HookableTrait
                 break;
 
             case HookTarget::ATTRIBUTE: // $data = ['attribute', 'value']
-                $this->attributes[...array_keys($data)] = ...array_values($data);
+                $this->attributes[array_keys($data)[0]] = array_values($data)[0];
                 break;
         }
     }
