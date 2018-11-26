@@ -13,7 +13,7 @@ class Twitter extends Meta
 
     protected $uniqueAttributes = ['name'];
 
-    public function name(string $value = null): self
+    public function name(string $value = null)
     {
         $this->addAttribute('name', 'twitter:' . $value);
 

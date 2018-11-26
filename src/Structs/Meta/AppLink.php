@@ -9,7 +9,7 @@ use romanzipp\Seo\Structs\Meta;
  */
 class AppLink extends Meta
 {
-    public function property(string $value): self
+    public function property(string $value)
     {
         $this->addAttribute('property', 'al:' . $value);
 
