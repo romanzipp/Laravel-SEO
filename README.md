@@ -112,7 +112,7 @@ The package allows you to define certain hooks for either **element body** or **
 
 For example, you want to append a site name to every `<title>` tag:
 
-##### Modify the **body** of all **Title** structs.
+##### Modify the `body` of all `Title` structs.
 
 ```php
 Title::hook(
@@ -135,7 +135,7 @@ seo()->title(null);    // Site-Name
 
 ----
 
-##### Modify the **content** attribute of the **OpenGraph** which has the attribute **property** with value **og:title**
+##### Modify the `content` attribute of the `OpenGraph` struct which has the attribute `property` with value `og:title`
 
 ```php
 OpenGraph::hook(
@@ -144,6 +144,24 @@ OpenGraph::hook(
         ->onAttribute('content')
         ->callback(function($content) {
             return ($content ? $content . ' | ' : '') . 'Site-Name';
+        })
+);
+```
+
+----
+
+##### Modify any attribute of the `OpenGraph` struct which has the attribute `property` with value `og:site_name`
+
+```php
+OpenGraph::hook(
+    Hook::make()
+        ->whereAttribute('property', 'og:site_name')
+        ->onAttributes()
+        ->callback(function($attributes) {
+
+            $attributes['data-new'] = 'This will be added to all og:site_name meta tags';
+
+            return $attributes;
         })
 );
 ```
