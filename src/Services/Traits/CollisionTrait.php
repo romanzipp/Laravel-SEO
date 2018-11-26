@@ -41,7 +41,7 @@ trait CollisionTrait
 
         foreach ($this->structs as $key => $existing) {
 
-            if ($existing->getTag() !== $struct->getTag()) {
+            if (get_class($existing) !== get_class($struct)) {
                 continue;
             }
 
