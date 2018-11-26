@@ -83,4 +83,26 @@ class HooksTest extends TestCase
 
         OpenGraph::clearHooks();
     }
+
+    public function testAttributeHooks()
+    {
+        OpenGraph::hook(
+            Hook::make()
+                ->onAttribute('content')
+                ->whereAttribute('property', 'og:title')
+                ->callback(function ($content) {
+                    return $content . ' 1';
+                })
+        );
+
+        seo()->add(
+            OpenGraph::make()->property('title')->content('My Title')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertRegexp('/content\=\"My Title 1\"/', $contents[0]);
+
+        OpenGraph::clearHooks();
+    }
 }
