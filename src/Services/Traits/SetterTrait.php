@@ -9,8 +9,6 @@ use romanzipp\Seo\Structs\Title;
 
 trait SetterTrait
 {
-    abstract public function getStructs(): array;
-
     /**
      * Add struct.
      *
@@ -20,7 +18,7 @@ trait SetterTrait
     {
         $this->removeDuplicateStruct($struct);
 
-        $this->structs[] = $struct;
+        $this->appendStruct($struct);
 
         return $this;
     }
@@ -32,7 +30,7 @@ trait SetterTrait
      */
     public function clear(): void
     {
-        $this->structs = [];
+        $this->setStructs([]);
     }
 
     /**
@@ -75,4 +73,12 @@ trait SetterTrait
             OpenGraph::make()->property($property)->content($content)
         );
     }
+
+    abstract public function getStructs(): array;
+
+    abstract public function setStructs(array $structs): array;
+
+    abstract public function appendStruct(Struct $struct): void;
+
+    abstract public function removeDuplicateStruct(Struct $struct): void;
 }

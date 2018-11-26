@@ -6,6 +6,7 @@ use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SetterTrait;
+use romanzipp\Seo\Structs\Struct;
 
 class SeoService
 {
@@ -64,5 +65,25 @@ class SeoService
     public function getStructs(): array
     {
         return $this->structs;
+    }
+
+    /**
+     * Set structs.
+     *
+     * @param array $structs
+     */
+    public function setStructs(array $structs): void
+    {
+        $this->structs = $structs;
+    }
+
+    /**
+     * Append struct.
+     *
+     * @param Struct $struct
+     */
+    public function appendStruct(Struct $struct): void
+    {
+        $this->structs[] = $struct;
     }
 }

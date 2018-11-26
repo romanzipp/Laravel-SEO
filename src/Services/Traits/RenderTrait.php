@@ -7,8 +7,6 @@ use romanzipp\Seo\Builders\StructBuilder;
 
 trait RenderTrait
 {
-    abstract public function getStructs(): array;
-
     /**
      * Get array of rendered HtmlStrings.
      *
@@ -36,4 +34,6 @@ trait RenderTrait
 
         return new HtmlString(implode(PHP_EOL, $contents));
     }
+
+    abstract public function getStructs(): array;
 }

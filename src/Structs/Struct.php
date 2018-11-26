@@ -9,8 +9,6 @@ abstract class Struct
 {
     use HookableTrait;
 
-    abstract protected function tag(): string;
-
     /**
      * Can the website <head> contain more
      * than one element of this type.
@@ -46,7 +44,7 @@ abstract class Struct
      */
     public function __construct()
     {
-        return static::defaults($this);
+        static::defaults($this);
     }
 
     /**
@@ -99,7 +97,7 @@ abstract class Struct
     {
         $attributes = $this->attributes;
 
-        array_walk($attributes, function (&$value, $attribute) {
+        array_walk($attributes, function (&$value) {
             $value = (string) $value;
         });
 
@@ -244,4 +242,6 @@ abstract class Struct
 
         $this->triggerHook(HookTarget::ATTRIBUTES, $this->attributes);
     }
+
+    abstract protected function tag(): string;
 }

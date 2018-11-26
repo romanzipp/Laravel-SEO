@@ -7,6 +7,11 @@ use romanzipp\Seo\Helpers\Hook;
 
 trait HookableTrait
 {
+    /**
+     * Applied hooks.
+     *
+     * @var array
+     */
     protected static $hooks = [];
 
     /**
@@ -39,8 +44,6 @@ trait HookableTrait
      */
     public function triggerHook(int $target, $data): void
     {
-        $matchingHook = null;
-
         foreach ($this->getMatchingHooks($target, $data) as $hook) {
 
             $callback = $hook->getCallback();
@@ -124,4 +127,6 @@ trait HookableTrait
                 break;
         }
     }
+
+    abstract public function getComputedAttribute(string $attribute);
 }

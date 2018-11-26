@@ -3,14 +3,13 @@
 namespace romanzipp\Seo\Helpers;
 
 use romanzipp\Seo\Enums\HookTarget;
-use romanzipp\Seo\Helpers\Manipulation;
 
 class Hook
 {
     /**
      * Struct attribute to modify, defined in the
      * HookTarget Enum
-     * 
+     *
      * @var int
      */
     protected $target;
@@ -18,35 +17,35 @@ class Hook
     /**
      * If HookTarget::ATTRIBUTE is used as target, this defines
      * the attribute to be modified.
-     * 
+     *
      * @var mixed|null
      */
     protected $targetAttribute;
 
     /**
      * Filter the structs by certain attributes and values
-     * 
+     *
      * @var array
      */
     protected $filterAttributes = [];
 
     /**
      * Callback to be applied on the target
-     * 
+     *
      * @var callable
      */
     protected $callback;
 
     /**
      * Wether the current hook callback has been executed
-     * 
+     *
      * @var boolean
      */
     protected $executed = false;
 
     /**
      * Create new Hook instance
-     * 
+     *
      * @return self
      */
     public static function make(): self
