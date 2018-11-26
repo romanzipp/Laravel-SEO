@@ -59,6 +59,15 @@ trait HookableTrait
                 continue;
             }
 
+            $filterAttributes = $hook->getFilterAttributes();
+
+            foreach ($filterAttributes as $fAttribute => $fValue) {
+                
+                if ($this->getComputedAttribute($fAttribute) != $fValue) {
+                    continue(2);
+                }
+            }
+
             if ($target == HookTarget::BODY || $target == HookTarget::ATTRIBUTES) {
                 
                 $hooks[] = $hook;

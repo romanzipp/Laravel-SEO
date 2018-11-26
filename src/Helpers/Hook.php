@@ -24,6 +24,13 @@ class Hook
     protected $targetAttribute;
 
     /**
+     * Filter the structs by certain attributes and values
+     * 
+     * @var array
+     */
+    protected $filterAttributes = [];
+
+    /**
      * Callback to be applied on the target
      * 
      * @var callable
@@ -63,6 +70,11 @@ class Hook
         return $this->targetAttribute;
     }
 
+    public function getFilterAttributes(): array
+    {
+        return $this->filterAttributes;
+    }
+
     public function getCallback(): callable
     {
         return $this->callback;
@@ -93,6 +105,13 @@ class Hook
         $this->target = HookTarget::ATTRIBUTE;
 
         $this->targetAttribute = $attribute;
+
+        return $this;
+    }
+
+    public function whereAttribute(string $attribute, $value): self
+    {
+        $this->filterAttributes[$attribute] = $value;
 
         return $this;
     }
