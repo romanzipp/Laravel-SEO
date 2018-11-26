@@ -48,6 +48,15 @@ trait CollisionTrait
             if (empty($existing->getUniqueAttributes())) {
                 return [$existing, $key];
             }
+
+            $diff = array_diff(
+                $existing->getComputedUniqueAttributes(),
+                $struct->getComputedUniqueAttributes()
+            );
+
+            if (empty($diff)) {
+                return [$existing, $key];
+            }
         }
 
         return null;
