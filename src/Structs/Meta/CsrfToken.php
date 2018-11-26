@@ -14,7 +14,7 @@ class CsrfToken extends Meta
         $struct->attr('name', 'csrf-token');
     }
 
-    public function token(string $token): self
+    public function token(string $token = null): self
     {
         $this->addAttribute('content', $token);
 
