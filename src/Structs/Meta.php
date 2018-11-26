@@ -13,4 +13,18 @@ class Meta extends Struct
     {
         return 'meta';
     }
+
+    public function name(string $value): self
+    {
+        $this->addAttribute('name', $value);
+
+        return $this;
+    }
+
+    public function content(string $value): self
+    {
+        $this->addAttribute('content', $value);
+
+        return $this;
+    }
 }
