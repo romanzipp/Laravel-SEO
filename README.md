@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/romanzipp/laravel-seo/downloads)](https://packagist.org/packages/romanzipp/laravel-seo)
 [![License](https://poser.pugx.org/romanzipp/laravel-seo/license)](https://packagist.org/packages/romanzipp/laravel-seo)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/badges/build.png?b=master)](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/build-status/master)
+[![Build Status](https://api.travis-ci.org/romanzipp/Laravel-SEO.svg?branch=master)](https://travis-ci.org/romanzipp/Laravel-SEO)
 
 A simple SEO package made for maximum customization and flexibility.
 
