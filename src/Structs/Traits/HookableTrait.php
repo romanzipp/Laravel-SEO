@@ -31,7 +31,7 @@ trait HookableTrait
     {
         $matchingHook = null;
 
-        foreach ($this->getMatchingHooks($target) as $hook) {
+        foreach ($this->getMatchingHooks($target, $data) as $hook) {
 
             $callback = $hook->getCallback();
 
