@@ -6,12 +6,14 @@ use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SetterTrait;
+use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
 use romanzipp\Seo\Structs\Struct;
 
 class SeoService
 {
     use RenderTrait;
     use SetterTrait;
+    use ShorthandSetterTrait;
     use CollisionTrait;
     use HooksTrait;
 
