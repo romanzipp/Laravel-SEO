@@ -61,19 +61,6 @@ class AttributeValue
     }
 
     /**
-     * A manipulation is being applied to the current value.
-     *
-     * @param  Manipulation $manipulation
-     * @return void
-     */
-    public function executeManipulation(Manipulation $manipulation): void
-    {
-        $callback = $manipulation->getCallback();
-
-        $this->value = $callback($this->object);
-    }
-
-    /**
      * Set value.
      *
      * @param mixed $value
