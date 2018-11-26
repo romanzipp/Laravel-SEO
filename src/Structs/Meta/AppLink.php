@@ -15,11 +15,4 @@ class AppLink extends Meta
 
         return $this;
     }
-
-    public function content(string $value): self
-    {
-        $this->addAttribute('content', $value);
-
-        return $this;
-    }
 }

@@ -16,11 +16,4 @@ class Viewport extends Meta
     {
         $struct->attr('name', 'viewport');
     }
-
-    public function content(string $content): self
-    {
-        $this->addAttribute('content', $content);
-
-        return $this;
-    }
 }
