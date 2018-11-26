@@ -3,7 +3,6 @@
 namespace romanzipp\Seo\Structs;
 
 use romanzipp\Seo\Enums\HookTarget;
-use romanzipp\Seo\Helpers\AttributeValue;
 use romanzipp\Seo\Structs\Traits\HookableTrait;
 
 abstract class Struct
@@ -38,7 +37,7 @@ abstract class Struct
     /**
      * Struct body
      *
-     * @var null|AttributeValue
+     * @var null|string
      */
     protected $body = null;
 
@@ -91,7 +90,7 @@ abstract class Struct
     }
 
     /**
-     * Get computed attributes. Converts AttributeValue
+     * Get computed attributes. Converts
      * objects to string values.
      *
      * @return array
@@ -214,7 +213,7 @@ abstract class Struct
      */
     protected function setBody($body): void
     {
-        $this->body = $body; //new AttributeValue($body, $this);
+        $this->body = $body;
 
         $this->triggerHook(HookTarget::BODY, $this->body);
     }
@@ -227,7 +226,7 @@ abstract class Struct
      */
     protected function addAttribute(string $key, $value): void
     {
-        $this->attributes[$key] = $value; //new AttributeValue($value, $this);
+        $this->attributes[$key] = $value;
 
         $this->triggerHook(HookTarget::ATTRIBUTE, [$key => $this->attributes[$key]]);
 
