@@ -14,7 +14,11 @@ trait CollisionTrait
      */
     public function removeDuplicateStruct(Struct $struct): void
     {
-        list($existing, $key) = $this->getDuplicateStruct($struct);
+        if ( ! $result = $this->getDuplicateStruct($struct)) {
+            return;
+        }
+
+        list($existing, $key) = $result;
 
         if ($existing == null || $key === null) {
             return;
@@ -26,15 +30,26 @@ trait CollisionTrait
     /**
      * Get matching struct duplicate
      *
-     * @param  Struct        $struct
-     * @return Struct|null
+     * @param  Struct       $struct
+     * @return array|null
      */
-    public function getDuplicateStruct(Struct $struct): array
+    public function getDuplicateStruct(Struct $struct)
     {
         if ($struct->isUnique() == false) {
-            return [null, null];
+            return null;
         }
 
-        return [null, null];
+        foreach ($this->structs as $key => $existing) {
+
+            if ($existing->getTag() !== $struct->getTag()) {
+                continue;
+            }
+
+            if (empty($existing->getUniqueAttributes())) {
+                return [$existing, $key];
+            }
+        }
+
+        return null;
     }
 }
