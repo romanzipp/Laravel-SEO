@@ -18,9 +18,11 @@ trait RenderTrait
     {
         $structs = $this->getStructs();
 
-        return array_map(function ($struct) {
+        $contents = array_map(function ($struct) {
             return StructBuilder::build($struct)->toHtml();
         }, $structs);
+
+        return array_values($contents);
     }
 
     /**
