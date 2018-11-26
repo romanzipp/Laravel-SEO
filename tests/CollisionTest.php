@@ -48,6 +48,28 @@ class CollisionTest extends TestCase
         $this->assertRegexp('/content\=\"My Second Site Name\"/', $contents[0]);
     }
 
+    public function testVoidElementSingleOptionalAttributeCollisions()
+    {
+        seo()->add(
+            UniqueSingleAttributeStruct::make()
+                ->attr('first', 'unique')
+                ->attr('content', 'My Site Name')
+        );
+
+        seo()->add(
+            UniqueSingleAttributeStruct::make()
+                ->attr('second', 'unique')
+                ->attr('content', 'My Second Site Name')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(2, $contents);
+
+        $this->assertRegexp('/content\=\"My Site Name\"/', $contents[0]);
+        $this->assertRegexp('/content\=\"My Second Site Name\"/', $contents[1]);
+    }
+
     public function testVoidElementMultipleAttributesCollisions()
     {
         seo()->add(
