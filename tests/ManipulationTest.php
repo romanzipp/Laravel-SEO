@@ -9,7 +9,7 @@ use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Test\TestCase;
 
-class InstantiationTest extends TestCase
+class ManipulationTest extends TestCase
 {
     public function testInstance()
     {
