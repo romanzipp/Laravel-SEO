@@ -28,13 +28,6 @@ class StructBuilder
      */
     public function __construct(Struct $struct)
     {
-        foreach (seo()->getManipulations() as $manipulation) {
-
-            // Apply manipulations to struct.
-
-            $struct->applyManipulation($manipulation);
-        }
-
         $this->struct = $struct;
     }
 
