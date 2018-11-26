@@ -113,9 +113,11 @@ $hook = Hook::make();
 $hook = new Hook;
 ```
 
+### Hooks Targets
+
 #### Target Struct Body
 
-- You will receive `$body` parameter of type `null|string` in the callback function
+You will receive `$body` parameter of type `null|string` in the callback function
 
 ```php
 
@@ -126,9 +128,9 @@ $hook
     });
 ```
 
-### Target any Struct Attribute
+#### Target any Struct Attribute
 
-- You will receive `$attributes` parameter of type `array` in the callback function
+You will receive `$attributes` parameter of type `array` in the callback function
 
 ```php
 $hook
@@ -139,7 +141,9 @@ $hook
     })
 ```
 
-- You will receive `$attribute` parameter of type `null|string` in the callback function
+#### Target a specific Struct Attribute
+
+You will receive `$attribute` parameter of type `null|string` in the callback function
 
 ```php
 $hook
