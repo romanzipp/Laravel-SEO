@@ -148,6 +148,18 @@ abstract class Struct
     }
 
     /**
+     * Get all attributes with values that have been declared as unique.
+     *
+     * @return array
+     */
+    public function getComputedUniqueAttributes(): array
+    {
+        return array_filter($this->getAttributes(), function ($value, $key) {
+            return in_array($key, $this->getUniqueAttributes());
+        }, ARRAY_FILTER_USE_BOTH);
+    }
+
+    /**
      * Fluid body setter.
      *
      * @param  mixed   $body
