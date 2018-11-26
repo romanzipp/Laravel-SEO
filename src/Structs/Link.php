@@ -9,7 +9,7 @@ use romanzipp\Seo\Structs\Struct;
  */
 class Link extends Struct
 {
-    protected $uniqueAttributes = ['rel', 'href'];
+    protected $unique = false;
 
     protected function tag(): string
     {
