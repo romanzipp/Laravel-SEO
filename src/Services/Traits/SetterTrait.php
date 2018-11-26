@@ -24,6 +24,19 @@ trait SetterTrait
     }
 
     /**
+     * Add many structs.
+     *
+     * @param array $structs
+     */
+    public function addMany(array $structs): self
+    {
+        foreach ($structs as $struct) {
+
+            $this->add($struct);
+        }
+    }
+
+    /**
      * Removes all structs from service instance.
      *
      * @return void
