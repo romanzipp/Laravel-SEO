@@ -6,7 +6,15 @@ use romanzipp\Seo\Helpers\Hook;
 
 trait HooksTrait
 {
-    public function hook(srting $structClass, Hook $hook): void
+    /**
+     * Add hook to given struct class. This is just an
+     * alias for the Struct::hook() method.
+     * 
+     * @param  string $structClass
+     * @param  Hook   $hook
+     * @return void
+     */
+    public function hook(string $structClass, Hook $hook): void
     {
         app($structClass)::hook($hook);
     }
