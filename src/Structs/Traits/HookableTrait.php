@@ -11,7 +11,7 @@ trait HookableTrait
 
     /**
      * Add given Hook to the struct.
-     * @param  Hook $hook
+     * @param  Hook   $hook
      * @return void
      */
     public static function hook(Hook $hooks): void
@@ -22,9 +22,9 @@ trait HookableTrait
     /**
      * Trigger all possible hooks by given target.
      * This is getting called if struct values are changed.
-     * 
-     * @param  int   $target
-     * @param  mixed $data
+     *
+     * @param  int    $target
+     * @param  mixed  $data
      * @return void
      */
     public function triggerHook(int $target, $data): void
@@ -44,9 +44,9 @@ trait HookableTrait
     /**
      * Get all matching hooks applied to the struct
      * given by a target.
-     * 
-     * @param  int   $target
-     * @param  mixed $data
+     *
+     * @param  int     $target
+     * @param  mixed   $data
      * @return array
      */
     public function getMatchingHooks(int $target, $data): array
@@ -54,7 +54,7 @@ trait HookableTrait
         $hooks = [];
 
         foreach (self::$hooks as $key => $hook) {
-            
+
             if ($hook->getTarget() !== $target) {
                 continue;
             }
@@ -62,14 +62,14 @@ trait HookableTrait
             $filterAttributes = $hook->getFilterAttributes();
 
             foreach ($filterAttributes as $fAttribute => $fValue) {
-                
+
                 if ($this->getComputedAttribute($fAttribute) != $fValue) {
-                    continue(2);
+                    continue (2);
                 }
             }
 
             if ($target == HookTarget::BODY || $target == HookTarget::ATTRIBUTES) {
-                
+
                 $hooks[] = $hook;
 
                 continue;
@@ -77,7 +77,7 @@ trait HookableTrait
 
             // $data = ['attribute' => 'value']
 
-            $attribute = ...array_keys($data);
+            $attribute = array_keys($data)[0];
 
             if ($attribute != $hook->getTargetAttribute()) {
                 continue;
@@ -92,9 +92,9 @@ trait HookableTrait
     /**
      * Set the modified struct data from hook
      * as struct value.
-     * 
-     * @param  Hook  $hook
-     * @param  mixed $data
+     *
+     * @param  Hook   $hook
+     * @param  mixed  $data
      * @return void
      */
     public function setModifiedHookData(Hook $hook, $data): void
@@ -104,7 +104,7 @@ trait HookableTrait
             case HookTarget::BODY: // $data = $this->body
                 $this->body = $data;
                 break;
-            
+
             case HookTarget::ATTRIBUTES: // $data = $this->attributes
                 $this->attributes = $data;
                 break;
