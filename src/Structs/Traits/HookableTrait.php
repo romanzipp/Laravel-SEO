@@ -28,16 +28,32 @@ trait HookableTrait
         }
     }
 
-    public function getMatchingHooks(int $target): array
+    public function getMatchingHooks(int $target, $data): array
     {
         $hooks = [];
 
         foreach (self::$hooks as $key => $hook) {
             
-            if ($hook->getTarget() === $target) {
+            if ($hook->getTarget() !== $target) {
+                continue;
+            }
+
+            if ($target == HookTarget::BODY || $target == HookTarget::ATTRIBUTES) {
                 
                 $hooks[] = $hook;
+
+                continue;
             }
+
+            // $data = ['attribute' => 'value']
+
+            $attribute = ...array_keys($data);
+
+            if ($attribute != $hook->getTargetAttribute()) {
+                continue;
+            }
+
+            $hooks[] = $hook;
         }
 
         return $hooks;
@@ -55,7 +71,7 @@ trait HookableTrait
                 $this->attributes = $data;
                 break;
 
-            case HookTarget::ATTRIBUTE: // $data = [$key, $value]
+            case HookTarget::ATTRIBUTE: // $data = ['attribute', 'value']
                 $this->attributes[...array_keys($data)] = ...array_values($data);
                 break;
         }
