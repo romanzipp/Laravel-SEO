@@ -19,17 +19,20 @@
         "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0"
     },
     "autoload": {
-        "files": [
-            "functions/seo.php"
-        ],
         "psr-4": {
             "romanzipp\\Seo\\": "src"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "romanzipp\\Seo\\Test\\": "tests"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {
@@ -40,8 +43,5 @@
                 "Seo": "romanzipp\\Seo\\Facades\\Seo"
             }
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
     }
 }
