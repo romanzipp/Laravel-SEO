@@ -104,114 +104,12 @@ seo()->og('site_name', 'romanzipp');
 seo()->render();
 ```
 
-## Extended Usage
+## Documentation
 
-### Manipulation
+[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/index.md)
 
-The package allows you to define certain hooks for either **element body** or **element attributes**.
+## Testing
 
-For example, you want to append a site name to every `<title>` tag:
-
-##### Modify the `body` of all `Title` structs.
-
-```php
-Title::hook(
-    Hook::make()
-        ->onBody()
-        ->callback(function($body) {
-            return ($body ? $body . ' | ' : '') . 'Site-Name';
-        })
-);
 ```
-
-```php
-seo()->add(
-    Title::make()->body('Home')
-);
-
-seo()->title('Home');  // Home | Site-Name
-seo()->title(null);    // Site-Name
-```
-
-----
-
-##### Modify the `content` attribute of the `OpenGraph` struct which has the attribute `property` with value `og:title`
-
-```php
-OpenGraph::hook(
-    Hook::make()
-        ->whereAttribute('property', 'og:title')
-        ->onAttribute('content')
-        ->callback(function($content) {
-            return ($content ? $content . ' | ' : '') . 'Site-Name';
-        })
-);
-```
-
-----
-
-##### Modify any attribute of the `OpenGraph` struct which has the attribute `property` with value `og:site_name`
-
-```php
-OpenGraph::hook(
-    Hook::make()
-        ->whereAttribute('property', 'og:site_name')
-        ->onAttributes()
-        ->callback(function($attributes) {
-
-            $attributes['data-new'] = 'This will be added to all og:site_name meta tags';
-
-            return $attributes;
-        })
-);
-```
-
-```php
-$seo->add(
-    OpenGraph::make()->property('title')->content('Home')
-);
-
-$seo->og('title', 'Home');  // Home | Site-Name
-$seo->og('title', null);    // Site-Name
-```
-
-## Reference
-
-### Available structs
-
-```php
-romanzipp\Seo\Structs\Title::make();
-```
-
-```php
-romanzipp\Seo\Structs\Script::make();
-```
-
-```php
-romanzipp\Seo\Structs\Noscript::make();
-```
-
-```php
-romanzipp\Seo\Structs\Meta::make();
-romanzipp\Seo\Structs\Meta\AppLink::make()->property(string $value)->content(string $value);
-romanzipp\Seo\Structs\Meta\Charset::make()->charset(string $charset);
-romanzipp\Seo\Structs\Meta\OpenGraph::make()->property(string $value)->content(string $value = null);
-romanzipp\Seo\Structs\Meta\Twitter::make()->name(string $value)->content(string $value);
-romanzipp\Seo\Structs\Meta\Viewport::make()->content(string $content);
-```
-
-```php
-romanzipp\Seo\Structs\Link::make();
-```
-
-```php
-romanzipp\Seo\Structs\Base::make();
-```
-
-### Available shortcuts
-
-```php
-seo()->title(string $title = null): self
-seo()->twitter(string $name, $content = null): self
-seo()->og(string $property, $content = null): self
+vendor/bin/./phpunit
 ```

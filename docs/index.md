@@ -1,8 +1,8 @@
-# Laravel-SEO Documentation
+# Laravel-SEO: Basic Usage
 
 ## Table of Contents
 
-- Basic usage
+- **[Basic usage](index.md)**
 - [Hooks](hooks.md)
 - [Struct Reference](structs.md)
 
