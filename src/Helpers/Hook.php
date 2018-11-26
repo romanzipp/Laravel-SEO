@@ -7,23 +7,51 @@ use romanzipp\Seo\Helpers\Manipulation;
 
 class Hook
 {
+    /**
+     * Struct attribute to modify, defined in the
+     * HookTarget Enum
+     * 
+     * @var int
+     */
     protected $target;
 
+    /**
+     * If HookTarget::ATTRIBUTE is used as target, this defines
+     * the attribute to be modified.
+     * 
+     * @var mixed|null
+     */
     protected $targetAttribute;
 
+    /**
+     * Callback to be applied on the target
+     * 
+     * @var callable
+     */
     protected $callback;
 
+    /**
+     * Wether the current hook callback has been executed
+     * 
+     * @var boolean
+     */
     protected $executed = false;
 
-    public function __construct()
-    {}
-
+    /**
+     * Create new Hook instance
+     * 
+     * @return self
+     */
     public static function make(): self
     {
         return new self;
     }
 
-    /// getters
+    /*
+     *--------------------------------------------------------------------------
+     * Getters
+     *--------------------------------------------------------------------------
+     */
 
     public function getTarget(): int
     {
@@ -40,11 +68,17 @@ class Hook
         return $this->callback;
     }
 
-    /// setters
+    /*
+     *--------------------------------------------------------------------------
+     * Setters
+     *--------------------------------------------------------------------------
+     */
 
     public function onBody(): self
     {
         $this->target = HookTarget::BODY;
+
+        return $this;
     }
 
     public function onAttributes(): self
