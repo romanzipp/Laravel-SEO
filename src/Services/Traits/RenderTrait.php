@@ -10,17 +10,27 @@ trait RenderTrait
     abstract public function getStructs(): array;
 
     /**
+     * Get array of rendered HtmlStrings.
+     *
+     * @return array
+     */
+    public function renderContentsArray(): array
+    {
+        $structs = $this->getStructs();
+
+        return array_map(function ($struct) {
+            return StructBuilder::build($struct)->toHtml();
+        }, $structs);
+    }
+
+    /**
      * Render all applied structs.
      *
      * @return HtmlString
      */
     public function render(): HtmlString
     {
-        $structs = $this->getStructs();
-
-        $contents = array_map(function ($struct) {
-            return StructBuilder::build($struct)->toHtml();
-        }, $structs);
+        $contents = $this->renderContentsArray();
 
         return new HtmlString(implode(PHP_EOL, $contents));
     }
