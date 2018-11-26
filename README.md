@@ -67,13 +67,17 @@ use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Twitter;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
+```
 
+```php
 // <title>romanzipp</title>
 
 seo()->add(Title::make()->body('romanzipp'));
 
 seo()->title('romanzipp');
+```
 
+```php
 // <meta charset="utf-8" />
 
 seo()->add(Charset::make());
@@ -81,13 +85,17 @@ seo()->add(Charset::make());
 seo()->add(Charset::make()->charset('utf-8'));
 
 seo()->add(new Charset);
+```
 
+```php
 // <meta name="twitter:card" content="summary" />
 
 seo()->twitter('card', 'summary');
 
 seo()->add(Twitter::make()->name('card')->content('summary'));
+```
 
+```php
 // <meta property="og:site_name" content="romanzipp" />
 
 seo()->add(OpenGraph::make()->property('site_name')->content('romanzipp'));
