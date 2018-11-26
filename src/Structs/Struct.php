@@ -169,13 +169,13 @@ abstract class Struct
     /**
      * Fluid attributes setter.
      *
-     * @param  string     $key
+     * @param  string     $attribute
      * @param  mixed|null $value
      * @return self
      */
-    public function attr(string $key, $value = null): self
+    public function attr(string $attribute, $value = null): self
     {
-        $this->addAttribute($key, $value);
+        $this->addAttribute($attribute, $value);
 
         return $this;
     }

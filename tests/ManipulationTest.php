@@ -18,7 +18,7 @@ class InstantiationTest extends TestCase
         Title::hook(
             (new Hook)
                 ->onBody()
-                ->callback(function($body) {
+                ->callback(function ($body) {
                     return $body . ' 1';
                 })
         );
@@ -26,7 +26,7 @@ class InstantiationTest extends TestCase
         Title::hook(
             Hook::make()
                 ->onBody()
-                ->callback(function($body) {
+                ->callback(function ($body) {
                     return $body . ' 1';
                 })
         );
@@ -35,7 +35,7 @@ class InstantiationTest extends TestCase
             Hook::make()
                 ->onAttributes()
                 ->whereAttribute('property', 'og:title')
-                ->callback(function($attributes) {
+                ->callback(function ($attributes) {
                     return $attributes;
                 })
         );
