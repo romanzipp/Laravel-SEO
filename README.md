@@ -108,19 +108,21 @@ seo()->render();
 
 ### Manipulation
 
-The package allows you to define certain manipulations for either **element body** or **element attributes**.
+The package allows you to define certain hooks for either **element body** or **element attributes**.
 
 For example, you want to append a site name to every `<title>` tag:
 
-Manipulate the body of all Title structs:
+##### Modify the **body** of all **Title** structs.
 
 ```php
-seo()->manipulateBody(Title::class, function ($body) {
-    return ($body ? $body . ' | ' : '') . 'Site-Name';
-});
+Title::hook(
+    Hook::make()
+        ->onBody()
+        ->callback(function($body) {
+            return ($body ? $body . ' | ' : '') . 'Site-Name';
+        })
+);
 ```
-
-Add seo Title struct:
 
 ```php
 seo()->add(
@@ -133,25 +135,18 @@ seo()->title(null);    // Site-Name
 
 ----
 
-Manipulate OpenGraph structs with the attribute "property" and value "og:title":
+##### Modify the **content** attribute of the **OpenGraph** which has the attribute **property** with value **og:title**
 
 ```php
-seo()->manipulateAttributes(OpenGraph::class, ['property' => 'og:title'], function ($attributes) {
-
-    // $attributes is an associative array with all
-    // struct/element attributes
-
-    if ( ! empty($attributes['content'])) {
-        $attributes['content'] .= ' | ';
-    }
-
-    $attributes['content'] .= 'Site-Name';
-
-    return $attributes;
-});
+OpenGraph::hook(
+    Hook::make()
+        ->whereAttribute('property', 'og:title')
+        ->onAttribute('content')
+        ->callback(function($content) {
+            return ($content ? $content . ' | ' : '') . 'Site-Name';
+        })
+);
 ```
-
-Add seo OpenGraph struct:
 
 ```php
 $seo->add(
