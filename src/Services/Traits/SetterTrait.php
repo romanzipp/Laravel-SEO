@@ -34,6 +34,8 @@ trait SetterTrait
 
             $this->add($struct);
         }
+
+        return $this;
     }
 
     /**
