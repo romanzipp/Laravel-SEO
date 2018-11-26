@@ -15,4 +15,18 @@ class Link extends Struct
     {
         return 'link';
     }
+
+    public function rel(string $value): self
+    {
+        $this->addAttribute('rel', $value);
+
+        return $this;
+    }
+
+    public function href(string $value): self
+    {
+        $this->addAttribute('href', $value);
+
+        return $this;
+    }
 }
