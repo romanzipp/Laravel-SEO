@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Meta;
  */
 class Charset extends Meta
 {
+    protected $unique = true;
+
     public static function defaults($struct)
     {
         $struct->attr('charset', 'utf-8');

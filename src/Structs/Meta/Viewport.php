@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Meta;
  */
 class Viewport extends Meta
 {
+    protected $unique = true;
+
     public static function defaults($struct)
     {
         $struct->attr('name', 'viewport');

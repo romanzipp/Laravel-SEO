@@ -9,8 +9,6 @@ use romanzipp\Seo\Structs\Struct;
  */
 class Noscript extends Struct
 {
-    protected $unique = false;
-
     protected function tag(): string
     {
         return 'noscript';

@@ -144,13 +144,13 @@ protected function tag(): string
 
 Certain elements in a documents `<head>` can only exist once, like the `<title></title>` element.
 
-By default, **all** Structs are unique. To change this behavior, create a `unique` property and set the value to `false`.
+By default, Structs are **not** unique. To change this behavior, apply the `unique` property.
 
 ```php
-protected $unique = false;
+protected $unique = true;
 ```
 
-Now, previously created Structs will not be overwritten.
+Now, previously created Structs will be overwritten.
 
 ```php
 seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is the FIRST description'));
@@ -160,12 +160,12 @@ seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is t
 **Before**:
 
 ```html
+<meta name="description" content="This is the FIRST description">
 <meta name="description" content="This is the SECOND description">
 ```
 
 **After**:
 
 ```html
-<meta name="description" content="This is the FIRST description">
 <meta name="description" content="This is the SECOND description">
 ```

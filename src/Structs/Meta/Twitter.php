@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Meta;
  */
 class Twitter extends Meta
 {
+    protected $unique = true;
+
     protected $uniqueAttributes = ['name'];
 
     public function name(string $value): self

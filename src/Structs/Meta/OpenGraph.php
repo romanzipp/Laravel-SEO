@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Meta;
  */
 class OpenGraph extends Meta
 {
+    protected $unique = true;
+
     protected $uniqueAttributes = ['property'];
 
     public function property(string $value): self

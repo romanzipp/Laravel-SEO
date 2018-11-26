@@ -17,7 +17,7 @@ abstract class Struct
      *
      * @var boolean
      */
-    protected $unique = true;
+    protected $unique = false;
 
     /**
      * Attribute names which should be unique across

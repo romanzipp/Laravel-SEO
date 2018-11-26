@@ -9,6 +9,8 @@ use romanzipp\Seo\Structs\Struct;
  */
 class Base extends Struct
 {
+    protected $unique = true;
+
     protected function tag(): string
     {
         return 'base';
