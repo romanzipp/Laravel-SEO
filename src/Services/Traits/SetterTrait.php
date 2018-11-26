@@ -26,6 +26,16 @@ trait SetterTrait
     }
 
     /**
+     * Removes all structs from service instance.
+     *
+     * @return void
+     */
+    public function clear(): void
+    {
+        $this->structs = [];
+    }
+
+    /**
      * Add title.
      *
      * @param  string|null $title
