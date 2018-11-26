@@ -14,7 +14,7 @@ trait HookableTrait
      * @param  Hook   $hook
      * @return void
      */
-    public static function hook(Hook $hooks): void
+    public static function hook(Hook $hook): void
     {
         self::$hooks[] = $hook;
     }
