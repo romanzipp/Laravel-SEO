@@ -9,11 +9,24 @@ trait HookableTrait
 {
     protected static $hooks = [];
 
+    /**
+     * Add given Hook to the struct.
+     * @param  Hook $hook
+     * @return void
+     */
     public static function hook(Hook $hooks): void
     {
         self::$hooks[] = $hook;
     }
 
+    /**
+     * Trigger all possible hooks by given target.
+     * This is getting called if struct values are changed.
+     * 
+     * @param  int   $target
+     * @param  mixed $data
+     * @return void
+     */
     public function triggerHook(int $target, $data): void
     {
         $matchingHook = null;
@@ -28,6 +41,14 @@ trait HookableTrait
         }
     }
 
+    /**
+     * Get all matching hooks applied to the struct
+     * given by a target.
+     * 
+     * @param  int   $target
+     * @param  mixed $data
+     * @return array
+     */
     public function getMatchingHooks(int $target, $data): array
     {
         $hooks = [];
@@ -59,6 +80,14 @@ trait HookableTrait
         return $hooks;
     }
 
+    /**
+     * Set the modified struct data from hook
+     * as struct value.
+     * 
+     * @param  Hook  $hook
+     * @param  mixed $data
+     * @return void
+     */
     public function setModifiedHookData(Hook $hook, $data): void
     {
         switch ($hook->getTarget()) {
