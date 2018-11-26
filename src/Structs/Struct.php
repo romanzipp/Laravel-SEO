@@ -2,13 +2,16 @@
 
 namespace romanzipp\Seo\Structs;
 
+use romanzipp\Seo\Enums\HookTarget;
 use romanzipp\Seo\Helpers\AttributeValue;
 use romanzipp\Seo\Helpers\Manipulation;
+use romanzipp\Seo\Structs\Traits\HookableTrait;
 use romanzipp\Seo\Structs\Traits\ManipulationsTrait;
 
 abstract class Struct
 {
     use ManipulationsTrait;
+    use HookableTrait;
 
     abstract protected function tag(): string;
 
@@ -215,6 +218,8 @@ abstract class Struct
     protected function setBody($body): void
     {
         $this->body = new AttributeValue($body, $this, Manipulation::BODY);
+
+        $this->triggerHook(HookTarget::BODY, $this->body);
     }
 
     /**
@@ -227,8 +232,8 @@ abstract class Struct
     {
         $this->attributes[$key] = new AttributeValue($value, $this, Manipulation::ATTRIBUTE);
 
-        //$this->attributes[$key] = (object) [
-        //    'value' => new AttributeValue($value, $this, Manipulation::ATTRIBUTE),
-        //];
+        $this->triggerHook(HookTarget::ATTRIBUTE, [$key => $this->attributes[$key]]);
+
+        $this->triggerHook(HookTarget::ATTRIBUTES, $this->attributes);
     }
 }
