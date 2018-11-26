@@ -60,7 +60,7 @@ class IndexController
 }
 ```
 
-### Presets
+### Examples
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -70,21 +70,15 @@ use romanzipp\Seo\Structs\Meta\OpenGraph;
 
 // <title>romanzipp</title>
 
-seo()->add(
-    Title::make()->body('romanzipp')
-);
+seo()->add(Title::make()->body('romanzipp'));
 
 seo()->title('romanzipp');
 
 // <meta charset="utf-8" />
 
-seo()->add(
-    Charset::make()
-);
+seo()->add(Charset::make());
 
-seo()->add(
-    Charset::make()->charset('utf-8')
-);
+seo()->add(Charset::make()->charset('utf-8'));
 
 seo()->add(new Charset);
 
@@ -92,18 +86,16 @@ seo()->add(new Charset);
 
 seo()->twitter('card', 'summary');
 
-seo()->add(
-    Twitter::make()->name('card')->content('summary')
-);
+seo()->add(Twitter::make()->name('card')->content('summary'));
 
 // <meta property="og:site_name" content="romanzipp" />
 
-seo()->add(
-    OpenGraph::make()->property('site_name')->content('romanzipp')
-);
+seo()->add(OpenGraph::make()->property('site_name')->content('romanzipp'));
 
 seo()->og('site_name', 'romanzipp');
 ```
+
+For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/structs.md).
 
 ### Render
 
