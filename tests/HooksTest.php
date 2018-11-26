@@ -74,7 +74,7 @@ class HooksTest extends TestCase
         );
 
         seo()->add(
-            OpenGraph::make()->property('title')->content('title')
+            OpenGraph::make()->property('title')->content('My Title')
         );
 
         $contents = seo()->renderContentsArray();
