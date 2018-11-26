@@ -3,6 +3,8 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Structs\Meta\Charset;
+use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Test\Structs\UniqueMultiAttributeStruct;
 use romanzipp\Seo\Test\Structs\UniqueSingleAttributeStruct;
@@ -10,6 +12,21 @@ use romanzipp\Seo\Test\TestCase;
 
 class CollisionTest extends TestCase
 {
+    public function testShouldNotCollide()
+    {
+        seo()->add(
+            Charset::make()
+        );
+
+        seo()->add(
+            Viewport::make()->content('width=device-width, initial-scale=1')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(2, $contents);
+    }
+
     public function testNormalElementCollisions()
     {
         seo()->add(
