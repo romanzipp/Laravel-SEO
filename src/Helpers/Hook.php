@@ -9,7 +9,7 @@ class Hook
 {
     protected $target;
 
-    protected $targetValue;
+    protected $targetAttribute;
 
     protected $callback;
 
@@ -28,6 +28,11 @@ class Hook
     public function getTarget(): int
     {
         return $this->target;
+    }
+
+    public function getTargetAttribute()
+    {
+        return $this->targetAttribute;
     }
 
     public function getCallback(): callable
@@ -52,6 +57,8 @@ class Hook
     public function onAttribute(string $attribute): self
     {
         $this->target = HookTarget::ATTRIBUTE;
+
+        $this->targetAttribute = $attribute;
 
         return $this;
     }
