@@ -48,7 +48,9 @@ trait HookableTrait
 
             $callback = $hook->getCallback();
 
-            $data = $callback($data);
+            $callbackData = $hook->translateCallbackData($data);
+
+            $data = $callback($callbackData);
 
             $this->setModifiedHookData($hook, $data);
         }
@@ -114,16 +116,16 @@ trait HookableTrait
     {
         switch ($hook->getTarget()) {
 
-            case HookTarget::BODY: // $data = $this->body
+            case HookTarget::BODY:
                 $this->body = $data;
                 break;
 
-            case HookTarget::ATTRIBUTES: // $data = $this->attributes
+            case HookTarget::ATTRIBUTES:
                 $this->attributes = $data;
                 break;
 
-            case HookTarget::ATTRIBUTE: // $data = ['attribute', 'value']
-                $this->attributes[array_keys($data)[0]] = array_values($data)[0];
+            case HookTarget::ATTRIBUTE:
+                $this->attributes[$hook->getTargetAttribute()] = $data;
                 break;
         }
     }

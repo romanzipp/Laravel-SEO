@@ -128,4 +128,19 @@ class Hook
 
         return $this;
     }
+
+    /*
+     *--------------------------------------------------------------------------
+     * Methods
+     *--------------------------------------------------------------------------
+     */
+
+    public function translateCallbackData($data)
+    {
+        if ($this->target == HookTarget::BODY || $this->target == HookTarget::ATTRIBUTES) {
+            return $data;
+        }
+
+        return array_values($data)[0];
+    }
 }
