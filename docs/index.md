@@ -1,12 +1,8 @@
-# Laravel-SEO: Basic Usage
-
-## Table of Contents
-
-- **[Basic usage](index.md)**
+- **[Basic Usage](index.md)**
+- [Structs](structs.md)
 - [Hooks](hooks.md)
-- [Struct Reference](structs.md)
 
-## Basic usage
+# Basic Usage
 
 For a full reference of what **could** go to your `<head>` see [joshbuchea's HEAD](https://github.com/joshbuchea/HEAD)
 
