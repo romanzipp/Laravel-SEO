@@ -6,8 +6,8 @@ A simple SEO package made for maximum customization and flexibility.
 
 - [x] Struct definitions
 - [x] Element rendering
-- [ ] Hooks & Manipulations
-- [ ] Struct uniqueness & collision detection
+- [x] Hooks & Manipulations
+- [x] Struct uniqueness & collision detection
 
 ## Installation
 
