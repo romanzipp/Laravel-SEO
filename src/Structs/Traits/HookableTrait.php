@@ -131,7 +131,7 @@ trait HookableTrait
         switch ($hook->getTarget()) {
 
             case HookTarget::BODY:
-                $this->body = $data;
+                $this->body->setData($data);
                 break;
 
             case HookTarget::ATTRIBUTES:
@@ -139,7 +139,7 @@ trait HookableTrait
                 break;
 
             case HookTarget::ATTRIBUTE:
-                $this->attributes[$hook->getTargetAttribute()] = $data;
+                $this->attributes[$hook->getTargetAttribute()]->setData($data);
                 break;
         }
     }
