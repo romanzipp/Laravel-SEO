@@ -14,6 +14,6 @@ class Viewport extends Meta
 
     public static function defaults(Struct $struct)
     {
-        $struct->attr('name', 'viewport');
+        $struct->addAttribute('name', 'viewport');
     }
 }
