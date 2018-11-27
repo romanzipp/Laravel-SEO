@@ -207,7 +207,7 @@ abstract class Struct
      */
     public function body($body, bool $escape = true): self
     {
-        if ($escape) {
+        if ($escape && $body !== null) {
             $body = e($body);
         }
 
