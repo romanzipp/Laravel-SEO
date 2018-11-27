@@ -6,7 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/?branch=master)
 [![Build Status](https://api.travis-ci.org/romanzipp/Laravel-SEO.svg?branch=master)](https://travis-ci.org/romanzipp/Laravel-SEO)
 
-A simple SEO package made for maximum customization and flexibility.
+A SEO package made for maximum customization and flexibility.
 
 ## Installation
 
