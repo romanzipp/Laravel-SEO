@@ -75,9 +75,15 @@ trait HookableTrait
 
         foreach (self::$hooks as $key => $hook) {
 
+            // Continue, if applied hook target does not match
+            // the intendet target.
+
             if ($hook->getTarget() !== $target) {
                 continue;
             }
+
+            // Filter by attributes applied to the hook with the
+            // whereAttribute() method.
 
             $filterAttributes = $hook->getFilterAttributes();
 
@@ -87,6 +93,9 @@ trait HookableTrait
                     continue (2);
                 }
             }
+
+            // Dont't make any more processing if we are targeting the
+            // Struct body or attributes array.
 
             if ($target == HookTarget::BODY || $target == HookTarget::ATTRIBUTES) {
 
