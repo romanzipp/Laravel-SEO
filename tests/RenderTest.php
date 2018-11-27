@@ -23,4 +23,39 @@ class RenderTest extends TestCase
 
         $this->assertInstanceOf(HtmlString::class, StructBuilder::build($struct));
     }
+
+    public function testAttributeRenderResult()
+    {
+        seo()->add(Title::make()->attr('attribute', 'value'));
+
+        $this->assertEquals('<title attribute="value"></title>', seo()->render()->toHtml());
+    }
+
+    public function testSpacedAttributeRenderResult()
+    {
+        seo()->add(Title::make()->attr('attribute', 'value '));
+
+        $this->assertEquals('<title attribute="value "></title>', seo()->render()->toHtml());
+    }
+
+    public function testWrongSpacedAttributeRenderResult()
+    {
+        seo()->add(Title::make()->attr('   attribute ', 'value'));
+
+        $this->assertEquals('<title attribute="value"></title>', seo()->render()->toHtml());
+    }
+
+    public function testBodyRenderResult()
+    {
+        seo()->add(Title::make()->body('My Body'));
+
+        $this->assertEquals('<title>My Body</title>', seo()->render()->toHtml());
+    }
+
+    public function testSpacedBodyRenderResult()
+    {
+        seo()->add(Title::make()->body('My Body '));
+
+        $this->assertEquals('<title>My Body </title>', seo()->render()->toHtml());
+    }
 }
