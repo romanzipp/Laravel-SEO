@@ -110,8 +110,35 @@ romanzipp\Seo\Structs\Base::make();
 
 ### Available shortcuts
 
+#### Title
+
 ```php
 seo()->title(string $title = null): self
+```
+
+... same as ...
+
+```php
+Title::make()->body($title);
+OpenGraph::property('title')->content($title);
+```
+
+#### Description
+
+```php
+seo()->description(string $description = null): self
+```
+
+... same as ...
+
+```php
+Description::make()->name('description')->content($description);
+OpenGraph::property('description')->content($description);
+```
+
+#### OpenGraph & Twitter
+
+```php
 seo()->twitter(string $name, $content = null): self
 seo()->og(string $property, $content = null): self
 ```
