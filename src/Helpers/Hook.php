@@ -156,7 +156,7 @@ class Hook
 
             case HookTarget::ATTRIBUTES:
 
-                return array_map(function ($value) use ($data) {
+                return array_map(function ($value) {
 
                     return $value->data();
 
