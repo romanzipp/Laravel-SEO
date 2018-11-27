@@ -157,7 +157,7 @@ seo()->title(string $title = null): self
 
 ```php
 Title::make()->body(string $title = null): self
-OpenGraph::property('title')->content(string $title = null): self
+OpenGraph::make()->property('title')->content(string $title = null): self
 ```
 
 #### Description
@@ -170,7 +170,7 @@ seo()->description(string $description = null): self
 
 ```php
 Description::make()->name('description')->content(string $description = null): self
-OpenGraph::property('description')->content(string $description = null): self
+OpenGraph::make()->property('description')->content(string $description = null): self
 ```
 
 #### OpenGraph
@@ -182,7 +182,7 @@ seo()->og(string $property, $content = null): self
 ... same as ...
 
 ```php
-OpenGraph::property(string $property)->content($content = null): self
+OpenGraph::make()->property(string $property)->content($content = null): self
 ```
 
 #### Twitter
@@ -194,7 +194,7 @@ seo()->twitter(string $name, $content = null): self
 ... same as ...
 
 ```php
-Twitter::name(string $name)->content($content = null): self
+Twitter::make()->name(string $name)->content($content = null): self
 ```
 
 ## Creating custom Structs
