@@ -135,12 +135,32 @@ class Hook
      *--------------------------------------------------------------------------
      */
 
+    /**
+     * Modify the data that will be handed over to the
+     * hook callback as parameter.
+     *
+     * @param  mixed   $data
+     * @return mixed
+     */
     public function translateCallbackData($data)
     {
-        if ($this->target == HookTarget::BODY || $this->target == HookTarget::ATTRIBUTES) {
-            return $data;
-        }
+        switch ($this->target) {
 
-        return array_values($data)[0];
+            case HookTarget::BODY:
+
+                return $data;
+
+            case HookTarget::ATTRIBUTE;
+
+                return array_values($data)[0];
+
+            case HookTarget::ATTRIBUTES:
+
+                return array_map(function ($value) use ($data) {
+
+                    return $value->data();
+
+                }, $data);
+        }
     }
 }
