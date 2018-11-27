@@ -252,7 +252,7 @@ abstract class Struct
      */
     protected function addAttribute(string $key, $value, bool $escape = true): void
     {
-        if ($escape) {
+        if ($escape && $value !== null) {
             $value = e($value);
         }
 
