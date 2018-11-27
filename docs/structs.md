@@ -11,6 +11,8 @@ We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.
 
 ## Examples
 
+For simplicity reasons, we only show the Struct declaration. Always remember to add Structs using `seo()->add($struct)`.
+
 ### Titles
 
 ```php
@@ -79,38 +81,73 @@ Twitter::make()->name('card')->content('summary');
 
 ## Available Structs
 
-```php
-romanzipp\Seo\Structs\Title::make();
-```
-
-```php
-romanzipp\Seo\Structs\Script::make();
-```
-
-```php
-romanzipp\Seo\Structs\Noscript::make();
-```
-
-```php
-romanzipp\Seo\Structs\Meta::make();
-romanzipp\Seo\Structs\Meta\AppLink::make()->property(string $value)->content(string $value);
-romanzipp\Seo\Structs\Meta\Charset::make()->charset(string $charset);
-romanzipp\Seo\Structs\Meta\OpenGraph::make()->property(string $value)->content(string $value = null);
-romanzipp\Seo\Structs\Meta\Twitter::make()->name(string $value)->content(string $value);
-romanzipp\Seo\Structs\Meta\Viewport::make()->content(string $content);
-```
-
-```php
-romanzipp\Seo\Structs\Link::make();
-```
+#### Base
 
 ```php
 romanzipp\Seo\Structs\Base::make();
 ```
 
+#### Link
+
+```php
+romanzipp\Seo\Structs\Link::make();
+```
+
+#### Meta
+
+```php
+romanzipp\Seo\Structs\Meta::make();
+```
+
+```php
+romanzipp\Seo\Structs\Meta\AppLink::make()
+    ->property(string $value)
+    ->content(string $value);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Charset::make()
+    ->charset(string $charset);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\OpenGraph::make()
+    ->property(string $value)
+    ->content(string $value = null);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Twitter::make()
+    ->name(string $value)
+    ->content(string $value);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Viewport::make()
+    ->content(string $content);
+```
+
+#### Noscript
+
+```php
+romanzipp\Seo\Structs\Noscript::make();
+```
+
+#### Script
+
+```php
+romanzipp\Seo\Structs\Script::make();
+```
+
+#### Title
+
+```php
+romanzipp\Seo\Structs\Title::make();
+```
+
 ## Available Shortcuts
 
-### Title
+#### Title
 
 ```php
 seo()->title(string $title = null): self
@@ -119,11 +156,11 @@ seo()->title(string $title = null): self
 ... same as ...
 
 ```php
-Title::make()->body($title);
-OpenGraph::property('title')->content($title);
+Title::make()->body(string $title = null): self
+OpenGraph::property('title')->content(string $title = null): self
 ```
 
-### Description
+#### Description
 
 ```php
 seo()->description(string $description = null): self
@@ -132,18 +169,35 @@ seo()->description(string $description = null): self
 ... same as ...
 
 ```php
-Description::make()->name('description')->content($description);
-OpenGraph::property('description')->content($description);
+Description::make()->name('description')->content(string $description = null): self
+OpenGraph::property('description')->content(string $description = null): self
 ```
 
-### OpenGraph & Twitter
+#### OpenGraph
 
 ```php
-seo()->twitter(string $name, $content = null): self
 seo()->og(string $property, $content = null): self
 ```
 
-## Creating own Structs
+... same as ...
+
+```php
+OpenGraph::property(string $property)->content($content = null): self
+```
+
+#### Twitter
+
+```php
+seo()->twitter(string $name, $content = null): self
+```
+
+... same as ...
+
+```php
+Twitter::name(string $name)->content($content = null): self
+```
+
+## Creating custom Structs
 
 You can create your own Structs simply by extending the `romanzipp\Seo\Structs\Struct` class.
 
