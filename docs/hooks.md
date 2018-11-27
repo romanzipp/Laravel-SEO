@@ -79,6 +79,15 @@ OpenGraph::hook(
 );
 ```
 
+```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
+$seo->add(OpenGraph::make()->property('title')->content('Home'));
+
+$seo->og('title', 'Home');  // Home | Site-Name
+$seo->og('title', null);    // Site-Name
+```
+
 ----
 
 #### Modify any attribute of the `OpenGraph` struct which has the attribute `property` with value `og:site_name`
@@ -98,15 +107,6 @@ OpenGraph::hook(
             return $attributes;
         })
 );
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-
-$seo->add(OpenGraph::make()->property('title')->content('Home'));
-
-$seo->og('title', 'Home');  // Home | Site-Name
-$seo->og('title', null);    // Site-Name
 ```
 
 ## Reference
