@@ -141,7 +141,7 @@ $hook
     ->onAttributes('content')
     ->callback(function ($attributes) {
         return $attributes;
-    })
+    });
 ```
 
 #### Target a specific Struct Attribute
@@ -153,5 +153,13 @@ $hook
     ->onAttribute('content')
     ->callback(function ($attribute) {
         return $attribute;
-    })
+    });
+```
+
+### Hook Filters
+
+Filter Structs by `$attribute` with value `$value`
+
+```php
+$hook->whereAttribute($attribute, $value);
 ```
