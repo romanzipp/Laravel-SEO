@@ -43,6 +43,16 @@ class Value
     }
 
     /**
+     * Set modified data.
+     *
+     * @param mixed $data
+     */
+    public function setData($data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
      * Get data string representation.
      *
      * @return string
