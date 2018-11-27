@@ -6,7 +6,7 @@
 
 Hooks allow the modification of a Structs **body** or **attributes**.
 
-### Adding hooks to structs
+### Adding hooks to Structs
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
@@ -37,7 +37,7 @@ Both methods are basicly the same, choose which one you preferr.
 
 For example, you want to append a site name to the body of every `<title>` tag:
 
-#### Modify the `body` of all `Title` structs.
+#### Modify the `body` of all `Title` Structs.
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
@@ -55,15 +55,13 @@ Title::hook(
 ```php
 use romanzipp\Seo\Structs\Title;
 
-seo()->add(Title::make()->body('Home'));
-
-seo()->title('Home');  // Home | Site-Name
-seo()->title(null);    // Site-Name
+seo()->add(Title::make()->body('Home'));  // <title>Home | Site-Name</title>
+seo()->add(Title::make()->body(null));    // <title>Site-Name</title>
 ```
 
 ----
 
-#### Modify the `content` attribute of the `OpenGraph` struct which has the attribute `property` with value `og:title`
+#### Modify the `content` attribute of the `OpenGraph` Struct which has the attribute `property` with value `og:title`
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
@@ -82,15 +80,13 @@ OpenGraph::hook(
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 
-$seo->add(OpenGraph::make()->property('title')->content('Home'));
-
-$seo->og('title', 'Home');  // Home | Site-Name
-$seo->og('title', null);    // Site-Name
+$seo->add(OpenGraph::make()->property('title')->content('Home'));  // <meta ... content="Home | Site-Name" />
+$seo->add(OpenGraph::make()->property('title')->content(null));    // <meta ... content="Site-Name" />
 ```
 
 ----
 
-#### Modify any attribute of the `OpenGraph` struct which has the attribute `property` with value `og:site_name`
+#### Modify any attribute of the `OpenGraph` Struct which has the attribute `property` with value `og:site_name`
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
@@ -102,7 +98,7 @@ OpenGraph::hook(
         ->onAttributes()
         ->callback(function ($attributes) {
 
-            $attributes['data-new'] = 'This will be added to all og:site_name meta tags';
+            $attributes['new'] = 'This will be added to all meta tags with property="og:site_name"';
 
             return $attributes;
         })
@@ -111,7 +107,7 @@ OpenGraph::hook(
 
 ## Reference
 
-### Hooks Instance
+### Hook Instance
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
@@ -121,7 +117,7 @@ $hook = Hook::make();
 $hook = new Hook;
 ```
 
-### Hooks Targets
+### Hook Targets
 
 #### Target Struct Body
 
@@ -142,7 +138,6 @@ You will receive `$attributes` parameter of type `array` in the callback functio
 
 ```php
 $hook
-    ->whereAttribute('property', 'og:title')
     ->onAttributes('content')
     ->callback(function ($attributes) {
         return $attributes;
@@ -155,9 +150,8 @@ You will receive `$attribute` parameter of type `null|string` in the callback fu
 
 ```php
 $hook
-    ->whereAttribute('property', 'og:title')
     ->onAttribute('content')
-    ->callback(function ($content) {
-        return ($content ? $content . ' | ' : '') . 'Site-Name';
+    ->callback(function ($attribute) {
+        return $attribute;
     })
 ```
