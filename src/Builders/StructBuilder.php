@@ -90,9 +90,9 @@ class StructBuilder
 
             $attribute = trim($attribute);
 
-            if ($value = e($attributeValue)) {
+            if ($attributeValue) {
 
-                $attribute .= '="' . $value . '"';
+                $attribute .= '="' . $attributeValue . '"';
             }
 
             $attributes[] = $attribute;
