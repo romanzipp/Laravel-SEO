@@ -4,6 +4,7 @@ namespace romanzipp\Seo\Structs\Traits;
 
 use romanzipp\Seo\Enums\HookTarget;
 use romanzipp\Seo\Helpers\Hook;
+use romanzipp\Seo\Values\Attribute;
 
 trait HookableTrait
 {
@@ -135,12 +136,37 @@ trait HookableTrait
                 break;
 
             case HookTarget::ATTRIBUTES:
-                $this->attributes = $data;
+                $this->setModifiedHookAttributes($data);
                 break;
 
             case HookTarget::ATTRIBUTE:
                 $this->attributes[$hook->getTargetAttribute()]->setData($data);
                 break;
+        }
+    }
+
+    /**
+     * Set HookTarget::ATTRIBUTES data from hook callback.
+     *
+     * @param mixed $data
+     */
+    protected function setModifiedHookAttributes($data): void
+    {
+        $attributes = $this->getAttributes();
+
+        foreach ($data as $modifiedAttribute => $modifiedAttributeValue) {
+
+            if (array_key_exists($modifiedAttribute, $attributes)) {
+
+                $attributes[$modifiedAttribute]->setData($modifiedAttributeValue);
+
+            } else {
+
+                // Set the attribute directly to avoid triggering
+                // further Hooks
+
+                $this->attributes[$modifiedAttribute] = new Attribute($modifiedAttributeValue);
+            }
         }
     }
 
