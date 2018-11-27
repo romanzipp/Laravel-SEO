@@ -62,7 +62,29 @@ class HooksTest extends TestCase
         Title::clearHooks();
     }
 
-    public function testAttributesHooks()
+    public function testExistingAttributesHooks()
+    {
+        OpenGraph::hook(
+            Hook::make()
+                ->onAttributes()
+                ->whereAttribute('property', 'og:title')
+                ->callback(function ($attributes) {
+                    return array_merge($attributes, ['content' => 'My Second Title']);
+                })
+        );
+
+        seo()->add(
+            OpenGraph::make()->property('title')->content('My Title')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertRegexp('/content\=\"My Second Title\"/', $contents[0]);
+
+        OpenGraph::clearHooks();
+    }
+
+    public function testAppendingAttributesHooks()
     {
         OpenGraph::hook(
             Hook::make()
@@ -104,5 +126,26 @@ class HooksTest extends TestCase
         $this->assertRegexp('/content\=\"My Title 1\"/', $contents[0]);
 
         OpenGraph::clearHooks();
+    }
+
+    public function testEmptyStructTargetHooks()
+    {
+        Title::hook(
+            Hook::make()
+                ->onBody()
+                ->callback(function ($body) {
+                    return $body . ' 1';
+                })
+        );
+
+        seo()->add(
+            Title::make()->attr('ignore', 'me')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(1, $contents);
+
+        Title::clearHooks();
     }
 }
