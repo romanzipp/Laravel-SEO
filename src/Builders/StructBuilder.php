@@ -58,7 +58,7 @@ class StructBuilder
         $element .= '<' . $this->struct->getTag();
 
         if ($attributes = $this->renderAttributes()) {
-            $element .= ' ' . $attributes . ' ';
+            $element .= ' ' . $attributes;
         }
 
         $body = $this->struct->getBody();
@@ -71,7 +71,7 @@ class StructBuilder
 
         } else {
 
-            $element .= '/>';
+            $element .= ' />';
         }
 
         return new HtmlString($element);
@@ -87,6 +87,8 @@ class StructBuilder
         $attributes = [];
 
         foreach ($this->struct->getComputedAttributes() as $attribute => $attributeValue) {
+
+            $attribute = trim($attribute);
 
             if ($value = e($attributeValue)) {
 
