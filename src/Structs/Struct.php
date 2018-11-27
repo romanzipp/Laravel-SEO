@@ -67,6 +67,12 @@ abstract class Struct
         //
     }
 
+    /*
+     *--------------------------------------------------------------------------
+     * Getters
+     *--------------------------------------------------------------------------
+     */
+
     /**
      * Get struct tag.
      *
@@ -75,6 +81,16 @@ abstract class Struct
     public function getTag(): string
     {
         return $this->tag();
+    }
+
+    /**
+     * Get struct body.
+     *
+     * @return mixed|null
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 
     /**
@@ -116,26 +132,6 @@ abstract class Struct
     }
 
     /**
-     * Get struct body.
-     *
-     * @return mixed|null
-     */
-    public function getBody()
-    {
-        return $this->body;
-    }
-
-    /**
-     * Is struct unique.
-     *
-     * @return boolean
-     */
-    public function isUnique(): bool
-    {
-        return $this->unique;
-    }
-
-    /**
      * Get struct unique attributes for collision detection.
      *
      * @return array
@@ -156,6 +152,49 @@ abstract class Struct
             return in_array($key, $this->getUniqueAttributes());
         }, ARRAY_FILTER_USE_BOTH);
     }
+
+    /**
+     * Is struct unique.
+     *
+     * @return boolean
+     */
+    public function isUnique(): bool
+    {
+        return $this->unique;
+    }
+
+    /**
+     * Determines if struct is void element.
+     *
+     * @see  https://www.w3.org/TR/html/syntax.html#void-element
+     *
+     * @return boolean
+     */
+    public function isVoidElement(): bool
+    {
+        return in_array($this->getTag(), [
+            'area',
+            'base',
+            'br',
+            'col',
+            'embed',
+            'hr',
+            'img',
+            'input',
+            'link',
+            'meta',
+            'param',
+            'source',
+            'track',
+            'wbr',
+        ]);
+    }
+
+    /*
+     *--------------------------------------------------------------------------
+     * Setters
+     *--------------------------------------------------------------------------
+     */
 
     /**
      * Fluid body setter.
@@ -187,33 +226,6 @@ abstract class Struct
         $this->addAttribute($attribute, $value);
 
         return $this;
-    }
-
-    /**
-     * Determines if struct is void element.
-     *
-     * @see  https://www.w3.org/TR/html/syntax.html#void-element
-     *
-     * @return boolean
-     */
-    public function isVoidElement(): bool
-    {
-        return in_array($this->getTag(), [
-            'area',
-            'base',
-            'br',
-            'col',
-            'embed',
-            'hr',
-            'img',
-            'input',
-            'link',
-            'meta',
-            'param',
-            'source',
-            'track',
-            'wbr',
-        ]);
     }
 
     /**
