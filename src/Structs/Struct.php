@@ -257,5 +257,17 @@ abstract class Struct
         $this->triggerHook(HookTarget::ATTRIBUTES, $this->attributes);
     }
 
+    /**
+     * Set attributes.
+     *
+     * @param array $attributes
+     */
+    protected function setAttributes(array $attributes): void
+    {
+        foreach ($attributes as $key => $value) {
+            $this->addAttribute($key, $value);
+        }
+    }
+
     abstract protected function tag(): string;
 }
