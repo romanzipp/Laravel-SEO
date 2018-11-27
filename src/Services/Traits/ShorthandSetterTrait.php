@@ -20,7 +20,7 @@ trait ShorthandSetterTrait
     {
         return $this->add([
             Title::make()->body($title),
-            OpenGraph::property('title')->content($title),
+            OpenGraph::make()->property('title')->content($title),
         ]);
     }
 
@@ -34,7 +34,7 @@ trait ShorthandSetterTrait
     {
         return $this->addMany([
             Description::make()->name('description')->content($description),
-            OpenGraph::property('description')->content($description),
+            OpenGraph::make()->property('description')->content($description),
         ]);
     }
 
