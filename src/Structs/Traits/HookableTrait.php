@@ -56,9 +56,10 @@ trait HookableTrait
 
             $callbackData = $hook->translateCallbackData($data);
 
-            $data = $callback($callbackData);
-
-            $this->setModifiedHookData($hook, $data);
+            $this->setModifiedHookData(
+                $hook,
+                $callback($callbackData)
+            );
         }
     }
 
