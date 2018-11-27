@@ -205,7 +205,7 @@ abstract class Struct
      * @param  boolean $escape Escape body
      * @return self
      */
-    public function body($body, bool $escape = false): self
+    public function body($body, bool $escape = true): self
     {
         if ($escape) {
             $body = e($body);
@@ -221,11 +221,12 @@ abstract class Struct
      *
      * @param  string     $attribute
      * @param  mixed|null $value
+     * @param  boolean    $escape
      * @return self
      */
-    public function attr(string $attribute, $value = null): self
+    public function attr(string $attribute, $value = null, bool $escape = true): self
     {
-        $this->addAttribute($attribute, $value);
+        $this->addAttribute($attribute, $value, $escape);
 
         return $this;
     }
@@ -245,11 +246,16 @@ abstract class Struct
     /**
      * Add attribute.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param string  $key
+     * @param mixed   $value
+     * @param boolean $escape
      */
-    protected function addAttribute(string $key, $value): void
+    protected function addAttribute(string $key, $value, bool $escape = true): void
     {
+        if ($escape) {
+            $value = e($value);
+        }
+
         $this->attributes[$key] = new Attribute($value);
 
         $this->triggerHook(HookTarget::ATTRIBUTE, [$key => $this->attributes[$key]]);
