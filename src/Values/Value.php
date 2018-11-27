@@ -43,6 +43,16 @@ class Value
     }
 
     /**
+     * Get original value data.
+     *
+     * @return mixed|null
+     */
+    public function getOriginalData()
+    {
+        return $this->originalData;
+    }
+
+    /**
      * Set modified data.
      *
      * @param mixed $data
