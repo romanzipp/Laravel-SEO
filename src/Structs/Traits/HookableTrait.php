@@ -171,4 +171,6 @@ trait HookableTrait
     }
 
     abstract public function getComputedAttribute(string $attribute);
+
+    abstract public function getAttributes(): array;
 }
