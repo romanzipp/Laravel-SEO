@@ -41,4 +41,14 @@ class Value
 
         return $this->originalData;
     }
+
+    /**
+     * Get data string representation.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->data();
+    }
 }
