@@ -2,6 +2,7 @@
 
 namespace romanzipp\Seo\Services;
 
+use Illuminate\Support\Traits\Macroable;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\GetterTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
@@ -18,6 +19,7 @@ class SeoService
     use CollisionTrait;
     use HooksTrait;
     use GetterTrait;
+    use Macroable;
 
     /**
      * Config
