@@ -10,8 +10,8 @@ trait HooksTrait
      * Add hook to given struct class. This is just an
      * alias for the Struct::hook() method.
      *
-     * @param  string $structClass
-     * @param  Hook   $hook
+     * @param  string                      $structClass
+     * @param  \romanzipp\Seo\Helpers\Hook $hook
      * @return void
      */
     public function hook(string $structClass, Hook $hook): void

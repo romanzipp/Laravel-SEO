@@ -17,7 +17,7 @@ trait HookableTrait
 
     /**
      * Add given Hook to the struct.
-     * @param  Hook   $hook
+     * @param  \romanzipp\Seo\Helpers\Hook $hook
      * @return void
      */
     public static function hook(Hook $hook): void
@@ -124,8 +124,8 @@ trait HookableTrait
      * Set the modified struct data from hook
      * as struct value.
      *
-     * @param  Hook   $hook
-     * @param  mixed  $data
+     * @param  \romanzipp\Seo\Helpers\Hook $hook
+     * @param  mixed                       $data
      * @return void
      */
     public function setModifiedHookData(Hook $hook, $data): void

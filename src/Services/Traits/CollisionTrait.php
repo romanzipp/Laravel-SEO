@@ -9,7 +9,7 @@ trait CollisionTrait
     /**
      * Remove struct from existing structs.
      *
-     * @param  Struct $struct
+     * @param  \romanzipp\Seo\Structs\Struct $struct
      * @return void
      */
     public function removeDuplicateStruct(Struct $struct): void
@@ -30,7 +30,7 @@ trait CollisionTrait
     /**
      * Get matching struct duplicate
      *
-     * @param  Struct       $struct
+     * @param  \romanzipp\Seo\Structs\Struct $struct
      * @return array|null
      */
     public function getDuplicateStruct(Struct $struct)

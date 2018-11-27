@@ -17,7 +17,7 @@ class StructBuilder
     /**
      * Struct object
      *
-     * @var Struct
+     * @var \romanzipp\Seo\Structs\Struct
      */
     private $struct;
 
@@ -34,8 +34,8 @@ class StructBuilder
     /**
      * Instantly build struct.
      *
-     * @param  Struct       $struct
-     * @return HtmlString
+     * @param  \romanzipp\Seo\Structs\Struct    $struct
+     * @return \Illuminate\Support\HtmlString
      */
     public static function build(Struct $struct): HtmlString
     {
@@ -45,7 +45,7 @@ class StructBuilder
     /**
      * Render element.
      *
-     * @return HtmlString
+     * @return \Illuminate\Support\HtmlString
      */
     public function render(): HtmlString
     {

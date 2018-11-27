@@ -37,7 +37,7 @@ abstract class Struct
     /**
      * Struct body
      *
-     * @var null|Body
+     * @var null|\romanzipp\Seo\Values\Body
      */
     protected $body = null;
 
@@ -88,7 +88,7 @@ abstract class Struct
     /**
      * Get struct body.
      *
-     * @return mixed|null
+     * @return \romanzipp\Seo\Values\Body|null
      */
     public function getBody()
     {

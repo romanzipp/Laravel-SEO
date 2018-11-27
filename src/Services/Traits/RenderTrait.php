@@ -26,7 +26,7 @@ trait RenderTrait
     /**
      * Render all applied structs.
      *
-     * @return HtmlString
+     * @return \Illuminate\Support\HtmlString
      */
     public function render(): HtmlString
     {

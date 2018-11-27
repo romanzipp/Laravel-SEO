@@ -7,7 +7,7 @@ if ( ! function_exists('seo')) {
     /**
      * Create SeoService instance.
      *
-     * @return SeoService
+     * @return \romanzipp\Seo\Services\SeoService
      */
     function seo(): SeoService
     {

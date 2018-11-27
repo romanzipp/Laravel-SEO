@@ -76,8 +76,8 @@ class SeoService
     /**
      * Get Struct by class.
      *
-     * @param  string        $class
-     * @return Struct|null
+     * @param  string                               $class
+     * @return \romanzipp\Seo\Structs\Struct|null
      */
     public function getStruct(string $class)
     {
@@ -104,7 +104,7 @@ class SeoService
     /**
      * Append struct.
      *
-     * @param Struct $struct
+     * @param \romanzipp\Seo\Structs\Struct $struct
      */
     public function appendStruct(Struct $struct): void
     {
