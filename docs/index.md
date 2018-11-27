@@ -39,3 +39,31 @@ seo()->add(Meta::make()->attr('name', 'application-name')->attr('Application Nam
 seo()->add(Meta::make()->attr('name', 'theme-color')->attr('#f00'));
 seo()->add(Meta::make()->attr('name', 'description')->attr('A description of the page'));
 ```
+
+## SeoService Macros
+
+The `romanzipp\Seo\Services\SeoService` class uses the Laravel `Macroable` trait which allows creating short macros.
+
+### Example
+
+Let's say you want to display a page title in the document body but added a hook to append the site name.
+
+In this case, we'll create a macro to retreive the original Title Struct body value.
+
+```php
+use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Structs\Title;
+
+Seo::macro('getTitle', function () {
+
+    if ( ! $title = $this->getStruct(Title::class)) {
+        return null;
+    }
+
+    if ( ! $body = $title->getBody()) {
+        return null;
+    }
+
+    return $body->getOriginalData();
+});
+```
