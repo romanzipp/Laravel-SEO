@@ -35,8 +35,8 @@ class Value
      */
     public function data()
     {
-        if ($data = $this->data) {
-            return $data;
+        if ($this->data !== null) {
+            return $this->data;
         }
 
         return $this->originalData;
