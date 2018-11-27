@@ -18,7 +18,7 @@ trait ShorthandSetterTrait
      */
     public function title(string $title = null): self
     {
-        return $this->add([
+        return $this->addMany([
             Title::make()->body($title),
             OpenGraph::make()->property('title')->content($title),
         ]);
