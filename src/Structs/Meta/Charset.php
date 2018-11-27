@@ -14,7 +14,7 @@ class Charset extends Meta
 
     public static function defaults(Struct $struct)
     {
-        $struct->attr('charset', 'utf-8');
+        $struct->addAttribute('charset', 'utf-8');
     }
 
     public function charset(string $charset = null)

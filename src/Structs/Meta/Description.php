@@ -14,6 +14,6 @@ class Description extends Meta
 
     public static function defaults(Struct $struct)
     {
-        $struct->attr('name', 'description');
+        $struct->addAttribute('name', 'description');
     }
 }
