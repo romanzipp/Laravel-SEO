@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services;
 
 use romanzipp\Seo\Services\Traits\CollisionTrait;
+use romanzipp\Seo\Services\Traits\GetterTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SetterTrait;
@@ -16,6 +17,7 @@ class SeoService
     use ShorthandSetterTrait;
     use CollisionTrait;
     use HooksTrait;
+    use GetterTrait;
 
     /**
      * Config
@@ -67,6 +69,24 @@ class SeoService
     public function getStructs(): array
     {
         return $this->structs;
+    }
+
+    /**
+     * Get Struct by class.
+     *
+     * @param  string        $class
+     * @return Struct|null
+     */
+    public function getStruct(string $class)
+    {
+        foreach ($this->getStructs() as $struct) {
+
+            if (get_class($struct) == $class) {
+                return $struct;
+            }
+        }
+
+        return null;
     }
 
     /**
