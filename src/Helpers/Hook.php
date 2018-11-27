@@ -148,11 +148,11 @@ class Hook
 
             case HookTarget::BODY:
 
-                return $data;
+                return $data->data();
 
             case HookTarget::ATTRIBUTE;
 
-                return array_values($data)[0];
+                return array_values($data)[0]->data();
 
             case HookTarget::ATTRIBUTES:
 
