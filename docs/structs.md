@@ -197,6 +197,32 @@ seo()->twitter(string $name, $content = null): self
 Twitter::make()->name(string $name)->content($content = null): self
 ```
 
+## Escaping
+
+By default, all body and attribute content is escaped. You can change this behavior by setting the `$escape` parameter on both body and attribute setters.
+
+**Use this feature with caution!**
+
+```php
+public function body($body, bool $escape = true): self
+{
+    // ...
+}
+
+public function attr(string $attribute, $value = null, bool $escape = true): self
+{
+    // ...
+}
+```
+
+```php
+Title::make()->body('Dont \' escape me!', false);
+```
+
+```php
+Meta::make()->attr('content', 'Dont \' escape me!', false);
+```
+
 ## Creating custom Structs
 
 You can create your own Structs simply by extending the `romanzipp\Seo\Structs\Struct` class.
@@ -249,4 +275,34 @@ seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is t
 
 ```html
 <meta name="description" content="This is the SECOND description">
+```
+
+### Defaults
+
+After a Struct instance has been created, we call the static `deftaults` method.
+
+```php
+public function __construct()
+{
+    static::defaults($this);
+}
+
+public static function defaults(self $struct)
+{
+    //
+}
+```
+
+By implementing the `defaults` method on your custom Struct, you can run any custom logic like adding default attributes.
+
+This is used among others in the `romanzipp\Seo\Structs\Meta\Charset` Struct to set a default charset attribute.
+
+```php
+class Charset extends Meta
+{
+    public static function defaults(Struct $struct)
+    {
+        $struct->addAttribute('charset', 'utf-8');
+    }
+}
 ```
