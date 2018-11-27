@@ -1,10 +1,10 @@
 # Laravel SEO
 
-[![Latest Stable Version](https://poser.pugx.org/romanzipp/laravel-seo/version)](https://packagist.org/packages/romanzipp/laravel-seo)
-[![Total Downloads](https://poser.pugx.org/romanzipp/laravel-seo/downloads)](https://packagist.org/packages/romanzipp/laravel-seo)
-[![License](https://poser.pugx.org/romanzipp/laravel-seo/license)](https://packagist.org/packages/romanzipp/laravel-seo)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/?branch=master)
-[![Build Status](https://api.travis-ci.org/romanzipp/Laravel-SEO.svg?branch=master)](https://travis-ci.org/romanzipp/Laravel-SEO)
+[![Latest Stable Version](https://img.shields.io/packagist/v/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
+[![Total Downloads](https://img.shields.io/packagist/dt/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
+[![License](https://img.shields.io/packagist/l/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
+[![Code Quality](https://img.shields.io/scrutinizer/g/romanzipp/Laravel-SEO.svg?style=flat-square)](https://scrutinizer-ci.com/g/romanzipp/Laravel-SEO/?branch=master)
+[![Build Status](https://img.shields.io/travis/romanzipp/Laravel-SEO.svg?style=flat-square)](https://travis-ci.org/romanzipp/Laravel-SEO)
 
 A SEO package made for maximum customization and flexibility.
 
