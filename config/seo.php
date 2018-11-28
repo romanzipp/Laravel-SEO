@@ -26,6 +26,9 @@ return [
 
         'description' => [
 
+            // <meta name="description" content="..." />
+            'meta'      => true,
+
             // <meta property="og:description" content="..." />
             'opengraph' => true,
 

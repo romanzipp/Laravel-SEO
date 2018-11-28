@@ -39,6 +39,8 @@ trait ShorthandSetterTrait
     {
         $config = array_get($this->config, 'shorthand.description');
 
+        $this->addIf($config['meta'], Description::make()->content($description));
+
         $this->addIf($config['opengraph'], OpenGraph::make()->property('description')->content($description));
 
         $this->addIf($config['twitter'], Twitter::make()->name('description')->content($description));
