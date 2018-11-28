@@ -1,3 +1,4 @@
 - [Basic Usage](INDEX.md)
 - [Structs](STRUCTS.md)
 - [Hooks](HOOKS.md)
+- [Example App](EXAMPLE-APP.md)
