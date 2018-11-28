@@ -112,7 +112,7 @@ seo()->render();
 
 ## Documentation
 
-[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/index.md)
+[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
 
 ## Testing
 

@@ -1,3 +1,3 @@
-- [Basic Usage](index.md)
-- [Structs](structs.md)
-- [Hooks](hooks.md)
+- [Basic Usage](INDEX.md)
+- [Structs](STRUCTS.md)
+- [Hooks](HOOKS.md)
