@@ -148,6 +148,8 @@ romanzipp\Seo\Structs\Title::make();
 
 ## Available Shortcuts
 
+You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
+
 #### Title
 
 ```php
@@ -159,6 +161,7 @@ seo()->title(string $title = null): self
 ```php
 Title::make()->body(string $title = null): self
 OpenGraph::make()->property('title')->content(string $title = null): self
+Twitter::make()->name('title')->content(string $title = null): self
 ```
 
 #### Description
@@ -172,6 +175,7 @@ seo()->description(string $description = null): self
 ```php
 Description::make()->name('description')->content(string $description = null): self
 OpenGraph::make()->property('description')->content(string $description = null): self
+Twitter::make()->name('description')->content(string $description = null): self
 ```
 
 #### OpenGraph
