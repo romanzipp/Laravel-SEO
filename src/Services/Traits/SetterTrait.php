@@ -9,7 +9,8 @@ trait SetterTrait
     /**
      * Add struct.
      *
-     * @param Struct $struct
+     * @param  Struct $struct
+     * @return self
      */
     public function add(Struct $struct): self
     {
@@ -21,9 +22,26 @@ trait SetterTrait
     }
 
     /**
+     * Add a given Struct if the given condition is true.
+     *
+     * @param  bool   $boolean
+     * @param  Struct $struct
+     * @return self
+     */
+    public function addIf(bool $boolean, Struct $struct): self
+    {
+        if ($boolean) {
+            $this->add($struct);
+        }
+
+        return $this;
+    }
+
+    /**
      * Add many structs.
      *
-     * @param array $structs
+     * @param  array  $structs
+     * @return self
      */
     public function addMany(array $structs): self
     {
