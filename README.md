@@ -17,7 +17,7 @@ composer require romanzipp/laravel-seo
 Or add `romanzipp/laravel-seo` to your `composer.json`
 
 ```
-"romanzipp/laravel-seo": "^1.0"
+"romanzipp/laravel-seo": "^0.1.4"
 ```
 
 Run `composer install` to pull the latest version.
