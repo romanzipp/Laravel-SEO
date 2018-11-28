@@ -12,7 +12,7 @@ For a full reference of what **could** go to your `<head>` see [joshbuchea's HEA
 ```html
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Page Title</title>
+<title>My Title</title>
 ```
 
 ```php
@@ -22,7 +22,7 @@ use romanzipp\Seo\Structs\Title;
 
 seo()->add(Charset::make()->charset('utf-8'));
 seo()->add(Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover'));
-seo()->add(Title::make()->body('Page Title'));
+seo()->add(Title::make()->body('My Title'));
 ```
 
 ### Meta
@@ -30,7 +30,7 @@ seo()->add(Title::make()->body('Page Title'));
 ```html
 <meta name="application-name" content="Application Name">
 <meta name="theme-color" content="#f00">
-<meta name="description" content="A description of the page">
+<meta name="description" content="My Description">
 ```
 
 ```php
@@ -38,7 +38,43 @@ use romanzipp\Seo\Structs\Meta;
 
 seo()->add(Meta::make()->attr('name', 'application-name')->attr('Application Name'));
 seo()->add(Meta::make()->attr('name', 'theme-color')->attr('#f00'));
-seo()->add(Meta::make()->attr('name', 'description')->attr('A description of the page'));
+seo()->add(Meta::make()->attr('name', 'description')->attr('My Description'));
+```
+
+## SeoService Add Methods
+
+### Add single Struct
+
+```php
+seo()->add(
+    Title::make()->body('My Title')
+);
+```
+
+### Add multiple Structs
+
+```php
+seo()->addMany([
+    Title::make()->body('My Title'),
+    Description::make()->content('My Description'),
+]);
+```
+
+### Conditional additions
+
+```php
+$boolean = mt_rand(0, 1) == 1 ? true : false;
+
+seo()->addIf(
+    $boolean,
+    Title::make()->body('My Title')
+);
+```
+
+### Clear all added Structs
+
+```php
+seo()->clear();
 ```
 
 ## SeoService Macros
