@@ -18,10 +18,15 @@ trait ShorthandSetterTrait
      */
     public function title(string $title = null): self
     {
-        return $this->addMany([
-            Title::make()->body($title),
-            OpenGraph::make()->property('title')->content($title),
-        ]);
+        $config = array_get($this->config, 'shorthand.title');
+
+        $this->addIf($config['tag'], Title::make()->body($title));
+
+        $this->addIf($config['opengraph'], OpenGraph::make()->property('title')->content($title));
+
+        $this->addIf($config['twitter'], Twitter::make()->name('title')->content($title));
+
+        return $this;
     }
 
     /**
@@ -32,10 +37,13 @@ trait ShorthandSetterTrait
      */
     public function description(string $description = null): self
     {
-        return $this->addMany([
-            Description::make()->name('description')->content($description),
-            OpenGraph::make()->property('description')->content($description),
-        ]);
+        $config = array_get($this->config, 'shorthand.description');
+
+        $this->addIf($config['opengraph'], OpenGraph::make()->property('description')->content($description));
+
+        $this->addIf($config['twitter'], Twitter::make()->name('description')->content($description));
+
+        return $this;
     }
 
     /**
