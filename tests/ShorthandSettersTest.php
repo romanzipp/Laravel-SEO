@@ -9,18 +9,44 @@ use romanzipp\Seo\Test\TestCase;
 
 class ShorthandSettersTest extends TestCase
 {
-    public function testTitleSetter()
+    public function testTitleSingleSetter()
     {
+        config([
+            'seo.shorthand.title.tag'       => true,
+            'seo.shorthand.title.twitter'   => false,
+            'seo.shorthand.title.opengraph' => false,
+        ]);
+
         seo()->title('My Title');
 
         $contents = seo()->renderContentsArray();
 
-        $this->assertCount(2, $contents);
+        $this->assertCount(1, $contents);
+    }
+
+    public function testTitleMultipleSetter()
+    {
+        config([
+            'seo.shorthand.title.tag'       => true,
+            'seo.shorthand.title.twitter'   => true,
+            'seo.shorthand.title.opengraph' => true,
+        ]);
+
+        seo()->title('My Title');
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(3, $contents);
     }
 
     public function testDescriptionSetter()
     {
-        seo()->title('My Title');
+        config([
+            'seo.shorthand.description.twitter'   => true,
+            'seo.shorthand.description.opengraph' => true,
+        ]);
+
+        seo()->description('My Description');
 
         $contents = seo()->renderContentsArray();
 
