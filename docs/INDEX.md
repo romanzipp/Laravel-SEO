@@ -20,9 +20,17 @@ use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 
-seo()->add(Charset::make()->charset('utf-8'));
-seo()->add(Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover'));
-seo()->add(Title::make()->body('My Title'));
+seo()->add(
+    Charset::make()->charset('utf-8')
+);
+
+seo()->add(
+    Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover')
+);
+
+seo()->add(
+    Title::make()->body('My Title')
+);
 ```
 
 ### Meta
@@ -36,9 +44,17 @@ seo()->add(Title::make()->body('My Title'));
 ```php
 use romanzipp\Seo\Structs\Meta;
 
-seo()->add(Meta::make()->attr('name', 'application-name')->attr('Application Name'));
-seo()->add(Meta::make()->attr('name', 'theme-color')->attr('#f00'));
-seo()->add(Meta::make()->attr('name', 'description')->attr('My Description'));
+seo()->add(
+    Meta::make()->attr('name', 'application-name')->attr('content', 'Application Name')
+);
+
+seo()->add(
+    Meta::make()->attr('name', 'theme-color')->attr('content', '#f00')
+);
+
+seo()->add(
+    Meta::make()->attr('name', 'description')->attr('content', 'My Description')
+);
 ```
 
 ## SeoService Add Methods
