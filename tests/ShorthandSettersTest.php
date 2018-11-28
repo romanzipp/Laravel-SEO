@@ -39,9 +39,25 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(3, $contents);
     }
 
-    public function testDescriptionSetter()
+    public function testDescriptionSingleSetter()
     {
         config([
+            'seo.shorthand.description.meta'      => true,
+            'seo.shorthand.description.twitter'   => false,
+            'seo.shorthand.description.opengraph' => false,
+        ]);
+
+        seo()->description('My Description');
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(1, $contents);
+    }
+
+    public function testDescriptionMultipleSetter()
+    {
+        config([
+            'seo.shorthand.description.meta'      => true,
             'seo.shorthand.description.twitter'   => true,
             'seo.shorthand.description.opengraph' => true,
         ]);
@@ -50,7 +66,7 @@ class ShorthandSettersTest extends TestCase
 
         $contents = seo()->renderContentsArray();
 
-        $this->assertCount(2, $contents);
+        $this->assertCount(3, $contents);
     }
 
     public function testTwitterSetter()
