@@ -102,7 +102,7 @@ seo()->add(OpenGraph::make()->property('site_name')->content('romanzipp'));
 seo()->og('site_name', 'romanzipp');
 ```
 
-For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/structs.md).
+For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
 
 ### Render
 
