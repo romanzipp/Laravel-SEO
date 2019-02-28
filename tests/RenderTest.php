@@ -5,6 +5,7 @@ namespace romanzipp\Seo\Test;
 use Illuminate\Support\HtmlString;
 use romanzipp\Seo\Builders\StructBuilder;
 use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Test\TestCase;
 
@@ -26,36 +27,100 @@ class RenderTest extends TestCase
 
     public function testAttributeRenderResult()
     {
-        seo()->add(Title::make()->attr('attribute', 'value'));
+        seo()->add(
+            Title::make()->attr('attribute', 'value')
+        );
 
         $this->assertEquals('<title attribute="value"></title>', seo()->render()->toHtml());
     }
 
     public function testSpacedAttributeRenderResult()
     {
-        seo()->add(Title::make()->attr('attribute', 'value '));
+        seo()->add(
+            Title::make()->attr('attribute', 'value ')
+        );
 
-        $this->assertEquals('<title attribute="value "></title>', seo()->render()->toHtml());
+        $this->assertEquals('<title attribute="value"></title>', seo()->render()->toHtml());
     }
 
     public function testWrongSpacedAttributeRenderResult()
     {
-        seo()->add(Title::make()->attr('   attribute ', 'value'));
+        seo()->add(
+            Title::make()->attr('   attribute ', 'value')
+        );
 
         $this->assertEquals('<title attribute="value"></title>', seo()->render()->toHtml());
     }
 
     public function testBodyRenderResult()
     {
-        seo()->add(Title::make()->body('My Body'));
+        seo()->add(
+            Title::make()->body('My Body')
+        );
 
         $this->assertEquals('<title>My Body</title>', seo()->render()->toHtml());
     }
 
     public function testSpacedBodyRenderResult()
     {
-        seo()->add(Title::make()->body('My Body '));
+        seo()->add(
+            Title::make()->body('My Body ')
+        );
 
-        $this->assertEquals('<title>My Body </title>', seo()->render()->toHtml());
+        $this->assertEquals('<title>My Body</title>', seo()->render()->toHtml());
+    }
+
+    public function testNullStringAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', '0')
+        );
+
+        $this->assertEquals('<meta name="0" />', seo()->render()->toHtml());
+    }
+
+    public function testZeroIntegerAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', 0)
+        );
+
+        $this->assertEquals('<meta name="0" />', seo()->render()->toHtml());
+    }
+
+    public function testEmptyStringAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', '')
+        );
+
+        $this->assertEquals('<meta name />', seo()->render()->toHtml());
+    }
+
+    public function testEmptySpaceStringAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', ' ')
+        );
+
+        $this->assertEquals('<meta name />', seo()->render()->toHtml());
+    }
+
+    public function testTrueBooleanAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1" />', seo()->render()->toHtml());
+    }
+
+    public function testFalseBooleanAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', false)
+        );
+
+        $this->assertEquals('<meta name="0" />', seo()->render()->toHtml());
     }
 }
