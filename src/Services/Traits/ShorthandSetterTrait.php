@@ -2,6 +2,7 @@
 
 namespace romanzipp\Seo\Services\Traits;
 
+use Illuminate\Support\Arr;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -18,7 +19,7 @@ trait ShorthandSetterTrait
      */
     public function title(string $title = null): self
     {
-        $config = array_get($this->config, 'shorthand.title');
+        $config = Arr::get($this->config, 'shorthand.title');
 
         $this->addIf($config['tag'], Title::make()->body($title));
 
@@ -37,7 +38,7 @@ trait ShorthandSetterTrait
      */
     public function description(string $description = null): self
     {
-        $config = array_get($this->config, 'shorthand.description');
+        $config = Arr::get($this->config, 'shorthand.description');
 
         $this->addIf($config['meta'], Description::make()->content($description));
 
