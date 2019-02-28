@@ -93,7 +93,7 @@ class StructBuilder
     {
         $attributes = [];
 
-        foreach ($this->struct->getAttributes() as $attribute => $attributeValue) {
+        foreach ($this->struct->getComputedAttributes() as $attribute => $attributeValue) {
 
             $attribute = trim($attribute);
 
