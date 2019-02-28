@@ -14,14 +14,21 @@ class Meta extends Struct
         return 'meta';
     }
 
-    public function name(string $value = null)
+    public function name($value = null)
     {
         $this->addAttribute('name', $value);
 
         return $this;
     }
 
-    public function content(string $value = null)
+    public function httpEquiv($value = null)
+    {
+        $this->addAttribute('http-equiv', $value);
+
+        return $this;
+    }
+
+    public function content($value = null)
     {
         $this->addAttribute('content', $value);
 
