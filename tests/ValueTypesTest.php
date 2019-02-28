@@ -10,52 +10,87 @@ use romanzipp\Seo\Test\TestCase;
 
 class ValueTypesTest extends TestCase
 {
-    public function testStructBodyNullValueType()
+    public function testBodyNullValue()
     {
         seo()->add(
             Title::make()->body(null)
         );
 
-        $struct = seo()->getStructs()[0];
-
-        $this->assertNull($struct->getBody()->data());
+        $this->assertNull(seo()->getStructs()[0]->getBody()->data());
     }
 
-    public function testStructBodyEmptyStringValueType()
+    public function testBodyEmptyStringValue()
     {
         seo()->add(
             Title::make()->body('')
         );
 
-        $struct = seo()->getStructs()[0];
-
-        $this->assertTrue(is_string($struct->getBody()->data()));
+        $this->assertNull(seo()->getStructs()[0]->getBody()->data());
     }
 
-    public function testStructAttributeNullValueType()
+    public function testZeroStringAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', '0')
+        );
+
+        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
+    }
+
+    // --- legacy
+
+    public function testZeroIntegerAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', 0)
+        );
+
+        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
+    }
+
+    public function testNullAttributeValue()
     {
         seo()->add(
             Meta::make()->attr('name', null)
         );
 
-        $struct = seo()->getStructs()[0];
-
-        $attribute = $struct->getAttributes()['name'];
-
-        $this->assertNull($attribute->data());
+        $this->assertNull(seo()->getStructs()[0]->getAttributes()['name']->data());
     }
 
-    public function testStructAttributeEmptyStringValueType()
+    public function testEmptyStringAttributeValue()
     {
         seo()->add(
             Meta::make()->attr('name', '')
         );
 
-        $struct = seo()->getStructs()[0];
+        $this->assertNull(seo()->getStructs()[0]->getAttributes()['name']->data());
+    }
 
-        $attribute = $struct->getAttributes()['name'];
+    public function testEmptySpaceStringAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', ' ')
+        );
 
-        $this->assertTrue(is_string($attribute->data()));
+        $this->assertNull(seo()->getStructs()[0]->getAttributes()['name']->data());
+    }
+
+    public function testTrueBooleanAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '1');
+    }
+
+    public function testFalseBooleanAttributeValue()
+    {
+        seo()->add(
+            Meta::make()->attr('name', false)
+        );
+
+        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
     }
 
     public function testHookCallbackBodyType()
