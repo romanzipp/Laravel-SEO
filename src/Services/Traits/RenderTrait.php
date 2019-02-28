@@ -32,7 +32,9 @@ trait RenderTrait
     {
         $contents = $this->renderContentsArray();
 
-        return new HtmlString(implode(PHP_EOL, $contents));
+        return new HtmlString(
+            implode(StructBuilder::$separator, $contents)
+        );
     }
 
     abstract public function getStructs(): array;

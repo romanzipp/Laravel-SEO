@@ -15,6 +15,13 @@ class StructBuilder
     public static $indent = null;
 
     /**
+     * Separator for rendered structs
+     *
+     * @var null|mixed
+     */
+    public static $separator = PHP_EOL;
+
+    /**
      * Struct object
      *
      * @var \romanzipp\Seo\Structs\Struct
@@ -86,12 +93,11 @@ class StructBuilder
     {
         $attributes = [];
 
-        foreach ($this->struct->getComputedAttributes() as $attribute => $attributeValue) {
+        foreach ($this->struct->getAttributes() as $attribute => $attributeValue) {
 
             $attribute = trim($attribute);
 
-            if ($attributeValue) {
-
+            if ($attributeValue !== null) {
                 $attribute .= '="' . $attributeValue . '"';
             }
 
