@@ -16,14 +16,14 @@ class Link extends Struct
         return 'link';
     }
 
-    public function rel(string $value = null)
+    public function rel($value = null)
     {
         $this->addAttribute('rel', $value);
 
         return $this;
     }
 
-    public function href(string $value = null)
+    public function href($value = null)
     {
         $this->addAttribute('href', $value);
 

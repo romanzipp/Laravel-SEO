@@ -17,7 +17,7 @@ class Charset extends Meta
         $struct->addAttribute('charset', 'utf-8');
     }
 
-    public function charset(string $charset = null)
+    public function charset($charset = null)
     {
         $this->addAttribute('charset', $charset);
 
