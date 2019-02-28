@@ -113,13 +113,7 @@ abstract class Struct
      */
     public function getComputedAttributes(): array
     {
-        $attributes = $this->attributes;
-
-        array_walk($attributes, function (&$value) {
-            $value = (string) $value;
-        });
-
-        return $attributes;
+        return $this->getAttributes();
     }
 
     /**
@@ -207,8 +201,8 @@ abstract class Struct
      */
     public function body($body, bool $escape = true): self
     {
-        if ($escape && $body !== null) {
-            $body = e($body);
+        if ($escape) {
+            $body = $this->escapeValue($body);
         }
 
         $this->setBody($body);
@@ -252,8 +246,8 @@ abstract class Struct
      */
     protected function addAttribute(string $key, $value, bool $escape = true): void
     {
-        if ($escape && $value !== null) {
-            $value = e($value);
+        if ($escape) {
+            $value = $this->escapeValue($value);
         }
 
         $this->attributes[$key] = new Attribute($value);
@@ -273,6 +267,38 @@ abstract class Struct
         foreach ($attributes as $key => $value) {
             $this->addAttribute($key, $value);
         }
+    }
+
+    /**
+     * Escape attribute value.
+     *
+     * @param  mixed         $value
+     * @return string|null
+     */
+    protected function escapeValue($value)
+    {
+        switch (gettype($value)) {
+
+            case 'NULL';
+
+                return null;
+
+            case 'integer':
+
+                return (string) $value;
+
+            case 'boolean':
+
+                return $value === true ? '1' : '0';
+        }
+
+        $value = trim($value);
+
+        if ($value === '') {
+            return null;
+        }
+
+        return e($value);
     }
 
     abstract protected function tag(): string;
