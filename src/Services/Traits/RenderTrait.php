@@ -32,6 +32,10 @@ trait RenderTrait
     {
         $contents = $this->renderContentsArray();
 
+        if (StructBuilder::$separator === null) {
+            return implode('', $contents);
+        }
+
         return new HtmlString(
             implode(StructBuilder::$separator, $contents)
         );
