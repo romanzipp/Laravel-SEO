@@ -97,7 +97,7 @@ class StructBuilder
 
             $attribute = trim($attribute);
 
-            if ($attributeValue !== null) {
+            if ($attributeValue->data() !== null) {
                 $attribute .= '="' . $attributeValue . '"';
             }
 
