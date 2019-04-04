@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
+use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -47,6 +48,20 @@ trait ShorthandSetterTrait
         $this->addIf($config['twitter'], Twitter::make()->name('description')->content($description));
 
         return $this;
+    }
+
+    /**
+     * Add name-content Meta struct.
+     *
+     * @param  string     $name
+     * @param  mixed|null $content
+     * @return self
+     */
+    public function meta(string $name, $content = null)
+    {
+        $this->add(
+            Meta::make()->name($name)->content($content)
+        );
     }
 
     /**
