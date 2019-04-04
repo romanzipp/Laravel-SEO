@@ -90,74 +90,9 @@ seo()->add(
 <meta name="twitter:card" content="summary" />
 ```
 
-## Available Structs
-
-#### Base
-
-```php
-romanzipp\Seo\Structs\Base::make();
-```
-
-#### Link
-
-```php
-romanzipp\Seo\Structs\Link::make();
-```
-
-#### Meta
-
-```php
-romanzipp\Seo\Structs\Meta::make();
-```
-
-```php
-romanzipp\Seo\Structs\Meta\AppLink::make()
-    ->property(string $value)
-    ->content(string $value);
-```
-
-```php
-romanzipp\Seo\Structs\Meta\Charset::make()
-    ->charset(string $charset);
-```
-
-```php
-romanzipp\Seo\Structs\Meta\OpenGraph::make()
-    ->property(string $value)
-    ->content(string $value = null);
-```
-
-```php
-romanzipp\Seo\Structs\Meta\Twitter::make()
-    ->name(string $value)
-    ->content(string $value);
-```
-
-```php
-romanzipp\Seo\Structs\Meta\Viewport::make()
-    ->content(string $content);
-```
-
-#### Noscript
-
-```php
-romanzipp\Seo\Structs\Noscript::make();
-```
-
-#### Script
-
-```php
-romanzipp\Seo\Structs\Script::make();
-```
-
-#### Title
-
-```php
-romanzipp\Seo\Structs\Title::make();
-```
-
 ## Available Shortcuts
 
+When using shorthand methods, you will skip the `seo()->add()` method.
 You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
 
 #### Title
@@ -232,6 +167,72 @@ seo()->twitter(string $name, $content = null);
 seo()->add(
     Twitter::make()->name(string $name)->content($content = null)
 );
+```
+
+## Available Structs
+
+#### Base
+
+```php
+romanzipp\Seo\Structs\Base::make();
+```
+
+#### Link
+
+```php
+romanzipp\Seo\Structs\Link::make();
+```
+
+#### Meta
+
+```php
+romanzipp\Seo\Structs\Meta::make();
+```
+
+```php
+romanzipp\Seo\Structs\Meta\AppLink::make()
+    ->property(string $value)
+    ->content(string $value);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Charset::make()
+    ->charset(string $charset);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\OpenGraph::make()
+    ->property(string $value)
+    ->content(string $value = null);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Twitter::make()
+    ->name(string $value)
+    ->content(string $value);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Viewport::make()
+    ->content(string $content);
+```
+
+#### Noscript
+
+```php
+romanzipp\Seo\Structs\Noscript::make();
+```
+
+#### Script
+
+```php
+romanzipp\Seo\Structs\Script::make();
+```
+
+#### Title
+
+```php
+romanzipp\Seo\Structs\Title::make();
 ```
 
 ## Escaping
