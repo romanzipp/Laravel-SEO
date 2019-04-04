@@ -80,7 +80,7 @@ class ShorthandSettersTest extends TestCase
         $this->assertInstanceOf(Twitter::class, seo()->getStructs()[0]);
     }
 
-    public function setOpenGraphSetter()
+    public function testOpenGraphSetter()
     {
         seo()->og('site_name', 'My Site Name');
 
