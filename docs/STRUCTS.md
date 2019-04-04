@@ -5,21 +5,23 @@
 
 # Structs
 
-**Structs** are a code representation of **HTML elements**.
+**Structs** are a code representation of **HTML head elements**.
 
 We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.html#writing-html-documents-elements) and **normal elements**.
 **Void elements**, like `<meta />` can not have a closing tag other than **normal elements** like `<title></title>`.
 
 ## Examples
 
-For simplicity reasons, we only show the Struct declaration. Always remember to add Structs using `seo()->add($struct)`.
+Always remember to add Struct instances using `seo()->add($struct)` when not using [shorthand methods](#available-shortcuts).
 
 ### Titles
 
 ```php
 use romanzipp\Seo\Structs\Title;
 
-Title::make()->body('This is a Title');
+seo()->add(
+    Title::make()->body('This is a Title')
+);
 ```
 
 ```html
@@ -33,7 +35,9 @@ Using the `attr(string $attribute, $value = null)` method, we can append attribu
 ```php
 use romanzipp\Seo\Structs\Meta;
 
-Meta::make()->attr('name', 'theme-color')->attr('content', 'red');
+seo()->add(
+    Meta::make()->attr('name', 'theme-color')->attr('content', 'red')
+);
 ```
 
 ```html
@@ -53,11 +57,15 @@ use romanzipp\Seo\Structs\Meta\OpenGraph;
 So instead of using the `attr()` Struct method, we can use the shorthand `property()` and `content()` methods by the `OpenGraph` class.
 
 ```php
-OpenGraph::make()->attr('property', 'og:site_name')->attr('content', 'This is a Site Name');
+seo()->add(
+    OpenGraph::make()->attr('property', 'og:site_name')->attr('content', 'This is a Site Name')
+);
 ```
 
 ```php
-OpenGraph::make()->property('site_name')->content('This is a Site Name');
+seo()->add(
+    OpenGraph::make()->property('site_name')->content('This is a Site Name')
+);
 ```
 
 Both compile to
@@ -73,7 +81,9 @@ Both compile to
 ```php
 use romanzipp\Seo\Structs\Meta\Twitter;
 
-Twitter::make()->name('card')->content('summary');
+seo()->add(
+    Twitter::make()->name('card')->content('summary')
+);
 ```
 
 ```html
@@ -153,65 +163,75 @@ You can configure which Structs should be added on shorthand calls in the `seo.p
 #### Title
 
 ```php
-seo()->title(string $title = null): self
+seo()->title(string $title = null);
 ```
 
 ... same as ...
 
 ```php
-Title::make()->body(string $title = null): self
-OpenGraph::make()->property('title')->content(string $title = null): self
-Twitter::make()->name('title')->content(string $title = null): self
+seo()->addMany([
+    Title::make()->body(string $title = null),
+    OpenGraph::make()->property('title')->content(string $title = null),
+    Twitter::make()->name('title')->content(string $title = null),
+]);
 ```
 
 #### Description
 
 ```php
-seo()->description(string $description = null): self
+seo()->description(string $description = null);
 ```
 
 ... same as ...
 
 ```php
-Description::make()->name('description')->content(string $description = null): self
-OpenGraph::make()->property('description')->content(string $description = null): self
-Twitter::make()->name('description')->content(string $description = null): self
+seo()->addMany([
+    Description::make()->name('description')->content(string $description = null),
+    OpenGraph::make()->property('description')->content(string $description = null),
+    Twitter::make()->name('description')->content(string $description = null),
+]);
 ```
 
 #### Meta name-content Tag
 
 ```php
-seo()->meta(string $name, $content = null): self
+seo()->meta(string $name, $content = null);
 ```
 
 ... same as ...
 
 ```php
-Meta::make()->name(string $name)->content($content = null): self
+seo()->add(
+    Meta::make()->name(string $name)->content($content = null)
+);
 ```
 
 #### OpenGraph
 
 ```php
-seo()->og(string $property, $content = null): self
+seo()->og(string $property, $content = null);
 ```
 
 ... same as ...
 
 ```php
-OpenGraph::make()->property(string $property)->content($content = null): self
+seo()->add(
+    OpenGraph::make()->property(string $property)->content($content = null)
+);
 ```
 
 #### Twitter
 
 ```php
-seo()->twitter(string $name, $content = null): self
+seo()->twitter(string $name, $content = null);
 ```
 
 ... same as ...
 
 ```php
-Twitter::make()->name(string $name)->content($content = null): self
+seo()->add(
+    Twitter::make()->name(string $name)->content($content = null)
+);
 ```
 
 ## Escaping
