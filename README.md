@@ -61,54 +61,102 @@ class IndexController
 
 ### Examples
 
+#### Title
+
 ```php
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Structs\Meta\Charset;
-use romanzipp\Seo\Structs\Meta\Twitter;
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-```
-
-```php
-// <title>romanzipp</title>
 
 seo()->add(Title::make()->body('romanzipp'));
-
+```
+```php
 seo()->title('romanzipp');
 ```
 
+... both compile to ...
+
+```html
+<title>romanzipp</title>
+```
+
+#### Charset
+
 ```php
-// <meta charset="utf-8" />
-
-seo()->add(Charset::make());
-
-seo()->add(Charset::make()->charset('utf-8'));
+use romanzipp\Seo\Structs\Meta\Charset;
 
 seo()->add(new Charset);
 ```
 
 ```php
-// <meta name="twitter:card" content="summary" />
+use romanzipp\Seo\Structs\Meta\Charset;
 
+seo()->add(Charset::make());
+```
+
+```php
+use romanzipp\Seo\Structs\Meta\Charset;
+
+seo()->add(Charset::make()->charset('utf-8'));
+```
+
+... all compile to ...
+
+```html
+<meta charset="utf-8" />
+```
+
+#### Twitter
+
+```php
 seo()->twitter('card', 'summary');
+```
+
+```php
+use romanzipp\Seo\Structs\Meta\Twitter;
 
 seo()->add(Twitter::make()->name('card')->content('summary'));
 ```
 
+... both compile to ...
+
+```html
+<meta name="twitter:card" content="summary" />
+```
+
+#### Open Graph
+
 ```php
-// <meta property="og:site_name" content="romanzipp" />
+seo()->twitter('site_name', 'romanzipp');
+```
 
-seo()->add(OpenGraph::make()->property('site_name')->content('romanzipp'));
+```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
 
-seo()->og('site_name', 'romanzipp');
+seo()->add(OpenGraph::make()->name('site_name')->content('romanzipp'));
+```
+
+... both compile to ...
+
+```html
+<meta name="og:site_name" content="romanzipp" />
 ```
 
 For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
 
 ### Render
 
-```php
-seo()->render();
+```blade
+{{ seo()->render() }}
 ```
+
+## Cheat Sheet
+
+| Code | Rendered HTML |
+|--|--|
+| `seo()->title('romanzipp')` | `<title>romanzipp</title>` |
+| `seo()->meta('author', 'romanzipp')` | `<meta name="author" content="romanzipp" />` |
+| `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
+| `seo()->og('site_name', 'romanzipp')` | `<meta name="og:site_name" content="romanzipp" />` |
+| `seo()->add(Charset::make()->charset('utf-8'))` | `<meta charset="utf-8" />` |
 
 ## Documentation
 
