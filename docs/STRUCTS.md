@@ -178,6 +178,18 @@ OpenGraph::make()->property('description')->content(string $description = null):
 Twitter::make()->name('description')->content(string $description = null): self
 ```
 
+#### Meta name-content Tag
+
+```php
+seo()->meta(string $name, $content = null): self
+```
+
+... same as ...
+
+```php
+Meta::make()->name(string $name)->content($content = null): self
+```
+
 #### OpenGraph
 
 ```php

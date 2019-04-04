@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
 use romanzipp\Seo\Test\TestCase;
@@ -89,5 +90,16 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertInstanceOf(OpenGraph::class, seo()->getStructs()[0]);
+    }
+
+    public function testMetaSetter()
+    {
+        seo()->meta('author', 'My Little Pony');
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertInstanceOf(Meta::class, seo()->getStructs()[0]);
     }
 }
