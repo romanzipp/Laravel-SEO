@@ -11,7 +11,7 @@
 $ php artisan make:provider SeoServiceProvider
 ```
 
-#### `Providers/ServiceProvider.php`
+#### `Providers/SeoServiceProvider.php`
 
 ```php
 namespace App\Providers;
@@ -62,7 +62,9 @@ class SeoServiceProvider extends ServiceProvider
 
     private function bootDefaultStructs()
     {
-        seo()->add(Title::make()->body(null));
+        seo()->add(
+            Title::make()->body(null)
+        );
 
         seo()->addMany([
             Charset::make(),
