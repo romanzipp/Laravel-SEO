@@ -34,4 +34,11 @@ class Meta extends Struct
 
         return $this;
     }
+
+    public function value($value)
+    {
+        $this->addAttribute('value', $value);
+
+        return $this;
+    }
 }
