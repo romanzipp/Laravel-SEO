@@ -49,4 +49,17 @@ class EscapingTest extends TestCase
 
         $this->assertEquals($expected, $meta);
     }
+
+    public function testShorthandSkipEscaping()
+    {
+        $url = 'http://example.com/something?param1=123&param2=456';
+
+        $expected = '<meta name="twitter:player" content="' . $url . '" />';
+
+        seo()->twitter('player', $url, false);
+
+        $meta = seo()->renderContentsArray()[0];
+
+        $this->assertEquals($expected, $meta);
+    }
 }
