@@ -130,42 +130,48 @@ seo()->addMany([
 #### Meta name-content Tag
 
 ```php
-seo()->meta(string $name, $content = null);
+seo()->meta(string $name, $content = null, bool $escape = true);
 ```
 
 ... same as ...
 
 ```php
 seo()->add(
-    Meta::make()->name(string $name)->content($content = null)
+    Meta::make()
+        ->name(string $name, bool $escape = true)
+        ->content($content = null, bool $escape = true)
 );
 ```
 
 #### OpenGraph
 
 ```php
-seo()->og(string $property, $content = null);
+seo()->og(string $property, $content = null, bool $escape = true);
 ```
 
 ... same as ...
 
 ```php
 seo()->add(
-    OpenGraph::make()->property(string $property)->content($content = null)
+    OpenGraph::make()
+        ->property(string $property, bool $escape = true)
+        ->content($content = null, bool $escape = true)
 );
 ```
 
 #### Twitter
 
 ```php
-seo()->twitter(string $name, $content = null);
+seo()->twitter(string $name, $content = null, bool $escape = true);
 ```
 
 ... same as ...
 
 ```php
 seo()->add(
-    Twitter::make()->name(string $name)->content($content = null)
+    Twitter::make()
+        ->name(string $name, bool $escape = true)
+        ->content($content = null, bool $escape = true)
 );
 ```
 
@@ -191,30 +197,30 @@ romanzipp\Seo\Structs\Meta::make();
 
 ```php
 romanzipp\Seo\Structs\Meta\AppLink::make()
-    ->property(string $value)
-    ->content(string $value);
+    ->property(string $value, bool $escape = true)
+    ->content(string $value, bool $escape = true);
 ```
 
 ```php
 romanzipp\Seo\Structs\Meta\Charset::make()
-    ->charset(string $charset);
+    ->charset(string $charset, bool $escape = true);
 ```
 
 ```php
 romanzipp\Seo\Structs\Meta\OpenGraph::make()
-    ->property(string $value)
-    ->content(string $value = null);
+    ->property(string $value, bool $escape = true)
+    ->content(string $value = null, bool $escape = true);
 ```
 
 ```php
 romanzipp\Seo\Structs\Meta\Twitter::make()
-    ->name(string $value)
-    ->content(string $value);
+    ->name(string $value, bool $escape = true)
+    ->content(string $value, bool $escape = true);
 ```
 
 ```php
 romanzipp\Seo\Structs\Meta\Viewport::make()
-    ->content(string $content);
+    ->content(string $content, bool $escape = true);
 ```
 
 #### Noscript
@@ -237,21 +243,9 @@ romanzipp\Seo\Structs\Title::make();
 
 ## Escaping
 
-By default, all body and attribute content is escaped. You can change this behavior by setting the `$escape` parameter on both body and attribute setters.
+By default, all body and attribute content is escaped via the Laravel [`e()`](https://github.com/illuminate/support/blob/5.8/helpers.php#L607) helper function. You can change this behavior by setting the `$escape` parameter on all attribute setters.
 
 **Use this feature with caution!**
-
-```php
-public function body($body, bool $escape = true): self
-{
-    // ...
-}
-
-public function attr(string $attribute, $value = null, bool $escape = true): self
-{
-    // ...
-}
-```
 
 ```php
 Title::make()->body('Dont \' escape me!', false);

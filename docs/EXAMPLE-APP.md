@@ -24,6 +24,7 @@ use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
+use romanzipp\Seo\Structs\Meta\Twitter;
 use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 
@@ -62,9 +63,8 @@ class SeoServiceProvider extends ServiceProvider
 
     private function bootDefaultStructs()
     {
-        seo()->add(
-            Title::make()->body(null)
-        );
+        seo()->title('Home');
+        seo()->description('My Description');
 
         seo()->addMany([
             Charset::make(),
@@ -72,16 +72,19 @@ class SeoServiceProvider extends ServiceProvider
         ]);
 
         seo()->addMany([
+            Meta::make()->name('mobile-web-app-capable')->content('yes'),
             Meta::make()->name('theme-color')->content('#f03a17'),
-            Description::make()->content('My Description'),
         ]);
 
         seo()->addMany([
             OpenGraph::make()->property('title')->content('Site-Name'),
-            OpenGraph::make()->property('description')->content('Description'),
             OpenGraph::make()->property('site_name')->content('Site-Name'),
             OpenGraph::make()->property('locale')->content('de_DE'),
         ]);
+
+        seo()->add(
+            Twitter::make()->name('player')->content('http://example.com/player?video=1&t=5', false)
+        );
     }
 }
 ```
