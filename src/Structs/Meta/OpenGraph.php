@@ -13,9 +13,9 @@ class OpenGraph extends Meta
 
     protected $uniqueAttributes = ['property'];
 
-    public function property($value = null)
+    public function property($value = null, bool $escape = true)
     {
-        $this->addAttribute('property', 'og:' . $value);
+        $this->addAttribute('property', 'og:' . $value, $escape);
 
         return $this;
     }

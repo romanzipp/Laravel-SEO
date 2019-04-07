@@ -9,9 +9,9 @@ use romanzipp\Seo\Structs\Meta;
  */
 class AppLink extends Meta
 {
-    public function property($value)
+    public function property($value, bool $escape = true)
     {
-        $this->addAttribute('property', 'al:' . $value);
+        $this->addAttribute('property', 'al:' . $value, $escape);
 
         return $this;
     }
