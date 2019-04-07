@@ -34,4 +34,19 @@ class EscapingTest extends TestCase
 
         $this->assertEquals('<meta content="' . e($malicious) . '" />', $meta);
     }
+
+    public function testSkipEscaping()
+    {
+        $url = 'http://example.com/something?param1=123&param2=456';
+
+        $expected = '<meta name="url" content="' . $url . '" />';
+
+        seo()->add(
+            Meta::make()->attr('name', 'url')->attr('content', $url, false)
+        );
+
+        $meta = seo()->renderContentsArray()[0];
+
+        $this->assertEquals($expected, $meta);
+    }
 }
