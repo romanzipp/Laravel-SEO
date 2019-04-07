@@ -16,17 +16,24 @@ trait ShorthandSetterTrait
      * Add title.
      *
      * @param  string|null $title
+     * @param  boolean     $escape
      * @return self
      */
-    public function title(string $title = null): self
+    public function title(string $title = null, bool $escape = true): self
     {
         $config = Arr::get($this->config, 'shorthand.title');
 
-        $this->addIf($config['tag'], Title::make()->body($title));
+        $this->addIf(
+            $config['tag'], Title::make()->body($title, $escape)
+        );
 
-        $this->addIf($config['opengraph'], OpenGraph::make()->property('title')->content($title));
+        $this->addIf(
+            $config['opengraph'], OpenGraph::make()->property('title')->content($title, $escape)
+        );
 
-        $this->addIf($config['twitter'], Twitter::make()->name('title')->content($title));
+        $this->addIf(
+            $config['twitter'], Twitter::make()->name('title')->content($title, $escape)
+        );
 
         return $this;
     }
@@ -35,17 +42,24 @@ trait ShorthandSetterTrait
      * Add description.
      *
      * @param  string|null $description
+     * @param  boolean     $escape
      * @return self
      */
-    public function description(string $description = null): self
+    public function description(string $description = null, bool $escape = true): self
     {
         $config = Arr::get($this->config, 'shorthand.description');
 
-        $this->addIf($config['meta'], Description::make()->content($description));
+        $this->addIf(
+            $config['meta'], Description::make()->content($description, $escape)
+        );
 
-        $this->addIf($config['opengraph'], OpenGraph::make()->property('description')->content($description));
+        $this->addIf(
+            $config['opengraph'], OpenGraph::make()->property('description')->content($description, $escape)
+        );
 
-        $this->addIf($config['twitter'], Twitter::make()->name('description')->content($description));
+        $this->addIf(
+            $config['twitter'], Twitter::make()->name('description')->content($description, $escape)
+        );
 
         return $this;
     }
@@ -55,12 +69,13 @@ trait ShorthandSetterTrait
      *
      * @param  string     $name
      * @param  mixed|null $content
+     * @param  boolean    $escape
      * @return self
      */
-    public function meta(string $name, $content = null)
+    public function meta(string $name, $content = null, bool $escape = true)
     {
         $this->add(
-            Meta::make()->name($name)->content($content)
+            Meta::make()->name($name)->content($content, $escape)
         );
     }
 
@@ -69,12 +84,13 @@ trait ShorthandSetterTrait
      *
      * @param  string     $name
      * @param  mixed|null $content
+     * @param  boolean    $escape
      * @return self
      */
-    public function twitter(string $name, $content = null): self
+    public function twitter(string $name, $content = null, bool $escape = true): self
     {
         return $this->add(
-            Twitter::make()->name($name)->content($content)
+            Twitter::make()->name($name)->content($content, $escape)
         );
     }
 
@@ -83,12 +99,13 @@ trait ShorthandSetterTrait
      *
      * @param  string     $property
      * @param  mixed|null $content
+     * @param  boolean    $escape
      * @return self
      */
-    public function og(string $property, $content = null): self
+    public function og(string $property, $content = null, bool $escape = true): self
     {
         return $this->add(
-            OpenGraph::make()->property($property)->content($content)
+            OpenGraph::make()->property($property)->content($content, $escape)
         );
     }
 }
