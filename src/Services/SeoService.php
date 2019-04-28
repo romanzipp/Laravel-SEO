@@ -40,7 +40,7 @@ class SeoService
      *
      * @var array
      */
-    protected $schemeOrgTypes = [];
+    protected $schemaOrgTypes = [];
 
     /**
      * Constructor
