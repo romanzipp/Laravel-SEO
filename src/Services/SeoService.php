@@ -6,6 +6,7 @@ use Illuminate\Support\Traits\Macroable;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
+use romanzipp\Seo\Services\Traits\SchemaOrgTrait;
 use romanzipp\Seo\Services\Traits\SetterTrait;
 use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
 use romanzipp\Seo\Structs\Struct;
@@ -18,6 +19,7 @@ class SeoService
     use CollisionTrait;
     use HooksTrait;
     use Macroable;
+    use SchemaOrgTrait;
 
     /**
      * Config
@@ -32,6 +34,13 @@ class SeoService
      * @var array
      */
     protected $structs = [];
+
+    /**
+     * Applied schema.org schemes.
+     *
+     * @var array
+     */
+    protected $schemeOrgTypes = [];
 
     /**
      * Constructor
