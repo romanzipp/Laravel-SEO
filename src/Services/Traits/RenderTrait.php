@@ -14,13 +14,17 @@ trait RenderTrait
      */
     public function renderContentsArray(): array
     {
-        $structs = $this->getStructs();
-
-        $contents = array_map(function ($struct) {
+        $structs = array_map(function ($struct) {
             return StructBuilder::build($struct)->toHtml();
-        }, $structs);
+        }, $this->getStructs());
 
-        return array_values($contents);
+        $schemas = array_map(function ($schema) {
+            return $schema->toScript();
+        }, $this->getSchemes());
+
+        return array_values(
+            array_merge($structs, $schemas)
+        );
     }
 
     /**
