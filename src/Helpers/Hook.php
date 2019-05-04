@@ -8,7 +8,7 @@ class Hook
 {
     /**
      * Struct attribute to modify, defined in the
-     * HookTarget Enum
+     * \romanzipp\Seo\Enums\HookTarget enum.
      *
      * @var int
      */
@@ -23,28 +23,28 @@ class Hook
     protected $targetAttribute;
 
     /**
-     * Filter the structs by certain attributes and values
+     * Filter the structs by certain attributes and values.
      *
      * @var array
      */
     protected $filterAttributes = [];
 
     /**
-     * Callback to be applied on the target
+     * Callback to be applied on the target.
      *
      * @var callable
      */
     protected $callback;
 
     /**
-     * Wether the current hook callback has been executed
+     * Wether the current hook callback has been executed.
      *
      * @var boolean
      */
     protected $executed = false;
 
     /**
-     * Create new Hook instance
+     * Create new Hook instance.
      *
      * @return self
      */
@@ -59,21 +59,41 @@ class Hook
      *--------------------------------------------------------------------------
      */
 
+    /**
+     * Get the specified hook target defined in \romanzipp\Seo\Enums\HookTarget.
+     *
+     * @return int \romanzipp\Seo\Enums\HookTarget enum value
+     */
     public function getTarget(): int
     {
         return $this->target;
     }
 
+    /**
+     * Get the specified hook target enum (attribute, attributes, body).
+     *
+     * @return mixed
+     */
     public function getTargetAttribute()
     {
         return $this->targetAttribute;
     }
 
+    /**
+     * Get specified attribute to filter for the hook.
+     *
+     * @return array
+     */
     public function getFilterAttributes(): array
     {
         return $this->filterAttributes;
     }
 
+    /**
+     * Get the callback to be applied.
+     *
+     * @return callable
+     */
     public function getCallback(): callable
     {
         return $this->callback;
@@ -85,6 +105,11 @@ class Hook
      *--------------------------------------------------------------------------
      */
 
+    /**
+     * Set hook target to body.
+     *
+     * @return self
+     */
     public function onBody(): self
     {
         $this->target = HookTarget::BODY;
@@ -92,6 +117,11 @@ class Hook
         return $this;
     }
 
+    /**
+     * Set hook traget on attributes.
+     *
+     * @return self
+     */
     public function onAttributes(): self
     {
         $this->target = HookTarget::ATTRIBUTES;
@@ -99,6 +129,12 @@ class Hook
         return $this;
     }
 
+    /**
+     * Set hook target on specified attribute.
+     *
+     * @param  string $attribute Struct attribute
+     * @return self
+     */
     public function onAttribute(string $attribute): self
     {
         $this->target = HookTarget::ATTRIBUTE;
@@ -108,6 +144,13 @@ class Hook
         return $this;
     }
 
+    /**
+     * Add a hook attribute filter.
+     *
+     * @param  string $attribute Attribute to search for
+     * @param  mixed  $value     Attribute value to search for
+     * @return self
+     */
     public function whereAttribute(string $attribute, $value): self
     {
         $this->filterAttributes[$attribute] = $value;
@@ -115,6 +158,12 @@ class Hook
         return $this;
     }
 
+    /**
+     * Set the callback to be applied.
+     *
+     * @param  callable $callback Callback
+     * @return self
+     */
     public function callback(callable $callback): self
     {
         $this->callback = $callback;
@@ -122,6 +171,11 @@ class Hook
         return $this;
     }
 
+    /**
+     * Set executed state.
+     *
+     * @param bool $status State
+     */
     public function setExecuted(bool $status): self
     {
         $this->executed = $status;
