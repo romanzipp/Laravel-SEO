@@ -5,7 +5,7 @@ namespace romanzipp\Seo\Structs;
 use romanzipp\Seo\Structs\Struct;
 
 /**
- * @see https://github.com/joshbuchea/HEAD#elements
+ * @see https://github.com/joshbuchea/HEAD#link
  */
 class Link extends Struct
 {

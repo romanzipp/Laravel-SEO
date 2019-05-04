@@ -5,6 +5,9 @@ namespace romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Struct;
 
+/**
+ * @see  https://laravel.com/docs/csrf#csrf-x-csrf-token
+ */
 class CsrfToken extends Meta
 {
     protected $unique = true;
