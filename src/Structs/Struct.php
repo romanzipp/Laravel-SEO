@@ -162,7 +162,7 @@ abstract class Struct
     /**
      * Determines if struct is void element.
      *
-     * @see  https://www.w3.org/TR/html/syntax.html#void-element
+     * @see  https://www.w3.org/TR/html/syntax.html#void-elements
      *
      * @return boolean
      */
