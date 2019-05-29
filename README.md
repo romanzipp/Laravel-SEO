@@ -14,15 +14,7 @@ A SEO package made for maximum customization and flexibility.
 composer require romanzipp/laravel-seo
 ```
 
-Or add `romanzipp/laravel-seo` to your `composer.json`
-
-```
-"romanzipp/laravel-seo": "^1.0.0"
-```
-
-Run `composer install` to pull the latest version.
-
-**If you use Laravel 5.5+ you are already done, otherwise continue:**
+**If you use Laravel 5.5+ you are already done, otherwise continue.**
 
 Add Service Provider to your `app.php` configuration file:
 
