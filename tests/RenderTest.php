@@ -138,4 +138,20 @@ class RenderTest extends TestCase
 
         $this->assertEquals('<meta name="first" />  <meta name="second" />', seo()->render()->toHtml());
     }
+
+    public function testIndent()
+    {
+        StructBuilder::$separator = PHP_EOL;
+        StructBuilder::$indent = '  ';
+
+        seo()->add(
+            Meta::make()->attr('name', 'first')
+        );
+
+        seo()->add(
+            Meta::make()->attr('name', 'second')
+        );
+
+        $this->assertEquals('  <meta name="first" />' . PHP_EOL . '  <meta name="second" />', seo()->render()->toHtml());
+    }
 }
