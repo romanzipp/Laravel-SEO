@@ -62,6 +62,31 @@ class HooksTest extends TestCase
         Title::clearHooks();
     }
 
+    public function testBodyHookMultipleExecutions()
+    {
+        Title::hook(
+            Hook::make()
+                ->onBody()
+                ->callback(function ($body) {
+                    return $body . ' 1';
+                })
+        );
+
+        seo()->add(
+            Title::make()->body('My Title')
+        );
+
+        seo()->add(
+            Title::make()->body('Some Title')
+        );
+
+        $contents = seo()->renderContentsArray();
+
+        $this->assertEquals('<title>Some Title 1</title>', $contents[0]);
+
+        Title::clearHooks();
+    }
+
     public function testExistingAttributesHooks()
     {
         OpenGraph::hook(
