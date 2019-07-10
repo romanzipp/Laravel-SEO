@@ -123,4 +123,19 @@ class RenderTest extends TestCase
 
         $this->assertEquals('<meta name="0" />', seo()->render()->toHtml());
     }
+
+    public function testSeparator()
+    {
+        StructBuilder::$separator = '  ';
+
+        seo()->add(
+            Meta::make()->attr('name', 'first')
+        );
+
+        seo()->add(
+            Meta::make()->attr('name', 'second')
+        );
+
+        $this->assertEquals('<meta name="first" />  <meta name="second" />', seo()->render()->toHtml());
+    }
 }
