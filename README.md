@@ -162,7 +162,7 @@ seo()
     ->load(public_path('custom-manifest.json'));
 ```
 
-Take a look at the [Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md) for further usage.
+Take a look at the [Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md) for further usage.
 
 ## Schema.org Integration
 
