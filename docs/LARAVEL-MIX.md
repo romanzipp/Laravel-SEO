@@ -42,3 +42,27 @@ seo()
     })
     ->load();
 ```
+
+#### Example
+
+```php
+seo()
+    ->mix()
+    ->load();
+```
+
+**mix-manifest.json**
+
+```json
+{
+  "/js/app.js": "/js/app.js?id=4c8b94c7a94dd6137b79",
+  "/css/app.css": "/css/app.css?id=35f9f53a2e3a7804169d"
+}
+```
+
+**document `<head>`**
+
+```html
+<link rel="prefetch" href="http://localhost/js/app.js?id=4c8b94c7a94dd6137b79" />
+<link rel="prefetch" href="http://localhost/css/app.css?id=35f9f53a2e3a7804169d" />
+```
