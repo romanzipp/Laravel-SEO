@@ -1,6 +1,7 @@
 - [Basic Usage](INDEX.md)
 - [Structs](STRUCTS.md)
 - [Hooks](HOOKS.md)
+- [Laravel-Mix](LARAVEL-MIX.md)
 - **[Example App](EXAMPLE-APP.md)**
 
 # Example App

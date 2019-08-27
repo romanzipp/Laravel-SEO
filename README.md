@@ -160,24 +160,10 @@ By default, all assets found in your mix file are prefteched. You can read more 
 seo()
     ->mix()
     ->rel('preload')
-    ->load('custom-manifest.json');
+    ->load(public_path('custom-manifest.json'));
 ```
 
-#### Filter assets
-
-By default, all assets are added to the document head. You can specify filters or rejections to hide certain assets like admin scripts. The callbacks are passed through the Laravel collection instance.
-
-```php
-seo()
-    ->mix()
-    ->reject(function($path, $url) {
-        return strpos($path, 'admin') !== false;
-    })
-    ->filter(function($path, $url) {
-        return strpos($path, '.js') !== false;
-    })
-    ->load();
-```
+Take a look at the [Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md) for further usage.
 
 ## Schema.org Integration
 
