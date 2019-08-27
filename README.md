@@ -53,15 +53,20 @@ class IndexController
 
 ### Examples
 
+Take a look at an [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md) for more detailed usage.
+
 #### Title
+
+```php
+seo()->title('romanzipp');
+```
 
 ```php
 use romanzipp\Seo\Structs\Title;
 
-seo()->add(Title::make()->body('romanzipp'));
-```
-```php
-seo()->title('romanzipp');
+seo()->add(
+    Title::make()->body('romanzipp')
+);
 ```
 
 ... both compile to ...
@@ -75,22 +80,12 @@ seo()->title('romanzipp');
 ```php
 use romanzipp\Seo\Structs\Meta\Charset;
 
-seo()->add(new Charset);
+seo()->add(
+    Charset::make()->charset('utf-8')
+);
 ```
 
-```php
-use romanzipp\Seo\Structs\Meta\Charset;
-
-seo()->add(Charset::make());
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\Charset;
-
-seo()->add(Charset::make()->charset('utf-8'));
-```
-
-... all compile to ...
+... compiles to ...
 
 ```html
 <meta charset="utf-8" />
@@ -105,7 +100,9 @@ seo()->twitter('card', 'summary');
 ```php
 use romanzipp\Seo\Structs\Meta\Twitter;
 
-seo()->add(Twitter::make()->name('card')->content('summary'));
+seo()->add(
+    Twitter::make()->name('card')->content('summary')
+);
 ```
 
 ... both compile to ...
@@ -117,13 +114,15 @@ seo()->add(Twitter::make()->name('card')->content('summary'));
 #### Open Graph
 
 ```php
-seo()->twitter('site_name', 'romanzipp');
+seo()->og('site_name', 'romanzipp');
 ```
 
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 
-seo()->add(OpenGraph::make()->name('site_name')->content('romanzipp'));
+seo()->add(
+    OpenGraph::make()->name('site_name')->content('romanzipp')
+);
 ```
 
 ... both compile to ...
