@@ -31,7 +31,7 @@ class StructBuilder
     /**
      * Constructor
      *
-     * @param string $struct
+     * @param \romanzipp\Seo\Structs\Struct $struct
      */
     public function __construct(Struct $struct)
     {
