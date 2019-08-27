@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
+use romanzipp\Seo\Conductors\FetchesMixManifest;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
@@ -116,5 +117,13 @@ class SeoService
     public function appendStruct(Struct $struct): void
     {
         $this->structs[] = $struct;
+    }
+
+    /**
+     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     */
+    public function mix(): FetchesMixManifest
+    {
+        return new FetchesMixManifest();
     }
 }
