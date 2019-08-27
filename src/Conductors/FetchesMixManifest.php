@@ -121,13 +121,19 @@ class FetchesMixManifest
     {
         $seo = app(SeoService::class);
 
+        $structs = [];
+
         foreach ($this->getAssets() as $path => $url) {
-            $seo->add(
-                Link::make()
-                    ->rel($this->getRel())
-                    ->href(asset($url))
-            );
+            $structs[] = Link::make()
+                ->rel(
+                    $this->getRel()
+                )
+                ->href(
+                    app('config')->get('app.mix_url') . $url
+                );
         }
+
+        $seo->addMany($structs);
     }
 
     /**
