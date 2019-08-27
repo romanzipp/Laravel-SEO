@@ -83,7 +83,7 @@ class SeoService
     /**
      * Get Struct by class.
      *
-     * @param  string                               $class
+     * @param string $class
      * @return \romanzipp\Seo\Structs\Struct|null
      */
     public function getStruct(string $class)
