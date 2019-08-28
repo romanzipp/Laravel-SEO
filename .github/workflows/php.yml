@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Install composer dependencies
+      uses: MilesChou/composer-action@master
+      with:
+        args: install --no-ansi --no-interaction --prefer-dist
+
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
