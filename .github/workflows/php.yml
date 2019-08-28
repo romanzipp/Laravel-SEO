@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v1
     
     - name: Install composer dependencies
       uses: MilesChou/composer-action@master
       with:
         args: install --no-ansi --no-interaction --prefer-dist
 
-    - name: Run Testsuite
+    - name: Run testsuite
       run: vendor/bin/phpunit tests/
