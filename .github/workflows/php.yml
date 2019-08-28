@@ -16,5 +16,5 @@ jobs:
       with:
         args: install --no-ansi --no-interaction --prefer-dist
 
-    - name: Run testsuite
-      run: vendor/bin/phpunit tests/
+    - name: PHP Runner
+      uses: franzliedke/gh-action-php@0.2.0
