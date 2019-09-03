@@ -12,14 +12,14 @@
     ],
     "require": {
         "php": ">=7.1",
-        "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+        "illuminate/console": "^5.5|^6.0",
+        "illuminate/support": "^5.5|^6.0",
         "spatie/schema-org": "^2.1",
         "ext-json": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "~3.8.0",
+        "orchestra/testbench": "^3.8",
         "codedungeon/phpunit-result-printer": "^0.23.4"
     },
     "autoload": {
