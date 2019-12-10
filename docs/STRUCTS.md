@@ -312,7 +312,7 @@ seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is t
 
 ### Defaults
 
-After a Struct instance has been created, we call the static `deftaults` method.
+After a Struct instance has been created, we call the static `defaults` method.
 
 ```php
 public function __construct()
