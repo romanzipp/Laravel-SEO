@@ -12,11 +12,11 @@ A SEO package made for maximum customization and flexibility.
 
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Documentation](#documentation)
 - [Usage](#usage)
   - [Laravel-Mix Integration](#laravel-mix-integration)
   - [Schema.org Integration](#schemaorg-integration)
 - [Cheat Sheet](#cheat-sheet)
-- [Documentation](#documentation)
 - [Testing](#testing)
 
 ## Installation
@@ -40,6 +40,10 @@ Copy configuration to config folder:
 ```
 $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvider"
 ```
+
+## Documentation
+
+[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
 
 ## Usage
 
@@ -233,10 +237,6 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 | `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
 | `seo()->og('site_name', 'romanzipp')` | `<meta name="og:site_name" content="romanzipp" />` |
 | `seo()->add(Charset::make()->charset('utf-8'))` | `<meta charset="utf-8" />` |
-
-## Documentation
-
-[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
 
 ## Testing
 
