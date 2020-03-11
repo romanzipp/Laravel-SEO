@@ -12,28 +12,28 @@ class Meta extends Struct
         return 'meta';
     }
 
-    public function name($value = null, bool $escape = true)
+    public function name($value = null, bool $escape = true): Struct
     {
         $this->addAttribute('name', $value, $escape);
 
         return $this;
     }
 
-    public function httpEquiv($value = null, bool $escape = true)
+    public function httpEquiv($value = null, bool $escape = true): Struct
     {
         $this->addAttribute('http-equiv', $value, $escape);
 
         return $this;
     }
 
-    public function content($value = null, bool $escape = true)
+    public function content($value = null, bool $escape = true): Struct
     {
         $this->addAttribute('content', $value, $escape);
 
         return $this;
     }
 
-    public function value($value, bool $escape = true)
+    public function value($value, bool $escape = true): Struct
     {
         $this->addAttribute('value', $value, $escape);
 

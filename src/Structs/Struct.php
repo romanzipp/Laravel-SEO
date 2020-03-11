@@ -199,7 +199,7 @@ abstract class Struct
      * @param boolean $escape Escape body
      * @return self
      */
-    public function body($body, bool $escape = true): self
+    public function body($body, bool $escape = true): Struct
     {
         if ($escape) {
             $body = $this->escapeValue($body);
@@ -218,7 +218,7 @@ abstract class Struct
      * @param boolean $escape
      * @return self
      */
-    public function attr(string $attribute, $value = null, bool $escape = true): self
+    public function attr(string $attribute, $value = null, bool $escape = true): Struct
     {
         $this->addAttribute($attribute, $value, $escape);
 
