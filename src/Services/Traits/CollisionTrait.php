@@ -33,7 +33,7 @@ trait CollisionTrait
      * @param \romanzipp\Seo\Structs\Struct $struct
      * @return array|null
      */
-    public function getDuplicateStruct(Struct $struct)
+    public function getDuplicateStruct(Struct $struct): ?array
     {
         if ($struct->isUnique() === false) {
             return null;
