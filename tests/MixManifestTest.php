@@ -2,7 +2,7 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Conductors\FetchesMixManifest;
+use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Structs\Link;
 
@@ -12,7 +12,7 @@ class MixManifestTest extends TestCase
     {
         $mix = seo()->mix();
 
-        $this->assertInstanceOf(FetchesMixManifest::class, $mix);
+        $this->assertInstanceOf(MixManifestConductor::class, $mix);
     }
 
     public function testSetters()

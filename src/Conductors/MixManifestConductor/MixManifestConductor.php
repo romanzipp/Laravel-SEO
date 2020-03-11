@@ -1,13 +1,13 @@
 <?php
 
-namespace romanzipp\Seo\Conductors;
+namespace romanzipp\Seo\Conductors\MixManifestConductor;
 
 use Closure;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Link;
 
-class FetchesMixManifest
+class MixManifestConductor
 {
     /**
      * @type string
@@ -63,7 +63,7 @@ class FetchesMixManifest
 
     /**
      * @param string $rel
-     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function rel(string $rel): self
     {
@@ -74,7 +74,7 @@ class FetchesMixManifest
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function reject(Closure $callback): self
     {
@@ -85,7 +85,7 @@ class FetchesMixManifest
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function filter(Closure $callback): self
     {
@@ -94,9 +94,14 @@ class FetchesMixManifest
         return $this;
     }
 
+    public function map()
+    {
+
+    }
+
     /**
      * @param string|null $path
-     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     public function load(string $path = null): self
