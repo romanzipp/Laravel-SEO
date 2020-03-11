@@ -3,7 +3,7 @@
 namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
-use romanzipp\Seo\Conductors\FetchesMixManifest;
+use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
@@ -120,10 +120,10 @@ class SeoService
     }
 
     /**
-     * @return \romanzipp\Seo\Conductors\FetchesMixManifest
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      */
-    public function mix(): FetchesMixManifest
+    public function mix(): MixManifestConductor
     {
-        return new FetchesMixManifest();
+        return new MixManifestConductor;
     }
 }
