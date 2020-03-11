@@ -15,9 +15,4 @@ class ManifestAsset
         $this->path = $path;
         $this->url = $url;
     }
-
-    public function buildFullUrl(): string
-    {
-        return sprintf('%s%s', app('config')->get('app.mix_url'), $this->url);
-    }
 }

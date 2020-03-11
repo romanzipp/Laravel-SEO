@@ -97,7 +97,7 @@ class MixManifestConductor
         $seo->add(
             Link::make()
                 ->rel($asset->rel)
-                ->href($asset->buildFullUrl())
+                ->href($asset->url)
         );
     }
 
