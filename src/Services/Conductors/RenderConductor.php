@@ -4,11 +4,12 @@ namespace romanzipp\Seo\Services\Conductors;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\HtmlString;
 use romanzipp\Seo\Builders\StructBuilder;
 use Spatie\SchemaOrg\Type;
 
-class RenderConductor implements Htmlable, Arrayable
+class RenderConductor implements Htmlable, Renderable, Arrayable
 {
     /**
      * @var \romanzipp\Seo\Structs\Struct[]
@@ -52,11 +53,25 @@ class RenderConductor implements Htmlable, Arrayable
     }
 
     /**
+     * Render all applied structs.
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    public function build(): HtmlString
+    {
+        $contents = $this->toArray();
+
+        return new HtmlString(
+            implode(StructBuilder::$separator, $contents)
+        );
+    }
+
+    /**
      * Get array of rendered HtmlStrings.
      *
      * @return array
      */
-    public function toArray():array
+    public function toArray(): array
     {
         $structs = array_map(static function ($struct) {
             return StructBuilder::build($struct)->toHtml();
@@ -72,17 +87,13 @@ class RenderConductor implements Htmlable, Arrayable
     }
 
     /**
-     * Render all applied structs.
+     * Get the evaluated contents of the object.
      *
-     * @return \Illuminate\Support\HtmlString
+     * @return string
      */
-    public function render(): HtmlString
+    public function render(): string
     {
-        $contents = $this->toArray();
-
-        return new HtmlString(
-            implode(StructBuilder::$separator, $contents)
-        );
+        return (string) $this->build();
     }
 
     /**
@@ -92,7 +103,7 @@ class RenderConductor implements Htmlable, Arrayable
      */
     public function toHtml(): string
     {
-        return (string) $this->render();
+        return (string) $this->build();
     }
 
     /**
@@ -102,6 +113,6 @@ class RenderConductor implements Htmlable, Arrayable
      */
     public function __toString(): string
     {
-        return (string) $this->render();
+        return (string) $this->build();
     }
 }
