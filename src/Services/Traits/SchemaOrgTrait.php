@@ -21,7 +21,7 @@ trait SchemaOrgTrait
     /**
      * Add spatie/schema-org object.
      *
-     * @param  Type   $schema schema.org Type
+     * @param Type $schema schema.org Type
      * @return self
      */
     public function addSchema(Type $schema): self
@@ -34,7 +34,7 @@ trait SchemaOrgTrait
     /**
      * Set array of spatie/schema-org objects.
      *
-     * @param  array  $types
+     * @param array $types
      * @return self
      */
     public function setSchemes(array $types): self
@@ -47,7 +47,7 @@ trait SchemaOrgTrait
     /**
      * Add a list of breadcrumbs.
      *
-     * @param  array  $crumbs
+     * @param array $crumbs
      * @return self
      */
     public function addSchemaBreadcrumbs(array $crumbs): self
