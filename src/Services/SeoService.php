@@ -8,14 +8,12 @@ use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SchemaOrgTrait;
-use romanzipp\Seo\Services\Traits\SetterTrait;
 use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
 use romanzipp\Seo\Structs\Struct;
 
 class SeoService
 {
     use RenderTrait;
-    use SetterTrait;
     use ShorthandSetterTrait;
     use CollisionTrait;
     use HooksTrait;
@@ -110,6 +108,16 @@ class SeoService
     }
 
     /**
+     * Removes all structs from service instance.
+     *
+     * @return void
+     */
+    public function clearStructs(): void
+    {
+        $this->setStructs([]);
+    }
+
+    /**
      * Append struct.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
@@ -117,6 +125,53 @@ class SeoService
     public function appendStruct(Struct $struct): void
     {
         $this->structs[] = $struct;
+    }
+
+    /**
+     * Add struct.
+     *
+     * @param Struct $struct
+     * @return self
+     */
+    public function add(Struct $struct): self
+    {
+        $this->removeDuplicateStruct($struct);
+
+        $this->appendStruct($struct);
+
+        return $this;
+    }
+
+    /**
+     * Add a given Struct if the given condition is true.
+     *
+     * @param bool $boolean
+     * @param Struct $struct
+     * @return self
+     */
+    public function addIf(bool $boolean, Struct $struct): self
+    {
+        if ($boolean) {
+            $this->add($struct);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add many structs.
+     *
+     * @param array $structs
+     * @return self
+     */
+    public function addMany(array $structs): self
+    {
+        foreach ($structs as $struct) {
+
+            $this->add($struct);
+        }
+
+        return $this;
     }
 
     /**
