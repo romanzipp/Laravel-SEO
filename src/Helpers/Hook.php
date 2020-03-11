@@ -211,7 +211,7 @@ class Hook
 
             case HookTarget::ATTRIBUTES:
 
-                return array_map(function ($value) {
+                return array_map(static function ($value) {
 
                     return $value->data();
 
