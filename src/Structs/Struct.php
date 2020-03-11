@@ -145,7 +145,7 @@ abstract class Struct
     public function getComputedUniqueAttributes(): array
     {
         return array_filter($this->getAttributes(), function ($value, $key) {
-            return in_array($key, $this->getUniqueAttributes());
+            return in_array($key, $this->getUniqueAttributes(), false);
         }, ARRAY_FILTER_USE_BOTH);
     }
 
