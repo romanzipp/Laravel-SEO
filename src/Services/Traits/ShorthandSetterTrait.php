@@ -15,8 +15,8 @@ trait ShorthandSetterTrait
     /**
      * Add title.
      *
-     * @param  string|null $title
-     * @param  boolean     $escape
+     * @param string|null $title
+     * @param boolean $escape
      * @return self
      */
     public function title(string $title = null, bool $escape = true): self
@@ -41,8 +41,8 @@ trait ShorthandSetterTrait
     /**
      * Add description.
      *
-     * @param  string|null $description
-     * @param  boolean     $escape
+     * @param string|null $description
+     * @param boolean $escape
      * @return self
      */
     public function description(string $description = null, bool $escape = true): self
@@ -67,9 +67,9 @@ trait ShorthandSetterTrait
     /**
      * Add name-content Meta struct.
      *
-     * @param  string     $name
-     * @param  mixed|null $content
-     * @param  boolean    $escape
+     * @param string $name
+     * @param mixed|null $content
+     * @param boolean $escape
      * @return self
      */
     public function meta(string $name, $content = null, bool $escape = true): self
@@ -82,9 +82,9 @@ trait ShorthandSetterTrait
     /**
      * Add Twitter struct.
      *
-     * @param  string     $name
-     * @param  mixed|null $content
-     * @param  boolean    $escape
+     * @param string $name
+     * @param mixed|null $content
+     * @param boolean $escape
      * @return self
      */
     public function twitter(string $name, $content = null, bool $escape = true): self
@@ -97,9 +97,9 @@ trait ShorthandSetterTrait
     /**
      * Add OpenGraph struct.
      *
-     * @param  string     $property
-     * @param  mixed|null $content
-     * @param  boolean    $escape
+     * @param string $property
+     * @param mixed|null $content
+     * @param boolean $escape
      * @return self
      */
     public function og(string $property, $content = null, bool $escape = true): self

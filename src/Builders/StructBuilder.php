@@ -41,7 +41,7 @@ class StructBuilder
     /**
      * Instantly build struct.
      *
-     * @param  \romanzipp\Seo\Structs\Struct    $struct
+     * @param \romanzipp\Seo\Structs\Struct $struct
      * @return \Illuminate\Support\HtmlString
      */
     public static function build(Struct $struct): HtmlString

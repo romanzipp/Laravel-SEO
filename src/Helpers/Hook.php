@@ -37,7 +37,7 @@ class Hook
     protected $callback;
 
     /**
-     * Wether the current hook callback has been executed.
+     * Weather the current hook callback has been executed.
      *
      * @var boolean
      */
@@ -118,7 +118,7 @@ class Hook
     }
 
     /**
-     * Set hook traget on attributes.
+     * Set hook target on attributes.
      *
      * @return self
      */
@@ -132,7 +132,7 @@ class Hook
     /**
      * Set hook target on specified attribute.
      *
-     * @param  string $attribute Struct attribute
+     * @param string $attribute Struct attribute
      * @return self
      */
     public function onAttribute(string $attribute): self
@@ -147,8 +147,8 @@ class Hook
     /**
      * Add a hook attribute filter.
      *
-     * @param  string $attribute Attribute to search for
-     * @param  mixed  $value     Attribute value to search for
+     * @param string $attribute Attribute to search for
+     * @param mixed $value Attribute value to search for
      * @return self
      */
     public function whereAttribute(string $attribute, $value): self
@@ -161,7 +161,7 @@ class Hook
     /**
      * Set the callback to be applied.
      *
-     * @param  callable $callback Callback
+     * @param callable $callback Callback
      * @return self
      */
     public function callback(callable $callback): self
@@ -175,6 +175,7 @@ class Hook
      * Set executed state.
      *
      * @param bool $status State
+     * @return \romanzipp\Seo\Helpers\Hook
      */
     public function setExecuted(bool $status): self
     {
@@ -193,7 +194,7 @@ class Hook
      * Modify the data that will be handed over to the
      * hook callback as parameter.
      *
-     * @param  mixed   $data
+     * @param mixed $data
      * @return mixed
      */
     public function translateCallbackData($data)
