@@ -110,4 +110,6 @@ trait ShorthandSetterTrait
     }
 
     abstract public function add(Struct $struct): parent;
+
+    abstract public function addIf(bool $boolean, Struct $struct): parent;
 }
