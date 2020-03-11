@@ -119,7 +119,7 @@ abstract class Struct
     /**
      * Get computed single attribute.
      *
-     * @param  string  $attribute
+     * @param string $attribute
      * @return mixed
      */
     public function getComputedAttribute(string $attribute)
@@ -195,8 +195,8 @@ abstract class Struct
     /**
      * Fluid body setter.
      *
-     * @param  mixed   $body
-     * @param  boolean $escape Escape body
+     * @param mixed $body
+     * @param boolean $escape Escape body
      * @return self
      */
     public function body($body, bool $escape = true): self
@@ -213,9 +213,9 @@ abstract class Struct
     /**
      * Fluid attributes setter.
      *
-     * @param  string     $attribute
-     * @param  mixed|null $value
-     * @param  boolean    $escape
+     * @param string $attribute
+     * @param mixed|null $value
+     * @param boolean $escape
      * @return self
      */
     public function attr(string $attribute, $value = null, bool $escape = true): self
@@ -240,8 +240,8 @@ abstract class Struct
     /**
      * Add attribute.
      *
-     * @param string  $key
-     * @param mixed   $value
+     * @param string $key
+     * @param mixed $value
      * @param boolean $escape
      */
     protected function addAttribute(string $key, $value, bool $escape = true): void
@@ -272,7 +272,7 @@ abstract class Struct
     /**
      * Escape attribute value.
      *
-     * @param  mixed         $value
+     * @param mixed $value
      * @return string|null
      */
     protected function escapeValue($value)

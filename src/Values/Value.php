@@ -19,7 +19,7 @@ class Value
     protected $data;
 
     /**
-     * Construtor.
+     * Constructor.
      *
      * @param mixed|null $data
      */
