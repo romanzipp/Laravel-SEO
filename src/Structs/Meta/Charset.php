@@ -12,7 +12,7 @@ class Charset extends Meta
 {
     protected $unique = true;
 
-    public static function defaults(Struct $struct)
+    public static function defaults(Struct $struct): void
     {
         $struct->addAttribute('charset', 'utf-8');
     }
