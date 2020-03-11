@@ -17,7 +17,7 @@ trait HookableTrait
 
     /**
      * Add given Hook to the struct.
-     * @param  \romanzipp\Seo\Helpers\Hook $hook
+     * @param \romanzipp\Seo\Helpers\Hook $hook
      * @return void
      */
     public static function hook(Hook $hook): void
@@ -39,8 +39,8 @@ trait HookableTrait
      * Trigger all possible hooks by given target.
      * This is getting called if struct values are changed.
      *
-     * @param  int    $target
-     * @param  mixed  $data
+     * @param int $target
+     * @param mixed $data
      * @return void
      */
     public function triggerHook(int $target, $data): void
@@ -67,8 +67,8 @@ trait HookableTrait
      * Get all matching hooks applied to the struct
      * given by a target.
      *
-     * @param  int     $target
-     * @param  mixed   $data
+     * @param int $target
+     * @param mixed $data
      * @return array
      */
     public function getMatchingHooks(int $target, $data): array
@@ -124,8 +124,8 @@ trait HookableTrait
      * Set the modified struct data from hook
      * as struct value.
      *
-     * @param  \romanzipp\Seo\Helpers\Hook $hook
-     * @param  mixed                       $data
+     * @param \romanzipp\Seo\Helpers\Hook $hook
+     * @param mixed $data
      * @return void
      */
     public function setModifiedHookData(Hook $hook, $data): void
