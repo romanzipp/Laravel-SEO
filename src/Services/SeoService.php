@@ -4,8 +4,8 @@ namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
 use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
+use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
-use romanzipp\Seo\Services\Traits\HooksTrait;
 use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SchemaOrgTrait;
 use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
@@ -16,7 +16,6 @@ class SeoService
     use RenderTrait;
     use ShorthandSetterTrait;
     use CollisionTrait;
-    use HooksTrait;
     use Macroable;
     use SchemaOrgTrait;
 
@@ -172,6 +171,19 @@ class SeoService
         }
 
         return $this;
+    }
+
+    /**
+     * Add hook to given struct class. This is just an
+     * alias for the Struct::hook() method.
+     *
+     * @param string $structClass
+     * @param \romanzipp\Seo\Helpers\Hook $hook
+     * @return void
+     */
+    public function hook(string $structClass, Hook $hook): void
+    {
+        app($structClass)::hook($hook);
     }
 
     /**
