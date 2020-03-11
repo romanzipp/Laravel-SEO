@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Seo\Conductors\MixManifestConductor\Types;
+namespace romanzipp\Seo\Conductors\Types;
 
 class ManifestAsset
 {
