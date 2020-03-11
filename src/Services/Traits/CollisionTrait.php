@@ -18,7 +18,7 @@ trait CollisionTrait
             return;
         }
 
-        list($existing, $key) = $result;
+        [$existing, $key] = $result;
 
         if ($existing == null || $key === null) {
             return;
