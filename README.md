@@ -249,19 +249,21 @@ The `clear` method has been renamed to a more consistent `clearStructs` method.
 The `render` method now returns a `RenderConductor` which implements the `Renderable`, `Htmlable` and `Arrayable` interfaces instead of a `HtmlString`.
 
 ```diff
-- $stringContent = (string) seo()->render();
-- $stringContent = seo()->render()->toHtml();
-+ $stringContent = seo()->render()->toHtml();
+/** @var $content string */
+- $content = (string) seo()->render();
++ $content = seo()->render()->toHtml();
 ```
 
 ```diff
-- $arrayContent = seo()->renderContentsArray();
-+ $arrayContent = seo()->render()->toArray();
+/** @var $content array */
+- $content = seo()->renderContentsArray();
++ $content = seo()->render()->toArray();
 ```
 
 ```diff
-- $htmlStringContent = seo()->render();
-+ $htmlStringContent = seo()->render()->build();
+/** @var $content Illuminate\Support\HtmlString */
+- $content = seo()->render();
++ $content = seo()->render()->build();
 ```
 
 ### Structs
