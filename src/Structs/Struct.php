@@ -275,7 +275,7 @@ abstract class Struct
      * @param mixed $value
      * @return string|null
      */
-    protected function escapeValue($value)
+    protected function escapeValue($value): ?string
     {
         switch (gettype($value)) {
 
