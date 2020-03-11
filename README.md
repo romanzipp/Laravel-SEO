@@ -254,6 +254,8 @@ The `render` method now returns a `RenderConductor` which implements the `Render
 + $content = seo()->render()->toHtml();
 ```
 
+You can still use `{{ seo()->render() }}` in Blade templates.
+
 ```diff
 /** @var $content array */
 - $content = seo()->renderContentsArray();

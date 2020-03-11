@@ -51,7 +51,7 @@ class MixManifestConductor
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Services\MixManifestConductor\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function map(Closure $callback): self
     {
@@ -62,7 +62,7 @@ class MixManifestConductor
 
     /**
      * @param string|null $path
-     * @return \romanzipp\Seo\Services\MixManifestConductor\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     public function load(string $path = null): self
