@@ -231,9 +231,48 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 
 ## Upgrading
 
-### Upgrading from **1.0** to **2.0**
+Upgrading from **1.0** to **2.0**
 
-#### Method changes
+### Structs
+
+#### The `defaults` Method
+
+The **romanzipp\Seo\Structs\Struct::defaults()** method now has a return type of `void`.
+
+```diff
+class CustomStruct extends Struct
+{
+-   public static function defaults(Struct $struct)
++   public static function defaults(Struct $struct): void
+    {
+        $struct->addAttribute('name', 'custom');
+    }
+}
+```
+
+#### Fluent Setters
+
+All fluent setter methods now share the same return type of `romanzipp\Seo\Structs\Struct`.
+
+```diff
+use romanzipp\Seo\Structs\Struct;
+
+class CustomStruct extends Meta
+{
+-   public function property($value = null, bool $escape = true): self
++   public function property($value = null, bool $escape = true): Struct
+    {
+        $this->addAttribute('property', 'custom:' . $value, $escape);
+
+        return $this;
+    }
+}
+
+```
+
+### Laravel-Mix
+
+#### The `filter` and `reject` Methods
 
 Both `filter` and `reject` methods in the Laravel-Mix integration have been replaced with a more general `map` method.
 
@@ -251,9 +290,9 @@ seo()
 +   });
 ```
 
-#### Method removals
+#### The `rel` Method
 
-The `rel()` setter for the Laravel-Mix integration has been removed.
+The `rel` setter for the Laravel-Mix integration has been removed.
 
 ```diff
 seo()
@@ -265,9 +304,9 @@ seo()
 +   });
 ```
 
-#### Return type changes
+#### The `getAssets` Method
 
-The `romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor::getAssets()` now returns an array of type ` \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]`.
+The `MixManifestConductor::getAssets()` method now returns an array of type ` ManifestAsset[]`.
 
 ## Cheat Sheet
 
