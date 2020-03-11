@@ -2,8 +2,8 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
-use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+use romanzipp\Seo\Conductors\MixManifestConductor;
+use romanzipp\Seo\Conductors\Types\ManifestAsset;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Structs\Link;
 

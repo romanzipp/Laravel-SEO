@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Seo\Services\Conductors;
+namespace romanzipp\Seo\Conductors;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
