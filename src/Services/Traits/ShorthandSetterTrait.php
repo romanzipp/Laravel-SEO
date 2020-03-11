@@ -7,6 +7,7 @@ use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
+use romanzipp\Seo\Structs\Struct;
 use romanzipp\Seo\Structs\Title;
 
 trait ShorthandSetterTrait
@@ -107,4 +108,6 @@ trait ShorthandSetterTrait
             OpenGraph::make()->property($property)->content($content, $escape)
         );
     }
+
+    abstract public function add(Struct $struct): parent;
 }
