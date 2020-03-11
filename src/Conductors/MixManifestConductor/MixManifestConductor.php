@@ -63,7 +63,7 @@ class MixManifestConductor
 
     /**
      * @param string $rel
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      */
     public function rel(string $rel): self
     {
@@ -74,7 +74,7 @@ class MixManifestConductor
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      */
     public function reject(Closure $callback): self
     {
@@ -85,7 +85,7 @@ class MixManifestConductor
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      */
     public function filter(Closure $callback): self
     {
@@ -101,7 +101,7 @@ class MixManifestConductor
 
     /**
      * @param string|null $path
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     public function load(string $path = null): self
