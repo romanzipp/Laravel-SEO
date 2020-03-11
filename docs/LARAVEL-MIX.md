@@ -16,38 +16,51 @@ seo()
     ->load();
 ```
 
+**mix-manifest.json**
+
+```json
+{
+  "/js/app.js": "/js/app.js?id=123456789",
+  "/css/app.css": "/css/app.css?id=123456789"
+}
+```
+
+**document `<head>`**
+
+```html
+<link rel="prefetch" href="/js/app.js?id=123456789" />
+<link rel="prefetch" href="/css/app.css?id=123456789" />
+```
+
 ### Extended usage
 
-By default, all assets found in your mix file are prefteched. You can read more about preloading and prefetching [in this article by css-tricks.com](https://css-tricks.com/prefetching-preloading-prebrowsing/).
+#### Specify an alternate manifest path
 
 ```php
 seo()
     ->mix()
-    ->rel('preload')
     ->load(public_path('custom-manifest.json'));
 ```
 
-### Filter assets
+#### Ignore certain assets
 
 By default, all assets are added to the document head. You can specify filters or rejections to hide certain assets like admin scripts. The callbacks are passed through the Laravel collection instance.
 
-```php
-seo()
-    ->mix()
-    ->reject(function($path, $url) {
-        return strpos($path, 'admin') !== false;
-    })
-    ->filter(function($path, $url) {
-        return strpos($path, '.js') !== false;
-    })
-    ->load();
-```
-
-### Example
+In this example, we will stop all **admin** frontend assets from prefetching by retuning `null` within the provided map callback.
 
 ```php
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+
 seo()
     ->mix()
+    ->map(static function(ManifestAsset $asset): ?ManifestAsset {
+
+        if (strpos($asset->path, 'admin') !== false) {
+            return null;
+        }
+
+        return $asset;
+    })
     ->load();
 ```
 
@@ -55,14 +68,94 @@ seo()
 
 ```json
 {
-  "/js/app.js": "/js/app.js?id=4c8b94c7a94dd6137b79",
-  "/css/app.css": "/css/app.css?id=35f9f53a2e3a7804169d"
+  "/js/app.js": "/js/app.js?id=123456789",
+  "/js/admin.js": "/js/admin.js?id=123456789",
+  "/css/app.css": "/css/app.css?id=123456789",
+  "/css/admin.css": "/css/admin.css?id=123456789"
 }
 ```
 
 **document `<head>`**
 
 ```html
-<link rel="prefetch" href="http://localhost/js/app.js?id=4c8b94c7a94dd6137b79" />
-<link rel="prefetch" href="http://localhost/css/app.css?id=35f9f53a2e3a7804169d" />
+<link rel="prefetch" href="/js/app.js?id=123456789" />
+<link rel="prefetch" href="/css/app.css?id=123456789" />
+```
+
+#### Provide an absolute URL
+
+You can force your preloaded/prefetched assets to use an alternate URL by modifying the `url` attribute.
+
+```php
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+
+seo()
+    ->mix()
+    ->map(static function(ManifestAsset $asset): ?ManifestAsset {
+
+        $asset->url = 'http://localhost' . $asset->url;
+
+        return $asset;
+    })
+    ->load();
+```
+
+**mix-manifest.json**
+
+```json
+{
+  "/js/app.js": "/js/app.js?id=123456789",
+  "/css/app.css": "/css/app.css?id=123456789"
+}
+```
+
+**document `<head>`**
+
+```html
+<link rel="prefetch" href="http://localhost/js/app.js?id=123456789" />
+<link rel="prefetch" href="http://localhost/css/app.css?id=123456789" />
+```
+
+#### Change mechanism
+
+By default, all assets found in your mix file are inserted with the `prefetch` mechanism. You can read more about preloading and prefetching [in this article by css-tricks.com](https://css-tricks.com/prefetching-preloading-prebrowsing/).
+
+You are also free to change the default `prefetch` value to `preload` using the map callback. The following code example will `preload` all assets containing "component" or otherwise fall back on `prefetch`.
+
+```php
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+
+seo()
+    ->mix()
+    ->map(static function(ManifestAsset $asset): ?ManifestAsset {
+
+        $asset->rel = 'prefetch';
+
+        if (strpos($asset->path, 'component') !== false) {
+            $asset->rel = 'preload';
+        }
+
+        return $asset;
+    })
+    ->load();
+```
+
+**mix-manifest.json**
+
+```json
+{
+  "/js/app.js": "/js/app.js?id=123456789",
+  "/js/app.routes.js": "/js/app.routes.js?id=123456789",
+  "/js/app.user-component.js": "/js/app.user-component.js?id=123456789",
+  "/js/app.news-component.js": "/js/app.news-component.js?id=123456789"
+}
+```
+
+**document `<head>`**
+
+```html
+<link rel="prefetch" href="/js/app.js?id=123456789" />
+<link rel="prefetch" href="/js/app.routes.js?id=123456789" />
+<link rel="preload" href="/js/app.user-component.js?id=123456789" />
+<link rel="preload" href="/js/app.news-component.js?id=123456789" />
 ```
