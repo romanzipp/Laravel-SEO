@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Conductors\MixManifestConductor;
 
 use Closure;
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Link;
@@ -10,24 +11,19 @@ use romanzipp\Seo\Structs\Link;
 class MixManifestConductor
 {
     /**
-     * @type string
-     */
-    private $rel = 'prefetch';
-
-    /**
      * @var string
      */
     private $path;
 
     /**
-     * @var array
+     * @var \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
      */
     private $assets = [];
 
     /**
-     * @var array
+     * @var \Closure|null
      */
-    private $assetCallbacks = [];
+    private $mapCallback = null;
 
     /**
      * MixManifestService constructor.
@@ -40,21 +36,13 @@ class MixManifestConductor
     /**
      * @return string
      */
-    public function getRel(): string
-    {
-        return $this->rel;
-    }
-
-    /**
-     * @return string
-     */
     public function getPath(): string
     {
         return $this->path;
     }
 
     /**
-     * @return array
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
      */
     public function getAssets(): array
     {
@@ -62,41 +50,14 @@ class MixManifestConductor
     }
 
     /**
-     * @param string $rel
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
-     */
-    public function rel(string $rel): self
-    {
-        $this->rel = $rel;
-
-        return $this;
-    }
-
-    /**
      * @param \Closure $callback
      * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
      */
-    public function reject(Closure $callback): self
+    public function map(Closure $callback): self
     {
-        $this->assetCallbacks[] = ['reject', [$callback]];
+        $this->mapCallback = $callback;
 
         return $this;
-    }
-
-    /**
-     * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
-     */
-    public function filter(Closure $callback): self
-    {
-        $this->assetCallbacks[] = ['filter', [$callback]];
-
-        return $this;
-    }
-
-    public function map()
-    {
-
     }
 
     /**
@@ -110,39 +71,38 @@ class MixManifestConductor
             $this->path = $path;
         }
 
-        $assets = $this->readContents();
+        $this->assets = $this->readContents();
 
-        $this->assets = $this->applyCallbacks($assets);
+        if ($this->mapCallback !== null) {
+            $this->assets = array_map($this->mapCallback, $this->assets);
+        }
 
-        $this->generateStructs();
+        $this->assets = array_filter($this->assets);
+
+        foreach ($this->assets as $asset) {
+            $this->generateStruct($asset);
+        }
 
         return $this;
     }
 
     /**
+     * @param \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset $asset
      * @return void
      */
-    private function generateStructs(): void
+    private function generateStruct(ManifestAsset $asset): void
     {
         $seo = app(SeoService::class);
 
-        $structs = [];
-
-        foreach ($this->getAssets() as $path => $url) {
-            $structs[] = Link::make()
-                ->rel(
-                    $this->getRel()
-                )
-                ->href(
-                    app('config')->get('app.mix_url') . $url
-                );
-        }
-
-        $seo->addMany($structs);
+        $seo->add(
+            Link::make()
+                ->rel($asset->rel)
+                ->href($asset->buildFullUrl())
+        );
     }
 
     /**
-     * @return array
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     private function readContents(): array
@@ -150,24 +110,13 @@ class MixManifestConductor
         $content = @file_get_contents($this->getPath());
 
         if ($content === false) {
-            throw new ManifestNotFoundException;
+            throw new ManifestNotFoundException('The manifest file could not be found');
         }
 
-        return @json_decode($content, true);
-    }
+        $data = @json_decode($content, true) ?? [];
 
-    /**
-     * @param array $assets
-     * @return array
-     */
-    private function applyCallbacks(array $assets): array
-    {
-        $assets = collect($assets);
-
-        foreach ($this->assetCallbacks as $callback) {
-            $assets = $assets->{$callback[0]}(...$callback[1]);
-        }
-
-        return $assets->toArray();
+        return array_map(static function ($path, $url) {
+            return new ManifestAsset($path, $url);
+        }, array_keys($data), $data);
     }
 }
