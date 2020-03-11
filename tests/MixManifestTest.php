@@ -119,6 +119,62 @@ class MixManifestTest extends TestCase
         $this->assertCount(0, $mix->getAssets());
     }
 
+    public function testMapCallbackModifyUrl()
+    {
+        $path = $this->path('mix-manifest.json');
+
+        $mix = seo()
+            ->mix()
+            ->map(function (ManifestAsset $asset): ?ManifestAsset {
+                $asset->url = 'http://localhost' . $asset->url;
+                return $asset;
+            })
+            ->load($path);
+
+        $assets = json_decode(
+            file_get_contents($path), true
+        );
+
+        $this->assertEquals(
+            [
+                'http://localhost' . array_values($assets)[0],
+                'http://localhost' . array_values($assets)[1],
+            ],
+            [
+                $mix->getAssets()[0]->url,
+                $mix->getAssets()[1]->url,
+            ]
+        );
+    }
+
+    public function testMapCallbackModifyPath()
+    {
+        $path = $this->path('mix-manifest.json');
+
+        $mix = seo()
+            ->mix()
+            ->map(function (ManifestAsset $asset): ?ManifestAsset {
+                $asset->path = '/somewhere' . $asset->path;
+                return $asset;
+            })
+            ->load($path);
+
+        $assets = json_decode(
+            file_get_contents($path), true
+        );
+
+        $this->assertEquals(
+            [
+                '/somewhere' . array_keys($assets)[0],
+                '/somewhere' . array_keys($assets)[1],
+            ],
+            [
+                $mix->getAssets()[0]->path,
+                $mix->getAssets()[1]->path,
+            ]
+        );
+    }
+
     public function testMapCallbackModifyRel()
     {
         $path = $this->path('mix-manifest.json');
