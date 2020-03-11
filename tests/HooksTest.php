@@ -2,11 +2,9 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Test\TestCase;
 
 class HooksTest extends TestCase
 {
@@ -24,7 +22,7 @@ class HooksTest extends TestCase
             Title::make()->body('My Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(1, $contents);
 
@@ -55,7 +53,7 @@ class HooksTest extends TestCase
             Title::make()->body('My Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertEquals('<title>My Title 1 2</title>', $contents[0]);
 
@@ -80,7 +78,7 @@ class HooksTest extends TestCase
             Title::make()->body('Some Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertEquals('<title>Some Title 1</title>', $contents[0]);
 
@@ -102,7 +100,7 @@ class HooksTest extends TestCase
             OpenGraph::make()->property('title')->content('My Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertRegexp('/content\=\"My Second Title\"/', $contents[0]);
 
@@ -124,7 +122,7 @@ class HooksTest extends TestCase
             OpenGraph::make()->property('title')->content('My Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertRegexp('/should\=\"exist\"/', $contents[0]);
 
@@ -146,7 +144,7 @@ class HooksTest extends TestCase
             OpenGraph::make()->property('title')->content('My Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertRegexp('/content\=\"My Title 1\"/', $contents[0]);
 
@@ -167,7 +165,7 @@ class HooksTest extends TestCase
             Title::make()->attr('ignore', 'me')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(1, $contents);
 

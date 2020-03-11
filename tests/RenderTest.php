@@ -4,10 +4,8 @@ namespace romanzipp\Seo\Test;
 
 use Illuminate\Support\HtmlString;
 use romanzipp\Seo\Builders\StructBuilder;
-use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Test\TestCase;
 
 class RenderTest extends TestCase
 {
@@ -15,7 +13,7 @@ class RenderTest extends TestCase
     {
         seo()->title('My Title');
 
-        $this->assertInstanceOf(HtmlString::class, seo()->render());
+        $this->assertInstanceOf(HtmlString::class, seo()->render()->render());
     }
 
     public function testRenderSingleStruct()

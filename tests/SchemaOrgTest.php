@@ -2,8 +2,6 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Facades\Seo;
-use romanzipp\Seo\Test\TestCase;
 use Spatie\SchemaOrg\BreadcrumbList;
 use Spatie\SchemaOrg\Schema;
 
@@ -17,7 +15,7 @@ class SchemaOrgTest extends TestCase
 
         $this->assertCount(
             1,
-            seo()->renderContentsArray()
+            seo()->render()->toArray()
         );
     }
 
@@ -33,7 +31,7 @@ class SchemaOrgTest extends TestCase
 
         $this->assertCount(
             1,
-            seo()->renderContentsArray()
+            seo()->render()->toArray()
         );
     }
 

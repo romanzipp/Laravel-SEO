@@ -5,15 +5,14 @@ namespace romanzipp\Seo\Services;
 use Illuminate\Support\Traits\Macroable;
 use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
 use romanzipp\Seo\Helpers\Hook;
+use romanzipp\Seo\Services\Conductors\RenderConductor;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
-use romanzipp\Seo\Services\Traits\RenderTrait;
 use romanzipp\Seo\Services\Traits\SchemaOrgTrait;
 use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
 use romanzipp\Seo\Structs\Struct;
 
 class SeoService
 {
-    use RenderTrait;
     use ShorthandSetterTrait;
     use CollisionTrait;
     use Macroable;
@@ -192,5 +191,13 @@ class SeoService
     public function mix(): MixManifestConductor
     {
         return new MixManifestConductor;
+    }
+
+    /**
+     * @return \romanzipp\Seo\Services\Conductors\RenderConductor
+     */
+    public function render(): RenderConductor
+    {
+        return new RenderConductor($this->getStructs(), $this->getSchemes());
     }
 }
