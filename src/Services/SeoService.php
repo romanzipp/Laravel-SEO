@@ -87,7 +87,7 @@ class SeoService
      * @param string $class
      * @return \romanzipp\Seo\Structs\Struct|null
      */
-    public function getStruct(string $class)
+    public function getStruct(string $class): ?Struct
     {
         foreach ($this->getStructs() as $struct) {
 
