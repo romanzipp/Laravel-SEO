@@ -53,7 +53,7 @@ class RenderConductor implements Htmlable, Renderable, Arrayable
     }
 
     /**
-     * Render all applied structs.
+     * Build all applied structs.
      *
      * @return \Illuminate\Support\HtmlString
      */
