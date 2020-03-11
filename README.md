@@ -162,6 +162,13 @@ seo()
     ->load();
 ```
 
+**document `<head>`**
+
+```html
+<link rel="prefetch" href="/js/app.js?id=123456789" />
+<link rel="prefetch" href="/css/app.css?id=123456789" />
+```
+
 #### Extended usage
 
 Take a look at the **[SEO Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
