@@ -73,7 +73,7 @@ class StructBuilder
         if ($body || ! $this->struct->isVoidElement()) {
 
             $element .= '>';
-            $element .= $body ?? '';
+            $element .= $body;
             $element .= '</' . $this->struct->getTag() . '>';
 
         } else {
