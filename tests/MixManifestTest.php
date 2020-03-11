@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor;
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Structs\Link;
 
@@ -15,20 +16,9 @@ class MixManifestTest extends TestCase
         $this->assertInstanceOf(MixManifestConductor::class, $mix);
     }
 
-    public function testSetters()
+    public function testLoadingOk()
     {
-        $mix = seo()->mix();
-
-        $this->assertEquals('prefetch', $mix->getRel());
-
-        $mix->rel('preload');
-
-        $this->assertEquals('preload', $mix->getRel());
-    }
-
-    public function testSuccessfulLoading()
-    {
-        $path = __DIR__ . '/Support/mix-manifest.json';
+        $path = $this->path('mix-manifest.json');
 
         $mix = seo()
             ->mix()
@@ -38,14 +28,17 @@ class MixManifestTest extends TestCase
             file_get_contents($path), true
         );
 
-        $this->assertEquals($assets, $mix->getAssets());
+        $this->assertEquals([
+            new ManifestAsset(array_keys($assets)[0], array_values($assets)[0]),
+            new ManifestAsset(array_keys($assets)[1], array_values($assets)[1]),
+        ], $mix->getAssets());
     }
 
     public function testLoadingInvalidPath()
     {
         $this->expectException(ManifestNotFoundException::class);
 
-        $path = __DIR__ . '/Support/mix-manifest.not-found.json';
+        $path = $this->path('mix-manifest.not-found.json');
 
         seo()
             ->mix()
@@ -54,7 +47,7 @@ class MixManifestTest extends TestCase
 
     public function testLoadingInvalidJson()
     {
-        $path = __DIR__ . '/Support/mix-manifest.empty.json';
+        $path = $this->path('mix-manifest.empty.json');
 
         $mix = seo()
             ->mix()
@@ -65,7 +58,7 @@ class MixManifestTest extends TestCase
 
     public function testLoadingEmptyFile()
     {
-        $path = __DIR__ . '/Support/mix-manifest.empty.json';
+        $path = $this->path('mix-manifest.empty.json');
 
         $mix = seo()
             ->mix()
@@ -74,34 +67,31 @@ class MixManifestTest extends TestCase
         $this->assertEquals([], $mix->getAssets());
     }
 
-    public function testRejectCallback()
+    public function testDefaultRel()
     {
-        $path = __DIR__ . '/Support/mix-manifest.json';
+        $path = $this->path('mix-manifest.json');
 
         $mix = seo()
             ->mix()
-            ->reject(function ($path) {
-                return $path === '/css/app.css';
-            })
             ->load($path);
 
-        $assets = json_decode(
-            file_get_contents($path), true
+        $this->assertEquals(
+            ['prefetch', 'prefetch'],
+            [
+                $mix->getAssets()[0]->rel,
+                $mix->getAssets()[1]->rel,
+            ]
         );
-
-        $expect = [array_keys($assets)[0] => array_values($assets)[0]];
-
-        $this->assertEquals($expect, $mix->getAssets());
     }
 
-    public function testFilterCallback()
+    public function testMapCallbackNoChanges()
     {
-        $path = __DIR__ . '/Support/mix-manifest.json';
+        $path = $this->path('mix-manifest.json');
 
         $mix = seo()
             ->mix()
-            ->filter(function ($path) {
-                return $path === '/css/app.css';
+            ->map(function (ManifestAsset $asset): ?ManifestAsset {
+                return $asset;
             })
             ->load($path);
 
@@ -109,16 +99,52 @@ class MixManifestTest extends TestCase
             file_get_contents($path), true
         );
 
-        $expect = [array_keys($assets)[1] => array_values($assets)[1]];
+        $this->assertEquals([
+            new ManifestAsset(array_keys($assets)[0], array_values($assets)[0]),
+            new ManifestAsset(array_keys($assets)[1], array_values($assets)[1]),
+        ], $mix->getAssets());
+    }
 
-        $this->assertEquals($expect, $mix->getAssets());
+    public function testMapCallbackRejectAll()
+    {
+        $path = $this->path('mix-manifest.json');
+
+        $mix = seo()
+            ->mix()
+            ->map(function (ManifestAsset $asset): ?ManifestAsset {
+                return null;
+            })
+            ->load($path);
+
+        $this->assertCount(0, $mix->getAssets());
+    }
+
+    public function testMapCallbackModifyRel()
+    {
+        $path = $this->path('mix-manifest.json');
+
+        $mix = seo()
+            ->mix()
+            ->map(function (ManifestAsset $asset): ?ManifestAsset {
+                $asset->rel = 'preload';
+                return $asset;
+            })
+            ->load($path);
+
+        $this->assertEquals(
+            ['preload', 'preload'],
+            [
+                $mix->getAssets()[0]->rel,
+                $mix->getAssets()[1]->rel,
+            ]
+        );
     }
 
     public function testBasicStructs()
     {
         $path = __DIR__ . '/Support/mix-manifest.json';
 
-        $mix = seo()
+        seo()
             ->mix()
             ->load($path);
 
@@ -126,5 +152,10 @@ class MixManifestTest extends TestCase
 
         $this->assertInstanceOf(Link::class, seo()->getStructs()[0]);
         $this->assertInstanceOf(Link::class, seo()->getStructs()[1]);
+    }
+
+    private function path(string $file): string
+    {
+        return sprintf('%s/Support/%s', __DIR__, $file);
     }
 }
