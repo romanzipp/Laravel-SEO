@@ -188,7 +188,7 @@ seo()
 Take a look at the **[SEO Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
 
 ```php
-use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+use romanzipp\Seo\Conductors\Types\ManifestAsset;
 
 seo()
     ->mix()
@@ -232,6 +232,37 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 ## Upgrading
 
 Upgrading from **1.0** to **2.0**
+
+### SeoService
+
+#### The `clear` Method
+
+The `clear` method has been renamed to a more consistent `clearStructs` method.
+
+```diff
+- seo()->clear();
++ seo()->clearStructs();
+```
+
+#### The `render` Method
+
+The `render` method now returns a `RenderConductor` which implements the `Renderable`, `Htmlable` and `Arrayable` interfaces instead of a `HtmlString`.
+
+```diff
+- $stringContent = (string) seo()->render();
+- $stringContent = seo()->render()->toHtml();
++ $stringContent = seo()->render()->toHtml();
+```
+
+```diff
+- $arrayContent = seo()->renderContentsArray();
++ $arrayContent = seo()->render()->toArray();
+```
+
+```diff
+- $htmlStringContent = seo()->render();
++ $htmlStringContent = seo()->render()->build();
+```
 
 ### Structs
 
