@@ -1,9 +1,9 @@
 <?php
 
-namespace romanzipp\Seo\Conductors\MixManifestConductor;
+namespace romanzipp\Seo\Conductors;
 
 use Closure;
-use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+use romanzipp\Seo\Conductors\Types\ManifestAsset;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Link;
@@ -16,7 +16,7 @@ class MixManifestConductor
     private $path;
 
     /**
-     * @var \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
+     * @var \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      */
     private $assets = [];
 
@@ -42,7 +42,7 @@ class MixManifestConductor
     }
 
     /**
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
+     * @return \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      */
     public function getAssets(): array
     {
@@ -51,7 +51,7 @@ class MixManifestConductor
 
     /**
      * @param \Closure $callback
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
+     * @return \romanzipp\Seo\Services\MixManifestConductor\MixManifestConductor
      */
     public function map(Closure $callback): self
     {
@@ -62,7 +62,7 @@ class MixManifestConductor
 
     /**
      * @param string|null $path
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor
+     * @return \romanzipp\Seo\Services\MixManifestConductor\MixManifestConductor
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     public function load(string $path = null): self
@@ -87,7 +87,7 @@ class MixManifestConductor
     }
 
     /**
-     * @param \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset $asset
+     * @param \romanzipp\Seo\Conductors\Types\ManifestAsset $asset
      * @return void
      */
     private function generateStruct(ManifestAsset $asset): void
@@ -102,7 +102,7 @@ class MixManifestConductor
     }
 
     /**
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]
+     * @return \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
      */
     private function readContents(): array
