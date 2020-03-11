@@ -64,7 +64,7 @@ abstract class Struct
      *
      * @param self $struct
      */
-    public static function defaults(self $struct)
+    public static function defaults(self $struct): void
     {
         //
     }
