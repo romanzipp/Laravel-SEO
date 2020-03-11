@@ -13,7 +13,7 @@ class RenderTest extends TestCase
     {
         seo()->title('My Title');
 
-        $this->assertInstanceOf(HtmlString::class, seo()->render()->render());
+        $this->assertInstanceOf(HtmlString::class, seo()->render()->build());
     }
 
     public function testRenderSingleStruct()
