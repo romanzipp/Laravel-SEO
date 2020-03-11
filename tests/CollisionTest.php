@@ -2,13 +2,11 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Test\Structs\UniqueMultiAttributeStruct;
 use romanzipp\Seo\Test\Structs\UniqueSingleAttributeStruct;
-use romanzipp\Seo\Test\TestCase;
 
 class CollisionTest extends TestCase
 {
@@ -22,7 +20,7 @@ class CollisionTest extends TestCase
             Viewport::make()->content('width=device-width, initial-scale=1')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(2, $contents);
     }
@@ -37,7 +35,7 @@ class CollisionTest extends TestCase
             Title::make()->body('My Second Title')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(1, $contents);
 
@@ -58,7 +56,7 @@ class CollisionTest extends TestCase
                 ->attr('content', 'My Second Site Name')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(1, $contents);
 
@@ -79,7 +77,7 @@ class CollisionTest extends TestCase
                 ->attr('content', 'My Second Site Name')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(2, $contents);
 
@@ -103,7 +101,7 @@ class CollisionTest extends TestCase
                 ->attr('content', 'My Second Value')
         );
 
-        $contents = seo()->renderContentsArray();
+        $contents = seo()->render()->toArray();
 
         $this->assertCount(1, $contents);
 

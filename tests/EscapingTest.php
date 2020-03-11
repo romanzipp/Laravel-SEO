@@ -2,10 +2,8 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Test\TestCase;
 
 class EscapingTest extends TestCase
 {
@@ -17,7 +15,7 @@ class EscapingTest extends TestCase
             Title::make()->body($malicious)
         );
 
-        $title = seo()->renderContentsArray()[0];
+        $title = seo()->render()->toArray()[0];
 
         $this->assertEquals('<title>' . e($malicious) . '</title>', $title);
     }
@@ -30,7 +28,7 @@ class EscapingTest extends TestCase
             Meta::make()->attr('content', $malicious)
         );
 
-        $meta = seo()->renderContentsArray()[0];
+        $meta = seo()->render()->toArray()[0];
 
         $this->assertEquals('<meta content="' . e($malicious) . '" />', $meta);
     }
@@ -45,7 +43,7 @@ class EscapingTest extends TestCase
             Meta::make()->attr('name', 'url')->attr('content', $url, false)
         );
 
-        $meta = seo()->renderContentsArray()[0];
+        $meta = seo()->render()->toArray()[0];
 
         $this->assertEquals($expected, $meta);
     }
@@ -58,7 +56,7 @@ class EscapingTest extends TestCase
 
         seo()->twitter('player', $url, false);
 
-        $meta = seo()->renderContentsArray()[0];
+        $meta = seo()->render()->toArray()[0];
 
         $this->assertEquals($expected, $meta);
     }
