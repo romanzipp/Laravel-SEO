@@ -90,7 +90,7 @@ abstract class Struct
      *
      * @return \romanzipp\Seo\Values\Body|null
      */
-    public function getBody()
+    public function getBody(): ?Body
     {
         return $this->body;
     }
