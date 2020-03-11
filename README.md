@@ -16,6 +16,7 @@ A SEO package made for maximum customization and flexibility.
 - [Usage](#usage)
   - [Laravel-Mix Integration](#laravel-mix-integration)
   - [Schema.org Integration](#schemaorg-integration)
+- [Upgrading](#upgrading)
 - [Cheat Sheet](#cheat-sheet)
 - [Testing](#testing)
 
@@ -227,6 +228,46 @@ seo()->setSchemes([
 ```
 
 Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-org#usage).
+
+## Upgrading
+
+### Upgrading from **1.0** to **2.0**
+
+#### Method changes
+
+Both `filter` and `reject` methods in the Laravel-Mix integration have been replaced with a more general `map` method.
+
+```diff
+seo()
+    ->mix()
+-   ->filter(function ($path, $url) {
+-       // ...
+-   })
+-   ->reject(function ($path, $url) {
+-       // ...
+-   });
++   ->map(static function (ManifestAsset $asset): ?ManifestAsset {
++       // ...
++   });
+```
+
+#### Method removals
+
+The `rel()` setter for the Laravel-Mix integration has been removed.
+
+```diff
+seo()
+    ->mix()
+-   ->rel('preload');
++   ->map(static function (ManifestAsset $asset): ?ManifestAsset {
++       $asset->rel = 'preload';
++       return $asset;
++   });
+```
+
+#### Return type changes
+
+The `romanzipp\Seo\Conductors\MixManifestConductor\MixManifestConductor::getAssets()` now returns an array of type ` \romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset[]`.
 
 ## Cheat Sheet
 
