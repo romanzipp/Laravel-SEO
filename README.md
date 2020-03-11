@@ -16,7 +16,7 @@ A SEO package made for maximum customization and flexibility.
 - [Usage](#usage)
   - [Laravel-Mix Integration](#laravel-mix-integration)
   - [Schema.org Integration](#schemaorg-integration)
-- [Upgrading](#upgrading)
+- [Upgrading from 1.0 to **2.0**](#upgrading)
 - [Cheat Sheet](#cheat-sheet)
 - [Testing](#testing)
 
@@ -231,7 +231,7 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 
 ## Upgrading
 
-Upgrading from **1.0** to **2.0**
+Upgrading from 1.0 to **2.0**
 
 ### SeoService
 
