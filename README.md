@@ -164,16 +164,25 @@ seo()
 
 #### Extended usage
 
-By default, all assets found in your mix file are prefteched. You can read more about preloading and prefetching [in this article by css-tricks.com](https://css-tricks.com/prefetching-preloading-prebrowsing/).
+Take a look at the **[SEO Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
 
 ```php
+use romanzipp\Seo\Conductors\MixManifestConductor\Types\ManifestAsset;
+
 seo()
     ->mix()
-    ->rel('preload')
+    ->map(static function(ManifestAsset $asset): ?ManifestAsset {
+
+        if (strpos($asset->path, 'admin') !== false) {
+            return null;
+        }
+
+        $asset->url = 'http://localhost' . $asset->url;
+
+        return $asset;
+    })
     ->load(public_path('custom-manifest.json'));
 ```
-
-Take a look at the [Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md) for further usage.
 
 ## Schema.org Integration
 
