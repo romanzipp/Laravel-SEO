@@ -20,7 +20,7 @@ trait CollisionTrait
 
         [$existing, $key] = $result;
 
-        if ($existing == null || $key === null) {
+        if ($existing === null || $key === null) {
             return;
         }
 
