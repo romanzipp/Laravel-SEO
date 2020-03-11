@@ -72,9 +72,9 @@ trait ShorthandSetterTrait
      * @param  boolean    $escape
      * @return self
      */
-    public function meta(string $name, $content = null, bool $escape = true)
+    public function meta(string $name, $content = null, bool $escape = true): self
     {
-        $this->add(
+        return $this->add(
             Meta::make()->name($name)->content($content, $escape)
         );
     }
