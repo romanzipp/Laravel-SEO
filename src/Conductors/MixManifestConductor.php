@@ -98,6 +98,7 @@ class MixManifestConductor
             Link::make()
                 ->rel($asset->rel)
                 ->href($asset->url)
+                ->as($asset->as)
         );
     }
 
