@@ -32,9 +32,7 @@ seo()
 <link rel="prefetch" href="/css/app.css?id=123456789" />
 ```
 
-## Extended usage
-
-### Specify an alternate manifest path
+## Specify an alternate manifest path
 
 ```php
 seo()
@@ -42,7 +40,7 @@ seo()
     ->load(public_path('custom-manifest.json'));
 ```
 
-### Ignore certain assets
+## Ignore certain assets
 
 By default, all assets are added to the document head. You can specify filters or rejections to hide certain assets like admin scripts. The callbacks are passed through the Laravel collection instance.
 
@@ -82,7 +80,7 @@ seo()
 <link rel="prefetch" href="/css/app.css?id=123456789" />
 ```
 
-### Provide an absolute URL
+## Provide an absolute URL
 
 You can force your preloaded/prefetched assets to use an alternate URL by modifying the `url` attribute.
 
@@ -116,7 +114,7 @@ seo()
 <link rel="prefetch" href="http://localhost/css/app.css?id=123456789" />
 ```
 
-### Change mechanism
+## Change mechanism
 
 By default, all assets found in your mix file are inserted with the `prefetch` mechanism. You can read more about preloading and prefetching [in this article by css-tricks.com](https://css-tricks.com/prefetching-preloading-prebrowsing/).
 
@@ -160,7 +158,7 @@ seo()
 <link rel="preload" href="/js/app.news-component.js?id=123456789" />
 ```
 
-### Asset resource type
+## Asset resource type
 
 Preloading content required a minimum of `href` and `as` attribute. This package will guess a [resource type](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) based on the provided file extension. Currently script, style, font, image and video are supported.
 Feels free to change the resource type.
