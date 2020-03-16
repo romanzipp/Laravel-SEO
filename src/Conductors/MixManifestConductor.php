@@ -94,12 +94,15 @@ class MixManifestConductor
     {
         $seo = app(SeoService::class);
 
-        $seo->add(
-            Link::make()
-                ->rel($asset->rel)
-                ->href($asset->url)
-                ->as($asset->as)
-        );
+        $link = Link::make()
+            ->rel($asset->rel)
+            ->href($asset->url);
+
+        if ($asset->as !== null) {
+            $link->as($asset->as);
+        }
+
+        $seo->add($link);
     }
 
     /**
