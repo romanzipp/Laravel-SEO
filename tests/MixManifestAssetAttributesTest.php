@@ -26,4 +26,15 @@ class MixManifestAssetAttributesTest extends TestCase
         $this->assertEquals('font', (new ManifestAsset('/fonts/Comic-Sans.ttf', '/fonts/Comic-Sans.123456.ttf'))->as);
         $this->assertEquals('font', (new ManifestAsset('/fonts/Comic-Sans.ttf', '/fonts/Comic-Sans.ttf?id=123456'))->as);
     }
+
+    public function testUnsupportedExtension()
+    {
+        $this->assertNull((new ManifestAsset('/totally-not-a-virus/app.exe', '/totally-not-a-virus/app.123456.exe'))->as);
+        $this->assertNull((new ManifestAsset('/totally-not-a-virus/app.exe', '/totally-not-a-virus/app.exe?id=123456'))->as);
+    }
+
+    public function testInvalidExtension()
+    {
+        $this->assertNull((new ManifestAsset('/totally-not-a-virus/app', '/totally-not-a-virus/app'))->as);
+    }
 }
