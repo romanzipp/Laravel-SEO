@@ -12,6 +12,8 @@ class ManifestAsset
 
     public $as;
 
+    public $type;
+
     public function __construct(string $path, string $url)
     {
         $this->path = $path;

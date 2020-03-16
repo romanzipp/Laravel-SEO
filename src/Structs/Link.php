@@ -34,4 +34,11 @@ class Link extends Struct
 
         return $this;
     }
+
+    public function type($value = null, bool $escape = true): Struct
+    {
+        $this->addAttribute('type', $value, $escape);
+
+        return $this;
+    }
 }

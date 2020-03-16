@@ -102,6 +102,10 @@ class MixManifestConductor
             $link->as($asset->as);
         }
 
+        if ($asset->type !== null) {
+            $link->type($asset->type);
+        }
+
         $seo->add($link);
     }
 
