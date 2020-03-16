@@ -159,3 +159,44 @@ seo()
 <link rel="preload" href="/js/app.user-component.js?id=123456789" />
 <link rel="preload" href="/js/app.news-component.js?id=123456789" />
 ```
+
+### Asset resource type
+
+Preloading content required a minimum of `href` and `as` attribute. This package will guess a [resource type](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) based on the provided file extension. Currently script, style, font, image and video are supported.
+Feels free to change the resource type.
+
+```php
+use romanzipp\Seo\Conductors\Types\ManifestAsset;
+
+seo()
+    ->mix()
+    ->map(static function(ManifestAsset $asset): ?ManifestAsset {
+
+        if (strpos($asset->path, 'virus') !== false) {
+            $asset->as = 'virus';
+        }
+
+        return $asset;
+    })
+    ->load();
+```
+
+**mix-manifest.json**
+
+```json
+{
+  "/css/app.css": "/css/app.css?id=123456789",
+  "/js/app.js": "/js/app.routes.js?id=123456789",
+  "/data/totally-not-a-virus": "/data/totally-not-a-virus?id=123456789",
+  "/data/totally-not-a-virus": "/data/totally-not-a-virus?id=123456789"
+}
+```
+
+**document `<head>`**
+
+```html
+<link rel="prefetch" as="style" href="/css/app.css?id=123456789" />
+<link rel="prefetch" as="script" href="/js/app.js?id=123456789" />
+<link rel="prefetch" as="virus" href="/data/totally-not-a-virus?id=123456789" />
+<link rel="prefetch" as="virus" href="/data/totally-not-a-virus?id=123456789" />
+```
