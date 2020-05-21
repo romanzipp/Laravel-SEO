@@ -1,6 +1,15 @@
 - [Basic Usage](INDEX.md)
+  - [Add Methods](INDEX.md#add-methods)
+  - [Macros](INDEX.md#macros)
 - **[Structs](STRUCTS.md)**
+  - [Examples](STRUCTS.md#examples)
+  - [Available Shorthand Methods](STRUCTS.md#available-shorthand-methods)
+  - [Available Structs](STRUCTS.md#available-structs)
+  - [Escaping](STRUCTS.md#escaping)
+  - [Creating custom Structs](STRUCTS.md#creating-custom-structs)
 - [Hooks](HOOKS.md)
+  - [Examples](HOOKS.md#examples)
+  - [Reference](HOOKS.md#reference)
 - [Laravel-Mix](LARAVEL-MIX.md)
 - [Example App](EXAMPLE-APP.md)
 
@@ -91,7 +100,7 @@ seo()->add(
 <meta name="twitter:card" content="summary" />
 ```
 
-## Available Shortcuts
+## Available Shorthand Methods
 
 When using shorthand methods, you will skip the `seo()->add()` method.
 You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
