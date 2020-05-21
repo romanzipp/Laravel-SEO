@@ -248,12 +248,23 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 ## Cheat Sheet
 
 | Code | Rendered HTML |
-|--|--|
-| `seo()->title('romanzipp')` | `<title>romanzipp</title>` |
-| `seo()->meta('author', 'romanzipp')` | `<meta name="author" content="romanzipp" />` |
+|----|----|
+| **Shorthand Setters** | |
+| `seo()->title('Laravel')` | `<title>Laravel</title>` |
+| `seo()->meta('author', 'Roman Zipp')` | `<meta name="author" content="Roman Zipp" />` |
 | `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
-| `seo()->og('site_name', 'romanzipp')` | `<meta name="og:site_name" content="romanzipp" />` |
-| `seo()->add(Charset::make()->charset('utf-8'))` | `<meta charset="utf-8" />` |
+| `seo()->og('site_name', 'Laravel')` | `<meta name="og:site_name" content="Laravel" />` |
+| `seo()->charset()` | `<meta charset="utf-8" />` |
+| `seo()->viewport()` | `<meta name="viewport" content="width=device-width, initial-scale=1" />` |
+| `seo()->csrfToken()` | `<meta name="csrf-token" content="a7588c617ea5d883337" />` |
+| **Adding Structs** | |
+| `seo()->add(Meta::make()->name('foo'))` | `<meta name="foo" />` |
+| `seo()->addMany([Meta::make()->name('foo')])` | `<meta name="foo" />` |
+| `seo()->addIf(true, Meta::make()->name('foo'))` | `<meta name="foo" />` |
+| **Various** | |
+| `seo()->mix()` | |
+| `seo()->hook()` | |
+| `seo()->render()` | |
 
 ## Testing
 
