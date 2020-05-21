@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
 
@@ -99,5 +100,16 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertInstanceOf(Meta::class, seo()->getStructs()[0]);
+    }
+
+    public function testCharsetSetter()
+    {
+        seo()->charset('utf-8');
+
+        $contents = seo()->render()->toArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertInstanceOf(Charset::class, seo()->getStructs()[0]);
     }
 }
