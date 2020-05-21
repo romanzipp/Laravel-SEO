@@ -6,7 +6,7 @@
 
 # Example App
 
-### Service Provider
+## Service Provider
 
 ```
 $ php artisan make:provider SeoServiceProvider
@@ -22,11 +22,6 @@ use romanzipp\Seo\Builders\StructBuilder;
 use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Structs\Meta\Charset;
-use romanzipp\Seo\Structs\Meta\Description;
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-use romanzipp\Seo\Structs\Meta\Twitter;
-use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 
 class SeoServiceProvider extends ServiceProvider
@@ -34,25 +29,17 @@ class SeoServiceProvider extends ServiceProvider
     public function boot()
     {
         StructBuilder::$indent = str_repeat(' ', 4);
+    
+        // Create a custom macro
 
-        $this->bootMacros();
-
-        $this->bootStructHooks();
-
-        $this->bootDefaultStructs();
-    }
-
-    private function bootMacros()
-    {
         Seo::macro('customTag', function (string $value) {
             return $this->add(
                 Meta::make()->name('custom')->content($value)
             );
         });
-    }
 
-    private function bootStructHooks()
-    {
+        // Add a hook to ensure the site name is always appended to the title 
+
         Title::hook(
             Hook::make()
                 ->onBody()
@@ -64,53 +51,59 @@ class SeoServiceProvider extends ServiceProvider
 
     private function bootDefaultStructs()
     {
-        seo()->title('Home');
-        seo()->description('My Description');
-
-        seo()->addMany([
-            Charset::make(),
-            Viewport::make()->content('width=device-width, initial-scale=1'),
-        ]);
-
-        seo()->addMany([
-            Meta::make()->name('mobile-web-app-capable')->content('yes'),
-            Meta::make()->name('theme-color')->content('#f03a17'),
-        ]);
-
-        seo()->addMany([
-            OpenGraph::make()->property('title')->content('Site-Name'),
-            OpenGraph::make()->property('site_name')->content('Site-Name'),
-            OpenGraph::make()->property('locale')->content('de_DE'),
-        ]);
-
-        seo()->add(
-            Twitter::make()->name('player')->content('http://example.com/player?video=1&t=5', false)
-        );
+        
     }
 }
 ```
 
-### Middleware
+## Middleware
 
 ```
-$ php artisan make:middleware AppendSeoValues
+$ php artisan make:middleware AddSeoDefaults
 ```
 
-#### `Http/Middleware/AppendSeoValues.php`
+#### `Http/Middleware/AddSeoDefaults.php`
 
 ```php
 namespace App\Http\Middleware;
 
 use Closure;
-use romanzipp\Seo\Structs\Meta\CsrfToken;
+use romanzipp\Seo\Structs\Link;
+use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+use romanzipp\Seo\Structs\Meta\Twitter;
 
-class AppendSeoValues
+class AddSeoDefaults
 {
     public function handle($request, Closure $next)
     {
-        seo()->add(
-            CsrfToken::make()->token(csrf_token())
-        );
+        seo()->charset();
+        seo()->viewport();
+
+        seo()->title('Home');
+        seo()->description('My Description');
+
+        seo()->csrfToken();
+
+        seo()->addMany([
+
+            Meta::make()->name('copyright')->content('Roman Zipp'),
+
+            Meta::make()->name('mobile-web-app-capable')->content('yes'),
+            Meta::make()->name('theme-color')->content('#f03a17'),
+
+            Link::make()->rel('icon')->href('/assets/images/Logo.png'),
+
+            OpenGraph::make()->property('title')->content('Laravel'),
+            OpenGraph::make()->property('site_name')->content('Laravel'),
+            OpenGraph::make()->property('locale')->content('de_DE'),
+
+            Twitter::make()->name('card')->content('summary_large_image'),
+            Twitter::make()->name('site')->content('@romanzipp'),
+            Twitter::make()->name('creator')->content('@romanzipp'),
+            Twitter::make()->name('image')->content('/assets/images/Banner.jpg', false)
+
+        ]);
 
         return $next($request);
     }
@@ -118,8 +111,7 @@ class AppendSeoValues
 
 ```
 
-### Controllers
-
+## Controllers
 
 ```php
 namespace App\Http\Controllers;
@@ -148,7 +140,7 @@ class PostController extends Controller
 }
 ```
 
-### View
+## View
 
 ```blade
 <!DOCTYPE html>
