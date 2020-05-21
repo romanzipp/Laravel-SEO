@@ -4,6 +4,7 @@ namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
 use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -106,6 +107,19 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             OpenGraph::make()->property($property)->content($content, $escape)
+        );
+    }
+
+    /**
+     * Add the meta charset struct.
+     *
+     * @param string $charset
+     * @return $this
+     */
+    public function charset(string $charset = 'utf-8'): self
+    {
+        return $this->add(
+            Charset::make()->charset($charset)
         );
     }
 
