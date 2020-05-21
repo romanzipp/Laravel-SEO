@@ -111,6 +111,18 @@ seo()->description('Catchy marketing headline');
 <meta name="twitter:description" content="Catchy marketing headline" />
 ```
 
+### CSRF Token
+
+```php
+seo()->csrfToken();
+```
+
+*... renders to ...*
+
+```html
+<meta name="csrf-token" content="a7588c617ea5d8833374d8eb3752bcc4071" />
+```
+
 ### Charset & Viewport
 
 ```php

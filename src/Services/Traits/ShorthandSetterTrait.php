@@ -5,6 +5,7 @@ namespace romanzipp\Seo\Services\Traits;
 use Illuminate\Support\Arr;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Charset;
+use romanzipp\Seo\Structs\Meta\CsrfToken;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -134,6 +135,19 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             Viewport::make()->content($viewport)
+        );
+    }
+
+    /**
+     * Add the CSRF token meta struct.
+     *
+     * @param string $token
+     * @return $this
+     */
+    public function csrfToken(string $token = null): self
+    {
+        return $this->add(
+            CsrfToken::make()->token($token ?? csrf_token())
         );
     }
 
