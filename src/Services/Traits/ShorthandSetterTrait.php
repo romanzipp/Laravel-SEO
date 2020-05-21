@@ -8,6 +8,7 @@ use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\Description;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
+use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Struct;
 use romanzipp\Seo\Structs\Title;
 
@@ -120,6 +121,19 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             Charset::make()->charset($charset)
+        );
+    }
+
+    /**
+     * Add the meta viewport struct.
+     *
+     * @param string $viewport
+     * @return $this
+     */
+    public function viewport(string $viewport = 'width=device-width, initial-scale=1'): self
+    {
+        return $this->add(
+            Viewport::make()->content($viewport)
         );
     }
 
