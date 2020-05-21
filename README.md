@@ -44,7 +44,11 @@ $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvi
 
 ## Documentation
 
-[Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
+- [Basic Usage](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
+- [Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md)
+- [Hooks](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/HOOKS.md)
+- [Laravel-Mix](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)
+- [Example App](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md)
 
 ## Usage
 
@@ -67,93 +71,89 @@ class IndexController
 }
 ```
 
-### Examples
-
-Take a look at an [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md) for more detailed usage.
-
-#### Title
-
-```php
-seo()->title('romanzipp');
-```
-
-```php
-use romanzipp\Seo\Structs\Title;
-
-seo()->add(
-    Title::make()->body('romanzipp')
-);
-```
-
-... both compile to ...
-
-```html
-<title>romanzipp</title>
-```
-
-#### Charset
-
-```php
-use romanzipp\Seo\Structs\Meta\Charset;
-
-seo()->add(
-    Charset::make()->charset('utf-8')
-);
-```
-
-... compiles to ...
-
-```html
-<meta charset="utf-8" />
-```
-
-#### Twitter
-
-```php
-seo()->twitter('card', 'summary');
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\Twitter;
-
-seo()->add(
-    Twitter::make()->name('card')->content('summary')
-);
-```
-
-... both compile to ...
-
-```html
-<meta name="twitter:card" content="summary" />
-```
-
-#### Open Graph
-
-```php
-seo()->og('site_name', 'romanzipp');
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-
-seo()->add(
-    OpenGraph::make()->name('site_name')->content('romanzipp')
-);
-```
-
-... both compile to ...
-
-```html
-<meta name="og:site_name" content="romanzipp" />
-```
-
-For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
-
 ### Render
 
 ```blade
 {{ seo()->render() }}
 ```
+
+## Examples
+
+This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#available-shortcuts) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
+
+Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md) or [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md) for more detailed usage. (*"Struct" = Code representation of head HTML elements*)
+
+### Title
+
+```php
+seo()->title('Laravel');
+```
+
+*... renders to ...*
+
+```html
+<title>Laravel</title>
+<meta property="og:title" content="Laravel" />
+<meta name="twitter:title" content="Laravel" />
+```
+
+### Description
+
+```php
+seo()->description('Catchy marketing headline');
+```
+
+*... renders to ...*
+
+```html
+<meta name="description" content="Catchy marketing headline" />
+<meta property="og:description" content="Catchy marketing headline" />
+<meta name="twitter:description" content="Catchy marketing headline" />
+```
+
+### Charset & Viewport
+
+```php
+seo()->charset();
+seo()->viewport();
+```
+
+*... renders to ...*
+
+```html
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+### Twitter
+
+```php
+seo()->twitter('card', 'summary');
+seo()->twitter('creator', '@romanzipp');
+```
+
+*... renders to ...*
+
+```html
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@romanzipp" />
+```
+
+### Open Graph
+
+```php
+seo()->og('site_name', 'Laravel');
+seo()->og('locale', 'de_DE');
+```
+
+*... renders to ...*
+
+```html
+<meta name="og:site_name" content="Laravel" />
+<meta name="og:locale" content="de_DE" />
+```
+
+For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
 
 ## Laravel-Mix Integration
 
@@ -231,117 +231,7 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 
 ## Upgrading
 
-Upgrading from 1.0 to **2.0**
-
-### SeoService
-
-#### The `clear` Method
-
-The `clear` method has been renamed to a more consistent `clearStructs` method.
-
-```diff
-- seo()->clear();
-+ seo()->clearStructs();
-```
-
-#### The `render` Method
-
-The `render` method now returns a `RenderConductor` which implements the `Renderable`, `Htmlable` and `Arrayable` interfaces instead of a `HtmlString`.
-
-```diff
-/** @var $content string */
-- $content = (string) seo()->render();
-+ $content = seo()->render()->toHtml();
-```
-
-You can still use `{{ seo()->render() }}` in Blade templates.
-
-```diff
-/** @var $content array */
-- $content = seo()->renderContentsArray();
-+ $content = seo()->render()->toArray();
-```
-
-```diff
-/** @var $content Illuminate\Support\HtmlString */
-- $content = seo()->render();
-+ $content = seo()->render()->build();
-```
-
-### Structs
-
-#### The `defaults` Method
-
-The **romanzipp\Seo\Structs\Struct::defaults()** method now has a return type of `void`.
-
-```diff
-class CustomStruct extends Struct
-{
--   public static function defaults(Struct $struct)
-+   public static function defaults(Struct $struct): void
-    {
-        $struct->addAttribute('name', 'custom');
-    }
-}
-```
-
-#### Fluent Setters
-
-All fluent setter methods now share the same return type of `romanzipp\Seo\Structs\Struct`.
-
-```diff
-use romanzipp\Seo\Structs\Struct;
-
-class CustomStruct extends Meta
-{
--   public function property($value = null, bool $escape = true): self
-+   public function property($value = null, bool $escape = true): Struct
-    {
-        $this->addAttribute('property', 'custom:' . $value, $escape);
-
-        return $this;
-    }
-}
-
-```
-
-### Laravel-Mix
-
-#### The `filter` and `reject` Methods
-
-Both `filter` and `reject` methods in the Laravel-Mix integration have been replaced with a more general `map` method.
-
-```diff
-seo()
-    ->mix()
--   ->filter(function ($path, $url) {
--       // ...
--   })
--   ->reject(function ($path, $url) {
--       // ...
--   });
-+   ->map(static function (ManifestAsset $asset): ?ManifestAsset {
-+       // ...
-+   });
-```
-
-#### The `rel` Method
-
-The `rel` setter for the Laravel-Mix integration has been removed.
-
-```diff
-seo()
-    ->mix()
--   ->rel('preload');
-+   ->map(static function (ManifestAsset $asset): ?ManifestAsset {
-+       $asset->rel = 'preload';
-+       return $asset;
-+   });
-```
-
-#### The `getAssets` Method
-
-The `MixManifestConductor::getAssets()` method now returns an array of type ` ManifestAsset[]`.
+- [Upgrading from 1.0 to **2.0**](https://github.com/romanzipp/Laravel-SEO/releases/tag/2.0.0)
 
 ## Cheat Sheet
 
