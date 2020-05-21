@@ -1,6 +1,15 @@
 - **[Basic Usage](INDEX.md)**
+  - [Add Methods](INDEX.md#add-methods)
+  - [Macros](INDEX.md#macros)
 - [Structs](STRUCTS.md)
+  - [Examples](STRUCTS.md#examples)
+  - [Available Shorthand Methods](STRUCTS.md#available-shorthand-methods)
+  - [Available Structs](STRUCTS.md#available-structs)
+  - [Escaping](STRUCTS.md#escaping)
+  - [Creating custom Structs](STRUCTS.md#creating-custom-structs)
 - [Hooks](HOOKS.md)
+  - [Examples](HOOKS.md#examples)
+  - [Reference](HOOKS.md#reference)
 - [Laravel-Mix](LARAVEL-MIX.md)
 - [Example App](EXAMPLE-APP.md)
 
@@ -58,7 +67,7 @@ seo()->add(
 );
 ```
 
-## SeoService Add Methods
+## Add Methods
 
 ### Add single Struct
 
@@ -94,7 +103,7 @@ seo()->addIf(
 seo()->clear();
 ```
 
-## SeoService Macros
+## Macros
 
 The `romanzipp\Seo\Services\SeoService` class uses the Laravel `Macroable` trait which allows creating short macros.
 

@@ -45,8 +45,17 @@ $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvi
 ## Documentation
 
 - [Basic Usage](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md)
+  - [Add Methods](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md#add-methods)
+  - [Macros](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/INDEX.md#macros)
 - [Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md)
+  - [Examples](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#examples)
+  - [Available Shorthand Methods](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#available-shorthand-methods)
+  - [Available Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#available-structs)
+  - [Escaping](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#escaping)
+  - [Creating custom Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#creating-custom-structs)
 - [Hooks](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/HOOKS.md)
+  - [Examples](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/HOOKS.md#examples)
+  - [Reference](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/HOOKS.md#reference)
 - [Laravel-Mix](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)
 - [Example App](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md)
 
