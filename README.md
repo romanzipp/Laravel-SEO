@@ -255,8 +255,8 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 | `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
 | `seo()->og('site_name', 'Laravel')` | `<meta name="og:site_name" content="Laravel" />` |
 | `seo()->charset()` | `<meta charset="utf-8" />` |
-| `seo()->viewport()` | `<meta name="viewport" content="width=device-width, initial-scale=1" />` |
-| `seo()->csrfToken()` | `<meta name="csrf-token" content="a7588c617ea5d883337" />` |
+| `seo()->viewport()` | `<meta name="viewport" content="width=device-width, ..." />` |
+| `seo()->csrfToken()` | `<meta name="csrf-token" content="..." />` |
 | **Adding Structs** | |
 | `seo()->add(...)` | `<meta name="foo" />` |
 | `seo()->addMany([...])` | `<meta name="foo" />` |
