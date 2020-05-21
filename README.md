@@ -258,9 +258,9 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 | `seo()->viewport()` | `<meta name="viewport" content="width=device-width, initial-scale=1" />` |
 | `seo()->csrfToken()` | `<meta name="csrf-token" content="a7588c617ea5d883337" />` |
 | **Adding Structs** | |
-| `seo()->add(Meta::make()->name('foo'))` | `<meta name="foo" />` |
-| `seo()->addMany([Meta::make()->name('foo')])` | `<meta name="foo" />` |
-| `seo()->addIf(true, Meta::make()->name('foo'))` | `<meta name="foo" />` |
+| `seo()->add(...)` | `<meta name="foo" />` |
+| `seo()->addMany([...])` | `<meta name="foo" />` |
+| `seo()->addIf(true, ...)` | `<meta name="foo" />` |
 | **Various** | |
 | `seo()->mix()` | |
 | `seo()->hook()` | |
