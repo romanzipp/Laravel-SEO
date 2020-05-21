@@ -4,36 +4,33 @@ return [
 
     'shorthand' => [
 
-        /**
-         * Decide, which tags should be applied when using the
-         * Seo Service shorthand methods like
-         *
-         * seo()->title(...)
-         * seo()->description(...)
+        /*
+         * Decide, which tags should be created when using the
+         * Seo Service shorthand methods like seo()->title(...)
          */
 
-        'title'       => [
+        'title' => [
 
             // <title>...</title>
-            'tag'       => true,
+            'tag' => true,
 
             // <meta property="og:title" content="..." />
             'opengraph' => true,
 
             // <meta name="twitter:title" content="..." />
-            'twitter'   => true,
+            'twitter' => true,
         ],
 
         'description' => [
 
             // <meta name="description" content="..." />
-            'meta'      => true,
+            'meta' => true,
 
             // <meta property="og:description" content="..." />
             'opengraph' => true,
 
             // <meta name="twitter:description" content="..." />
-            'twitter'   => true,
+            'twitter' => true,
         ],
     ],
 ];

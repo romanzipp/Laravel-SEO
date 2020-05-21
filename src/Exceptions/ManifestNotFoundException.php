@@ -2,7 +2,9 @@
 
 namespace romanzipp\Seo\Exceptions;
 
-class ManifestNotFoundException extends \Exception
+use Exception;
+
+class ManifestNotFoundException extends Exception
 {
 
 }

@@ -4,8 +4,8 @@ namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
 use romanzipp\Seo\Conductors\MixManifestConductor;
-use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Conductors\RenderConductor;
+use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Services\Traits\CollisionTrait;
 use romanzipp\Seo\Services\Traits\SchemaOrgTrait;
 use romanzipp\Seo\Services\Traits\ShorthandSetterTrait;
