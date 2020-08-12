@@ -68,13 +68,17 @@ So instead of using the `attr()` Struct method, we can use the shorthand `proper
 
 ```php
 seo()->add(
-    OpenGraph::make()->attr('property', 'og:site_name')->attr('content', 'This is a Site Name')
+    OpenGraph::make()
+        ->attr('property', 'og:site_name')
+        ->attr('content', 'This is a Site Name')
 );
 ```
 
 ```php
 seo()->add(
-    OpenGraph::make()->property('site_name')->content('This is a Site Name')
+    OpenGraph::make()
+        ->property('site_name')
+        ->content('This is a Site Name')
 );
 ```
 
@@ -214,6 +218,15 @@ romanzipp\Seo\Structs\Meta\AppLink::make()
 ```php
 romanzipp\Seo\Structs\Meta\Charset::make()
     ->charset(string $charset, bool $escape = true);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\CsrfToken::make()
+    ->token($token = null, bool $escape = true);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Description::make();
 ```
 
 ```php
