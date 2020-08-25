@@ -100,7 +100,7 @@ seo()->addIf(
 ### Clear all added Structs
 
 ```php
-seo()->clear();
+seo()->clearStructs();
 ```
 
 ## Macros
