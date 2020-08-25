@@ -4,7 +4,7 @@ namespace romanzipp\Seo\Enums;
 
 class HookTarget
 {
-    const BODY = 0;
-    const ATTRIBUTES = 1;
-    const ATTRIBUTE = 2;
+    public const BODY = 0;
+    public const ATTRIBUTES = 1;
+    public const ATTRIBUTE = 2;
 }
