@@ -21,7 +21,6 @@ Hooks allow the modification of a Structs **body** or **attributes**.
 
 ```php
 use romanzipp\Seo\Helpers\Hook;
-use romanzipp\Seo\Structs\Title;
 
 $hook = Hook::make()
     ->onBody()
@@ -33,12 +32,16 @@ $hook = Hook::make()
 **Method 1**: Call the `SeoService::hook()` method to apply a given `$hook` to a Struct class.
 
 ```php
+use romanzipp\Seo\Structs\Title;
+
 seo()->hook(Title::class, $hook);
 ```
 
 **Method 2**: Apply the `$hook` directly to the Struct.
 
 ```php
+use romanzipp\Seo\Structs\Title;
+
 Title::hook($hook);
 ```
 

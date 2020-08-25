@@ -26,16 +26,15 @@ For a full reference of what **could** go to your `<head>` see [joshbuchea's HEA
 ```
 
 ```php
-use romanzipp\Seo\Structs\Meta\Charset;
-use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
+use romanzipp\Seo\Structs\Meta;
 
 seo()->add(
-    Charset::make()->charset('utf-8')
+    Meta\Charset::make()->charset('utf-8')
 );
 
 seo()->add(
-    Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover')
+    Meta\Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover')
 );
 
 seo()->add(
@@ -55,15 +54,21 @@ seo()->add(
 use romanzipp\Seo\Structs\Meta;
 
 seo()->add(
-    Meta::make()->attr('name', 'application-name')->attr('content', 'Application Name')
+    Meta::make()
+        ->attr('name', 'application-name')
+        ->attr('content', 'Application Name')
 );
 
 seo()->add(
-    Meta::make()->attr('name', 'theme-color')->attr('content', '#f00')
+    Meta::make()
+        ->attr('name', 'theme-color')
+        ->attr('content', '#f00')
 );
 
 seo()->add(
-    Meta::make()->attr('name', 'description')->attr('content', 'My Description')
+    Meta::make()
+        ->attr('name', 'description')
+        ->attr('content', 'My Description')
 );
 ```
 
@@ -72,6 +77,8 @@ seo()->add(
 ### Add single Struct
 
 ```php
+use romanzipp\Seo\Structs\Title;
+
 seo()->add(
     Title::make()->body('My Title')
 );
@@ -80,6 +87,9 @@ seo()->add(
 ### Add multiple Structs
 
 ```php
+use romanzipp\Seo\Structs\Title;
+use romanzipp\Seo\Structs\Meta\Description;
+
 seo()->addMany([
     Title::make()->body('My Title'),
     Description::make()->content('My Description'),
@@ -89,7 +99,9 @@ seo()->addMany([
 ### Conditional additions
 
 ```php
-$boolean = mt_rand(0, 1) == 1 ? true : false;
+use romanzipp\Seo\Structs\Title;
+
+$boolean = random_int(0, 1) === 1;
 
 seo()->addIf(
     $boolean,

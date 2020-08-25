@@ -46,7 +46,9 @@ Using the `attr(string $attribute, $value = null)` method, we can append attribu
 use romanzipp\Seo\Structs\Meta;
 
 seo()->add(
-    Meta::make()->attr('name', 'theme-color')->attr('content', 'red')
+    Meta::make()
+        ->attr('name', 'theme-color')
+        ->attr('content', 'red')
 );
 ```
 
@@ -60,13 +62,11 @@ Because **OpenGraph** tags are `<meta />` elements, the `OpenGraph` Struct is un
 
 All **OpenGraph** elements are defined by `property=""` and `content=""` attributes where the `property` value starts with a `og:` prefix.
 
+Instead of using the `attr()` Struct method, we can use the shorthand `property()` and `content()` methods by the `OpenGraph` class.
+
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
-```
 
-So instead of using the `attr()` Struct method, we can use the shorthand `property()` and `content()` methods by the `OpenGraph` class.
-
-```php
 seo()->add(
     OpenGraph::make()
         ->attr('property', 'og:site_name')
@@ -75,6 +75,8 @@ seo()->add(
 ```
 
 ```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
 seo()->add(
     OpenGraph::make()
         ->property('site_name')
@@ -82,7 +84,7 @@ seo()->add(
 );
 ```
 
-Both compile to
+... both render to ...
 
 ```html
 <meta property="og:site_name" content="This is a Site Name" />
@@ -96,9 +98,23 @@ Both compile to
 use romanzipp\Seo\Structs\Meta\Twitter;
 
 seo()->add(
-    Twitter::make()->name('card')->content('summary')
+    Twitter::make()
+        ->attr('name', 'twitter:card')
+        ->attr('content', 'summary')
 );
 ```
+
+```php
+use romanzipp\Seo\Structs\Meta\Twitter;
+
+seo()->add(
+    Twitter::make()
+        ->name('card')
+        ->content('summary')
+);
+```
+
+... both render to ...
 
 ```html
 <meta name="twitter:card" content="summary" />
@@ -109,7 +125,7 @@ seo()->add(
 When using shorthand methods, you will skip the `seo()->add()` method.
 You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
 
-#### Title
+### Title
 
 ```php
 seo()->title(string $title = null);
@@ -118,14 +134,26 @@ seo()->title(string $title = null);
 ... same as ...
 
 ```php
+use romanzipp\Seo\Structs\Title;
+use romanzipp\Seo\Structs\Meta;
+
 seo()->addMany([
-    Title::make()->body(string $title = null),
-    OpenGraph::make()->property('title')->content(string $title = null),
-    Twitter::make()->name('title')->content(string $title = null),
+
+    Title::make()
+        ->body(string $title = null),
+
+    Meta\OpenGraph::make()
+        ->property('title')
+        ->content(string $title = null),
+
+    Meta\Twitter::make()
+        ->name('title')
+        ->content(string $title = null),
+
 ]);
 ```
 
-#### Description
+### Description
 
 ```php
 seo()->description(string $description = null);
@@ -134,14 +162,26 @@ seo()->description(string $description = null);
 ... same as ...
 
 ```php
+use romanzipp\Seo\Structs\Meta;
+
 seo()->addMany([
-    Description::make()->name('description')->content(string $description = null),
-    OpenGraph::make()->property('description')->content(string $description = null),
-    Twitter::make()->name('description')->content(string $description = null),
+
+    Meta\Description::make()
+        ->name('description')
+        ->content(string $description = null),
+
+    Meta\OpenGraph::make()
+        ->property('description')
+        ->content(string $description = null),
+
+    Meta\Twitter::make()
+        ->name('description')
+        ->content(string $description = null),
+
 ]);
 ```
 
-#### Meta name-content Tag
+### Meta name-content Tag
 
 ```php
 seo()->meta(string $name, $content = null, bool $escape = true);
@@ -150,6 +190,8 @@ seo()->meta(string $name, $content = null, bool $escape = true);
 ... same as ...
 
 ```php
+use romanzipp\Seo\Structs\Meta;
+
 seo()->add(
     Meta::make()
         ->name(string $name, bool $escape = true)
@@ -157,7 +199,7 @@ seo()->add(
 );
 ```
 
-#### OpenGraph
+### OpenGraph
 
 ```php
 seo()->og(string $property, $content = null, bool $escape = true);
@@ -166,6 +208,8 @@ seo()->og(string $property, $content = null, bool $escape = true);
 ... same as ...
 
 ```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
 seo()->add(
     OpenGraph::make()
         ->property(string $property, bool $escape = true)
@@ -173,7 +217,7 @@ seo()->add(
 );
 ```
 
-#### Twitter
+### Twitter
 
 ```php
 seo()->twitter(string $name, $content = null, bool $escape = true);
@@ -182,6 +226,8 @@ seo()->twitter(string $name, $content = null, bool $escape = true);
 ... same as ...
 
 ```php
+use romanzipp\Seo\Structs\Meta\Twitter;
+
 seo()->add(
     Twitter::make()
         ->name(string $name, bool $escape = true)
@@ -191,19 +237,19 @@ seo()->add(
 
 ## Available Structs
 
-#### Base
+### Base
 
 ```php
 romanzipp\Seo\Structs\Base::make();
 ```
 
-#### Link
+### Link
 
 ```php
 romanzipp\Seo\Structs\Link::make();
 ```
 
-#### Meta
+### Meta
 
 ```php
 romanzipp\Seo\Structs\Meta::make();
@@ -246,19 +292,19 @@ romanzipp\Seo\Structs\Meta\Viewport::make()
     ->content(string $content, bool $escape = true);
 ```
 
-#### Noscript
+### Noscript
 
 ```php
 romanzipp\Seo\Structs\Noscript::make();
 ```
 
-#### Script
+### Script
 
 ```php
 romanzipp\Seo\Structs\Script::make();
 ```
 
-#### Title
+### Title
 
 ```php
 romanzipp\Seo\Structs\Title::make();
@@ -271,10 +317,14 @@ By default, all body and attribute content is escaped via the Laravel [`e()`](ht
 **Use this feature with caution!**
 
 ```php
+use romanzipp\Seo\Structs\Title;
+
 Title::make()->body('Dont \' escape me!', false);
 ```
 
 ```php
+use romanzipp\Seo\Structs\Meta;
+
 Meta::make()->attr('content', 'Dont \' escape me!', false);
 ```
 
@@ -315,6 +365,8 @@ protected $unique = true;
 Now, previously created Structs will be overwritten.
 
 ```php
+use romanzipp\Seo\Structs\Meta;
+
 seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is the FIRST description'));
 seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is the SECOND description'));
 ```
@@ -353,9 +405,12 @@ By implementing the `defaults` method on your custom Struct, you can run any cus
 This is used among others in the `romanzipp\Seo\Structs\Meta\Charset` Struct to set a default charset attribute.
 
 ```php
+use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Struct;
+
 class Charset extends Meta
 {
-    public static function defaults(Struct $struct)
+    public static function defaults(Struct $struct): void
     {
         $struct->addAttribute('charset', 'utf-8');
     }
