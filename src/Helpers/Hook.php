@@ -217,5 +217,7 @@ class Hook
 
                 }, $data);
         }
+
+        return null;
     }
 }
