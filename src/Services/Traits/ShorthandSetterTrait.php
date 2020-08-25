@@ -141,7 +141,7 @@ trait ShorthandSetterTrait
     /**
      * Add the CSRF token meta struct.
      *
-     * @param string $token
+     * @param string|null $token
      * @return $this
      */
     public function csrfToken(string $token = null): self
