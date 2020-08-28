@@ -384,7 +384,7 @@ seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is t
 <meta name="description" content="This is the SECOND description">
 ```
 
-You are also able to modify the unique attributes by setting the `uniqueAttributes` property. If null, just the tag name will be considered as unique.
+You are also able to modify the unique attributes by setting the `uniqueAttributes` property. If empty, just the tag name will be considered as unique.
 
 ```php
 protected $uniqueAttributes = ['name'];
