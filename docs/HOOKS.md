@@ -75,6 +75,27 @@ seo()->add(Title::make()->body(null));    // <title>Site-Name</title>
 
 ----
 
+#### Modify any attribute of the `OpenGraph` Struct which has the attribute `property` with value `og:site_name`
+
+```php
+use romanzipp\Seo\Helpers\Hook;
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
+OpenGraph::hook(
+    Hook::make()
+        ->whereAttribute('property', 'og:site_name')
+        ->onAttributes()
+        ->callback(function ($attributes) {
+
+            $attributes['new'] = 'This will be added to all meta tags with property="og:site_name"';
+
+            return $attributes;
+        })
+);
+```
+
+----
+
 #### Modify the `content` attribute of the `OpenGraph` Struct which has the attribute `property` with value `og:title`
 
 ```php
@@ -96,27 +117,6 @@ use romanzipp\Seo\Structs\Meta\OpenGraph;
 
 $seo->add(OpenGraph::make()->property('title')->content('Home'));  // <meta ... content="Home | Site-Name" />
 $seo->add(OpenGraph::make()->property('title')->content(null));    // <meta ... content="Site-Name" />
-```
-
-----
-
-#### Modify any attribute of the `OpenGraph` Struct which has the attribute `property` with value `og:site_name`
-
-```php
-use romanzipp\Seo\Helpers\Hook;
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-
-OpenGraph::hook(
-    Hook::make()
-        ->whereAttribute('property', 'og:site_name')
-        ->onAttributes()
-        ->callback(function ($attributes) {
-
-            $attributes['new'] = 'This will be added to all meta tags with property="og:site_name"';
-
-            return $attributes;
-        })
-);
 ```
 
 ## Reference

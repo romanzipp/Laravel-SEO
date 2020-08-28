@@ -154,7 +154,7 @@ class PostController extends Controller
 
     public function show(Request $request, Post $post)
     {
-        seo()->title($post->title ?: 'Post No. ' . $post->id);
+        seo()->title($post->title ?: "Post No. {$post->id}");
         seo()->description($post->intro);
 
         return view('posts.show', compact('post'));
