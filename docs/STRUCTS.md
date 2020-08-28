@@ -384,6 +384,12 @@ seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is t
 <meta name="description" content="This is the SECOND description">
 ```
 
+You are also able to modify the unique attributes by setting the `uniqueAttributes` property. If null, just the tag name will be considered as unique.
+
+```php
+protected $uniqueAttributes = ['name'];
+```
+
 ### Defaults
 
 After a Struct instance has been created, we call the static `defaults` method.
