@@ -26,6 +26,11 @@ class MixManifestConductor
     private $mapCallback = null;
 
     /**
+     * @var bool
+     */
+    private $ignore = false;
+
+    /**
      * MixManifestService constructor.
      */
     public function __construct()
@@ -50,12 +55,26 @@ class MixManifestConductor
     }
 
     /**
+     * Add an callback function which will be applied to every asset.
+     *
      * @param \Closure $callback
      * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function map(Closure $callback): self
     {
         $this->mapCallback = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Do not throw exception of the mix manifest is not found.
+     *
+     * @return $this
+     */
+    public function ignore(): self
+    {
+        $this->ignore = true;
 
         return $this;
     }
@@ -118,6 +137,11 @@ class MixManifestConductor
         $content = @file_get_contents($this->getPath());
 
         if ($content === false) {
+
+            if ($this->ignore) {
+                return [];
+            }
+
             throw new ManifestNotFoundException('The manifest file could not be found');
         }
 

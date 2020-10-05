@@ -45,6 +45,18 @@ class MixManifestTest extends TestCase
             ->load($path);
     }
 
+    public function testLoadInvalidPathIgnoredException()
+    {
+        $path = $this->path('mix-manifest.not-found.json');
+
+        $mix = seo()
+            ->mix()
+            ->ignore()
+            ->load($path);
+
+        $this->assertEquals([], $mix->getAssets());
+    }
+
     public function testLoadingInvalidJson()
     {
         $path = $this->path('mix-manifest.empty.json');
