@@ -31,7 +31,13 @@ class ArrayFormatConductor
     {
         return [
 
-            // Single value structures
+            /**
+             * Single key-value pair.
+             *
+             *     $data = [
+             *         'title' => 'Foo'
+             *     ];
+             */
 
             'title' => SingleArraySchema::make()->callback(function (string $value) {
                 $this->seo->title($value);
@@ -41,7 +47,16 @@ class ArrayFormatConductor
                 $this->seo->description($value);
             }),
 
-            // Nested key-value pairs [ 'schema' => [ 'key1' => 'value1', 'key2' => 'value2' ] ]
+            /**
+             * Nested item with key-value pairs.
+             *
+             *     $data = [
+             *         'twitter' => [
+             *             'card' => 'summary',
+             *             'creator' => '@romanzipp'
+             *         ]
+             *     ];
+             */
 
             'twitter' => NestedArraySchema::make()->callback(function (string $key, string $value) {
                 $this->seo->twitter($key, $value);
@@ -51,7 +66,16 @@ class ArrayFormatConductor
                 $this->seo->og($key, $value);
             }),
 
-            // Attributes schema [ 'schema' => [ ['attribute' => 'value'], ['attribute' => 'value'] ] ]
+            /**
+             * Item with attribute schema.
+             *
+             *     $data = [
+             *         'schema' => [
+             *             ['attribute' => 'value'],
+             *             ['attribute' => 'value']
+             *         ]
+             *     ];
+             */
 
             'meta' => AttributeArraySchema::make(Structs\Meta::class)->callback(function (Structs\Meta $struct, array $attributes) {
 
