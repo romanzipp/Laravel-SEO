@@ -252,6 +252,7 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 |----|----|
 | **Shorthand Setters** | |
 | `seo()->title('Laravel')` | `<title>Laravel</title>` |
+| `seo()->description('Laravel')` | `<meta name="description" content="Laravel" />` |
 | `seo()->meta('author', 'Roman Zipp')` | `<meta name="author" content="Roman Zipp" />` |
 | `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
 | `seo()->og('site_name', 'Laravel')` | `<meta name="og:site_name" content="Laravel" />` |
