@@ -87,7 +87,7 @@ class SeoService
     {
         foreach ($this->getStructs() as $struct) {
 
-            if (get_class($struct) != $class) {
+            if (get_class($struct) !== $class) {
                 continue;
             }
 
