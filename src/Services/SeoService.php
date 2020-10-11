@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
+use romanzipp\Seo\Conductors\ArrayFormatConductor;
 use romanzipp\Seo\Conductors\MixManifestConductor;
 use romanzipp\Seo\Conductors\RenderConductor;
 use romanzipp\Seo\Helpers\Hook;
@@ -174,6 +175,19 @@ class SeoService
     }
 
     /**
+     * Add structs from array format.
+     *
+     * @param array $data
+     * @return $this
+     */
+    public function addFromArray(array $data): self
+    {
+        $this->arrayFormat()->setData($data);
+
+        return $this;
+    }
+
+    /**
      * Add hook to given struct class. This is just an
      * alias for the Struct::hook() method.
      *
@@ -200,5 +214,13 @@ class SeoService
     public function render(): RenderConductor
     {
         return new RenderConductor($this->getStructs(), $this->getSchemes());
+    }
+
+    /**
+     * @return \romanzipp\Seo\Conductors\ArrayFormatConductor
+     */
+    public function arrayFormat(): ArrayFormatConductor
+    {
+        return new ArrayFormatConductor($this);
     }
 }
