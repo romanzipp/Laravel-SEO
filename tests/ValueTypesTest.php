@@ -81,7 +81,7 @@ class ValueTypesTest extends TestCase
             Meta::make()->attr('name', true)
         );
 
-        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '1');
+        $this->assertSame('1', seo()->getStructs()[0]->getAttributes()['name']->data());
     }
 
     public function testFalseBooleanAttributeValue()
@@ -90,7 +90,7 @@ class ValueTypesTest extends TestCase
             Meta::make()->attr('name', false)
         );
 
-        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
+        $this->assertSame('0', seo()->getStructs()[0]->getAttributes()['name']->data());
     }
 
     public function testHookCallbackBodyType()
