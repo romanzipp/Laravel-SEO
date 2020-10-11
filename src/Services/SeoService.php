@@ -87,9 +87,11 @@ class SeoService
     {
         foreach ($this->getStructs() as $struct) {
 
-            if (get_class($struct) == $class) {
-                return $struct;
+            if (get_class($struct) != $class) {
+                continue;
             }
+
+            return $struct;
         }
 
         return null;
@@ -165,7 +167,6 @@ class SeoService
     public function addMany(array $structs): self
     {
         foreach ($structs as $struct) {
-
             $this->add($struct);
         }
 
