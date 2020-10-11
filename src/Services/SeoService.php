@@ -191,7 +191,7 @@ class SeoService
      */
     public function mix(): MixManifestConductor
     {
-        return new MixManifestConductor;
+        return new MixManifestConductor($this);
     }
 
     /**
