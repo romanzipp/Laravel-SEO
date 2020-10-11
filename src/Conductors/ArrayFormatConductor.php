@@ -47,6 +47,14 @@ class ArrayFormatConductor
                 $this->seo->description($value);
             }),
 
+            'charset' => SingleArraySchema::make()->callback(function (string $value) {
+                $this->seo->charset($value);
+            }),
+
+            'viewport' => SingleArraySchema::make()->callback(function (string $value) {
+                $this->seo->viewport($value);
+            }),
+
             /**
              * Nested item with key-value pairs.
              *
