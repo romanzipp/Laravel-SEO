@@ -226,6 +226,22 @@ abstract class Struct
     }
 
     /**
+     * Fluid setter for multiple attributes.
+     *
+     * @param array $attributes
+     * @param bool $escape
+     * @return $this
+     */
+    public function attrs(array $attributes, bool $escape = true): Struct
+    {
+        foreach ($attributes as $attribute => $value) {
+            $this->attr($attribute, $value, $escape);
+        }
+
+        return $this;
+    }
+
+    /**
      * Set body.
      *
      * @param mixed $body
