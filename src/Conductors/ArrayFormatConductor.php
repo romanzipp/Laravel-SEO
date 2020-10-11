@@ -88,7 +88,7 @@ class ArrayFormatConductor
             $schema = $this->getSchema($key);
 
             if ($schema === null) {
-                throw new InvalidArgumentException("Unknown key {$key}");
+                throw new InvalidArgumentException("Unknown key {$key} provided for seo array format");
             }
 
             $schema->apply($value);
