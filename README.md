@@ -26,14 +26,6 @@ A SEO package made for maximum customization and flexibility.
 composer require romanzipp/laravel-seo
 ```
 
-**If you use Laravel 5.5+ you are already done, otherwise continue.**
-
-Add Service Provider to your `app.php` configuration file:
-
-```php
-romanzipp\Seo\Providers\SeoServiceProvider::class,
-```
-
 ## Configuration
 
 Copy configuration to config folder:
