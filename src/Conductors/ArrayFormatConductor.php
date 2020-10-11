@@ -86,12 +86,15 @@ class ArrayFormatConductor
              */
 
             'meta' => AttributeArraySchema::make(Structs\Meta::class)->callback(function (Structs\Meta $struct, array $attributes) {
+                $this->seo->add(
+                    $struct->attrs($attributes)
+                );
+            }),
 
-                foreach ($attributes as $key => $value) {
-                    $struct->attr($key, $value);
-                }
-
-                $this->seo->add($struct);
+            'link' => AttributeArraySchema::make(Structs\Link::class)->callback(function (Structs\Link $struct, array $attributes) {
+                $this->seo->add(
+                    $struct->attrs($attributes)
+                );
             }),
 
         ];
