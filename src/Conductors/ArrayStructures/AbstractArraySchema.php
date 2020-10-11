@@ -22,6 +22,8 @@ abstract class AbstractArraySchema
     }
 
     /**
+     * Create a new array schema instance.
+     *
      * @param string|null $class
      * @return static
      */
@@ -31,6 +33,8 @@ abstract class AbstractArraySchema
     }
 
     /**
+     * Set the callback.
+     *
      * @param \Closure $callback
      * @return static
      */
@@ -51,7 +55,12 @@ abstract class AbstractArraySchema
         return $this->callback;
     }
 
-    protected function call(array $parameters)
+    /**
+     * Call the callback with given parameters.
+     *
+     * @param array $parameters
+     */
+    protected function call(array $parameters): void
     {
         call_user_func(
             $this->getCallback(),
@@ -59,7 +68,5 @@ abstract class AbstractArraySchema
         );
     }
 
-    abstract public function acceptsSingleValue(): bool;
-
-    abstract public function apply($data);
+    abstract public function apply($data): void;
 }

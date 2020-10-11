@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 class SingleArraySchema extends AbstractArraySchema
 {
-    public function apply($value)
+    public function apply($value): void
     {
         if ( ! is_string($value)) {
             throw new InvalidArgumentException('Invalid argument supplied for single array schema');
@@ -15,10 +15,5 @@ class SingleArraySchema extends AbstractArraySchema
         $this->call([
             $value,
         ]);
-    }
-
-    public function acceptsSingleValue(): bool
-    {
-        return true;
     }
 }

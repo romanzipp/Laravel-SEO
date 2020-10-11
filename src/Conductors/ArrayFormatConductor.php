@@ -22,6 +22,11 @@ class ArrayFormatConductor
         $this->seo = $seo;
     }
 
+    /**
+     * Get the predefined schemas for array formatting.
+     *
+     * @return array
+     */
     private function getSchemas(): array
     {
         return [
@@ -60,12 +65,23 @@ class ArrayFormatConductor
         ];
     }
 
+    /**
+     * Get a array schema based on index.
+     *
+     * @param string $index
+     * @return \romanzipp\Seo\Conductors\ArrayStructures\AbstractArraySchema|null
+     */
     private function getSchema(string $index): ?AbstractArraySchema
     {
         return $this->getSchemas()[$index] ?? null;
     }
 
-    public function setData(array $data)
+    /**
+     * Set the array data and pass it to the seo service.
+     *
+     * @param array $data
+     */
+    public function setData(array $data): void
     {
         foreach ($data as $key => $value) {
 
