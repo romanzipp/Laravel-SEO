@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 class NestedArraySchema extends AbstractArraySchema
 {
-    public function apply($data)
+    public function apply($data): void
     {
         if ( ! is_array($data)) {
             throw new InvalidArgumentException('Invalid argument supplied for nested array schema');
@@ -15,10 +15,5 @@ class NestedArraySchema extends AbstractArraySchema
         foreach ($data as $key => $value) {
             $this->call([$key, $value]);
         }
-    }
-
-    public function acceptsSingleValue(): bool
-    {
-        return false;
     }
 }

@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 class AttributeArraySchema extends AbstractArraySchema
 {
-    public function apply($data)
+    public function apply($data): void
     {
         if ( ! is_array($data)) {
             throw new InvalidArgumentException('Invalid argument supplied for attribute array schema');
@@ -18,18 +18,5 @@ class AttributeArraySchema extends AbstractArraySchema
                 $attributes,
             ]);
         }
-    }
-
-    protected function getCallbackParameters(): array
-    {
-        return [
-            new $this->class,
-
-        ];
-    }
-
-    public function acceptsSingleValue(): bool
-    {
-        return false;
     }
 }
