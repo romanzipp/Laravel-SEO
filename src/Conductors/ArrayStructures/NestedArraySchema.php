@@ -12,8 +12,8 @@ class NestedArraySchema extends AbstractArraySchema
             throw new InvalidArgumentException('Invalid argument supplied for nested array schema');
         }
 
-        foreach ($data as $key => $value) {
-            $this->call([$key, $value]);
+        foreach ($data as $attribute => $value) {
+            $this->call([$attribute, $value]);
         }
     }
 }
