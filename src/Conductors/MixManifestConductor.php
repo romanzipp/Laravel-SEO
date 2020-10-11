@@ -11,6 +11,11 @@ use romanzipp\Seo\Structs\Link;
 class MixManifestConductor
 {
     /**
+     * @var \romanzipp\Seo\Services\SeoService
+     */
+    private $seo;
+
+    /**
      * @var string
      */
     private $path;
@@ -33,8 +38,9 @@ class MixManifestConductor
     /**
      * MixManifestService constructor.
      */
-    public function __construct()
+    public function __construct(SeoService $seo)
     {
+        $this->seo = $seo;
         $this->path = public_path('mix-manifest.json');
     }
 
@@ -111,8 +117,6 @@ class MixManifestConductor
      */
     private function generateStruct(ManifestAsset $asset): void
     {
-        $seo = app(SeoService::class);
-
         $link = Link::make()
             ->rel($asset->rel)
             ->href($asset->url);
@@ -125,7 +129,7 @@ class MixManifestConductor
             $link->type($asset->type);
         }
 
-        $seo->add($link);
+        $this->seo->add($link);
     }
 
     /**
