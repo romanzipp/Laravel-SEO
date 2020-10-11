@@ -66,21 +66,21 @@ class ArrayFormatConductor
              *     ];
              */
 
-            'twitter' => NestedArraySchema::make()->callback(function (string $key, string $value) {
-                $this->seo->twitter($key, $value);
+            'twitter' => NestedArraySchema::make()->callback(function (string $attribute, string $value) {
+                $this->seo->twitter($attribute, $value);
             }),
 
-            'og' => NestedArraySchema::make()->callback(function (string $key, string $value) {
-                $this->seo->og($key, $value);
+            'og' => NestedArraySchema::make()->callback(function (string $attribute, string $value) {
+                $this->seo->og($attribute, $value);
             }),
 
             /**
              * Item with attribute schema.
              *
              *     $data = [
-             *         'schema' => [
-             *             ['attribute' => 'value'],
-             *             ['attribute' => 'value']
+             *         'meta' => [
+             *             ['name' => 'copyright', 'content' => 'Roman Zipp'],
+             *             ['name' => 'theme-color', 'content' => 'red']
              *         ]
              *     ];
              */
