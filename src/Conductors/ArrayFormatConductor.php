@@ -79,8 +79,14 @@ class ArrayFormatConductor
              *
              *     $data = [
              *         'meta' => [
-             *             ['name' => 'copyright', 'content' => 'Roman Zipp'],
-             *             ['name' => 'theme-color', 'content' => 'red']
+             *             [
+             *                 'name' => 'copyright',
+             *                 'content' => 'Roman Zipp'
+             *             ],
+             *             [
+             *                 'name' => 'theme-color',
+             *                 'content' => 'red'
+             *             ]
              *         ]
              *     ];
              */
