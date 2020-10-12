@@ -90,8 +90,6 @@ Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-
 seo()->title('Laravel');
 ```
 
-*... renders to ...*
-
 ```html
 <title>Laravel</title>
 <meta property="og:title" content="Laravel" />
@@ -103,8 +101,6 @@ seo()->title('Laravel');
 ```php
 seo()->description('Catchy marketing headline');
 ```
-
-*... renders to ...*
 
 ```html
 <meta name="description" content="Catchy marketing headline" />
@@ -118,8 +114,6 @@ seo()->description('Catchy marketing headline');
 seo()->csrfToken();
 ```
 
-*... renders to ...*
-
 ```html
 <meta name="csrf-token" content="a7588c617ea5d8833374d8eb3752bcc4071" />
 ```
@@ -130,8 +124,6 @@ seo()->csrfToken();
 seo()->charset();
 seo()->viewport();
 ```
-
-*... renders to ...*
 
 ```html
 <meta charset="utf-8" />
@@ -145,8 +137,6 @@ seo()->twitter('card', 'summary');
 seo()->twitter('creator', '@romanzipp');
 ```
 
-*... renders to ...*
-
 ```html
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@romanzipp" />
@@ -159,11 +149,19 @@ seo()->og('site_name', 'Laravel');
 seo()->og('locale', 'de_DE');
 ```
 
-*... renders to ...*
-
 ```html
 <meta name="og:site_name" content="Laravel" />
 <meta name="og:locale" content="de_DE" />
+```
+
+### Meta
+
+```php
+seo()->meta('copyright', 'Roman Zipp');
+```
+
+```html
+<meta name="copyright" content="Roman Zipp" />
 ```
 
 For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
