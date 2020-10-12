@@ -1,17 +1,17 @@
-- **[Basic Usage](INDEX.md)**
-  - [Add Methods](INDEX.md#add-methods)
-  - [Macros](INDEX.md#macros)
-- [Structs](STRUCTS.md)
-  - [Examples](STRUCTS.md#examples)
-  - [Available Shorthand Methods](STRUCTS.md#available-shorthand-methods)
-  - [Available Structs](STRUCTS.md#available-structs)
-  - [Escaping](STRUCTS.md#escaping)
-  - [Creating custom Structs](STRUCTS.md#creating-custom-structs)
-- [Hooks](HOOKS.md)
-  - [Examples](HOOKS.md#examples)
-  - [Reference](HOOKS.md#reference)
-- [Laravel-Mix](LARAVEL-MIX.md)
-- [Example App](EXAMPLE-APP.md)
+- **[Basic Usage](1-INDEX.md)**
+  - [Add Methods](1-INDEX.md#add-methods)
+  - [Macros](1-INDEX.md#macros)
+- [Structs](2-STRUCTS.md)
+  - [Examples](2-STRUCTS.md#examples)
+  - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
+  - [Available Structs](2-STRUCTS.md#available-structs)
+  - [Escaping](2-STRUCTS.md#escaping)
+  - [Creating custom Structs](2-STRUCTS.md#creating-custom-structs)
+- [Hooks](3-HOOKS.md)
+  - [Examples](3-HOOKS.md#examples)
+  - [Reference](3-HOOKS.md#reference)
+- [Laravel-Mix](4-LARAVEL-MIX.md)
+- [Example App](5-EXAMPLE-APP.md)
 
 # Basic Usage
 
@@ -74,7 +74,7 @@ seo()->add(
 
 ## Add Methods
 
-### Add single Struct
+### Add single Struct `add`
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -84,7 +84,7 @@ seo()->add(
 );
 ```
 
-### Add multiple Structs
+### Add multiple Structs `addMany`
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -96,7 +96,7 @@ seo()->addMany([
 ]);
 ```
 
-### Conditional additions
+### Conditional additions `addIf`
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -107,6 +107,65 @@ seo()->addIf(
     $boolean,
     Title::make()->body('My Title')
 );
+```
+
+### Add from array format `addFromArray`
+
+```php
+seo()->addFromArray([
+
+    // The following items share the same behavior as the equally named shorthand setters.
+
+    'title' => 'Laravel',
+    'description' => 'Laravel',
+    'charset' => 'utf-8',
+    'viewport' => 'width=device-width, initial-scale=1',
+
+    // Twitter & Open Graph
+
+    'twitter' => [
+        // <meta name="twitter:card" content="summary" />
+        // <meta name="twitter:creator" content="@romanzipp" />
+        'card' => 'summary',
+        'creator' => '@romanzipp',
+    ],
+
+    'og' => [
+        // <meta property="og:locale" content="de" />
+        // <meta property="og:site_name" content="Laravel" />
+        'locale' => 'de',
+        'site_name' => 'Laravel',
+    ],
+
+    // Custom meta & link structs. Each child array defines an attribute => value mapping.
+
+    'meta' => [
+        // <meta name="copyright" content="Roman Zipp" />
+        // <meta name="theme-color" content="#f03a17" />
+        [
+            'name' => 'copyright',
+            'content' => 'Roman Zipp',
+        ],
+        [
+            'name' => 'theme-color',
+            'content' => '#f03a17',
+        ],
+    ],
+
+    'link' => [
+        // <link rel="icon" href="/favicon.ico" />
+        // <link rel="preload" href="/fonts/IBMPlexSans.woff2" />
+        [
+            'rel' => 'icon',
+            'href' => '/favicon.ico',
+        ],
+        [
+            'rel' => 'preload',
+            'href' => '/fonts/IBMPlexSans.woff2',
+        ],
+    ],
+
+]);
 ```
 
 ### Clear all added Structs

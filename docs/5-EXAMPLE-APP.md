@@ -1,17 +1,17 @@
-- [Basic Usage](INDEX.md)
-  - [Add Methods](INDEX.md#add-methods)
-  - [Macros](INDEX.md#macros)
-- [Structs](STRUCTS.md)
-  - [Examples](STRUCTS.md#examples)
-  - [Available Shorthand Methods](STRUCTS.md#available-shorthand-methods)
-  - [Available Structs](STRUCTS.md#available-structs)
-  - [Escaping](STRUCTS.md#escaping)
-  - [Creating custom Structs](STRUCTS.md#creating-custom-structs)
-- [Hooks](HOOKS.md)
-  - [Examples](HOOKS.md#examples)
-  - [Reference](HOOKS.md#reference)
-- [Laravel-Mix](LARAVEL-MIX.md)
-- **[Example App](EXAMPLE-APP.md)**
+- [Basic Usage](1-INDEX.md)
+  - [Add Methods](1-INDEX.md#add-methods)
+  - [Macros](1-INDEX.md#macros)
+- [Structs](2-STRUCTS.md)
+  - [Examples](2-STRUCTS.md#examples)
+  - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
+  - [Available Structs](2-STRUCTS.md#available-structs)
+  - [Escaping](2-STRUCTS.md#escaping)
+  - [Creating custom Structs](2-STRUCTS.md#creating-custom-structs)
+- [Hooks](3-HOOKS.md)
+  - [Examples](3-HOOKS.md#examples)
+  - [Reference](3-HOOKS.md#reference)
+- [Laravel-Mix](4-LARAVEL-MIX.md)
+- **[Example App](5-EXAMPLE-APP.md)**
 
 # Example App
 
