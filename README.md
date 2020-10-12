@@ -198,7 +198,7 @@ seo()
 
 ### Extended usage
 
-Take a look at the **[SEO Laravel-Mix intregration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
+Take a look at the **[SEO Laravel-Mix integration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
 
 ```php
 use romanzipp\Seo\Conductors\Types\ManifestAsset;
@@ -211,7 +211,7 @@ seo()
             return null;
         }
 
-        $asset->url = 'http://localhost' . $asset->url;
+        $asset->url = "http://localhost/{$asset->url}";
 
         return $asset;
     })
