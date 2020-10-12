@@ -80,9 +80,9 @@ class IndexController
 
 ## Examples
 
-This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md#available-shortcuts) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
+This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-shortcuts) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
 
-Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md) or [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/EXAMPLE-APP.md) for more detailed usage. (*"Struct" = Code representation of head HTML elements*)
+Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md) or [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/5-EXAMPLE-APP.md) for more detailed usage. (*"Struct" = Code representation of head HTML elements*)
 
 ### Title
 
@@ -196,7 +196,7 @@ seo()
 
 ### Extended usage
 
-Take a look at the **[SEO Laravel-Mix integration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/LARAVEL-MIX.md)** for further usage.
+Take a look at the **[SEO Laravel-Mix integration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/4-LARAVEL-MIX.md)** for further usage.
 
 ```php
 use romanzipp\Seo\Conductors\Types\ManifestAsset;
