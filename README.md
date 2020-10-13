@@ -164,7 +164,7 @@ seo()->meta('copyright', 'Roman Zipp');
 <meta name="copyright" content="Roman Zipp" />
 ```
 
-For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/STRUCTS.md).
+For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md).
 
 ## Laravel-Mix Integration
 
