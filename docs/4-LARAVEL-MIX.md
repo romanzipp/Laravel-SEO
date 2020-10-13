@@ -53,7 +53,7 @@ seo()
 
 By default, all assets are added to the document head. You can specify filters or rejections to hide certain assets like admin scripts. The callbacks are passed through the Laravel collection instance.
 
-In this example, we will stop all **admin** frontend assets from prefetching by retuning `null` within the provided map callback.
+In this example, we will stop all **admin** frontend assets from prefetching by returning `null` within the provided map callback.
 
 ```php
 use romanzipp\Seo\Conductors\Types\ManifestAsset;
