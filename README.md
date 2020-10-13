@@ -80,7 +80,7 @@ class IndexController
 
 ## Examples
 
-This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-shortcuts) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
+This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-shorthand-methods) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
 
 Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md) or [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/5-EXAMPLE-APP.md) for more detailed usage. (*"Struct" = Code representation of head HTML elements*)
 
