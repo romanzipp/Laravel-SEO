@@ -45,7 +45,7 @@ use romanzipp\Seo\Structs\Title;
 Title::hook($hook);
 ```
 
-Both methods are basicly the same, choose which one you preferr.
+Both methods are basically the same, choose which one you prefer.
 
 ## Examples
 
