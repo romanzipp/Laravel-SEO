@@ -12,11 +12,6 @@ class Script extends Struct
         return 'script';
     }
 
-    public static function defaults(Struct $struct): void
-    {
-        $struct->addAttribute('type', 'application/javascript');
-    }
-
     public function src($value = null, bool $escape = true): Struct
     {
         $this->addAttribute('src', $value, $escape);
