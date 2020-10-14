@@ -22,7 +22,7 @@ We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.
 
 ## Examples
 
-Always remember to add Struct instances using `seo()->add($struct)` when not using [shorthand methods](#available-shortcuts).
+Always remember to add Struct instances using `seo()->add($struct)` when not using [shorthand methods](#available-shorthand-methods).
 
 ### Titles
 
