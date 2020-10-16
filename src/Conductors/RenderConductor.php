@@ -23,6 +23,7 @@ class RenderConductor implements Htmlable, Renderable, Arrayable
 
     /**
      * RenderConductor constructor.
+     *
      * @param \romanzipp\Seo\Structs\Struct[] $structs
      * @param \Spatie\SchemaOrg\Type[] $schemes
      */

@@ -17,6 +17,7 @@ trait HookableTrait
 
     /**
      * Add given Hook to the struct.
+     *
      * @param \romanzipp\Seo\Helpers\Hook $hook
      * @return void
      */

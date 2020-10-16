@@ -162,7 +162,7 @@ abstract class Struct
     /**
      * Set the unique-flag.
      *
-     * @param boolean $unique = true
+     * @param boolean $unique
      * @return self
      */
     public function setUnique(bool $unique = true): Struct
