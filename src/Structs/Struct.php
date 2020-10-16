@@ -160,6 +160,19 @@ abstract class Struct
     }
 
     /**
+     * Set the unique-flag.
+     *
+     * @param boolean $unique = true
+     * @return self
+     */
+    public function setUnique(bool $unique = true): Struct
+    {
+        $this->unique = $unique;
+
+        return $this;
+    }
+
+    /**
      * Determines if struct is void element.
      *
      * @see  https://www.w3.org/TR/html/syntax.html#void-elements
