@@ -20,11 +20,4 @@ class Article extends Meta
 
         return $this;
     }
-
-    public function setUnique(bool $unique = true): Struct
-    {
-        $this->unique = $unique;
-
-        return $this;
-    }
 }
