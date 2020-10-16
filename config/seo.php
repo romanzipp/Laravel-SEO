@@ -32,5 +32,17 @@ return [
             // <meta name="twitter:description" content="..." />
             'twitter' => true,
         ],
+
+        'image' => [
+
+            // <meta name="image" content="..." />
+            'meta' => true,
+
+            // <meta property="og:image" content="..." />
+            'opengraph' => true,
+
+            // <meta name="twitter:image" content="..." />
+            'twitter' => true,
+        ],
     ],
 ];

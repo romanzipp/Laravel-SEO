@@ -69,6 +69,32 @@ trait ShorthandSetterTrait
     }
 
     /**
+     * Add image.
+     *
+     * @param string|null $image
+     * @param boolean $escape
+     * @return self
+     */
+    public function image(string $image = null, bool $escape = true): self
+    {
+        $config = Arr::get($this->config, 'shorthand.image');
+
+        $this->addIf(
+            $config['meta'], Meta::make()->name('image')->content($image, $escape)
+        );
+
+        $this->addIf(
+            $config['opengraph'], OpenGraph::make()->property('image')->content($image, $escape)
+        );
+
+        $this->addIf(
+            $config['twitter'], Twitter::make()->name('image')->content($image, $escape)
+        );
+
+        return $this;
+    }
+
+    /**
      * Add name-content Meta struct.
      *
      * @param string $name
