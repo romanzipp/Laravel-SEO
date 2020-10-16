@@ -181,6 +181,36 @@ seo()->addMany([
 ]);
 ```
 
+### Image
+
+```php
+seo()->image(string $image = null, bool $escape = true);
+```
+
+... same as ...
+
+```php
+use romanzipp\Seo\Structs\Meta;
+
+seo()->addMany([
+
+    Meta::make()
+        ->name('image')
+        ->content($image, $escape),
+    
+    
+    Meta\OpenGraph::make()
+        ->property('image')
+        ->content($image, $escape),
+    
+    
+    Meta\Twitter::make()
+        ->name('image')
+        ->content($image, $escape),
+
+]);
+```
+
 ### Meta name-content Tag
 
 ```php
@@ -235,6 +265,23 @@ seo()->add(
 );
 ```
 
+### Canonical
+
+```php
+seo()->canonical(string $canonical);
+```
+
+... same as ...
+
+```php
+use romanzipp\Seo\Structs\Meta\Canonical;
+
+seo()->add(
+    Canonical::make()
+        ->href($canonical)
+);
+```
+
 ## Available Structs
 
 ### Base
@@ -253,6 +300,17 @@ romanzipp\Seo\Structs\Link::make();
 
 ```php
 romanzipp\Seo\Structs\Meta::make();
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Article::make()
+    ->property(string $value, bool $escape = true)
+    ->content(string $value, bool $escape = true);
+```
+
+```php
+romanzipp\Seo\Structs\Meta\Canonical::make()
+    ->href(string $value, bool $escape = true);
 ```
 
 ```php
