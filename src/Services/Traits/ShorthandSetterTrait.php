@@ -4,6 +4,7 @@ namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
 use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Meta\Canonical;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\CsrfToken;
 use romanzipp\Seo\Structs\Meta\Description;
@@ -135,6 +136,19 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             Viewport::make()->content($viewport)
+        );
+    }
+
+    /**
+     * Add the canonical struct.
+     *
+     * @param string $canonical
+     * @return $this
+     */
+    public function canonical(string $canonical): self
+    {
+        return $this->add(
+            Canonical::make()->href($canonical)
         );
     }
 

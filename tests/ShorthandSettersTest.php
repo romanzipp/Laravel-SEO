@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Meta\Canonical;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -123,5 +124,16 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertInstanceOf(Viewport::class, seo()->getStructs()[0]);
+    }
+
+    public function testCanonicalSetter()
+    {
+        seo()->canonical('https://test.com/example');
+
+        $contents = seo()->render()->toArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertInstanceOf(Canonical::class, seo()->getStructs()[0]);
     }
 }
