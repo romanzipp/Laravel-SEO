@@ -55,6 +55,10 @@ class ArrayFormatConductor
                 $this->seo->viewport($value);
             }),
 
+            'canonical' => SingleArraySchema::make()->callback(function (string $value) {
+                $this->seo->canonical($value);
+            }),
+
             /**
              * Nested item with key-value pairs.
              *
