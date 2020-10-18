@@ -20,7 +20,7 @@ trait CollisionTrait
 
         [$existing, $key] = $result;
 
-        if ($existing === null || $key === null) {
+        if (null === $existing || null === $key) {
             return;
         }
 
@@ -28,14 +28,14 @@ trait CollisionTrait
     }
 
     /**
-     * Get matching struct duplicate
+     * Get matching struct duplicate.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
      * @return array|null
      */
     public function getDuplicateStruct(Struct $struct): ?array
     {
-        if ($struct->isUnique() === false) {
+        if (false === $struct->isUnique()) {
             return null;
         }
 

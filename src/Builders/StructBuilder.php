@@ -8,28 +8,28 @@ use romanzipp\Seo\Structs\Struct;
 class StructBuilder
 {
     /**
-     * Indent rendered struct
+     * Indent rendered struct.
      *
-     * @var null|string
+     * @var string|null
      */
     public static $indent = null;
 
     /**
-     * Separator for rendered structs
+     * Separator for rendered structs.
      *
-     * @var null|mixed
+     * @var mixed|null
      */
     public static $separator = PHP_EOL;
 
     /**
-     * Struct object
+     * Struct object.
      *
      * @var \romanzipp\Seo\Structs\Struct
      */
     private $struct;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
      */
@@ -71,13 +71,10 @@ class StructBuilder
         $body = $this->struct->getBody();
 
         if ($body || ! $this->struct->isVoidElement()) {
-
             $element .= '>';
             $element .= $body;
             $element .= '</' . $this->struct->getTag() . '>';
-
         } else {
-
             $element .= ' />';
         }
 
@@ -94,10 +91,9 @@ class StructBuilder
         $attributes = [];
 
         foreach ($this->struct->getComputedAttributes() as $attribute => $attributeValue) {
-
             $attribute = trim($attribute);
 
-            if ($attributeValue->data() !== null) {
+            if (null !== $attributeValue->data()) {
                 $attribute .= '="' . $attributeValue . '"';
             }
 

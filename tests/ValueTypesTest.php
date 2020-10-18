@@ -6,7 +6,6 @@ use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Test\TestCase;
 
 class ValueTypesTest extends TestCase
 {
@@ -34,7 +33,7 @@ class ValueTypesTest extends TestCase
             Meta::make()->attr('name', '0')
         );
 
-        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
+        $this->assertTrue('0' === seo()->getStructs()[0]->getAttributes()['name']->data());
     }
 
     // --- legacy
@@ -45,7 +44,7 @@ class ValueTypesTest extends TestCase
             Meta::make()->attr('name', 0)
         );
 
-        $this->assertTrue(seo()->getStructs()[0]->getAttributes()['name']->data() === '0');
+        $this->assertTrue('0' === seo()->getStructs()[0]->getAttributes()['name']->data());
     }
 
     public function testNullAttributeValue()
@@ -99,7 +98,6 @@ class ValueTypesTest extends TestCase
             Hook::make()
                 ->onBody()
                 ->callback(function ($body) {
-
                     $this->assertTrue(is_string($body));
 
                     return $body;
@@ -119,7 +117,6 @@ class ValueTypesTest extends TestCase
             Hook::make()
                 ->onBody()
                 ->callback(function ($body) {
-
                     $this->assertNull($body);
 
                     return $body;

@@ -47,7 +47,6 @@ trait HookableTrait
     public function triggerHook(int $target, $data): void
     {
         foreach ($this->getMatchingHooks($target, $data) as $hook) {
-
             $callback = $hook->getCallback();
 
             // We can pass body or multiple attributes to the user callback without
@@ -91,17 +90,15 @@ trait HookableTrait
             $filterAttributes = $hook->getFilterAttributes();
 
             foreach ($filterAttributes as $fAttribute => $fValue) {
-
                 if ($this->getComputedAttribute($fAttribute) != $fValue) {
-                    continue (2);
+                    continue 2;
                 }
             }
 
             // Dont't make any more processing if we are targeting the
             // Struct body or attributes array.
 
-            if ($target == HookTarget::BODY || $target == HookTarget::ATTRIBUTES) {
-
+            if (HookTarget::BODY == $target || HookTarget::ATTRIBUTES == $target) {
                 $hooks[] = $hook;
 
                 continue;
@@ -135,14 +132,17 @@ trait HookableTrait
 
             case HookTarget::BODY:
                 $this->body->setData($data);
+
                 break;
 
             case HookTarget::ATTRIBUTES:
                 $this->setModifiedHookAttributes($data);
+
                 break;
 
             case HookTarget::ATTRIBUTE:
                 $this->attributes[$hook->getTargetAttribute()]->setData($data);
+
                 break;
         }
     }
@@ -157,11 +157,8 @@ trait HookableTrait
         $attributes = $this->getAttributes();
 
         foreach ($data as $modifiedAttribute => $modifiedAttributeValue) {
-
             if (array_key_exists($modifiedAttribute, $attributes)) {
-
                 $attributes[$modifiedAttribute]->setData($modifiedAttributeValue);
-
             } else {
 
                 // Set the attribute directly to avoid triggering

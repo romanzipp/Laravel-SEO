@@ -87,18 +87,18 @@ class MixManifestConductor
 
     /**
      * @param string|null $path
-     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
+     * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function load(string $path = null): self
     {
-        if ($path !== null) {
+        if (null !== $path) {
             $this->path = $path;
         }
 
         $this->assets = $this->readContents();
 
-        if ($this->mapCallback !== null) {
+        if (null !== $this->mapCallback) {
             $this->assets = array_map($this->mapCallback, $this->assets);
         }
 
@@ -121,11 +121,11 @@ class MixManifestConductor
             ->rel($asset->rel)
             ->href($asset->url);
 
-        if ($asset->as !== null) {
+        if (null !== $asset->as) {
             $link->as($asset->as);
         }
 
-        if ($asset->type !== null) {
+        if (null !== $asset->type) {
             $link->type($asset->type);
         }
 
@@ -133,15 +133,14 @@ class MixManifestConductor
     }
 
     /**
-     * @return \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
+     * @return \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      */
     private function readContents(): array
     {
         $content = @file_get_contents($this->getPath());
 
-        if ($content === false) {
-
+        if (false === $content) {
             if ($this->ignore) {
                 return [];
             }

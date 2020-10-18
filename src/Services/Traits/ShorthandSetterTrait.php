@@ -20,7 +20,7 @@ trait ShorthandSetterTrait
      * Add title.
      *
      * @param string|null $title
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function title(string $title = null, bool $escape = true): self
@@ -28,15 +28,18 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.title');
 
         $this->addIf(
-            $config['tag'], Title::make()->body($title, $escape)
+            $config['tag'],
+            Title::make()->body($title, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'], OpenGraph::make()->property('title')->content($title, $escape)
+            $config['opengraph'],
+            OpenGraph::make()->property('title')->content($title, $escape)
         );
 
         $this->addIf(
-            $config['twitter'], Twitter::make()->name('title')->content($title, $escape)
+            $config['twitter'],
+            Twitter::make()->name('title')->content($title, $escape)
         );
 
         return $this;
@@ -46,7 +49,7 @@ trait ShorthandSetterTrait
      * Add description.
      *
      * @param string|null $description
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function description(string $description = null, bool $escape = true): self
@@ -54,15 +57,18 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.description');
 
         $this->addIf(
-            $config['meta'], Description::make()->content($description, $escape)
+            $config['meta'],
+            Description::make()->content($description, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'], OpenGraph::make()->property('description')->content($description, $escape)
+            $config['opengraph'],
+            OpenGraph::make()->property('description')->content($description, $escape)
         );
 
         $this->addIf(
-            $config['twitter'], Twitter::make()->name('description')->content($description, $escape)
+            $config['twitter'],
+            Twitter::make()->name('description')->content($description, $escape)
         );
 
         return $this;
@@ -72,7 +78,7 @@ trait ShorthandSetterTrait
      * Add image.
      *
      * @param string|null $image
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function image(string $image = null, bool $escape = true): self
@@ -80,15 +86,18 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.image');
 
         $this->addIf(
-            $config['meta'], Meta::make()->name('image')->content($image, $escape)
+            $config['meta'],
+            Meta::make()->name('image')->content($image, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'], OpenGraph::make()->property('image')->content($image, $escape)
+            $config['opengraph'],
+            OpenGraph::make()->property('image')->content($image, $escape)
         );
 
         $this->addIf(
-            $config['twitter'], Twitter::make()->name('image')->content($image, $escape)
+            $config['twitter'],
+            Twitter::make()->name('image')->content($image, $escape)
         );
 
         return $this;
@@ -99,7 +108,7 @@ trait ShorthandSetterTrait
      *
      * @param string $name
      * @param mixed|null $content
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function meta(string $name, $content = null, bool $escape = true): self
@@ -114,7 +123,7 @@ trait ShorthandSetterTrait
      *
      * @param string $name
      * @param mixed|null $content
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function twitter(string $name, $content = null, bool $escape = true): self
@@ -129,7 +138,7 @@ trait ShorthandSetterTrait
      *
      * @param string $property
      * @param mixed|null $content
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function og(string $property, $content = null, bool $escape = true): self

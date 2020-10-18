@@ -39,7 +39,7 @@ class Hook
     /**
      * Weather the current hook callback has been executed.
      *
-     * @var boolean
+     * @var bool
      */
     protected $executed = false;
 
@@ -50,7 +50,7 @@ class Hook
      */
     public static function make(): self
     {
-        return new self;
+        return new self();
     }
 
     /*
@@ -205,16 +205,14 @@ class Hook
 
                 return $data->data();
 
-            case HookTarget::ATTRIBUTE;
+            case HookTarget::ATTRIBUTE:
 
                 return array_values($data)[0]->data();
 
             case HookTarget::ATTRIBUTES:
 
                 return array_map(static function ($value) {
-
                     return $value->data();
-
                 }, $data);
         }
 

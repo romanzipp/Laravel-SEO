@@ -25,7 +25,7 @@ class ManifestAsset
     {
         $extension = pathinfo($path, PATHINFO_EXTENSION);
 
-        if ($extension === null) {
+        if (null === $extension) {
             return null;
         }
 

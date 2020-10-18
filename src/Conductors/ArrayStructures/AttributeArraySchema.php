@@ -14,7 +14,7 @@ class AttributeArraySchema extends AbstractArraySchema
 
         foreach ($data as $attributes) {
             $this->call([
-                new $this->class,
+                new $this->class(),
                 $attributes,
             ]);
         }
