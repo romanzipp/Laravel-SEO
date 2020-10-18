@@ -1,16 +1,13 @@
 <?php
 
 return [
-
     'shorthand' => [
-
         /*
          * Decide, which tags should be created when using the
          * Seo Service shorthand methods like seo()->title(...)
          */
 
         'title' => [
-
             // <title>...</title>
             'tag' => true,
 
@@ -22,7 +19,6 @@ return [
         ],
 
         'description' => [
-
             // <meta name="description" content="..." />
             'meta' => true,
 
@@ -34,7 +30,6 @@ return [
         ],
 
         'image' => [
-
             // <meta name="image" content="..." />
             'meta' => true,
 

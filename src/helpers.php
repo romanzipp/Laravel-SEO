@@ -3,7 +3,6 @@
 use romanzipp\Seo\Services\SeoService;
 
 if ( ! function_exists('seo')) {
-
     /**
      * Create SeoService instance.
      *

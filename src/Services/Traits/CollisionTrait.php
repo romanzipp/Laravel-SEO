@@ -10,6 +10,7 @@ trait CollisionTrait
      * Remove struct from existing structs.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
+     *
      * @return void
      */
     public function removeDuplicateStruct(Struct $struct): void
@@ -31,6 +32,7 @@ trait CollisionTrait
      * Get matching struct duplicate.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
+     *
      * @return array|null
      */
     public function getDuplicateStruct(Struct $struct): ?array
@@ -40,9 +42,7 @@ trait CollisionTrait
         }
 
         foreach ($this->structs as $key => $existing) {
-
             /** @var \romanzipp\Seo\Structs\Struct $existing */
-
             if (get_class($existing) !== get_class($struct)) {
                 continue;
             }
