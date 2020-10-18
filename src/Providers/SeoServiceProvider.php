@@ -27,11 +27,12 @@ class SeoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/../config/seo.php', 'seo'
+            dirname(__DIR__) . '/../config/seo.php',
+            'seo'
         );
 
         $this->app->singleton(SeoService::class, function () {
-            return new SeoService;
+            return new SeoService();
         });
     }
 

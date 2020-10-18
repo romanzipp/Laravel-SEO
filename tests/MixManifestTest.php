@@ -25,7 +25,8 @@ class MixManifestTest extends TestCase
             ->load($path);
 
         $assets = json_decode(
-            file_get_contents($path), true
+            file_get_contents($path),
+            true
         );
 
         $this->assertEquals([
@@ -108,7 +109,8 @@ class MixManifestTest extends TestCase
             ->load($path);
 
         $assets = json_decode(
-            file_get_contents($path), true
+            file_get_contents($path),
+            true
         );
 
         $this->assertEquals([
@@ -139,12 +141,14 @@ class MixManifestTest extends TestCase
             ->mix()
             ->map(function (ManifestAsset $asset): ?ManifestAsset {
                 $asset->url = 'http://localhost' . $asset->url;
+
                 return $asset;
             })
             ->load($path);
 
         $assets = json_decode(
-            file_get_contents($path), true
+            file_get_contents($path),
+            true
         );
 
         $this->assertEquals(
@@ -167,12 +171,14 @@ class MixManifestTest extends TestCase
             ->mix()
             ->map(function (ManifestAsset $asset): ?ManifestAsset {
                 $asset->path = '/somewhere' . $asset->path;
+
                 return $asset;
             })
             ->load($path);
 
         $assets = json_decode(
-            file_get_contents($path), true
+            file_get_contents($path),
+            true
         );
 
         $this->assertEquals(
@@ -195,6 +201,7 @@ class MixManifestTest extends TestCase
             ->mix()
             ->map(function (ManifestAsset $asset): ?ManifestAsset {
                 $asset->rel = 'preload';
+
                 return $asset;
             })
             ->load($path);

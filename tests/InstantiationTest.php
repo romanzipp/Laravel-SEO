@@ -6,7 +6,6 @@ use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Test\TestCase;
 
 class InstantiationTest extends TestCase
 {

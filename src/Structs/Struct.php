@@ -15,7 +15,7 @@ abstract class Struct
      * Can the website <head> contain more
      * than one element of this type.
      *
-     * @var boolean
+     * @var bool
      */
     protected $unique = false;
 
@@ -28,21 +28,21 @@ abstract class Struct
     protected $uniqueAttributes = [];
 
     /**
-     * Attributes
+     * Attributes.
      *
      * @var array
      */
     protected $attributes = [];
 
     /**
-     * Struct body
+     * Struct body.
      *
-     * @var null|\romanzipp\Seo\Values\Body
+     * @var \romanzipp\Seo\Values\Body|null
      */
     protected $body = null;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -56,7 +56,7 @@ abstract class Struct
      */
     public static function make(): self
     {
-        return new static;
+        return new static();
     }
 
     /**
@@ -66,7 +66,6 @@ abstract class Struct
      */
     public static function defaults(self $struct): void
     {
-        //
     }
 
     /*
@@ -152,7 +151,7 @@ abstract class Struct
     /**
      * Is struct unique.
      *
-     * @return boolean
+     * @return bool
      */
     public function isUnique(): bool
     {
@@ -162,7 +161,7 @@ abstract class Struct
     /**
      * Set the unique-flag.
      *
-     * @param boolean $unique
+     * @param bool $unique
      * @return self
      */
     public function setUnique(bool $unique = true): Struct
@@ -177,7 +176,7 @@ abstract class Struct
      *
      * @see  https://www.w3.org/TR/html/syntax.html#void-elements
      *
-     * @return boolean
+     * @return bool
      */
     public function isVoidElement(): bool
     {
@@ -209,7 +208,7 @@ abstract class Struct
      * Fluid body setter.
      *
      * @param mixed $body
-     * @param boolean $escape Escape body
+     * @param bool $escape Escape body
      * @return self
      */
     public function body($body, bool $escape = true): Struct
@@ -228,7 +227,7 @@ abstract class Struct
      *
      * @param string $attribute
      * @param mixed|null $value
-     * @param boolean $escape
+     * @param bool $escape
      * @return self
      */
     public function attr(string $attribute, $value = null, bool $escape = true): Struct
@@ -271,7 +270,7 @@ abstract class Struct
      *
      * @param string $key
      * @param mixed $value
-     * @param boolean $escape
+     * @param bool $escape
      */
     protected function addAttribute(string $key, $value, bool $escape = true): void
     {
@@ -308,7 +307,7 @@ abstract class Struct
     {
         switch (gettype($value)) {
 
-            case 'NULL';
+            case 'NULL':
 
                 return null;
 
@@ -318,12 +317,12 @@ abstract class Struct
 
             case 'boolean':
 
-                return $value === true ? '1' : '0';
+                return true === $value ? '1' : '0';
         }
 
         $value = trim($value);
 
-        if ($value === '') {
+        if ('' === $value) {
             return null;
         }
 

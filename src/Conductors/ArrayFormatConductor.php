@@ -31,7 +31,7 @@ class ArrayFormatConductor
     {
         return [
 
-            /**
+            /*
              * Single key-value pair.
              *
              *     $data = [
@@ -63,7 +63,7 @@ class ArrayFormatConductor
                 $this->seo->image($value);
             }),
 
-            /**
+            /*
              * Nested item with key-value pairs.
              *
              *     $data = [
@@ -82,7 +82,7 @@ class ArrayFormatConductor
                 $this->seo->og($attribute, $value);
             }),
 
-            /**
+            /*
              * Item with attribute schema.
              *
              *     $data = [
@@ -133,10 +133,9 @@ class ArrayFormatConductor
     public function setData(array $data): void
     {
         foreach ($data as $key => $value) {
-
             $schema = $this->getSchema($key);
 
-            if ($schema === null) {
+            if (null === $schema) {
                 throw new InvalidArgumentException("Unknown key {$key} provided for seo array format");
             }
 

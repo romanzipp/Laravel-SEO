@@ -20,7 +20,7 @@ class SeoService
     use SchemaOrgTrait;
 
     /**
-     * Config
+     * Config.
      *
      * @var array
      */
@@ -41,7 +41,7 @@ class SeoService
     protected $schemaOrgTypes = [];
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -49,7 +49,7 @@ class SeoService
     }
 
     /**
-     * Create service instance
+     * Create service instance.
      *
      * @return self
      */
@@ -87,7 +87,6 @@ class SeoService
     public function getStruct(string $class): ?Struct
     {
         foreach ($this->getStructs() as $struct) {
-
             if (get_class($struct) !== $class) {
                 continue;
             }

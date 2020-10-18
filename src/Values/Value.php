@@ -5,14 +5,14 @@ namespace romanzipp\Seo\Values;
 class Value
 {
     /**
-     * Value object original data
+     * Value object original data.
      *
      * @var mixed|null
      */
     protected $originalData;
 
     /**
-     * Value object data
+     * Value object data.
      *
      * @var mixed|null
      */
@@ -35,7 +35,7 @@ class Value
      */
     public function data()
     {
-        if ($this->data !== null) {
+        if (null !== $this->data) {
             return $this->data;
         }
 
