@@ -25,6 +25,7 @@ abstract class AbstractArraySchema
      * Create a new array schema instance.
      *
      * @param string|null $class
+     *
      * @return static
      */
     public static function make(?string $class = null)
@@ -36,6 +37,7 @@ abstract class AbstractArraySchema
      * Set the callback.
      *
      * @param \Closure $callback
+     *
      * @return static
      */
     public function callback(Closure $callback)

@@ -30,7 +30,6 @@ class ArrayFormatConductor
     private function getSchemas(): array
     {
         return [
-
             /*
              * Single key-value pair.
              *
@@ -110,7 +109,6 @@ class ArrayFormatConductor
                     $struct->attrs($attributes)
                 );
             }),
-
         ];
     }
 
@@ -118,6 +116,7 @@ class ArrayFormatConductor
      * Get a array schema based on index.
      *
      * @param string $index
+     *
      * @return \romanzipp\Seo\Conductors\ArrayStructures\AbstractArraySchema|null
      */
     private function getSchema(string $index): ?AbstractArraySchema

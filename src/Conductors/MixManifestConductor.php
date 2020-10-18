@@ -64,6 +64,7 @@ class MixManifestConductor
      * Add an callback function which will be applied to every asset.
      *
      * @param \Closure $callback
+     *
      * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function map(Closure $callback): self
@@ -87,7 +88,9 @@ class MixManifestConductor
 
     /**
      * @param string|null $path
+     *
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
+     *
      * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
     public function load(string $path = null): self
@@ -113,6 +116,7 @@ class MixManifestConductor
 
     /**
      * @param \romanzipp\Seo\Conductors\Types\ManifestAsset $asset
+     *
      * @return void
      */
     private function generateStruct(ManifestAsset $asset): void
@@ -134,6 +138,7 @@ class MixManifestConductor
 
     /**
      * @throws \romanzipp\Seo\Exceptions\ManifestNotFoundException
+     *
      * @return \romanzipp\Seo\Conductors\Types\ManifestAsset[]
      */
     private function readContents(): array

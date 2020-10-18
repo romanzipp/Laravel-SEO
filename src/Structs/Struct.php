@@ -119,6 +119,7 @@ abstract class Struct
      * Get computed single attribute.
      *
      * @param string $attribute
+     *
      * @return mixed
      */
     public function getComputedAttribute(string $attribute)
@@ -162,6 +163,7 @@ abstract class Struct
      * Set the unique-flag.
      *
      * @param bool $unique
+     *
      * @return self
      */
     public function setUnique(bool $unique = true): Struct
@@ -209,6 +211,7 @@ abstract class Struct
      *
      * @param mixed $body
      * @param bool $escape Escape body
+     *
      * @return self
      */
     public function body($body, bool $escape = true): Struct
@@ -228,6 +231,7 @@ abstract class Struct
      * @param string $attribute
      * @param mixed|null $value
      * @param bool $escape
+     *
      * @return self
      */
     public function attr(string $attribute, $value = null, bool $escape = true): Struct
@@ -242,6 +246,7 @@ abstract class Struct
      *
      * @param array $attributes
      * @param bool $escape
+     *
      * @return $this
      */
     public function attrs(array $attributes, bool $escape = true): Struct
@@ -301,12 +306,12 @@ abstract class Struct
      * Escape attribute value.
      *
      * @param mixed $value
+     *
      * @return string|null
      */
     protected function escapeValue($value): ?string
     {
         switch (gettype($value)) {
-
             case 'NULL':
 
                 return null;

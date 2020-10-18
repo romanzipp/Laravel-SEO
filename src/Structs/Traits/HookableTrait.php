@@ -19,6 +19,7 @@ trait HookableTrait
      * Add given Hook to the struct.
      *
      * @param \romanzipp\Seo\Helpers\Hook $hook
+     *
      * @return void
      */
     public static function hook(Hook $hook): void
@@ -42,6 +43,7 @@ trait HookableTrait
      *
      * @param int $target
      * @param mixed $data
+     *
      * @return void
      */
     public function triggerHook(int $target, $data): void
@@ -69,6 +71,7 @@ trait HookableTrait
      *
      * @param int $target
      * @param mixed $data
+     *
      * @return array
      */
     public function getMatchingHooks(int $target, $data): array
@@ -76,7 +79,6 @@ trait HookableTrait
         $hooks = [];
 
         foreach (self::$hooks as $key => $hook) {
-
             // Continue, if applied hook target does not match
             // the intendet target.
 
@@ -124,12 +126,12 @@ trait HookableTrait
      *
      * @param \romanzipp\Seo\Helpers\Hook $hook
      * @param mixed $data
+     *
      * @return void
      */
     public function setModifiedHookData(Hook $hook, $data): void
     {
         switch ($hook->getTarget()) {
-
             case HookTarget::BODY:
                 $this->body->setData($data);
 
@@ -160,7 +162,6 @@ trait HookableTrait
             if (array_key_exists($modifiedAttribute, $attributes)) {
                 $attributes[$modifiedAttribute]->setData($modifiedAttributeValue);
             } else {
-
                 // Set the attribute directly to avoid triggering
                 // further Hooks
 

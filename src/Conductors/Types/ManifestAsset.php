@@ -30,7 +30,6 @@ class ManifestAsset
         }
 
         switch ($extension) {
-
             case 'js':
                 return 'script';
 

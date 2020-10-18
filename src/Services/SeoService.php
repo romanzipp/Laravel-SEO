@@ -82,6 +82,7 @@ class SeoService
      * Get Struct by class.
      *
      * @param string $class
+     *
      * @return \romanzipp\Seo\Structs\Struct|null
      */
     public function getStruct(string $class): ?Struct
@@ -131,6 +132,7 @@ class SeoService
      * Add struct.
      *
      * @param Struct $struct
+     *
      * @return self
      */
     public function add(Struct $struct): self
@@ -147,6 +149,7 @@ class SeoService
      *
      * @param bool $boolean
      * @param Struct $struct
+     *
      * @return self
      */
     public function addIf(bool $boolean, Struct $struct): self
@@ -162,6 +165,7 @@ class SeoService
      * Add many structs.
      *
      * @param array $structs
+     *
      * @return self
      */
     public function addMany(array $structs): self
@@ -177,6 +181,7 @@ class SeoService
      * Add structs from array format.
      *
      * @param array $data
+     *
      * @return $this
      */
     public function addFromArray(array $data): self
@@ -192,6 +197,7 @@ class SeoService
      *
      * @param string $structClass
      * @param \romanzipp\Seo\Helpers\Hook $hook
+     *
      * @return void
      */
     public function hook(string $structClass, Hook $hook): void

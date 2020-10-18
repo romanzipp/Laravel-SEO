@@ -21,6 +21,7 @@ trait ShorthandSetterTrait
      *
      * @param string|null $title
      * @param bool $escape
+     *
      * @return self
      */
     public function title(string $title = null, bool $escape = true): self
@@ -50,6 +51,7 @@ trait ShorthandSetterTrait
      *
      * @param string|null $description
      * @param bool $escape
+     *
      * @return self
      */
     public function description(string $description = null, bool $escape = true): self
@@ -79,6 +81,7 @@ trait ShorthandSetterTrait
      *
      * @param string|null $image
      * @param bool $escape
+     *
      * @return self
      */
     public function image(string $image = null, bool $escape = true): self
@@ -109,6 +112,7 @@ trait ShorthandSetterTrait
      * @param string $name
      * @param mixed|null $content
      * @param bool $escape
+     *
      * @return self
      */
     public function meta(string $name, $content = null, bool $escape = true): self
@@ -124,6 +128,7 @@ trait ShorthandSetterTrait
      * @param string $name
      * @param mixed|null $content
      * @param bool $escape
+     *
      * @return self
      */
     public function twitter(string $name, $content = null, bool $escape = true): self
@@ -139,6 +144,7 @@ trait ShorthandSetterTrait
      * @param string $property
      * @param mixed|null $content
      * @param bool $escape
+     *
      * @return self
      */
     public function og(string $property, $content = null, bool $escape = true): self
@@ -152,6 +158,7 @@ trait ShorthandSetterTrait
      * Add the meta charset struct.
      *
      * @param string $charset
+     *
      * @return $this
      */
     public function charset(string $charset = 'utf-8'): self
@@ -165,6 +172,7 @@ trait ShorthandSetterTrait
      * Add the meta viewport struct.
      *
      * @param string $viewport
+     *
      * @return $this
      */
     public function viewport(string $viewport = 'width=device-width, initial-scale=1'): self
@@ -178,6 +186,7 @@ trait ShorthandSetterTrait
      * Add the canonical struct.
      *
      * @param string $canonical
+     *
      * @return $this
      */
     public function canonical(string $canonical): self
@@ -191,6 +200,7 @@ trait ShorthandSetterTrait
      * Add the CSRF token meta struct.
      *
      * @param string|null $token
+     *
      * @return $this
      */
     public function csrfToken(string $token = null): self
