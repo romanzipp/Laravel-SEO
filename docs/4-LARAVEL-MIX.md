@@ -100,7 +100,7 @@ seo()
     ->mix()
     ->map(static function(ManifestAsset $asset): ?ManifestAsset {
 
-        $asset->url = 'http://localhost' . $asset->url;
+        $asset->url = "http://localhost{$asset->url}";
 
         return $asset;
     })
