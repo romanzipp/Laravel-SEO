@@ -27,7 +27,7 @@ You can configure which Structs should be added on shorthand calls in the `seo.p
 ### Title
 
 ```php
-seo()->title(string $title = null);
+seo()->title(string $title = null, bool $escape = true);
 ```
 
 <details>
@@ -58,7 +58,7 @@ seo()->addMany([
 ### Description
 
 ```php
-seo()->description(string $description = null);
+seo()->description(string $description = null, bool $escape = true);
 ```
 
 <details>
