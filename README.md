@@ -35,20 +35,20 @@ $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvi
 
 ## Documentation
 
-- **[Basic Usage](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/1-INDEX.md)**
-  - [Add Methods](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/1-INDEX.md#add-methods)
-  - [Macros](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/1-INDEX.md#macros)
-- **[Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md)**
-  - [Examples](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#examples)
-  - [Available Shorthand Methods](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-shorthand-methods)
-  - [Available Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-structs)
-  - [Escaping](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#escaping)
-  - [Creating custom Structs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#creating-custom-structs)
-- **[Hooks](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/3-HOOKS.md)**
-  - [Examples](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/3-HOOKS.md#examples)
-  - [Reference](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/3-HOOKS.md#reference)
-- **[Laravel-Mix](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/4-LARAVEL-MIX.md)**
-- **[Example App](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/5-EXAMPLE-APP.md)**
+- **[Basic Usage](docs/1-INDEX.md)**
+  - [Add Methods](docs/1-INDEX.md#add-methods)
+  - [Macros](docs/1-INDEX.md#macros)
+- **[Structs](docs/2-STRUCTS.md)**
+  - [Available Shorthand Methods](docs/2-STRUCTS.md#available-shorthand-methods)
+  - [Adding single structs](docs/2-STRUCTS.md#adding-single-structs)
+  - [Available Structs](docs/2-STRUCTS.md#available-structs)
+  - [Escaping](docs/2-STRUCTS.md#escaping)
+  - [Creating custom Structs](docs/2-STRUCTS.md#creating-custom-structs)
+- **[Hooks](docs/3-HOOKS.md)**
+  - [Examples](docs/3-HOOKS.md#examples)
+  - [Reference](docs/3-HOOKS.md#reference)
+- **[Laravel-Mix](docs/4-LARAVEL-MIX.md)**
+- **[Example App](docs/5-EXAMPLE-APP.md)**
 
 ## Usage
 
@@ -79,9 +79,13 @@ class IndexController
 
 ## Examples
 
-This package offers various [shorthand setters](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md#available-shorthand-methods) as listed below to cover commonly used meta tags for **titles**, **descriptions**, **Twitter**, **Open Graph** and more.
+This package offers many ways of adding new elements (**Structs**) to your `<head>`.
 
-Take a look at the [structs documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md) or [example app](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/5-EXAMPLE-APP.md) for more detailed usage. (*"Struct" = Code representation of head HTML elements*)
+1. Add commonly used structs via [shorthand setters](docs/2-STRUCTS.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
+2. Manually add single structs via the `seo()->add()` [methods](docs/1-INDEX.md#add-methods)
+3. Specify an [array of contents](docs/1-INDEX.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
+
+Take a look at the [structs documentation](docs/2-STRUCTS.md) or [example app](docs/5-EXAMPLE-APP.md) for more detailed usage.
 
 ### Title
 
@@ -163,7 +167,7 @@ seo()->meta('copyright', 'Roman Zipp');
 <meta name="copyright" content="Roman Zipp" />
 ```
 
-For more information see the [Structs Documentation](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/2-STRUCTS.md).
+For more information see the [structs documentation](docs/2-STRUCTS.md).
 
 ## Laravel-Mix Integration
 
@@ -195,7 +199,7 @@ seo()
 
 ### Extended usage
 
-Take a look at the **[SEO Laravel-Mix integration docs](https://github.com/romanzipp/Laravel-SEO/blob/master/docs/4-LARAVEL-MIX.md)** for further usage.
+Take a look at the **[SEO Laravel-Mix integration docs](docs/4-LARAVEL-MIX.md)** for further usage.
 
 ```php
 use romanzipp\Seo\Conductors\Types\ManifestAsset;

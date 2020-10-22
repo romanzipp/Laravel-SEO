@@ -2,8 +2,8 @@
   - [Add Methods](1-INDEX.md#add-methods)
   - [Macros](1-INDEX.md#macros)
 - **[Structs](2-STRUCTS.md)**
-  - [Examples](2-STRUCTS.md#examples)
   - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
+  - [Adding single structs](2-STRUCTS.md#adding-single-structs)
   - [Available Structs](2-STRUCTS.md#available-structs)
   - [Escaping](2-STRUCTS.md#escaping)
   - [Creating custom Structs](2-STRUCTS.md#creating-custom-structs)
@@ -17,110 +17,9 @@
 
 **Structs** are a code representation of **HTML head elements**.
 
-We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.html#writing-html-documents-elements) and **normal elements**.
-**Void elements**, like `<meta />` can not have a closing tag other than **normal elements** like `<title></title>`.
-
-## Examples
-
-Always remember to add Struct instances using `seo()->add($struct)` when not using [shorthand methods](#available-shorthand-methods).
-
-### Titles
-
-```php
-use romanzipp\Seo\Structs\Title;
-
-seo()->add(
-    Title::make()->body('This is a Title')
-);
-```
-
-```html
-<title>This is a Title</title>
-```
-
-### Meta Tags
-
-Using the `attr(string $attribute, $value = null)` method, we can append attributes with given values.
-
-```php
-use romanzipp\Seo\Structs\Meta;
-
-seo()->add(
-    Meta::make()
-        ->attr('name', 'theme-color')
-        ->attr('content', 'red')
-);
-```
-
-```html
-<meta name="theme-color" content="red" />
-```
-
-### OpenGraph
-
-Because **OpenGraph** tags are `<meta />` elements, the `OpenGraph` Struct is under the `Meta` namespace.
-
-All **OpenGraph** elements are defined by `property=""` and `content=""` attributes where the `property` value starts with a `og:` prefix.
-
-Instead of using the `attr()` Struct method, we can use the shorthand `property()` and `content()` methods by the `OpenGraph` class.
-
-```php
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-
-seo()->add(
-    OpenGraph::make()
-        ->attr('property', 'og:site_name')
-        ->attr('content', 'This is a Site Name')
-);
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\OpenGraph;
-
-seo()->add(
-    OpenGraph::make()
-        ->property('site_name')
-        ->content('Laravel')
-);
-```
-
-... both render to ...
-
-```html
-<meta property="og:site_name" content="Laravel" />
-```
-
-### Twitter
-
-**Twitter** meta tags share the same behavior as **OpenGraph** tags while the property prefix is `twitter:`.
-
-```php
-use romanzipp\Seo\Structs\Meta\Twitter;
-
-seo()->add(
-    Twitter::make()
-        ->attr('name', 'twitter:card')
-        ->attr('content', 'summary')
-);
-```
-
-```php
-use romanzipp\Seo\Structs\Meta\Twitter;
-
-seo()->add(
-    Twitter::make()
-        ->name('card')
-        ->content('summary')
-);
-```
-
-... both render to ...
-
-```html
-<meta name="twitter:card" content="summary" />
-```
-
 ## Available Shorthand Methods
+
+Shorthand methods are **predefined shortcuts** to add commonly used Structs without the hassle of importing struct classes or chain many methods. 
 
 When using shorthand methods, you will skip the `seo()->add()` method.
 You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
@@ -211,7 +110,7 @@ seo()->addMany([
 ]);
 ```
 
-### Meta name-content Tag
+### Meta (name-content)
 
 ```php
 seo()->meta(string $name, $content = null, bool $escape = true);
@@ -280,6 +179,108 @@ seo()->add(
     Canonical::make()
         ->href($canonical)
 );
+```
+
+## Adding single structs
+
+If you need to use more advanced elements which are not covered with shorthand setters, you can easily add single structs to your SEO instance the following way.
+
+*Remember: [There are many methods available for adding new structs](1-INDEX.md#add-methods)* 
+
+### Titles
+
+```php
+use romanzipp\Seo\Structs\Title;
+
+seo()->add(
+    Title::make()->body('This is a Title')
+);
+```
+
+```html
+<title>This is a Title</title>
+```
+
+### Meta Tags
+
+Using the `attr(string $attribute, $value = null)` method, we can append attributes with given values.
+
+```php
+use romanzipp\Seo\Structs\Meta;
+
+seo()->add(
+    Meta::make()
+        ->attr('name', 'theme-color')
+        ->attr('content', 'red')
+);
+```
+
+```html
+<meta name="theme-color" content="red" />
+```
+
+### OpenGraph
+
+Because **OpenGraph** tags are `<meta />` elements, the `OpenGraph` Struct extends the `Meta` class.
+
+All **OpenGraph** elements are defined by `property=""` and `content=""` attributes where the `property` value starts with a `og:` prefix.
+
+Instead of using the `attr()` Struct method, we can use the shorthand `property()` and `content()` methods by the `OpenGraph` class.
+
+```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
+seo()->add(
+    OpenGraph::make()
+        ->attr('property', 'og:site_name')
+        ->attr('content', 'This is a Site Name')
+);
+```
+
+```php
+use romanzipp\Seo\Structs\Meta\OpenGraph;
+
+seo()->add(
+    OpenGraph::make()
+        ->property('site_name')
+        ->content('Laravel')
+);
+```
+
+... both render to ...
+
+```html
+<meta property="og:site_name" content="Laravel" />
+```
+
+### Twitter
+
+**Twitter** meta tags share the same behavior as **OpenGraph** tags while the property prefix is `twitter:`.
+
+```php
+use romanzipp\Seo\Structs\Meta\Twitter;
+
+seo()->add(
+    Twitter::make()
+        ->attr('name', 'twitter:card')
+        ->attr('content', 'summary')
+);
+```
+
+```php
+use romanzipp\Seo\Structs\Meta\Twitter;
+
+seo()->add(
+    Twitter::make()
+        ->name('card')
+        ->content('summary')
+);
+```
+
+... both render to ...
+
+```html
+<meta name="twitter:card" content="summary" />
 ```
 
 ## Available Structs
@@ -389,6 +390,9 @@ Meta::make()->attr('content', 'Dont \' escape me!', false);
 ## Creating custom Structs
 
 You can create your own Structs simply by extending the `romanzipp\Seo\Structs\Struct` class.
+
+We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.html#writing-html-documents-elements) and **normal elements**.
+**Void elements**, like `<meta />` can not have a closing tag other than **normal elements** like `<title></title>`.
 
 ```php
 use romanzipp\Seo\Structs\Struct;
