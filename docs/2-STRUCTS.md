@@ -31,7 +31,7 @@ seo()->title(string $title = null);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -62,7 +62,7 @@ seo()->description(string $description = null);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -93,7 +93,7 @@ seo()->image(string $image = null, bool $escape = true);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -126,7 +126,7 @@ seo()->meta(string $name, $content = null, bool $escape = true);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -147,7 +147,7 @@ seo()->og(string $property, $content = null, bool $escape = true);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
@@ -168,7 +168,7 @@ seo()->twitter(string $name, $content = null, bool $escape = true);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -189,7 +189,7 @@ seo()->canonical(string $canonical);
 ```
 
 <details>
-<summary>... same as ...</summary>
+<summary>same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\Canonical;
