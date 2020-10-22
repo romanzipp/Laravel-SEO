@@ -16,7 +16,7 @@ class Twitter extends Meta
 
     public function name($value = null, bool $escape = true): Struct
     {
-        $this->addAttribute('name', 'twitter:' . $value, $escape);
+        $this->addAttribute('name', "twitter:{$value}", $escape);
 
         return $this;
     }

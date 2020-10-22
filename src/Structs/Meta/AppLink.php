@@ -11,7 +11,7 @@ class AppLink extends Meta
 {
     public function property($value, bool $escape = true)
     {
-        $this->addAttribute('property', 'al:' . $value, $escape);
+        $this->addAttribute('property', "al:{$value}", $escape);
 
         return $this;
     }
