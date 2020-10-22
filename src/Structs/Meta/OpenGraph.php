@@ -16,7 +16,7 @@ class OpenGraph extends Meta
 
     public function property($value = null, bool $escape = true): Struct
     {
-        $this->addAttribute('property', 'og:' . $value, $escape);
+        $this->addAttribute('property', "og:{$value}", $escape);
 
         return $this;
     }
