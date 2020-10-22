@@ -196,7 +196,27 @@ use romanzipp\Seo\Structs\Meta\Canonical;
 
 seo()->add(
     Canonical::make()
-        ->href($canonical)
+        ->href($canonical = null)
+);
+```
+
+</details>
+
+### CSRF Token
+
+```php
+seo()->csrfToken(string $token = null);
+```
+
+<details>
+<summary>same as ...</summary>
+
+```php
+use romanzipp\Seo\Structs\Meta\CsrfToken;
+
+seo()->add(
+    CsrfToken::make()
+        ->href($token = null)
 );
 ```
 
