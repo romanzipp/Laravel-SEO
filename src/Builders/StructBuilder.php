@@ -63,18 +63,16 @@ class StructBuilder
             $element .= $indent;
         }
 
-        $element .= '<' . $this->struct->getTag();
+        $element .= "<{$this->struct->getTag()}";
 
         if ($attributes = $this->renderAttributes()) {
-            $element .= ' ' . $attributes;
+            $element .= " {$attributes}";
         }
 
         $body = $this->struct->getBody();
 
         if ($body || ! $this->struct->isVoidElement()) {
-            $element .= '>';
-            $element .= $body;
-            $element .= '</' . $this->struct->getTag() . '>';
+            $element .= ">{$body}</{$this->struct->getTag()}>";
         } else {
             $element .= ' />';
         }
@@ -95,7 +93,7 @@ class StructBuilder
             $attribute = trim($attribute);
 
             if (null !== $attributeValue->data()) {
-                $attribute .= '="' . $attributeValue . '"';
+                $attribute .= "=\"{$attributeValue}\"";
             }
 
             $attributes[] = $attribute;
