@@ -2,8 +2,8 @@
   - [Add Methods](1-INDEX.md#add-methods)
   - [Macros](1-INDEX.md#macros)
 - [Structs](2-STRUCTS.md)
-  - [Examples](2-STRUCTS.md#examples)
   - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
+  - [Adding single structs](2-STRUCTS.md#adding-single-structs)
   - [Available Structs](2-STRUCTS.md#available-structs)
   - [Escaping](2-STRUCTS.md#escaping)
   - [Creating custom Structs](2-STRUCTS.md#creating-custom-structs)
@@ -15,61 +15,26 @@
 
 # Basic Usage
 
-For a full reference of what **could** go to your `<head>` see [joshbuchea's HEAD](https://github.com/joshbuchea/HEAD)
+This package offers many ways of adding new elements (**Structs**) to your `<head>`.
+
+1. Add commonly used structs via [shorthand setters](2-STRUCTS.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
+2. Manually add single structs via the `seo()->add()` [methods](1-INDEX.md#add-methods)
+3. Specify an [array of contents](1-INDEX.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
 
 ### Recommended Minimum
+
+For a full reference of what **could** go to your `<head>` see [joshbuchea's HEAD](https://github.com/joshbuchea/HEAD)
+
+```php
+seo()->charset('utf-8');
+seo()->viewport('width=device-width, initial-scale=1, viewport-fit=cover');
+seo()->title('My Title');
+```
 
 ```html
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>My Title</title>
-```
-
-```php
-use romanzipp\Seo\Structs\Title;
-use romanzipp\Seo\Structs\Meta;
-
-seo()->add(
-    Meta\Charset::make()->charset('utf-8')
-);
-
-seo()->add(
-    Meta\Viewport::make()->content('width=device-width, initial-scale=1, viewport-fit=cover')
-);
-
-seo()->add(
-    Title::make()->body('My Title')
-);
-```
-
-### Meta
-
-```html
-<meta name="application-name" content="Application Name">
-<meta name="theme-color" content="#f00">
-<meta name="description" content="My Description">
-```
-
-```php
-use romanzipp\Seo\Structs\Meta;
-
-seo()->add(
-    Meta::make()
-        ->attr('name', 'application-name')
-        ->attr('content', 'Application Name')
-);
-
-seo()->add(
-    Meta::make()
-        ->attr('name', 'theme-color')
-        ->attr('content', '#f00')
-);
-
-seo()->add(
-    Meta::make()
-        ->attr('name', 'description')
-        ->attr('content', 'My Description')
-);
 ```
 
 ## Add Methods
