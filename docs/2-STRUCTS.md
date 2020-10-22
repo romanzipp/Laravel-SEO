@@ -30,7 +30,8 @@ You can configure which Structs should be added on shorthand calls in the `seo.p
 seo()->title(string $title = null);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -52,13 +53,16 @@ seo()->addMany([
 ]);
 ```
 
+</details>
+
 ### Description
 
 ```php
 seo()->description(string $description = null);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -80,13 +84,16 @@ seo()->addMany([
 ]);
 ```
 
+</details>
+
 ### Image
 
 ```php
 seo()->image(string $image = null, bool $escape = true);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -110,13 +117,16 @@ seo()->addMany([
 ]);
 ```
 
+</details>
+
 ### Meta (name-content)
 
 ```php
 seo()->meta(string $name, $content = null, bool $escape = true);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta;
@@ -128,13 +138,16 @@ seo()->add(
 );
 ```
 
+</details>
+
 ### OpenGraph
 
 ```php
 seo()->og(string $property, $content = null, bool $escape = true);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\OpenGraph;
@@ -146,13 +159,16 @@ seo()->add(
 );
 ```
 
+</details>
+
 ### Twitter
 
 ```php
 seo()->twitter(string $name, $content = null, bool $escape = true);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\Twitter;
@@ -164,13 +180,16 @@ seo()->add(
 );
 ```
 
+</details>
+
 ### Canonical
 
 ```php
 seo()->canonical(string $canonical);
 ```
 
-... same as ...
+<details>
+<summary>... same as ...</summary>
 
 ```php
 use romanzipp\Seo\Structs\Meta\Canonical;
@@ -180,6 +199,8 @@ seo()->add(
         ->href($canonical)
 );
 ```
+
+</details>
 
 ## Adding single structs
 
