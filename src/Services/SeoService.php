@@ -14,10 +14,10 @@ use romanzipp\Seo\Structs\Struct;
 
 class SeoService
 {
-    use ShorthandSetterTrait;
     use CollisionTrait;
     use Macroable;
     use SchemaOrgTrait;
+    use ShorthandSetterTrait;
 
     /**
      * Config.

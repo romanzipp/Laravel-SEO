@@ -313,15 +313,12 @@ abstract class Struct
     {
         switch (gettype($value)) {
             case 'NULL':
-
                 return null;
 
             case 'integer':
-
                 return (string) $value;
 
             case 'boolean':
-
                 return true === $value ? '1' : '0';
         }
 

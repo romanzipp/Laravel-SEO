@@ -206,15 +206,12 @@ class Hook
     {
         switch ($this->target) {
             case HookTarget::BODY:
-
                 return $data->data();
 
             case HookTarget::ATTRIBUTE:
-
                 return array_values($data)[0]->data();
 
             case HookTarget::ATTRIBUTES:
-
                 return array_map(static function ($value) {
                     return $value->data();
                 }, $data);
