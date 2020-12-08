@@ -29,17 +29,17 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.title');
 
         $this->addIf(
-            $config['tag'],
+            $config['tag'] ?? true,
             Title::make()->body($title, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'],
+            $config['opengraph'] ?? true,
             OpenGraph::make()->property('title')->content($title, $escape)
         );
 
         $this->addIf(
-            $config['twitter'],
+            $config['twitter'] ?? true,
             Twitter::make()->name('title')->content($title, $escape)
         );
 
@@ -59,17 +59,17 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.description');
 
         $this->addIf(
-            $config['meta'],
+            $config['meta'] ?? true,
             Description::make()->content($description, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'],
+            $config['opengraph'] ?? true,
             OpenGraph::make()->property('description')->content($description, $escape)
         );
 
         $this->addIf(
-            $config['twitter'],
+            $config['twitter'] ?? true,
             Twitter::make()->name('description')->content($description, $escape)
         );
 
@@ -89,17 +89,17 @@ trait ShorthandSetterTrait
         $config = Arr::get($this->config, 'shorthand.image');
 
         $this->addIf(
-            $config['meta'],
+            $config['meta'] ?? true,
             Meta::make()->name('image')->content($image, $escape)
         );
 
         $this->addIf(
-            $config['opengraph'],
+            $config['opengraph'] ?? true,
             OpenGraph::make()->property('image')->content($image, $escape)
         );
 
         $this->addIf(
-            $config['twitter'],
+            $config['twitter'] ?? true,
             Twitter::make()->name('image')->content($image, $escape)
         );
 
