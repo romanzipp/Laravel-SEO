@@ -47,7 +47,8 @@
                 "Seo": "romanzipp\\Seo\\Facades\\Seo"
             }
         }
-    },"config": {
-    "sort-packages": true
-}
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
