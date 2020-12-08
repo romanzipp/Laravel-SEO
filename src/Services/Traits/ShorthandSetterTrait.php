@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
+use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Canonical;
 use romanzipp\Seo\Structs\Meta\Charset;
@@ -210,7 +211,7 @@ trait ShorthandSetterTrait
         );
     }
 
-    abstract public function add(Struct $struct): parent;
+    abstract public function add(Struct $struct): SeoService;
 
-    abstract public function addIf(bool $boolean, Struct $struct): parent;
+    abstract public function addIf(bool $boolean, Struct $struct): SeoService;
 }
