@@ -12,15 +12,15 @@
     ],
     "require": {
         "php": "^7.1|^8.0",
+        "ext-json": "*",
         "illuminate/console": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
-        "spatie/schema-org": "^2.1|^3.2",
-        "ext-json": "*"
+        "spatie/schema-org": "^2.1|^3.2"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17",
         "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
-        "phpunit/phpunit": "^7.0|^8.0|^9.0",
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "phpunit/phpunit": "^7.0|^8.0|^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -47,5 +47,7 @@
                 "Seo": "romanzipp\\Seo\\Facades\\Seo"
             }
         }
-    }
+    },"config": {
+    "sort-packages": true
+}
 }
