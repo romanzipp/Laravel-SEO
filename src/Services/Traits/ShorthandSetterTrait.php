@@ -160,7 +160,7 @@ trait ShorthandSetterTrait
      *
      * @param string $charset
      *
-     * @return $this
+     * @return self
      */
     public function charset(string $charset = 'utf-8'): self
     {
@@ -174,7 +174,7 @@ trait ShorthandSetterTrait
      *
      * @param string $viewport
      *
-     * @return $this
+     * @return self
      */
     public function viewport(string $viewport = 'width=device-width, initial-scale=1'): self
     {
@@ -188,7 +188,7 @@ trait ShorthandSetterTrait
      *
      * @param string $canonical
      *
-     * @return $this
+     * @return self
      */
     public function canonical(string $canonical): self
     {
@@ -202,7 +202,7 @@ trait ShorthandSetterTrait
      *
      * @param string|null $token
      *
-     * @return $this
+     * @return self
      */
     public function csrfToken(string $token = null): self
     {
