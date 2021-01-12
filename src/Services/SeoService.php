@@ -105,7 +105,11 @@ class SeoService
      */
     public function setStructs(array $structs): void
     {
-        $this->structs = $structs;
+        $this->clearStructs();
+
+        foreach ($structs as $struct) {
+            $this->appendStruct($struct);
+        }
     }
 
     /**
