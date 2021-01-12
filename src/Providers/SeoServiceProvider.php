@@ -2,7 +2,10 @@
 
 namespace romanzipp\Seo\Providers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use romanzipp\Seo\Collections\SchemaCollection;
+use romanzipp\Seo\Collections\StructCollection;
 use romanzipp\Seo\Services\SeoService;
 
 class SeoServiceProvider extends ServiceProvider
@@ -33,6 +36,13 @@ class SeoServiceProvider extends ServiceProvider
 
         $this->app->singleton(SeoService::class, function () {
             return new SeoService();
+        $this->app->singleton(StructCollection::class, function (Application $app) {
+            return new StructCollection();
+        });
+
+        $this->app->singleton(SchemaCollection::class, function (Application $app) {
+            return new SchemaCollection();
+        });
         });
     }
 
