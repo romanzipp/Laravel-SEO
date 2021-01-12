@@ -42,6 +42,11 @@ abstract class Struct
     protected $body = null;
 
     /**
+     * @var string
+     */
+    protected $section;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -169,6 +174,30 @@ abstract class Struct
     public function setUnique(bool $unique = true): Struct
     {
         $this->unique = $unique;
+
+        return $this;
+    }
+
+    /**
+     * Get the section in which the struct should rest. Default: "default".
+     *
+     * @return string
+     */
+    public function getSection(): string
+    {
+        return $this->section;
+    }
+
+    /**
+     * Set the section. This is mainly done in the SeoService class.
+     *
+     * @param string $section
+     *
+     * @return $this
+     */
+    public function setSection(string $section): Struct
+    {
+        $this->section = $section;
 
         return $this;
     }
