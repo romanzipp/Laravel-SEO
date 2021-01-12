@@ -6,10 +6,15 @@ if ( ! function_exists('seo')) {
     /**
      * Create SeoService instance.
      *
+     * @param string|null $section
      * @return \romanzipp\Seo\Services\SeoService
      */
-    function seo(): SeoService
+    function seo(string $section = null): SeoService
     {
-        return app(SeoService::class);
+        if (null === $section) {
+            return app(SeoService::class);
+        }
+
+        return app(SeoService::class)->section($section);
     }
 }
