@@ -34,8 +34,6 @@ class SeoServiceProvider extends ServiceProvider
             'seo'
         );
 
-        $this->app->singleton(SeoService::class, function () {
-            return new SeoService();
         $this->app->singleton(StructCollection::class, function (Application $app) {
             return new StructCollection();
         });
@@ -43,6 +41,12 @@ class SeoServiceProvider extends ServiceProvider
         $this->app->singleton(SchemaCollection::class, function (Application $app) {
             return new SchemaCollection();
         });
+
+        $this->app->bind(SeoService::class, function (Application $app) {
+            return new SeoService(
+                $app->make(StructCollection::class),
+                $app->make(SchemaCollection::class)
+            );
         });
     }
 

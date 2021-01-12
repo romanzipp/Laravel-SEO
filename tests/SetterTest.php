@@ -24,7 +24,7 @@ class SetterTest extends TestCase
 
         self::assertCount(1, seo()->getStructs());
 
-        seo()->setStructs([
+        seo()->setStructCollection([
             OpenGraph::make(),
         ]);
 

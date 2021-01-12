@@ -3,6 +3,8 @@
 namespace romanzipp\Seo\Services;
 
 use Illuminate\Support\Traits\Macroable;
+use romanzipp\Seo\Collections\SchemaCollection;
+use romanzipp\Seo\Collections\StructCollection;
 use romanzipp\Seo\Conductors\ArrayFormatConductor;
 use romanzipp\Seo\Conductors\MixManifestConductor;
 use romanzipp\Seo\Conductors\RenderConductor;
@@ -27,24 +29,35 @@ class SeoService
     protected $config;
 
     /**
-     * Applied structs.
+     * The section used to add new structs and retrieve existing structs.
+     * All structs for all sections will be added to the same service instance.
      *
-     * @var array
+     * @var string
      */
-    protected $structs = [];
+    protected $section = 'default';
 
     /**
      * Applied schema.org schemes.
      *
-     * @var array
+     * @var \romanzipp\Seo\Collections\SchemaCollection
      */
-    protected $schemaOrgTypes = [];
+    protected $schemaCollection;
+
+    /**
+     * @var \romanzipp\Seo\Collections\StructCollection
+     */
+    protected $structCollection;
 
     /**
      * Constructor.
+     *
+     * @param \romanzipp\Seo\Collections\StructCollection $structCollection
+     * @param \romanzipp\Seo\Collections\SchemaCollection $schemaCollection
      */
-    public function __construct()
+    public function __construct(StructCollection $structCollection, SchemaCollection $schemaCollection)
     {
+        $this->structCollection = $structCollection;
+        $this->schemaCollection = $schemaCollection;
         $this->config = config('seo');
     }
 
@@ -68,6 +81,18 @@ class SeoService
         return $this->config;
     }
 
+    public function setSection(string $section): void
+    {
+        $this->section = $section;
+    }
+
+    public function section(string $section): self
+    {
+        $this->setSection($section);
+
+        return $this;
+    }
+
     /**
      * Get structs.
      *
@@ -75,7 +100,9 @@ class SeoService
      */
     public function getStructs(): array
     {
-        return $this->structs;
+        return array_filter($this->structCollection->all(), function (Struct $struct): bool {
+            return $struct->getSection() === $this->section;
+        });
     }
 
     /**
@@ -101,15 +128,20 @@ class SeoService
     /**
      * Set structs.
      *
-     * @param array $structs
+     * @param array $structCollection
      */
-    public function setStructs(array $structs): void
+    public function setStructCollection(array $structCollection): void
     {
         $this->clearStructs();
 
-        foreach ($structs as $struct) {
+        foreach ($structCollection as $struct) {
             $this->appendStruct($struct);
         }
+    }
+
+    public function unsetStruct(int $index): void
+    {
+        $this->structCollection->unset($index);
     }
 
     /**
@@ -119,7 +151,7 @@ class SeoService
      */
     public function clearStructs(): void
     {
-        $this->structs = [];
+        $this->structCollection->set([]);
     }
 
     /**
@@ -132,7 +164,7 @@ class SeoService
     {
         $struct->setSection($this->section);
 
-        $this->structs[] = $struct;
+        $this->structCollection->add($struct);
     }
 
     /**
