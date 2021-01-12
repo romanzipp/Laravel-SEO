@@ -77,7 +77,7 @@ class MixManifestConductor
     /**
      * Do not throw exception of the mix manifest is not found.
      *
-     * @return $this
+     * @return self
      */
     public function ignore(): self
     {

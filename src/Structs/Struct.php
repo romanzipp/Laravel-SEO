@@ -193,7 +193,7 @@ abstract class Struct
      *
      * @param string $section
      *
-     * @return $this
+     * @return self
      */
     public function setSection(string $section): Struct
     {
@@ -276,7 +276,7 @@ abstract class Struct
      * @param array $attributes
      * @param bool $escape
      *
-     * @return $this
+     * @return self
      */
     public function attrs(array $attributes, bool $escape = true): Struct
     {
