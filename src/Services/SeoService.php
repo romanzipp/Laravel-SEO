@@ -141,6 +141,11 @@ class SeoService
         }
     }
 
+    /**
+     * Remove a struct from the collection by given array index.
+     *
+     * @param int $index
+     */
     public function unsetStruct(int $index): void
     {
         $this->structCollection->unset($index);
