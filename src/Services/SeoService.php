@@ -119,16 +119,19 @@ class SeoService
      */
     public function clearStructs(): void
     {
-        $this->setStructs([]);
+        $this->structs = [];
     }
 
     /**
-     * Append struct.
+     * Append a given struct. This is an internal method called by all add/set public methods
+     * which also sets the current section to the struct.
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
      */
     public function appendStruct(Struct $struct): void
     {
+        $struct->setSection($this->section);
+
         $this->structs[] = $struct;
     }
 
