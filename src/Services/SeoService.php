@@ -81,14 +81,16 @@ class SeoService
         return $this->config;
     }
 
-    public function setSection(string $section): void
-    {
-        $this->section = $section;
-    }
-
+    /**
+     * Fluent section setter.
+     *
+     * @param string $section
+     *
+     * @return self
+     */
     public function section(string $section): self
     {
-        $this->setSection($section);
+        $this->section = $section;
 
         return $this;
     }
@@ -221,7 +223,7 @@ class SeoService
      *
      * @param array $data
      *
-     * @return $this
+     * @return self
      */
     public function addFromArray(array $data): self
     {
