@@ -6,6 +6,10 @@ use romanzipp\Seo\Structs\Struct;
 
 trait CollisionTrait
 {
+    abstract public function getStructs(): array;
+
+    abstract public function unsetStruct(int $index): void;
+
     /**
      * Remove struct from existing structs.
      *
@@ -25,7 +29,7 @@ trait CollisionTrait
             return;
         }
 
-        unset($this->structs[$key]);
+        $this->unsetStruct($key);
     }
 
     /**
@@ -41,7 +45,7 @@ trait CollisionTrait
             return null;
         }
 
-        foreach ($this->structs as $key => $existing) {
+        foreach ($this->getStructs() as $key => $existing) {
             /** @var \romanzipp\Seo\Structs\Struct $existing */
             if (get_class($existing) !== get_class($struct)) {
                 continue;

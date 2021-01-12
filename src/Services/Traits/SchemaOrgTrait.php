@@ -15,7 +15,7 @@ trait SchemaOrgTrait
      */
     public function getSchemes(): array
     {
-        return $this->schemaOrgTypes;
+        return $this->schemaCollection->all();
     }
 
     /**
@@ -27,7 +27,7 @@ trait SchemaOrgTrait
      */
     public function addSchema(Type $schema): self
     {
-        $this->schemaOrgTypes[] = $schema;
+        $this->schemaCollection->add($schema);
 
         return $this;
     }
@@ -41,7 +41,7 @@ trait SchemaOrgTrait
      */
     public function setSchemes(array $types): self
     {
-        $this->schemaOrgTypes = $types;
+        $this->schemaCollection->set($types);
 
         return $this;
     }
