@@ -3,30 +3,30 @@
 namespace romanzipp\Seo\Collections;
 
 use romanzipp\Seo\Collections\Contracts\CollectionContract;
-use Spatie\SchemaOrg\Type;
+use romanzipp\Seo\Schema\Schema as SchemaContainer;
 
 class SchemaCollection implements CollectionContract
 {
     /**
-     * @var \Spatie\SchemaOrg\Type[]
+     * @var \romanzipp\Seo\Schema\Schema[]
      */
     protected $schemas = [];
 
     /**
-     * @return \Spatie\SchemaOrg\Type[]
+     * @return \romanzipp\Seo\Schema\Schema[]
      */
     public function all(): array
     {
         return $this->schemas;
     }
 
-    public function add(Type $schema): void
+    public function add(SchemaContainer $schema): void
     {
         $this->schemas[] = $schema;
     }
 
     /**
-     * @param \Spatie\SchemaOrg\Type[] $schemas
+     * @param \romanzipp\Seo\Schema\Schema[] $schemas
      */
     public function set(array $schemas): void
     {

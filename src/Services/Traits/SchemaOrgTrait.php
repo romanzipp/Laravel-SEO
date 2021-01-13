@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
+use romanzipp\Seo\Schema\Schema as SchemaContainer;
 use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
 
@@ -15,7 +16,19 @@ trait SchemaOrgTrait
      */
     public function getSchemes(): array
     {
-        return $this->schemaCollection->all();
+        return array_values(
+            array_map(
+            static function (SchemaContainer $container): Type {
+                return $container->getType();
+            },
+            array_filter(
+                $this->schemaCollection->all(),
+                function (SchemaContainer $container): bool {
+                    return $container->getSection() === $this->section;
+                }
+            )
+        )
+        );
     }
 
     /**
@@ -27,7 +40,10 @@ trait SchemaOrgTrait
      */
     public function addSchema(Type $schema): self
     {
-        $this->schemaCollection->add($schema);
+        $container = new SchemaContainer($schema);
+        $container->setSection($this->section);
+
+        $this->schemaCollection->add($container);
 
         return $this;
     }
@@ -35,13 +51,22 @@ trait SchemaOrgTrait
     /**
      * Set array of spatie/schema-org objects.
      *
-     * @param array $types
+     * @param \Spatie\SchemaOrg\Type[] $schemes
      *
      * @return self
      */
-    public function setSchemes(array $types): self
+    public function setSchemes(array $schemes): self
     {
-        $this->schemaCollection->set($types);
+        $containers = [];
+
+        foreach ($schemes as $schema) {
+            $container = new SchemaContainer($schema);
+            $container->setSection($this->section);
+
+            $containers[] = $container;
+        }
+
+        $this->schemaCollection->set($containers);
 
         return $this;
     }

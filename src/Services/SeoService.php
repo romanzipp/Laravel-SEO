@@ -264,7 +264,10 @@ class SeoService
      */
     public function render(): RenderConductor
     {
-        return new RenderConductor($this->getStructs(), $this->getSchemes());
+        return new RenderConductor(
+            $this->getStructs(),
+            $this->getSchemes()
+        );
     }
 
     /**

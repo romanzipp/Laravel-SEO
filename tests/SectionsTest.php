@@ -4,6 +4,8 @@ namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Meta;
+use Spatie\SchemaOrg\NightClub;
+use Spatie\SchemaOrg\PetStore;
 
 class SectionsTest extends TestCase
 {
@@ -103,5 +105,17 @@ class SectionsTest extends TestCase
             '<meta name="twitter:card" content="secondary" />',
             seo('secondary')->render()->toHtml()
         );
+    }
+
+    public function testSchemes()
+    {
+        seo()->addSchema(new NightClub());
+        seo('secondary')->addSchema(new PetStore());
+
+        self::assertCount(1, seo()->getSchemes());
+        self::assertInstanceOf(NightClub::class, seo()->getSchemes()[0]);
+
+        self::assertCount(1, seo('secondary')->getSchemes());
+        self::assertInstanceOf(PetStore::class, seo('secondary')->getSchemes()[0]);
     }
 }
