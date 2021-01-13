@@ -18,16 +18,16 @@ trait SchemaOrgTrait
     {
         return array_values(
             array_map(
-            static function (SchemaContainer $container): Type {
-                return $container->getType();
-            },
-            array_filter(
-                $this->schemaCollection->all(),
-                function (SchemaContainer $container): bool {
-                    return $container->getSection() === $this->section;
-                }
+                static function (SchemaContainer $container): Type {
+                    return $container->getType();
+                },
+                array_filter(
+                    $this->schemaCollection->all(),
+                    function (SchemaContainer $container): bool {
+                        return $container->getSection() === $this->section;
+                    }
+                )
             )
-        )
         );
     }
 
