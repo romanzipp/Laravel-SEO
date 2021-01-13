@@ -1,5 +1,6 @@
 - **[Basic Usage](1-INDEX.md)**
   - [Add Methods](1-INDEX.md#add-methods)
+  - [Sections](1-INDEX.md#sections)
   - [Macros](1-INDEX.md#macros)
 - [Structs](2-STRUCTS.md)
   - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
@@ -137,6 +138,70 @@ seo()->addFromArray([
 
 ```php
 seo()->clearStructs();
+```
+
+## Sections
+
+You can add structs to different **sections** by calling the `section('foo')` method on the `SeoService` instance or passing it as the first attribute to the `seo('foo')` helper method. By default all Structs will be added to the "default" section.
+
+Sections allow you to create certain namespaces for Structs which can be used in many different ways: Distinct between "frontend" and "admin" page sections or "head" and "body" view sections.
+
+### Using sections
+
+```php
+// This struct will be added to the "default" section
+seo()->twitter('card', 'summary');
+
+// This struct will be added to the "secondary" section
+seo()->section('secondary')->twitter('card', 'image');
+
+// This struct will be also added to the "default" section since the section() method changes are not persistent 
+seo()->twitter('card', 'summary');
+```
+
+You can also pass the section as parameter to the helper function.
+
+```php
+seo('secondary')->twitter('card', 'image');
+```
+
+### Rendering sections
+
+This will render all structs added to the "default" section.
+
+```blade
+{{ seo()->render() }}
+```
+
+This will render all structs added to the "secondary" section.
+
+```blade
+{{ seo()->section('secondary')->render() }}
+```
+
+Of course, you can also pass the section as parameter to the helper function.
+
+```blade
+{{ seo('secondary')->render() }}
+```
+
+### Using sections with dependency resolving
+
+```php
+use romanzipp\Seo\Services\SeoService;
+
+$seo = app(SeoService::class);
+
+// will be applied to "default" section
+$seo->twitter('card', 'summary');
+
+// will be applied to "secondary" section
+$seo->section('secondary')->twitter('card', 'summary');
+
+// WARNING!
+// This struct will be applied to the "secondary" section since the service instance has been resolved
+// once and was set to "secondary" section in the previous step
+$seo->twitter('card', 'summary');
 ```
 
 ## Macros
