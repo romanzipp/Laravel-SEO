@@ -95,6 +95,7 @@ use romanzipp\Seo\Structs\Link;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
+use romanzipp\Seo\Structs\Script;
 
 class AddSeoDefaults
 {
@@ -127,6 +128,10 @@ class AddSeoDefaults
             Twitter::make()->name('image')->content('/assets/images/Banner.jpg', false)
 
         ]);
+        
+        seo('body')->add(
+            Script::make()->attr('src', '/js/app.js')
+        );
 
         return $next($request);
     }
@@ -157,6 +162,7 @@ class PostController extends Controller
     {
         seo()->title($post->title ?: "Post No. {$post->id}");
         seo()->description($post->intro);
+        seo()->image($post->thumbnail);
 
         return view('posts.show', compact('post'));
     }
@@ -176,6 +182,8 @@ class PostController extends Controller
 <body>
 
     @yield('content')
+    
+    {{ seo('body')->render() }}
 
 </body>
 </html>
