@@ -1,5 +1,6 @@
 - [Basic Usage](1-INDEX.md)
   - [Add Methods](1-INDEX.md#add-methods)
+  - [Sections](1-INDEX.md#sections)
   - [Macros](1-INDEX.md#macros)
 - **[Structs](2-STRUCTS.md)**
   - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)

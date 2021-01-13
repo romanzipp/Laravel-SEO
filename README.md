@@ -13,6 +13,7 @@ A SEO package made for maximum customization and flexibility.
 - [Configuration](#configuration)
 - [Documentation](#documentation)
 - [Usage](#usage)
+  - [Sections](#sections)
   - [Laravel-Mix Integration](#laravel-mix-integration)
   - [Schema.org Integration](#schemaorg-integration)
 - [Upgrading from 1.0 to **2.0**](#upgrading)
@@ -168,6 +169,45 @@ seo()->meta('copyright', 'Roman Zipp');
 ```
 
 For more information see the [structs documentation](docs/2-STRUCTS.md).
+
+## Sections
+
+You can add structs to different **sections** by calling the `section('foo')` method on the `SeoService` instance or passing it as the first attribute to the `seo('foo')` helper method.
+
+Sections allow you to create certain namespaces for Structs which can be used in many different ways: Distinct between "frontend" and "admin" page sections or "head" and "body" view sections.
+
+### Using sections
+
+```php
+// This struct will be added to the "default" section
+seo()->twitter('card', 'summary');
+
+// This struct will be added to the "secondary" section
+seo()->section('secondary')->twitter('card', 'image');
+
+// This struct will be also added to the "default" section since the section() method changes are not persistent 
+seo()->twitter('card', 'summary');
+```
+
+### Rendering sections
+
+This will render all structs added to the "default" section.
+
+```blade
+{{ seo()->render() }}
+```
+
+This will render all structs added to the "secondary" section.
+
+```blade
+{{ seo()->section('secondary')->render() }}
+```
+
+Of course, you can also pass the section as parameter to the helper function.
+
+```blade
+{{ seo('secondary')->render() }}
+```
 
 ## Laravel-Mix Integration
 
