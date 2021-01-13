@@ -2,6 +2,7 @@
 
 namespace romanzipp\Seo\Test;
 
+use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Meta;
 
 class SectionsTest extends TestCase
@@ -53,5 +54,54 @@ class SectionsTest extends TestCase
 
         self::assertCount(1, seo()->section('secondary')->getStructs());
         self::assertSame('secondary', (string) seo()->section('secondary')->getStruct(Meta::class)->getComputedAttribute('section'));
+    }
+
+    public function testSectionPassedAsParameterToHelper()
+    {
+        seo('secondary')->twitter('card', 'default');
+
+        self::assertSame(
+            seo()->section('secondary')->getStructs(),
+            seo('secondary')->getStructs()
+        );
+    }
+
+    public function testSectionSetterOnMutableInstance()
+    {
+        $seo = app(SeoService::class);
+
+        $seo->section('secondary');
+
+        $seo->twitter('card', 'default');
+        $seo->twitter('author', 'Roman');
+
+        self::assertCount(2, $seo->getStructs());
+
+        self::assertSame(
+            $seo->getStructs(),
+            seo('secondary')->getStructs()
+        );
+    }
+
+    public function testSectionRender()
+    {
+        seo()->twitter('card', 'default');
+
+        seo()->section('secondary')->twitter('card', 'secondary');
+
+        self::assertEquals(
+            '<meta name="twitter:card" content="default" />',
+            seo()->render()->toHtml()
+        );
+
+        self::assertEquals(
+            '<meta name="twitter:card" content="secondary" />',
+            seo()->section('secondary')->render()->toHtml()
+        );
+
+        self::assertEquals(
+            '<meta name="twitter:card" content="secondary" />',
+            seo('secondary')->render()->toHtml()
+        );
     }
 }
