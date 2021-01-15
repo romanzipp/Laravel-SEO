@@ -17,6 +17,7 @@ abstract class TestCase extends BaseTestCase
         StructBuilder::$separator = PHP_EOL;
         StructBuilder::$indent = null;
     }
+
     protected function getPackageProviders($app)
     {
         return [
