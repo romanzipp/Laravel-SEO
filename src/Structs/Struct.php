@@ -57,9 +57,9 @@ abstract class Struct
     /**
      * Create struct instance.
      *
-     * @return self
+     * @return static
      */
-    public static function make(): self
+    public static function make()
     {
         return new static();
     }
