@@ -13,11 +13,4 @@ class Canonical extends Link
     {
         $struct->addAttribute('rel', 'canonical');
     }
-
-    public function href($value = null, bool $escape = true): Struct
-    {
-        $this->addAttribute('href', $value, $escape);
-
-        return $this;
-    }
 }
