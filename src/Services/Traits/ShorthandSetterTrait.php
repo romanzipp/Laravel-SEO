@@ -4,8 +4,8 @@ namespace romanzipp\Seo\Services\Traits;
 
 use Illuminate\Support\Arr;
 use romanzipp\Seo\Services\SeoService;
+use romanzipp\Seo\Structs\Link\Canonical;
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Structs\Meta\Canonical;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\CsrfToken;
 use romanzipp\Seo\Structs\Meta\Description;

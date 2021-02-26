@@ -2,8 +2,8 @@
 
 namespace romanzipp\Seo\Test;
 
+use romanzipp\Seo\Structs\Link\Canonical;
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Structs\Meta\Canonical;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
