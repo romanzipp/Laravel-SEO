@@ -339,6 +339,10 @@ romanzipp\Seo\Structs\Base::make();
 romanzipp\Seo\Structs\Link::make();
 ```
 
+```php
+romanzipp\Seo\Structs\Link\Canonical::make();
+```
+
 ### Meta
 
 ```php
@@ -349,11 +353,6 @@ romanzipp\Seo\Structs\Meta::make();
 romanzipp\Seo\Structs\Meta\Article::make()
     ->property(string $value, bool $escape = true)
     ->content(string $value, bool $escape = true);
-```
-
-```php
-romanzipp\Seo\Structs\Meta\Canonical::make()
-    ->href(string $value, bool $escape = true);
 ```
 
 ```php
