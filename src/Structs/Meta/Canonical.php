@@ -7,6 +7,7 @@ use romanzipp\Seo\Structs\Struct;
 
 /**
  * @see https://github.com/joshbuchea/HEAD#link
+ * @deprecated
  */
 class Canonical extends Meta
 {
