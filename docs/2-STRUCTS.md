@@ -275,7 +275,7 @@ use romanzipp\Seo\Structs\Meta\OpenGraph;
 seo()->add(
     OpenGraph::make()
         ->attr('property', 'og:site_name')
-        ->attr('content', 'This is a Site Name')
+        ->attr('content', 'Laravel')
 );
 ```
 
@@ -432,9 +432,6 @@ Meta::make()->attr('content', 'Dont \' escape me!', false);
 
 You can create your own Structs simply by extending the `romanzipp\Seo\Structs\Struct` class.
 
-We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.html#writing-html-documents-elements) and **normal elements**.
-**Void elements**, like `<meta />` can not have a closing tag other than **normal elements** like `<title></title>`.
-
 ```php
 use romanzipp\Seo\Structs\Struct;
 
@@ -443,6 +440,9 @@ class MyStruct extends Struct
     //
 }
 ```
+
+We differentiate between [**void elements**](https://www.w3.org/TR/html5/syntax.html#writing-html-documents-elements) and **normal elements**.
+**Void elements**, like `<meta />` can not have a closing tag other than **normal elements** like `<title></title>`.
 
 ### Tag
 
@@ -468,23 +468,36 @@ protected $unique = true;
 Now, previously created Structs will be overwritten.
 
 ```php
-use romanzipp\Seo\Structs\Meta;
+use romanzipp\Seo\Structs\Struct;
 
-seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is the FIRST description'));
-seo()->add(Meta::make()->attr('name', 'description')->attr('content', 'This is the SECOND description'));
+class MyStruct extends Struct
+{
+   public static function defaults(self $struct): void
+   {
+       $struct->attr('name', 'my-description');
+   }
+   
+   protected function tag(): string
+   {
+       return 'meta';
+   }
+}
+
+seo()->add(MyStruct::make()->attr('name', 'This is the FIRST description'));
+seo()->add(MyStruct::make()->attr('name', 'This is the SECOND description'));
 ```
 
 **Before**:
 
 ```html
-<meta name="description" content="This is the FIRST description">
-<meta name="description" content="This is the SECOND description">
+<meta name="my-description" content="This is the FIRST description" />
+<meta name="my-description" content="This is the SECOND description" />
 ```
 
 **After**:
 
 ```html
-<meta name="description" content="This is the SECOND description">
+<meta name="my-description" content="This is the SECOND description" />
 ```
 
 You are also able to modify the unique attributes by setting the `uniqueAttributes` property. If empty, just the tag name will be considered as unique.
@@ -498,14 +511,19 @@ protected $uniqueAttributes = ['name'];
 After a Struct instance has been created, we call the static `defaults` method.
 
 ```php
-public function __construct()
-{
-    static::defaults($this);
-}
+use romanzipp\Seo\Structs\Struct;
 
-public static function defaults(self $struct)
+class MyStruct extends Struct
 {
-    //
+    public function __construct()
+    {
+        static::defaults($this);
+    }
+
+    public static function defaults(self $struct): void
+    {
+        //
+    }
 }
 ```
 
