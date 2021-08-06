@@ -16,7 +16,5 @@ build/*
 .phpunit.result.cache
 .idea/
 .php_cs.cache
-.php_cs.dist
 .php-cs-fixer.cache
-.php-cs-fixer.dist.php
 
