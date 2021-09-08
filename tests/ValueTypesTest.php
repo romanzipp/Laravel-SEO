@@ -2,7 +2,6 @@
 
 namespace romanzipp\Seo\Test;
 
-use romanzipp\Seo\Facades\Seo;
 use romanzipp\Seo\Helpers\Hook;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
