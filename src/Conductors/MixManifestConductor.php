@@ -33,7 +33,7 @@ class MixManifestConductor
     /**
      * @var bool
      */
-    private $ignore = false;
+    private $ignoreMissing = false;
 
     /**
      * MixManifestService constructor.
@@ -61,7 +61,7 @@ class MixManifestConductor
     }
 
     /**
-     * Add an callback function which will be applied to every asset.
+     * Add a callback function which will be applied to every asset.
      *
      * @param \Closure $callback
      *
@@ -75,15 +75,27 @@ class MixManifestConductor
     }
 
     /**
-     * Do not throw exception of the mix manifest is not found.
+     * Do not throw exception if the mix manifest is not found.
+     *
+     * @return self
+     */
+    public function ignoreMissing(): self
+    {
+        $this->ignoreMissing = true;
+
+        return $this;
+    }
+
+    /**
+     * Do not throw exception if the mix manifest is not found.
+     *
+     * @deprecated Use ignoreMissing() instead
      *
      * @return self
      */
     public function ignore(): self
     {
-        $this->ignore = true;
-
-        return $this;
+        return $this->ignoreMissing();
     }
 
     /**
@@ -146,7 +158,7 @@ class MixManifestConductor
         $content = @file_get_contents($this->getPath());
 
         if (false === $content) {
-            if ($this->ignore) {
+            if ($this->ignoreMissing) {
                 return [];
             }
 
