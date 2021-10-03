@@ -193,7 +193,7 @@ seo()->canonical(string $canonical);
 <summary>same as ...</summary>
 
 ```php
-use romanzipp\Seo\Structs\Meta\Canonical;
+use romanzipp\Seo\Structs\Link\Canonical;
 
 seo()->add(
     Canonical::make()
