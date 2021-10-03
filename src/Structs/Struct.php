@@ -124,7 +124,7 @@ abstract class Struct
      *
      * @param string $attribute
      *
-     * @return mixed
+     * @return \romanzipp\Seo\Values\Attribute|null
      */
     public function getComputedAttribute(string $attribute)
     {
@@ -168,7 +168,7 @@ abstract class Struct
      *
      * @param bool $unique
      *
-     * @return self
+     * @return $this
      */
     public function setUnique(bool $unique = true): Struct
     {
@@ -192,7 +192,7 @@ abstract class Struct
      *
      * @param string $section
      *
-     * @return self
+     * @return static
      */
     public function setSection(string $section): Struct
     {
@@ -240,7 +240,7 @@ abstract class Struct
      * @param mixed $body
      * @param bool $escape Escape body
      *
-     * @return self
+     * @return $this
      */
     public function body($body, bool $escape = true): Struct
     {
@@ -260,7 +260,7 @@ abstract class Struct
      * @param mixed|null $value
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function attr(string $attribute, $value = null, bool $escape = true): Struct
     {
@@ -272,10 +272,10 @@ abstract class Struct
     /**
      * Fluid setter for multiple attributes.
      *
-     * @param array $attributes
+     * @param array<string, mixed> $attributes
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function attrs(array $attributes, bool $escape = true): Struct
     {
