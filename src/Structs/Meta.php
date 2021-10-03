@@ -12,28 +12,52 @@ class Meta extends Struct
         return 'meta';
     }
 
-    public function name($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function name($value = null, bool $escape = true)
     {
         $this->addAttribute('name', $value, $escape);
 
         return $this;
     }
 
-    public function httpEquiv($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function httpEquiv($value = null, bool $escape = true)
     {
         $this->addAttribute('http-equiv', $value, $escape);
 
         return $this;
     }
 
-    public function content($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function content($value = null, bool $escape = true)
     {
         $this->addAttribute('content', $value, $escape);
 
         return $this;
     }
 
-    public function value($value, bool $escape = true): Struct
+    /**
+     * @param mixed $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function value($value, bool $escape = true)
     {
         $this->addAttribute('value', $value, $escape);
 

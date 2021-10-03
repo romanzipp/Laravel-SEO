@@ -3,7 +3,6 @@
 namespace romanzipp\Seo\Structs\Meta;
 
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Structs\Struct;
 
 /**
  * @see https://github.com/joshbuchea/HEAD#facebook-open-graph
@@ -14,7 +13,13 @@ class OpenGraph extends Meta
 
     protected $uniqueAttributes = ['property'];
 
-    public function property($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function property($value = null, bool $escape = true)
     {
         $this->addAttribute('property', "og:{$value}", $escape);
 
