@@ -16,8 +16,7 @@ A SEO package made for maximum customization and flexibility.
   - [Sections](#sections)
   - [Laravel-Mix Integration](#laravel-mix-integration)
   - [Schema.org Integration](#schemaorg-integration)
-- [Upgrading from 2.0 to **3.0**](#upgrading)
-- [Upgrading from 1.0 to 2.0](#upgrading)
+- [Upgrading from 1.0 to **2.0**](#upgrading)
 - [Cheat Sheet](#cheat-sheet)
 - [Testing](#testing)
 
@@ -286,8 +285,7 @@ Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-or
 
 ## Upgrading
 
-- [Upgrading from 1.0 to **3.0**](https://github.com/romanzipp/Laravel-SEO/releases/tag/3.0.0)
-- [Upgrading from 1.0 to 2.0](https://github.com/romanzipp/Laravel-SEO/releases/tag/2.0.0)
+- [Upgrading from 1.0 to **2.0**](https://github.com/romanzipp/Laravel-SEO/releases/tag/2.0.0)
 
 ## Cheat Sheet
 
