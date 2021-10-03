@@ -6,6 +6,9 @@ use InvalidArgumentException;
 
 class NestedArraySchema extends AbstractArraySchema
 {
+    /**
+     * @param array<string, mixed> $data
+     */
     public function apply($data): void
     {
         if ( ! is_array($data)) {

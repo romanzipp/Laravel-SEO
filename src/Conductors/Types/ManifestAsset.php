@@ -4,14 +4,29 @@ namespace romanzipp\Seo\Conductors\Types;
 
 class ManifestAsset
 {
+    /**
+     * @var string
+     */
     public $path;
 
+    /**
+     * @var string
+     */
     public $url;
 
+    /**
+     * @var string
+     */
     public $rel = 'prefetch';
 
+    /**
+     * @var string|null
+     */
     public $as;
 
+    /**
+     * @var mixed
+     */
     public $type;
 
     public function __construct(string $path, string $url)

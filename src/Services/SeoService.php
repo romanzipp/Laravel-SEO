@@ -24,7 +24,7 @@ class SeoService
     /**
      * Config.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $config;
 
@@ -74,7 +74,7 @@ class SeoService
     /**
      * Get config.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getConfig(): array
     {
@@ -86,7 +86,7 @@ class SeoService
      *
      * @param string $section
      *
-     * @return self
+     * @return $this
      */
     public function section(string $section): self
     {
@@ -98,7 +98,7 @@ class SeoService
     /**
      * Get structs.
      *
-     * @return array
+     * @return \romanzipp\Seo\Structs\Struct[]
      */
     public function getStructs(): array
     {
@@ -130,7 +130,7 @@ class SeoService
     /**
      * Set structs.
      *
-     * @param array $structCollection
+     * @param \romanzipp\Seo\Structs\Struct[] $structCollection
      */
     public function setStructCollection(array $structCollection): void
     {
@@ -179,7 +179,7 @@ class SeoService
      *
      * @param Struct $struct
      *
-     * @return self
+     * @return $this
      */
     public function add(Struct $struct): self
     {
@@ -196,7 +196,7 @@ class SeoService
      * @param bool $boolean
      * @param Struct $struct
      *
-     * @return self
+     * @return $this
      */
     public function addIf(bool $boolean, Struct $struct): self
     {
@@ -210,9 +210,9 @@ class SeoService
     /**
      * Add many structs.
      *
-     * @param array $structs
+     * @param \romanzipp\Seo\Structs\Struct[] $structs
      *
-     * @return self
+     * @return $this
      */
     public function addMany(array $structs): self
     {
@@ -226,9 +226,9 @@ class SeoService
     /**
      * Add structs from array format.
      *
-     * @param array $data
+     * @param array<string, mixed> $data
      *
-     * @return self
+     * @return $this
      */
     public function addFromArray(array $data): self
     {

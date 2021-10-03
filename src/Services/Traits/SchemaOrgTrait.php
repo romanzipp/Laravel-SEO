@@ -12,7 +12,7 @@ trait SchemaOrgTrait
     /**
      * Get spatie/schema-org types.
      *
-     * @return array
+     * @return \Spatie\SchemaOrg\Type[]
      */
     public function getSchemes(): array
     {
@@ -36,7 +36,7 @@ trait SchemaOrgTrait
      *
      * @param Type $schema schema.org Type
      *
-     * @return self
+     * @return $this
      */
     public function addSchema(Type $schema): self
     {
@@ -53,7 +53,7 @@ trait SchemaOrgTrait
      *
      * @param \Spatie\SchemaOrg\Type[] $schemes
      *
-     * @return self
+     * @return $this
      */
     public function setSchemes(array $schemes): self
     {
@@ -74,9 +74,9 @@ trait SchemaOrgTrait
     /**
      * Add a list of breadcrumbs.
      *
-     * @param array $crumbs
+     * @param array<array<string, string>> $crumbs
      *
-     * @return self
+     * @return $this
      */
     public function addSchemaBreadcrumbs(array $crumbs): self
     {

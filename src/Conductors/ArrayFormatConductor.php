@@ -25,7 +25,7 @@ class ArrayFormatConductor
     /**
      * Get the predefined schemas for array formatting.
      *
-     * @return array
+     * @return array<string, \romanzipp\Seo\Conductors\ArrayStructures\AbstractArraySchema>
      */
     private function getSchemas(): array
     {
@@ -127,7 +127,7 @@ class ArrayFormatConductor
     /**
      * Set the array data and pass it to the seo service.
      *
-     * @param array $data
+     * @param array<string, mixed> $data
      */
     public function setData(array $data): void
     {

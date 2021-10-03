@@ -6,6 +6,9 @@ use InvalidArgumentException;
 
 class SingleArraySchema extends AbstractArraySchema
 {
+    /**
+     * @param string $value
+     */
     public function apply($value): void
     {
         if ( ! is_string($value)) {

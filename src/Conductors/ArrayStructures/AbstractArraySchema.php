@@ -60,7 +60,7 @@ abstract class AbstractArraySchema
     /**
      * Call the callback with given parameters.
      *
-     * @param array $parameters
+     * @param mixed[] $parameters
      */
     protected function call(array $parameters): void
     {
@@ -70,5 +70,8 @@ abstract class AbstractArraySchema
         );
     }
 
+    /**
+     * @param mixed $data
+     */
     abstract public function apply($data): void;
 }

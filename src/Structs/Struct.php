@@ -23,14 +23,14 @@ abstract class Struct
      * Attribute names which should be unique across
      * all existing elements combined with the struct tag.
      *
-     * @var array
+     * @var string[]
      */
     protected $uniqueAttributes = [];
 
     /**
      * Attributes.
      *
-     * @var array
+     * @var array<string, \romanzipp\Seo\Values\Attribute>
      */
     protected $attributes = [];
 
@@ -102,7 +102,7 @@ abstract class Struct
     /**
      * Get struct attributes.
      *
-     * @return array
+     * @return array<string, \romanzipp\Seo\Values\Attribute>
      */
     public function getAttributes(): array
     {
@@ -110,10 +110,9 @@ abstract class Struct
     }
 
     /**
-     * Get computed attributes. Converts
-     * objects to string values.
+     * Get computed attributes. Converting objects to string values.
      *
-     * @return array
+     * @return array<string, \romanzipp\Seo\Values\Attribute>
      */
     public function getComputedAttributes(): array
     {
@@ -135,7 +134,7 @@ abstract class Struct
     /**
      * Get struct unique attributes for collision detection.
      *
-     * @return array
+     * @return string[]
      */
     public function getUniqueAttributes(): array
     {
@@ -145,7 +144,7 @@ abstract class Struct
     /**
      * Get all attributes with values that have been declared as unique.
      *
-     * @return array
+     * @return \romanzipp\Seo\Values\Attribute[]
      */
     public function getComputedUniqueAttributes(): array
     {
@@ -322,7 +321,7 @@ abstract class Struct
     /**
      * Set attributes.
      *
-     * @param array $attributes
+     * @param array<string, mixed> $attributes
      */
     protected function setAttributes(array $attributes): void
     {

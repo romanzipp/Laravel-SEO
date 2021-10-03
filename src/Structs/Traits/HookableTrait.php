@@ -11,7 +11,7 @@ trait HookableTrait
     /**
      * Applied hooks.
      *
-     * @var array
+     * @var \romanzipp\Seo\Helpers\Hook[]
      */
     protected static $hooks = [];
 
@@ -72,7 +72,7 @@ trait HookableTrait
      * @param int $target
      * @param mixed $data
      *
-     * @return array
+     * @return \romanzipp\Seo\Helpers\Hook[]
      */
     public function getMatchingHooks(int $target, $data): array
     {

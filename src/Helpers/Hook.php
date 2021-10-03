@@ -25,7 +25,7 @@ class Hook
     /**
      * Filter the structs by certain attributes and values.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $filterAttributes = [];
 
@@ -82,7 +82,7 @@ class Hook
     /**
      * Get specified attribute to filter for the hook.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getFilterAttributes(): array
     {
@@ -108,7 +108,7 @@ class Hook
     /**
      * Set hook target to body.
      *
-     * @return self
+     * @return $this
      */
     public function onBody(): self
     {
@@ -120,7 +120,7 @@ class Hook
     /**
      * Set hook target on attributes.
      *
-     * @return self
+     * @return $this
      */
     public function onAttributes(): self
     {
@@ -134,7 +134,7 @@ class Hook
      *
      * @param string $attribute Struct attribute
      *
-     * @return self
+     * @return $this
      */
     public function onAttribute(string $attribute): self
     {
@@ -151,7 +151,7 @@ class Hook
      * @param string $attribute Attribute to search for
      * @param mixed $value Attribute value to search for
      *
-     * @return self
+     * @return $this
      */
     public function whereAttribute(string $attribute, $value): self
     {
@@ -165,7 +165,7 @@ class Hook
      *
      * @param callable $callback Callback
      *
-     * @return self
+     * @return $this
      */
     public function callback(callable $callback): self
     {

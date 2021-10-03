@@ -68,9 +68,9 @@ class RenderConductor implements Htmlable, Renderable, Arrayable
     }
 
     /**
-     * Get array of rendered HtmlStrings.
+     * Get array of rendered html strings.
      *
-     * @return array
+     * @return string[]
      */
     public function toArray(): array
     {
