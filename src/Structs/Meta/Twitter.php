@@ -3,7 +3,6 @@
 namespace romanzipp\Seo\Structs\Meta;
 
 use romanzipp\Seo\Structs\Meta;
-use romanzipp\Seo\Structs\Struct;
 
 /**
  * @see https://github.com/joshbuchea/HEAD#twitter-card
@@ -14,7 +13,13 @@ class Twitter extends Meta
 
     protected $uniqueAttributes = ['name'];
 
-    public function name($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function name($value = null, bool $escape = true)
     {
         $this->addAttribute('name', "twitter:{$value}", $escape);
 

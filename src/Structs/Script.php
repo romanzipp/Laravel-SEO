@@ -12,14 +12,26 @@ class Script extends Struct
         return 'script';
     }
 
-    public function src($value = null, bool $escape = true): Struct
+    /**
+     * @param null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function src($value = null, bool $escape = true)
     {
         $this->addAttribute('src', $value, $escape);
 
         return $this;
     }
 
-    public function type($value = null, bool $escape = true): Struct
+    /**
+     * @param null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function type($value = null, bool $escape = true)
     {
         $this->addAttribute('type', $value, $escape);
 

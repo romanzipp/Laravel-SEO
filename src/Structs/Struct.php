@@ -126,7 +126,7 @@ abstract class Struct
      *
      * @return \romanzipp\Seo\Values\Attribute|null
      */
-    public function getComputedAttribute(string $attribute)
+    public function getComputedAttribute(string $attribute): ?Attribute
     {
         return $this->getComputedAttributes()[$attribute] ?? null;
     }
@@ -170,7 +170,7 @@ abstract class Struct
      *
      * @return $this
      */
-    public function setUnique(bool $unique = true): Struct
+    public function setUnique(bool $unique = true)
     {
         $this->unique = $unique;
 
@@ -194,7 +194,7 @@ abstract class Struct
      *
      * @return static
      */
-    public function setSection(string $section): Struct
+    public function setSection(string $section)
     {
         $this->section = $section;
 
@@ -242,7 +242,7 @@ abstract class Struct
      *
      * @return $this
      */
-    public function body($body, bool $escape = true): Struct
+    public function body($body, bool $escape = true)
     {
         if ($escape) {
             $body = $this->escapeValue($body);
@@ -262,7 +262,7 @@ abstract class Struct
      *
      * @return $this
      */
-    public function attr(string $attribute, $value = null, bool $escape = true): Struct
+    public function attr(string $attribute, $value = null, bool $escape = true)
     {
         $this->addAttribute($attribute, $value, $escape);
 
@@ -277,7 +277,7 @@ abstract class Struct
      *
      * @return $this
      */
-    public function attrs(array $attributes, bool $escape = true): Struct
+    public function attrs(array $attributes, bool $escape = true)
     {
         foreach ($attributes as $attribute => $value) {
             $this->attr($attribute, $value, $escape);

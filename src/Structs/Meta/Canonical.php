@@ -18,7 +18,13 @@ class Canonical extends Meta
         $struct->addAttribute('rel', 'canonical');
     }
 
-    public function href($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function href($value = null, bool $escape = true)
     {
         $this->addAttribute('href', $value, $escape);
 

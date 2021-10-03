@@ -14,28 +14,52 @@ class Link extends Struct
         return 'link';
     }
 
-    public function rel($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function rel($value = null, bool $escape = true)
     {
         $this->addAttribute('rel', $value, $escape);
 
         return $this;
     }
 
-    public function href($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function href($value = null, bool $escape = true)
     {
         $this->addAttribute('href', $value, $escape);
 
         return $this;
     }
 
-    public function as($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function as($value = null, bool $escape = true)
     {
         $this->addAttribute('as', $value, $escape);
 
         return $this;
     }
 
-    public function type($value = null, bool $escape = true): Struct
+    /**
+     * @param mixed|null $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function type($value = null, bool $escape = true)
     {
         $this->addAttribute('type', $value, $escape);
 

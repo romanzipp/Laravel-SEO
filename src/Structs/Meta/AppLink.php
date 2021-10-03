@@ -9,6 +9,12 @@ use romanzipp\Seo\Structs\Meta;
  */
 class AppLink extends Meta
 {
+    /**
+     * @param mixed $value
+     * @param bool $escape
+     *
+     * @return $this
+     */
     public function property($value, bool $escape = true)
     {
         $this->addAttribute('property', "al:{$value}", $escape);
