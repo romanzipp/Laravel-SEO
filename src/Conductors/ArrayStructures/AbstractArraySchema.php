@@ -16,7 +16,7 @@ abstract class AbstractArraySchema
      */
     protected $callback;
 
-    public function __construct(?string $class = null)
+    final public function __construct(?string $class = null)
     {
         $this->class = $class;
     }
