@@ -6,6 +6,9 @@ use InvalidArgumentException;
 
 class AttributeArraySchema extends AbstractArraySchema
 {
+    /**
+     * @param array<array<string>> $data
+     */
     public function apply($data): void
     {
         if ( ! is_array($data)) {

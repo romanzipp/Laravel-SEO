@@ -37,7 +37,7 @@ trait CollisionTrait
      *
      * @param \romanzipp\Seo\Structs\Struct $struct
      *
-     * @return array|null
+     * @return (\romanzipp\Seo\Structs\Struct|int|null)[]|null
      */
     public function getDuplicateStruct(Struct $struct): ?array
     {

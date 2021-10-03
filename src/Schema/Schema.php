@@ -47,7 +47,7 @@ final class Schema
      *
      * @param string $section
      *
-     * @return self
+     * @return $this
      */
     public function setSection(string $section): self
     {

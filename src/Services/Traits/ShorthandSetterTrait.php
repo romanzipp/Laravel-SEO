@@ -23,7 +23,7 @@ trait ShorthandSetterTrait
      * @param string|null $title
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function title(string $title = null, bool $escape = true): self
     {
@@ -53,7 +53,7 @@ trait ShorthandSetterTrait
      * @param string|null $description
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function description(string $description = null, bool $escape = true): self
     {
@@ -83,7 +83,7 @@ trait ShorthandSetterTrait
      * @param string|null $image
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function image(string $image = null, bool $escape = true): self
     {
@@ -114,7 +114,7 @@ trait ShorthandSetterTrait
      * @param mixed|null $content
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function meta(string $name, $content = null, bool $escape = true): self
     {
@@ -130,7 +130,7 @@ trait ShorthandSetterTrait
      * @param mixed|null $content
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function twitter(string $name, $content = null, bool $escape = true): self
     {
@@ -146,7 +146,7 @@ trait ShorthandSetterTrait
      * @param mixed|null $content
      * @param bool $escape
      *
-     * @return self
+     * @return $this
      */
     public function og(string $property, $content = null, bool $escape = true): self
     {
@@ -160,7 +160,7 @@ trait ShorthandSetterTrait
      *
      * @param string $charset
      *
-     * @return self
+     * @return $this
      */
     public function charset(string $charset = 'utf-8'): self
     {
@@ -174,7 +174,7 @@ trait ShorthandSetterTrait
      *
      * @param string $viewport
      *
-     * @return self
+     * @return $this
      */
     public function viewport(string $viewport = 'width=device-width, initial-scale=1'): self
     {
@@ -188,7 +188,7 @@ trait ShorthandSetterTrait
      *
      * @param string $canonical
      *
-     * @return self
+     * @return $this
      */
     public function canonical(string $canonical): self
     {
@@ -202,7 +202,7 @@ trait ShorthandSetterTrait
      *
      * @param string|null $token
      *
-     * @return self
+     * @return $this
      */
     public function csrfToken(string $token = null): self
     {
