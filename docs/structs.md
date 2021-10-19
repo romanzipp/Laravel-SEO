@@ -104,7 +104,7 @@ seo()->addMany([
 
 </details>
 
-### Meta (name-content)
+### Meta
 
 ```php
 seo()->meta(string $name, $content = null, bool $escape = true);
