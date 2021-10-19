@@ -11,8 +11,14 @@ A SEO package made for maximum customization and flexibility.
 
 The full package documentation can be found on [romanzipp.github.io/Laravel-SEO](https://romanzipp.github.io/Laravel-SEO/)
 
+![](docs/preview.png)
+
 ## Testing
 
 ```
 ./vendor/bin/phpunit
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

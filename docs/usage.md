@@ -1,4 +1,4 @@
-# Getting started
+# Usage
 
 This package offers many ways of adding new elements (**Structs**) to your `<head>`.
 
