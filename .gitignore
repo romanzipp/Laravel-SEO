@@ -18,3 +18,5 @@ build/*
 .php_cs.cache
 .php-cs-fixer.cache
 
+docs/.vuepress/dist
+node_modules/

@@ -1,26 +1,10 @@
-- **[Basic Usage](1-INDEX.md)**
-  - [Add Methods](1-INDEX.md#add-methods)
-  - [Sections](1-INDEX.md#sections)
-  - [Macros](1-INDEX.md#macros)
-- [Structs](2-STRUCTS.md)
-  - [Available Shorthand Methods](2-STRUCTS.md#available-shorthand-methods)
-  - [Adding single structs](2-STRUCTS.md#adding-single-structs)
-  - [Available Structs](2-STRUCTS.md#available-structs)
-  - [Escaping](2-STRUCTS.md#escaping)
-  - [Creating custom Structs](2-STRUCTS.md#creating-custom-structs)
-- [Hooks](3-HOOKS.md)
-  - [Examples](3-HOOKS.md#examples)
-  - [Reference](3-HOOKS.md#reference)
-- [Laravel-Mix](4-LARAVEL-MIX.md)
-- [Example App](5-EXAMPLE-APP.md)
-
-# Basic Usage
+# Getting started
 
 This package offers many ways of adding new elements (**Structs**) to your `<head>`.
 
-1. Add commonly used structs via [shorthand setters](2-STRUCTS.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
-2. Manually add single structs via the `seo()->add()` [methods](1-INDEX.md#add-methods)
-3. Specify an [array of contents](1-INDEX.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
+1. Add commonly used structs via [shorthand setters](structs.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
+2. Manually add single structs via the `seo()->add()` [methods](README.md#add-methods)
+3. Specify an [array of contents](README.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
 
 ### Recommended Minimum
 
@@ -40,7 +24,7 @@ seo()->title('My Title');
 
 ## Add Methods
 
-### Add single Struct `add`
+### Add single Struct
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -50,7 +34,7 @@ seo()->add(
 );
 ```
 
-### Add multiple Structs `addMany`
+### Add multiple Structs
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -62,7 +46,7 @@ seo()->addMany([
 ]);
 ```
 
-### Conditional additions `addIf`
+### Conditional additions
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -75,7 +59,7 @@ seo()->addIf(
 );
 ```
 
-### Add from array format `addFromArray`
+### Add from array format
 
 ```php
 seo()->addFromArray([
