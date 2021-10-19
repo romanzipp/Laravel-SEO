@@ -1,30 +1,142 @@
 # Usage
 
-This package offers many ways of adding new elements (**Structs**) to your `<head>`.
+## Instantiation
 
-1. Add commonly used structs via [shorthand setters](structs.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
-2. Manually add single structs via the `seo()->add()` [methods](README.md#add-methods)
-3. Specify an [array of contents](README.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
-
-### Recommended Minimum
-
-For a full reference of what **could** go to your `<head>` see [joshbuchea's HEAD](https://github.com/joshbuchea/HEAD)
+You can access the SEO service in many different ways. Just use what you prefer! We will use the `seo()` function in this documentaiton.
 
 ```php
-seo()->charset('utf-8');
-seo()->viewport('width=device-width, initial-scale=1, viewport-fit=cover');
-seo()->title('My Title');
+use romanzipp\Seo\Facades\Seo;
+use romanzipp\Seo\Services\SeoService;
+
+$seo = seo();
+
+$seo = app(SeoService::class);
+
+$seo = Seo::make();
+```
+
+## Render
+
+Place this code snippet in your blade view.
+
+```blade
+{{ seo()->render() }}
+```
+
+## How to register tags
+
+ℹ️ Going forward we will refer to head/meta elements as **Structs**.
+
+This package offers many ways of adding new elements (**Structs**) to your `<head>`.
+
+1. Add commonly used structs via [shorthand setters](#shorthand-setters) like `seo()->title('...')`
+2. Manually add single structs via the `seo()->add()` [methods](#add-structs)
+3. Specify an [array of contents](#array-format) via `seo()->addFromArray()`
+
+### Shorthand setters
+
+Shorthand setters are **predefined shortcuts** to add commonly used Structs without the hassle of importing struct classes or chain many methods.
+
+When using shorthand methods, you will skip the `seo()->add()` method.
+You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
+
+Take a look at the whole [available shorthand setter methods](/structs.html#available-shorthand-methods)
+
+#### Title
+
+```php
+seo()->title('Laravel');
 ```
 
 ```html
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>My Title</title>
+<title>Laravel</title>
+<meta property="og:title" content="Laravel" />
+<meta name="twitter:title" content="Laravel" />
 ```
 
-## Add Methods
+#### Description
 
-### Add single Struct
+```php
+seo()->description('Catchy marketing headline');
+```
+
+```html
+<meta name="description" content="Catchy marketing headline" />
+<meta property="og:description" content="Catchy marketing headline" />
+<meta name="twitter:description" content="Catchy marketing headline" />
+```
+
+#### Meta
+
+```php
+seo()->meta('copyright', 'Roman Zipp');
+```
+
+```html
+<meta name="copyright" content="Roman Zipp" />
+```
+
+#### Open Graph
+
+```php
+seo()->og('site_name', 'Laravel');
+seo()->og('locale', 'de_DE');
+```
+
+```html
+<meta name="og:site_name" content="Laravel" />
+<meta name="og:locale" content="de_DE" />
+```
+
+#### Twitter
+
+```php
+seo()->twitter('card', 'summary');
+seo()->twitter('creator', '@romanzipp');
+```
+
+```html
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@romanzipp" />
+```
+
+#### Charset & Viewport
+
+```php
+seo()->charset();
+```
+
+```html
+<meta charset="utf-8" />
+```
+
+#### Charset & Viewport
+
+```php
+seo()->viewport();
+```
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+#### CSRF Token
+
+```php
+seo()->csrfToken();
+```
+
+```html
+<meta name="csrf-token" content="a7588c617ea5d8833374d8eb3752bcc4071" />
+```
+
+### Add Structs
+
+If you need to use more advanced elements which are not covered with shorthand setters, you can easily add single structs to your SEO instance the following way.
+
+Further reading: [Adding single structs](/structs.html#adding-single-structs)
+
+#### Single Structs
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -34,7 +146,7 @@ seo()->add(
 );
 ```
 
-### Add multiple Structs
+#### Multiple Structs
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -46,7 +158,7 @@ seo()->addMany([
 ]);
 ```
 
-### Conditional additions
+#### Conditional additions
 
 ```php
 use romanzipp\Seo\Structs\Title;
@@ -59,7 +171,9 @@ seo()->addIf(
 );
 ```
 
-### Add from array format
+### Array format
+
+You can also register structs using the following format. This can be helpful if you are fetching SEO information from a database.
 
 ```php
 seo()->addFromArray([
@@ -116,12 +230,6 @@ seo()->addFromArray([
     ],
 
 ]);
-```
-
-### Clear all added Structs
-
-```php
-seo()->clearStructs();
 ```
 
 ## Sections
@@ -214,4 +322,26 @@ Seo::macro('getTitle', function () {
 
     return $body->getOriginalData();
 });
+```
+
+## Recommended Minimum
+
+For a full reference of what **could** go to your `<head>` see [joshbuchea's HEAD](https://github.com/joshbuchea/HEAD)
+
+```php
+seo()->charset('utf-8');
+seo()->viewport('width=device-width, initial-scale=1, viewport-fit=cover');
+seo()->title('My Title');
+```
+
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Title</title>
+```
+
+## Clear all added Structs
+
+```php
+seo()->clearStructs();
 ```

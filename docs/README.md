@@ -14,152 +14,19 @@ Copy configuration to config folder:
 $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvider"
 ```
 
-## Usage
+## Inregrations
 
-### Instantiation
+### Laravel-Mix
 
-```php
-use romanzipp\Seo\Facades\Seo;
-use romanzipp\Seo\Services\SeoService;
+This package can automatically preload all generated frontend assets via the Laravel Mix manifest.
 
-class IndexController
-{
-    public function index(Request $request, SeoService $seo)
-    {
-        $seo = seo();
+See the [Laravel-Mix integration docs](/laravel-mix.html) for more information.
 
-        $seo = app(SeoService::class);
+### Schema.org
 
-        $seo = Seo::make();
-    }
-}
-```
+We also feature a basic integration for [Spaties Schema.org](https://github.com/spatie/schema-org) package to generate ld+json scripts.
 
-### Render
-
-```blade
-{{ seo()->render() }}
-```
-
-## Examples
-
-This package offers many ways of adding new elements (**Structs**) to your `<head>`.
-
-1. Add commonly used structs via [shorthand setters](docs/structs.md#available-shorthand-methods) like `seo()->title('...')`, `seo()->meta('...')`
-2. Manually add single structs via the `seo()->add()` [methods](docs/usage.md#add-methods)
-3. Specify an [array of contents](docs/usage.md#add-from-array-format-addfromarray) via `seo()->addFromArray()`
-
-Take a look at the [structs documentation](docs/structs.md) or [example app](docs/example-app.md) for more detailed usage.
-
-### Title
-
-```php
-seo()->title('Laravel');
-```
-
-```html
-<title>Laravel</title>
-<meta property="og:title" content="Laravel" />
-<meta name="twitter:title" content="Laravel" />
-```
-
-### Description
-
-```php
-seo()->description('Catchy marketing headline');
-```
-
-```html
-<meta name="description" content="Catchy marketing headline" />
-<meta property="og:description" content="Catchy marketing headline" />
-<meta name="twitter:description" content="Catchy marketing headline" />
-```
-
-### CSRF Token
-
-```php
-seo()->csrfToken();
-```
-
-```html
-<meta name="csrf-token" content="a7588c617ea5d8833374d8eb3752bcc4071" />
-```
-
-### Charset & Viewport
-
-```php
-seo()->charset();
-seo()->viewport();
-```
-
-```html
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-```
-
-### Twitter
-
-```php
-seo()->twitter('card', 'summary');
-seo()->twitter('creator', '@romanzipp');
-```
-
-```html
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@romanzipp" />
-```
-
-### Open Graph
-
-```php
-seo()->og('site_name', 'Laravel');
-seo()->og('locale', 'de_DE');
-```
-
-```html
-<meta name="og:site_name" content="Laravel" />
-<meta name="og:locale" content="de_DE" />
-```
-
-### Meta
-
-```php
-seo()->meta('copyright', 'Roman Zipp');
-```
-
-```html
-<meta name="copyright" content="Roman Zipp" />
-```
-
-For more information see the [structs documentation](docs/structs.md).
-
-## Laravel-Mix Integration
-
-See the full [Laravel-Mix Integration docs](/laravel-mix.html)
-
-## Schema.org Integration
-
-This package features a basic integration for [Spaties Schema.org](https://github.com/spatie/schema-org) package to generate ld+json scripts.
-Added Schema types render with the packages structs.
-
-```php
-use Spatie\SchemaOrg\Schema;
-
-seo()->addSchema(
-    Schema::localBusiness()->name('Spatie')
-);
-```
-
-```php
-use Spatie\SchemaOrg\Schema;
-
-seo()->setSchemes([
-    Schema::localBusiness()->name('Spatie'),
-    Schema::airline()->name('Spatie'),
-]);
-```
-
-Take a look at the [Schema.org package Docs](https://github.com/spatie/schema-org#usage).
+See the [Schema.org integration docs](/schema-org.html) for more information.
 
 ## Upgrading
 
