@@ -16,6 +16,7 @@ module.exports = {
             '/structs',
             '/hooks',
             '/laravel-mix',
+            '/schema-org',
             '/example-app',
         ],
         displayAllHeaders: true,

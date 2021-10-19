@@ -40,30 +40,18 @@ Shorthand setters are **predefined shortcuts** to add commonly used Structs with
 When using shorthand methods, you will skip the `seo()->add()` method.
 You can configure which Structs should be added on shorthand calls in the `seo.php` config file under the `shorthand` key.
 
-Take a look at the whole [available shorthand setter methods](/structs.html#available-shorthand-methods)
-
 #### Title
 
 ```php
 seo()->title('Laravel');
 ```
 
+... renders to ...
+
 ```html
 <title>Laravel</title>
 <meta property="og:title" content="Laravel" />
 <meta name="twitter:title" content="Laravel" />
-```
-
-#### Description
-
-```php
-seo()->description('Catchy marketing headline');
-```
-
-```html
-<meta name="description" content="Catchy marketing headline" />
-<meta property="og:description" content="Catchy marketing headline" />
-<meta name="twitter:description" content="Catchy marketing headline" />
 ```
 
 #### Meta
@@ -72,63 +60,13 @@ seo()->description('Catchy marketing headline');
 seo()->meta('copyright', 'Roman Zipp');
 ```
 
+... renders to ...
+
 ```html
 <meta name="copyright" content="Roman Zipp" />
 ```
 
-#### Open Graph
-
-```php
-seo()->og('site_name', 'Laravel');
-seo()->og('locale', 'de_DE');
-```
-
-```html
-<meta name="og:site_name" content="Laravel" />
-<meta name="og:locale" content="de_DE" />
-```
-
-#### Twitter
-
-```php
-seo()->twitter('card', 'summary');
-seo()->twitter('creator', '@romanzipp');
-```
-
-```html
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@romanzipp" />
-```
-
-#### Charset & Viewport
-
-```php
-seo()->charset();
-```
-
-```html
-<meta charset="utf-8" />
-```
-
-#### Charset & Viewport
-
-```php
-seo()->viewport();
-```
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-```
-
-#### CSRF Token
-
-```php
-seo()->csrfToken();
-```
-
-```html
-<meta name="csrf-token" content="a7588c617ea5d8833374d8eb3752bcc4071" />
-```
+Take a look at the [shorthand setter docs](/structs.html#available-shorthand-methods) for all available methods.
 
 ### Add Structs
 
