@@ -12,7 +12,7 @@ module.exports = {
         ],
         sidebar: [
             '/',
-            '/getting-started',
+            '/usage',
             '/structs',
             '/hooks',
             '/laravel-mix',
