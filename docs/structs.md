@@ -211,7 +211,7 @@ seo()->add(
 
 If you need to use more advanced elements which are not covered with shorthand setters, you can easily add single structs to your SEO instance the following way.
 
-*Remember: [There are many methods available for adding new structs](README.md#add-methods)* 
+*Remember: [There are many methods available for adding new structs](/usage.html#how-to-register-tags)* 
 
 ### Titles
 
