@@ -40,6 +40,17 @@ seo()->addMany([
 
 </details>
 
+<details>
+<summary>renders to ...</summary>
+
+```html
+<title>{title}</title>
+<meta property="og:title" content="{title}" />
+<meta name="twitter:title" content="{title}" />
+```
+
+</details>
+
 ### Description
 
 ```php
@@ -67,6 +78,17 @@ seo()->addMany([
         ->content(string $description = null),
 
 ]);
+```
+
+</details>
+
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="description" content="{description}" />
+<meta property="og:description" content="{description}" />
+<meta name="twitter:description" content="{description}" />
 ```
 
 </details>
@@ -104,6 +126,17 @@ seo()->addMany([
 
 </details>
 
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="image" content="{image}" />
+<meta property="og:image" content="{image}" />
+<meta name="twitter:image" content="{image}" />
+```
+
+</details>
+
 ### Meta
 
 ```php
@@ -121,6 +154,15 @@ seo()->add(
         ->name(string $name, bool $escape = true)
         ->content($content = null, bool $escape = true)
 );
+```
+
+</details>
+
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="{name}" content="{content}" />
 ```
 
 </details>
@@ -146,6 +188,15 @@ seo()->add(
 
 </details>
 
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="og:{property}" content="{content}" />
+```
+
+</details>
+
 ### Twitter
 
 ```php
@@ -163,6 +214,15 @@ seo()->add(
         ->name(string $name, bool $escape = true)
         ->content($content = null, bool $escape = true)
 );
+```
+
+</details>
+
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="twitter:{name}" content="{content}" />
 ```
 
 </details>
@@ -187,6 +247,15 @@ seo()->add(
 
 </details>
 
+<details>
+<summary>renders to ...</summary>
+
+```html
+<link rel="canonical" href="{canonical}" />
+```
+
+</details>
+
 ### CSRF Token
 
 ```php
@@ -201,8 +270,17 @@ use romanzipp\Seo\Structs\Meta\CsrfToken;
 
 seo()->add(
     CsrfToken::make()
-        ->href($token = null)
+        ->token($token = null)
 );
+```
+
+</details>
+
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="csrf-token" content="{token}" />
 ```
 
 </details>
