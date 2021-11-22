@@ -14,7 +14,7 @@ Copy configuration to config folder:
 $ php artisan vendor:publish --provider="romanzipp\Seo\Providers\SeoServiceProvider"
 ```
 
-## Inregrations
+## Integrations
 
 ### Laravel-Mix
 
