@@ -7,6 +7,12 @@ use romanzipp\Seo\Structs\Struct;
 
 class StructBuilder
 {
+    public const TAG_SYNTAX_HTML5 = 'html5';
+
+    public const TAG_SYNTAX_XHTML = 'xhtml';
+
+    public const TAG_SYNTAX_XHTML_STRICT = 'xhtml_strict';
+
     /**
      * Indent rendered struct.
      *
@@ -71,10 +77,24 @@ class StructBuilder
 
         $body = $this->struct->getBody();
 
+        $syntax = config('seo.tag_syntax') ?? self::TAG_SYNTAX_XHTML;
+
         if ($body || ! $this->struct->isVoidElement()) {
             $element .= ">{$body}</{$this->struct->getTag()}>";
         } else {
-            $element .= ' />';
+            switch ($syntax) {
+                case self::TAG_SYNTAX_HTML5:
+                    $element .= '>';
+                    break;
+                case self::TAG_SYNTAX_XHTML:
+                    $element .= ' />';
+                    break;
+                case self::TAG_SYNTAX_XHTML_STRICT:
+                    $element .= "></{$this->struct->getTag()}>";
+                    break;
+                default:
+                    $element .= ' />';
+            }
         }
 
         return new HtmlString($element);

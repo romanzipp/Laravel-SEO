@@ -40,4 +40,10 @@ return [
             'twitter' => true,
         ],
     ],
+
+    // Available options:
+    // - StructBuilder::TAG_SYNTAX_HTML5: <meta name="description">
+    // - StructBuilder::TAG_SYNTAX_XHTML: <meta name="description" />
+    // - StructBuilder::TAG_SYNTAX_XHTML_STRICT: <meta name="description"></meta>
+    'tag_syntax' => \romanzipp\Seo\Builders\StructBuilder::TAG_SYNTAX_XHTML,
 ];

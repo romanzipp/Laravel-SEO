@@ -152,4 +152,59 @@ class RenderTest extends TestCase
 
         $this->assertEquals('  <meta name="first" />' . PHP_EOL . '  <meta name="second" />', seo()->render()->toHtml());
     }
+
+    public function testTagSyntaxHtml5()
+    {
+        config(['seo.tag_syntax' => StructBuilder::TAG_SYNTAX_HTML5]);
+
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1">', seo()->render()->toHtml());
+    }
+
+    public function testTagSyntaxXhtml()
+    {
+        config(['seo.tag_syntax' => StructBuilder::TAG_SYNTAX_XHTML]);
+
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1" />', seo()->render()->toHtml());
+    }
+
+    public function testTagSyntaxXhtmlStrict()
+    {
+        config(['seo.tag_syntax' => StructBuilder::TAG_SYNTAX_XHTML_STRICT]);
+
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1"></meta>', seo()->render()->toHtml());
+    }
+
+    public function testTagSyntaxUnset()
+    {
+        config(['seo.tag_syntax' => null]);
+
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1" />', seo()->render()->toHtml());
+    }
+
+    public function testTagSyntaxUnknown()
+    {
+        config(['seo.tag_syntax' => 'invalid']);
+
+        seo()->add(
+            Meta::make()->attr('name', true)
+        );
+
+        $this->assertEquals('<meta name="1" />', seo()->render()->toHtml());
+    }
 }
