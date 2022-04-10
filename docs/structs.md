@@ -444,6 +444,10 @@ romanzipp\Seo\Structs\Meta\OpenGraph::make()
 ```
 
 ```php
+romanzipp\Seo\Structs\Meta\Robots::make();
+```
+
+```php
 romanzipp\Seo\Structs\Meta\Twitter::make()
     ->name(string $value, bool $escape = true)
     ->content(string $value, bool $escape = true);

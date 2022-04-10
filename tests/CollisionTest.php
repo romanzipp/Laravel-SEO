@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Structs\Meta\Charset;
+use romanzipp\Seo\Structs\Meta\Robots;
 use romanzipp\Seo\Structs\Meta\Viewport;
 use romanzipp\Seo\Structs\Title;
 use romanzipp\Seo\Test\Structs\UniqueMultiAttributeStruct;
@@ -40,6 +41,23 @@ class CollisionTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertEquals('<title>My Second Title</title>', $contents[0]);
+    }
+
+    public function testRobotsElementCollisions()
+    {
+        seo()->add(
+            Robots::make()->content('index')
+        );
+
+        seo()->add(
+            Robots::make()->content('noindex')
+        );
+
+        $contents = seo()->render()->toArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertEquals('<meta name="robots" content="noindex" />', $contents[0]);
     }
 
     public function testVoidElementSingleAttributeCollisions()
