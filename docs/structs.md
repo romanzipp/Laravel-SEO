@@ -521,7 +521,7 @@ protected function tag(): string
 }
 ```
 
-### Uniqueness
+### Unique tags
 
 Certain elements in a documents `<head>` can only exist once, like the `<title></title>` element.
 
@@ -538,38 +538,71 @@ use romanzipp\Seo\Structs\Struct;
 
 class MyStruct extends Struct
 {
-   public static function defaults(self $struct): void
-   {
-       $struct->attr('name', 'my-description');
-   }
+    protected $unique = false;
    
-   protected function tag(): string
-   {
-       return 'meta';
-   }
+    protected function tag(): string
+    {
+        return 'foo';
+    }
 }
 
-seo()->add(MyStruct::make()->attr('name', 'This is the FIRST description'));
-seo()->add(MyStruct::make()->attr('name', 'This is the SECOND description'));
+seo()->add(MyStruct::make()->attr('name', 'my-description')->attr('content', 'This is the FIRST description'));
+seo()->add(MyStruct::make()->attr('name', 'my-description')->attr('content', 'This is the SECOND description'));
 ```
 
-**Before**:
+**Before**: (`$unique = false`)
 
 ```html
-<meta name="my-description" content="This is the FIRST description" />
-<meta name="my-description" content="This is the SECOND description" />
+<foo name="my-description" content="This is the FIRST description" />
+<foo name="my-description" content="This is the SECOND description" />
 ```
 
-**After**:
+**After**: (`$unique = true`)
 
 ```html
-<meta name="my-description" content="This is the SECOND description" />
+<foo name="my-description" content="This is the SECOND description" />
 ```
+
+### Unique attributes
 
 You are also able to modify the unique attributes by setting the `uniqueAttributes` property. If empty, just the tag name will be considered as unique.
 
 ```php
-protected $uniqueAttributes = ['name'];
+use romanzipp\Seo\Structs\Struct;
+
+class MyStruct extends Struct
+{
+    protected $uniqueAttributes = ['name'];
+
+    protected function tag(): string
+    {
+        return 'foo';
+    }
+}
+
+seo()->add(MyStruct::make()->attr('name', 'my-description')->attr('content', 'This is the FIRST description'));
+seo()->add(MyStruct::make()->attr('name', 'my-description')->attr('content', 'This is the SECOND description'));
+
+seo()->add(MyStruct::make()->attr('name', 'my-title')->attr('content', 'This is the FIRST title'));
+seo()->add(MyStruct::make()->attr('name', 'my-title')->attr('content', 'This is the SECOND title'));
+```
+
+**Before**: (`$uniqueAttributes = []`)
+
+```html
+<foo name="my-description" content="This is the FIRST description" />
+<foo name="my-description" content="This is the SECOND description" />
+
+<foo name="my-title" content="This is the FIRST title" />
+<foo name="my-title" content="This is the SECOND title" />
+```
+
+**After**: (`$uniqueAttributes = ['name']`)
+
+```html
+<foo name="my-description" content="This is the SECOND description" />
+
+<foo name="my-title" content="This is the SECOND title" />
 ```
 
 ### Defaults
