@@ -1,20 +1,18 @@
 name: PHP-CS-Fixer
 
-on: push
+on: [ push ]
 
 jobs:
   phpcs:
-
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Setup PHP
-        uses: nanasess/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
+          coverage: none
 
       - name: Install dependencies
         run: composer install --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist

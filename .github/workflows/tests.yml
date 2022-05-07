@@ -1,31 +1,30 @@
 name: Tests
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   test:
-
     strategy:
       fail-fast: false
       matrix:
-        php: [7.1, 7.2, 7.3, 7.4, 8.0, 8.1]
-        composer-dependency: [prefer-stable, prefer-lowest]
-
+        php: [ "7.1", "7.2", "7.3", "7.4", "8.0", "8.1" ]
+        composer-dependency: [ prefer-stable, prefer-lowest ]
     name: "PHP ${{ matrix.php }} - ${{ matrix.composer-dependency }}"
-
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Setup PHP
-        uses: nanasess/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          tools: composer:${{ matrix.php == '7.1' && 'v2.2' || 'v2' }}
+          coverage: none
 
       - name: Install dependencies
-        run: composer update --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --${{ matrix.composer-dependency }}
+        run: |
+          composer global update
+          composer update --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --${{ matrix.composer-dependency }}
 
       - name: Execute tests
         run: vendor/bin/phpunit
