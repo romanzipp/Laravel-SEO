@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
 [![Total Downloads](https://img.shields.io/packagist/dt/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
 [![License](https://img.shields.io/packagist/l/romanzipp/Laravel-SEO.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-seo)
-[![GitHub Build Status](https://img.shields.io/github/workflow/status/romanzipp/Laravel-SEO/Tests?style=flat-square)](https://github.com/romanzipp/Laravel-SEO/actions)
+[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/romanzipp/Laravel-SEO/tests.yml?branch=master&style=flat-square)](https://github.com/romanzipp/Laravel-SEO/actions)
 
 A SEO package made for maximum customization and flexibility.
 
