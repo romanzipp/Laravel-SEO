@@ -2,7 +2,6 @@
 
 namespace romanzipp\Seo\Conductors;
 
-use InvalidArgumentException;
 use romanzipp\Seo\Conductors\ArrayStructures\AbstractArraySchema;
 use romanzipp\Seo\Conductors\ArrayStructures\AttributeArraySchema;
 use romanzipp\Seo\Conductors\ArrayStructures\NestedArraySchema;
@@ -135,7 +134,7 @@ class ArrayFormatConductor
             $schema = $this->getSchema($key);
 
             if (null === $schema) {
-                throw new InvalidArgumentException("Unknown key {$key} provided for seo array format");
+                throw new \InvalidArgumentException("Unknown key {$key} provided for seo array format");
             }
 
             $schema->apply($value);
