@@ -2,7 +2,6 @@
 
 namespace romanzipp\Seo\Conductors;
 
-use Closure;
 use romanzipp\Seo\Conductors\Types\ManifestAsset;
 use romanzipp\Seo\Exceptions\ManifestNotFoundException;
 use romanzipp\Seo\Services\SeoService;
@@ -67,7 +66,7 @@ class MixManifestConductor
      *
      * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
-    public function map(Closure $callback): self
+    public function map(\Closure $callback): self
     {
         $this->mapCallback = $callback;
 

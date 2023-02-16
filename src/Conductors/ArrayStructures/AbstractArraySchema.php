@@ -2,8 +2,6 @@
 
 namespace romanzipp\Seo\Conductors\ArrayStructures;
 
-use Closure;
-
 abstract class AbstractArraySchema
 {
     /**
@@ -40,7 +38,7 @@ abstract class AbstractArraySchema
      *
      * @return static
      */
-    public function callback(Closure $callback)
+    public function callback(\Closure $callback)
     {
         $this->callback = $callback;
 
@@ -52,7 +50,7 @@ abstract class AbstractArraySchema
      *
      * @return \Closure
      */
-    public function getCallback(): Closure
+    public function getCallback(): \Closure
     {
         return $this->callback;
     }
