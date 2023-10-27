@@ -35,6 +35,10 @@ seo()->addMany([
         ->name('title')
         ->content(string $title = null),
 
+    Meta\EmbedX::make()
+        ->name('title')
+        ->content(string $title = null),
+
 ]);
 ```
 
@@ -47,6 +51,7 @@ seo()->addMany([
 <title>{title}</title>
 <meta property="og:title" content="{title}" />
 <meta name="twitter:title" content="{title}" />
+<meta name="embedx:title" content="{title}" />
 ```
 
 </details>
@@ -77,6 +82,10 @@ seo()->addMany([
         ->name('description')
         ->content(string $description = null),
 
+    Meta\EmbedX::make()
+        ->name('description')
+        ->content(string $description = null),
+
 ]);
 ```
 
@@ -89,6 +98,7 @@ seo()->addMany([
 <meta name="description" content="{description}" />
 <meta property="og:description" content="{description}" />
 <meta name="twitter:description" content="{description}" />
+<meta name="embedx:description" content="{description}" />
 ```
 
 </details>
@@ -121,6 +131,10 @@ seo()->addMany([
         ->name('image')
         ->content($image, $escape),
 
+    Meta\EmbedX::make()
+        ->name('image')
+        ->content($image, $escape),
+
 ]);
 ```
 
@@ -133,6 +147,7 @@ seo()->addMany([
 <meta name="image" content="{image}" />
 <meta property="og:image" content="{image}" />
 <meta name="twitter:image" content="{image}" />
+<meta name="embedx:image" content="{image}" />
 ```
 
 </details>
@@ -223,6 +238,38 @@ seo()->add(
 
 ```html
 <meta name="twitter:{name}" content="{content}" />
+```
+
+</details>
+
+### [EmbedX](https://embedx.app)
+
+[EmbedX](https://embedx.app) allows you to display rich embed thumbnails on X/Twitter and other social media platforms.
+
+```php
+seo()->embedx(string $name, $content = null, bool $escape = true);
+```
+
+<details>
+<summary>same as ...</summary>
+
+```php
+use romanzipp\Seo\Structs\Meta\EmbedX;
+
+seo()->add(
+    EmbedX::make()
+        ->name(string $name, bool $escape = true)
+        ->content($content = null, bool $escape = true)
+);
+```
+
+</details>
+
+<details>
+<summary>renders to ...</summary>
+
+```html
+<meta name="embedx:{name}" content="{content}" />
 ```
 
 </details>
