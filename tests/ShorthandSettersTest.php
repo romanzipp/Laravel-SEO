@@ -17,6 +17,7 @@ class ShorthandSettersTest extends TestCase
             'seo.shorthand.title.tag' => true,
             'seo.shorthand.title.twitter' => false,
             'seo.shorthand.title.opengraph' => false,
+            'seo.shorthand.title.embedx' => false,
         ]);
 
         seo()->title('My Title');
@@ -32,13 +33,14 @@ class ShorthandSettersTest extends TestCase
             'seo.shorthand.title.tag' => true,
             'seo.shorthand.title.twitter' => true,
             'seo.shorthand.title.opengraph' => true,
+            'seo.shorthand.title.embedx' => true,
         ]);
 
         seo()->title('My Title');
 
         $contents = seo()->render()->toArray();
 
-        $this->assertCount(3, $contents);
+        $this->assertCount(4, $contents);
     }
 
     public function testDescriptionSingleSetter()
@@ -47,6 +49,7 @@ class ShorthandSettersTest extends TestCase
             'seo.shorthand.description.meta' => true,
             'seo.shorthand.description.twitter' => false,
             'seo.shorthand.description.opengraph' => false,
+            'seo.shorthand.description.embedx' => false,
         ]);
 
         seo()->description('My Description');
@@ -62,13 +65,14 @@ class ShorthandSettersTest extends TestCase
             'seo.shorthand.description.meta' => true,
             'seo.shorthand.description.twitter' => true,
             'seo.shorthand.description.opengraph' => true,
+            'seo.shorthand.description.embedx' => true,
         ]);
 
         seo()->description('My Description');
 
         $contents = seo()->render()->toArray();
 
-        $this->assertCount(3, $contents);
+        $this->assertCount(4, $contents);
     }
 
     public function testTwitterSetter()
@@ -91,6 +95,17 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertInstanceOf(OpenGraph::class, seo()->getStructs()[0]);
+    }
+
+    public function testEmbedXSetter()
+    {
+        seo()->embedx('title', 'My Site Name');
+
+        $contents = seo()->render()->toArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertInstanceOf(Meta\EmbedX::class, seo()->getStructs()[0]);
     }
 
     public function testMetaSetter()

@@ -44,6 +44,11 @@ trait ShorthandSetterTrait
             Twitter::make()->name('title')->content($title, $escape)
         );
 
+        $this->addIf(
+            $config['embedx'] ?? true,
+            Meta\EmbedX::make()->name('title')->content($title, $escape)
+        );
+
         return $this;
     }
 
@@ -74,6 +79,11 @@ trait ShorthandSetterTrait
             Twitter::make()->name('description')->content($description, $escape)
         );
 
+        $this->addIf(
+            $config['embedx'] ?? true,
+            Meta\EmbedX::make()->name('description')->content($description, $escape)
+        );
+
         return $this;
     }
 
@@ -102,6 +112,11 @@ trait ShorthandSetterTrait
         $this->addIf(
             $config['twitter'] ?? true,
             Twitter::make()->name('image')->content($image, $escape)
+        );
+
+        $this->addIf(
+            $config['embedx'] ?? true,
+            Meta\EmbedX::make()->name('image')->content($image, $escape)
         );
 
         return $this;
@@ -152,6 +167,24 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             OpenGraph::make()->property($property)->content($content, $escape)
+        );
+    }
+
+    /**
+     * Add EmbedX struct.
+     *
+     * @see https://embedx.app
+     *
+     * @param string $property
+     * @param mixed|null $content
+     * @param bool $escape
+     *
+     * @return $this
+     */
+    public function embedx(string $property, $content = null, bool $escape = true): self
+    {
+        return $this->add(
+            Meta\EmbedX::make()->name($property)->content($content, $escape)
         );
     }
 
