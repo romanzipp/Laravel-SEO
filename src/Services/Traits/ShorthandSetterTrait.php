@@ -9,6 +9,7 @@ use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\CsrfToken;
 use romanzipp\Seo\Structs\Meta\Description;
+use romanzipp\Seo\Structs\Meta\EmbedX;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
 use romanzipp\Seo\Structs\Meta\Twitter;
 use romanzipp\Seo\Structs\Meta\Viewport;
@@ -46,7 +47,7 @@ trait ShorthandSetterTrait
 
         $this->addIf(
             $config['embedx'] ?? true,
-            Meta\EmbedX::make()->name('title')->content($title, $escape)
+            EmbedX::make()->name('title')->content($title, $escape)
         );
 
         return $this;
@@ -81,7 +82,7 @@ trait ShorthandSetterTrait
 
         $this->addIf(
             $config['embedx'] ?? true,
-            Meta\EmbedX::make()->name('description')->content($description, $escape)
+            EmbedX::make()->name('description')->content($description, $escape)
         );
 
         return $this;
@@ -116,7 +117,7 @@ trait ShorthandSetterTrait
 
         $this->addIf(
             $config['embedx'] ?? true,
-            Meta\EmbedX::make()->name('image')->content($image, $escape)
+            EmbedX::make()->name('image')->content($image, $escape)
         );
 
         return $this;
@@ -184,7 +185,7 @@ trait ShorthandSetterTrait
     public function embedx(string $property, $content = null, bool $escape = true): self
     {
         return $this->add(
-            Meta\EmbedX::make()->name($property)->content($content, $escape)
+            EmbedX::make()->name($property)->content($content, $escape)
         );
     }
 
