@@ -16,6 +16,9 @@ return [
 
             // <meta name="twitter:title" content="..." />
             'twitter' => true,
+
+            // <meta name="embedx:title" content="..." />
+            'embedx' => true,
         ],
 
         'description' => [
@@ -27,6 +30,9 @@ return [
 
             // <meta name="twitter:description" content="..." />
             'twitter' => true,
+
+            // <meta name="embedx:description" content="..." />
+            'embedx' => true,
         ],
 
         'image' => [
@@ -38,6 +44,9 @@ return [
 
             // <meta name="twitter:image" content="..." />
             'twitter' => true,
+
+            // <meta name="embedx:image" content="..." />
+            'embedx' => true,
         ],
     ],
 

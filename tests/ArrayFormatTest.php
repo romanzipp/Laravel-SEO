@@ -19,7 +19,7 @@ class ArrayFormatTest extends TestCase
             'title' => 'Foo',
         ]);
 
-        $this->assertCount(3, seo()->getStructs());
+        $this->assertCount(4, seo()->getStructs());
 
         $this->assertInstanceOf(Title::class, $struct = seo()->getStruct(Title::class));
         $this->assertEquals('Foo', (string) $struct->getBody());
@@ -37,6 +37,7 @@ class ArrayFormatTest extends TestCase
             'seo.shorthand.title.tag' => true,
             'seo.shorthand.title.opengraph' => false,
             'seo.shorthand.title.twitter' => false,
+            'seo.shorthand.title.embedx' => false,
         ]);
 
         seo()->addFromArray([
@@ -57,7 +58,7 @@ class ArrayFormatTest extends TestCase
             'description' => 'Foo',
         ]);
 
-        $this->assertCount(3, seo()->getStructs());
+        $this->assertCount(4, seo()->getStructs());
 
         $this->assertInstanceOf(Description::class, $struct = seo()->getStruct(Description::class));
         $this->assertEquals('Foo', (string) $struct->getComputedAttribute('content'));
@@ -75,6 +76,7 @@ class ArrayFormatTest extends TestCase
             'seo.shorthand.description.tag' => true,
             'seo.shorthand.description.opengraph' => false,
             'seo.shorthand.description.twitter' => false,
+            'seo.shorthand.description.embedx' => false,
         ]);
 
         seo()->addFromArray([
