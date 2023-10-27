@@ -39,7 +39,7 @@ abstract class Struct
      *
      * @var \romanzipp\Seo\Values\Body|null
      */
-    protected $body = null;
+    protected $body;
 
     /**
      * @var string

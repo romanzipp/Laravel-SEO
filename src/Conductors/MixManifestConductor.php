@@ -27,7 +27,7 @@ class MixManifestConductor
     /**
      * @var \Closure|null
      */
-    private $mapCallback = null;
+    private $mapCallback;
 
     /**
      * @var bool

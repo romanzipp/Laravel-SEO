@@ -18,7 +18,7 @@ class StructBuilder
      *
      * @var string|null
      */
-    public static $indent = null;
+    public static $indent;
 
     /**
      * Separator for rendered structs.
