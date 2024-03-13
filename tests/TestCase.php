@@ -31,4 +31,15 @@ abstract class TestCase extends BaseTestCase
             'Seo' => Seo::class,
         ];
     }
+
+    public static function assertMatchesRegularExpressionCustom(string $pattern, string $string, string $message = ''): void
+    {
+        // If parent has method assertMatchesRegularExpression, call it
+        if (method_exists(BaseTestCase::class, 'assertMatchesRegularExpression')) {
+            parent::assertMatchesRegularExpression($pattern, $string, $message);
+            return;
+        }
+
+        static::assertThat($string, new RegularExpression($pattern), $message);
+    }
 }

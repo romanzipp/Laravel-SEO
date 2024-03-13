@@ -78,7 +78,7 @@ class CollisionTest extends TestCase
 
         $this->assertCount(1, $contents);
 
-        $this->assertMatchesRegularExpression('/content\=\"My Second Site Name\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Second Site Name\"/', $contents[0]);
     }
 
     public function testVoidElementSingleOptionalAttributeCollisions()
@@ -99,8 +99,8 @@ class CollisionTest extends TestCase
 
         $this->assertCount(2, $contents);
 
-        $this->assertMatchesRegularExpression('/content\=\"My Site Name\"/', $contents[0]);
-        $this->assertMatchesRegularExpression('/content\=\"My Second Site Name\"/', $contents[1]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Site Name\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Second Site Name\"/', $contents[1]);
     }
 
     public function testVoidElementMultipleAttributesCollisions()
@@ -123,6 +123,6 @@ class CollisionTest extends TestCase
 
         $this->assertCount(1, $contents);
 
-        $this->assertMatchesRegularExpression('/content\=\"My Second Value\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Second Value\"/', $contents[0]);
     }
 }

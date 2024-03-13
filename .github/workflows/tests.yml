@@ -14,7 +14,7 @@ jobs:
             composer-dependency: prefer-lowest
           - php: "8.2"
             composer-dependency: prefer-lowest
-          - php: "8.2"
+          - php: "8.3"
             composer-dependency: prefer-lowest
     name: "PHP ${{ matrix.php }} - ${{ matrix.composer-dependency }}"
     runs-on: ubuntu-latest
