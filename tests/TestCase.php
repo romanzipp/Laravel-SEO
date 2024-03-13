@@ -31,9 +31,4 @@ abstract class TestCase extends BaseTestCase
             'Seo' => Seo::class,
         ];
     }
-
-    public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
-    {
-        static::assertThat($string, new RegularExpression($pattern), $message);
-    }
 }
