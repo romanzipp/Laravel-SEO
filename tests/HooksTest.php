@@ -102,7 +102,7 @@ class HooksTest extends TestCase
 
         $contents = seo()->render()->toArray();
 
-        $this->assertMatchesRegularExpression('/content\=\"My Second Title\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Second Title\"/', $contents[0]);
 
         OpenGraph::clearHooks();
     }
@@ -124,7 +124,7 @@ class HooksTest extends TestCase
 
         $contents = seo()->render()->toArray();
 
-        $this->assertMatchesRegularExpression('/should\=\"exist\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/should\=\"exist\"/', $contents[0]);
 
         OpenGraph::clearHooks();
     }
@@ -146,7 +146,7 @@ class HooksTest extends TestCase
 
         $contents = seo()->render()->toArray();
 
-        $this->assertMatchesRegularExpression('/content\=\"My Title 1\"/', $contents[0]);
+        $this->assertMatchesRegularExpressionCustom('/content\=\"My Title 1\"/', $contents[0]);
 
         OpenGraph::clearHooks();
     }
