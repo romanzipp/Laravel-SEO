@@ -5,6 +5,7 @@ namespace romanzipp\Seo\Services\Traits;
 use Illuminate\Support\Arr;
 use romanzipp\Seo\Services\SeoService;
 use romanzipp\Seo\Structs\Link\Canonical;
+use romanzipp\Seo\Structs\LinkedData;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\CsrfToken;
@@ -242,6 +243,23 @@ trait ShorthandSetterTrait
     {
         return $this->add(
             CsrfToken::make()->token($token ?? csrf_token())
+        );
+    }
+
+    /**
+     * Add a JSON-LD script.
+     *
+     * @see https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+     *
+     * @param array $structuredData
+     * @param bool $pretty
+     *
+     * @return \romanzipp\Seo\Services\Traits\ShorthandSetterTrait|\romanzipp\Seo\Services\SeoService
+     */
+    public function jsonLd(array $structuredData, bool $pretty = false): self
+    {
+        return $this->add(
+            LinkedData::make()->data($structuredData, $pretty)
         );
     }
 

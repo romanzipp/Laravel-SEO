@@ -3,6 +3,7 @@
 namespace romanzipp\Seo\Test;
 
 use romanzipp\Seo\Structs\Link\Canonical;
+use romanzipp\Seo\Structs\LinkedData;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Meta\Charset;
 use romanzipp\Seo\Structs\Meta\OpenGraph;
@@ -150,5 +151,16 @@ class ShorthandSettersTest extends TestCase
         $this->assertCount(1, $contents);
 
         $this->assertInstanceOf(Canonical::class, seo()->getStructs()[0]);
+    }
+
+    public function testLinkedDataSetter()
+    {
+        seo()->jsonLd(['@context' => 'https://schema.org/']);
+
+        $contents = seo()->render()->toArray();
+
+        $this->assertCount(1, $contents);
+
+        $this->assertInstanceOf(LinkedData::class, seo()->getStructs()[0]);
     }
 }

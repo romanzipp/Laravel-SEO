@@ -34,22 +34,23 @@ See the [Schema.org integration docs](/schema-org.html) for more information.
 
 ## Cheat Sheet
 
-| Code | Rendered HTML |
-|----|----|
-| **Shorthand Setters** | |
-| `seo()->title('Laravel')` | `<title>Laravel</title>` |
-| `seo()->description('Laravel')` | `<meta name="description" content="Laravel" />` |
-| `seo()->meta('author', 'Roman Zipp')` | `<meta name="author" content="Roman Zipp" />` |
-| `seo()->twitter('card', 'summary')` | `<meta name="twitter:card" content="summary" />` |
-| `seo()->og('site_name', 'Laravel')` | `<meta name="og:site_name" content="Laravel" />` |
-| `seo()->charset()` | `<meta charset="utf-8" />` |
-| `seo()->viewport()` | `<meta name="viewport" content="width=device-width, ..." />` |
-| `seo()->csrfToken()` | `<meta name="csrf-token" content="..." />` |
-| **Adding Structs** | |
-| `seo()->add(...)` | `<meta name="foo" />` |
-| `seo()->addMany([...])` | `<meta name="foo" />` |
-| `seo()->addIf(true, ...)` | `<meta name="foo" />` |
-| **Various** | |
-| `seo()->mix()` | |
-| `seo()->hook()` | |
-| `seo()->render()` | |
+| Code                                  | Rendered HTML                                                |
+|---------------------------------------|--------------------------------------------------------------|
+| **Shorthand Setters**                 |                                                              |
+| `seo()->title('Laravel')`             | `<title>Laravel</title>`                                     |
+| `seo()->description('Laravel')`       | `<meta name="description" content="Laravel" />`              |
+| `seo()->meta('author', 'Roman Zipp')` | `<meta name="author" content="Roman Zipp" />`                |
+| `seo()->twitter('card', 'summary')`   | `<meta name="twitter:card" content="summary" />`             |
+| `seo()->og('site_name', 'Laravel')`   | `<meta name="og:site_name" content="Laravel" />`             |
+| `seo()->charset()`                    | `<meta charset="utf-8" />`                                   |
+| `seo()->viewport()`                   | `<meta name="viewport" content="width=device-width, ..." />` |
+| `seo()->csrfToken()`                  | `<meta name="csrf-token" content="..." />`                   |
+| `seo()->jsonLd([...])`                | `<script type="application/ld+json">...</scrit>`             |
+| **Adding Structs**                    |                                                              |
+| `seo()->add(...)`                     | `<meta name="foo" />`                                        |
+| `seo()->addMany([...])`               | `<meta name="foo" />`                                        |
+| `seo()->addIf(true, ...)`             | `<meta name="foo" />`                                        |
+| **Various**                           |                                                              |
+| `seo()->mix()`                        |                                                              |
+| `seo()->hook()`                       |                                                              |
+| `seo()->render()`                     |                                                              |

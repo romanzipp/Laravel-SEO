@@ -4,6 +4,7 @@ namespace romanzipp\Seo\Test;
 
 use Illuminate\Support\HtmlString;
 use romanzipp\Seo\Builders\StructBuilder;
+use romanzipp\Seo\Structs\LinkedData;
 use romanzipp\Seo\Structs\Meta;
 use romanzipp\Seo\Structs\Title;
 
@@ -206,5 +207,28 @@ class RenderTest extends TestCase
         );
 
         $this->assertEquals('<meta name="1" />', seo()->render()->toHtml());
+    }
+
+    public function testTagLinkedData()
+    {
+        seo()->add(
+            LinkedData::make()->data([
+                '@context' => 'https://schema.org/',
+                '@type' => 'Recipe',
+                'name' => 'Party Coffee Cake',
+                'author' => [
+                    '@type' => 'Person',
+                    'name' => 'Mary Stone',
+                ],
+                'datePublished' => '2018-03-10',
+                'description' => 'This coffee cake is awesome and perfect for parties.',
+                'prepTime' => 'PT20M',
+            ])
+        );
+
+        $this->assertEquals(
+            '<script type="application/ld+json">{"@context":"https://schema.org/","@type":"Recipe","name":"Party Coffee Cake","author":{"@type":"Person","name":"Mary Stone"},"datePublished":"2018-03-10","description":"This coffee cake is awesome and perfect for parties.","prepTime":"PT20M"}</script>',
+            seo()->render()->toHtml()
+        );
     }
 }
