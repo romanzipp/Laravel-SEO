@@ -155,7 +155,7 @@ class ShorthandSettersTest extends TestCase
 
     public function testLinkedDataSetter()
     {
-        seo()->jsonLd(['@context' => 'https://schema.org/']);
+        seo()->ldJson(['@context' => 'https://schema.org/']);
 
         $contents = seo()->render()->toArray();
 

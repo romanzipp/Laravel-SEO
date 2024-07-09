@@ -335,7 +335,7 @@ seo()->add(
 ### JSON-LD
 
 ```php
-seo()->jsonLd(array $data, bool $pretty = false);
+seo()->ldJson(array $data, bool $pretty = false);
 ```
 
 <details>

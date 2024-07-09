@@ -14,6 +14,12 @@ class LinkedData extends Struct
         return 'script';
     }
 
+    /**
+     * @param array<string, array|string> $structuredData
+     * @param bool $pretty
+     *
+     * @return $this
+     */
     public function data(array $structuredData, bool $pretty = false): self
     {
         $this->body(

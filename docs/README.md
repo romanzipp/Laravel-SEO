@@ -45,7 +45,7 @@ See the [Schema.org integration docs](/schema-org.html) for more information.
 | `seo()->charset()`                    | `<meta charset="utf-8" />`                                   |
 | `seo()->viewport()`                   | `<meta name="viewport" content="width=device-width, ..." />` |
 | `seo()->csrfToken()`                  | `<meta name="csrf-token" content="..." />`                   |
-| `seo()->jsonLd([...])`                | `<script type="application/ld+json">...</scrit>`             |
+| `seo()->ldJson([...])`                | `<script type="application/ld+json">...</scrit>`             |
 | **Adding Structs**                    |                                                              |
 | `seo()->add(...)`                     | `<meta name="foo" />`                                        |
 | `seo()->addMany([...])`               | `<meta name="foo" />`                                        |

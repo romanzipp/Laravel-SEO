@@ -251,12 +251,12 @@ trait ShorthandSetterTrait
      *
      * @see https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
      *
-     * @param array $structuredData
+     * @param array<string, array|string> $structuredData
      * @param bool $pretty
      *
-     * @return \romanzipp\Seo\Services\Traits\ShorthandSetterTrait|\romanzipp\Seo\Services\SeoService
+     * @return $this
      */
-    public function jsonLd(array $structuredData, bool $pretty = false): self
+    public function ldJson(array $structuredData, bool $pretty = false): self
     {
         return $this->add(
             LinkedData::make()->data($structuredData, $pretty)
