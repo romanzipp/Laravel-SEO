@@ -332,39 +332,6 @@ seo()->add(
 
 </details>
 
-### JSON-LD
-
-```php
-seo()->ldJson(array $data, bool $pretty = false);
-```
-
-<details>
-<summary>same as ...</summary>
-
-```php
-use romanzipp\Seo\Structs\LinkedData;
-
-seo()->add(
-    LinkedData::make()
-        ->data($data, $pretty = false)
-);
-```
-
-</details>
-
-<details>
-<summary>renders to ...</summary>
-
-```html
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org/"
-    }
-</script>
-```
-
-</details>
-
 ## Adding single structs
 
 If you need to use more advanced elements which are not covered with shorthand setters, you can easily add single structs to your SEO instance the following way.
