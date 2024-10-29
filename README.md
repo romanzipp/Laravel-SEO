@@ -22,3 +22,5 @@ The full package documentation can be found on [romanzipp.github.io/Laravel-SEO]
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[![Star History Chart](https://api.star-history.com/svg?repos=romanzipp/laravel-seo&type=Date)](https://star-history.com/#romanzipp/laravel-seo&Date)
