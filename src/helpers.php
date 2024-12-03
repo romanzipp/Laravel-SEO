@@ -10,7 +10,7 @@ if ( ! function_exists('seo')) {
      *
      * @return \romanzipp\Seo\Services\SeoService
      */
-    function seo(string $section = null): SeoService
+    function seo(?string $section = null): SeoService
     {
         if (null === $section) {
             return app(SeoService::class);
