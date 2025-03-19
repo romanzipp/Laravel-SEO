@@ -104,7 +104,7 @@ class MixManifestConductor
      *
      * @return \romanzipp\Seo\Conductors\MixManifestConductor
      */
-    public function load(string $path = null): self
+    public function load(?string $path = null): self
     {
         if (null !== $path) {
             $this->path = $path;

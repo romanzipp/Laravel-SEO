@@ -26,7 +26,7 @@ trait ShorthandSetterTrait
      *
      * @return $this
      */
-    public function title(string $title = null, bool $escape = true): self
+    public function title(?string $title = null, bool $escape = true): self
     {
         $config = Arr::get($this->config, 'shorthand.title');
 
@@ -61,7 +61,7 @@ trait ShorthandSetterTrait
      *
      * @return $this
      */
-    public function description(string $description = null, bool $escape = true): self
+    public function description(?string $description = null, bool $escape = true): self
     {
         $config = Arr::get($this->config, 'shorthand.description');
 
@@ -96,7 +96,7 @@ trait ShorthandSetterTrait
      *
      * @return $this
      */
-    public function image(string $image = null, bool $escape = true): self
+    public function image(?string $image = null, bool $escape = true): self
     {
         $config = Arr::get($this->config, 'shorthand.image');
 
@@ -238,7 +238,7 @@ trait ShorthandSetterTrait
      *
      * @return $this
      */
-    public function csrfToken(string $token = null): self
+    public function csrfToken(?string $token = null): self
     {
         return $this->add(
             CsrfToken::make()->token($token ?? csrf_token())

@@ -37,6 +37,7 @@ abstract class TestCase extends BaseTestCase
         // If parent has method assertMatchesRegularExpression, call it
         if (method_exists(BaseTestCase::class, 'assertMatchesRegularExpression')) {
             parent::assertMatchesRegularExpression($pattern, $string, $message);
+
             return;
         }
 
