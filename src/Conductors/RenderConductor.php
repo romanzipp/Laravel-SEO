@@ -9,6 +9,9 @@ use Illuminate\Support\HtmlString;
 use romanzipp\Seo\Builders\StructBuilder;
 use Spatie\SchemaOrg\Type;
 
+/**
+ * @implements \Illuminate\Contracts\Support\Arrayable<int, string>
+ */
 class RenderConductor implements Htmlable, Renderable, Arrayable
 {
     /**
